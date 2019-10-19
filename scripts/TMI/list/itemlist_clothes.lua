@@ -1,0 +1,45 @@
+return {
+--花环
+	"kelphat",
+	"flowerhat",
+--精神
+	"featherhat",
+	"tophat",
+--风镜
+	"goggleshat",
+	"deserthat",
+--保暖
+	"catcoonhat",
+	"earmuffshat",
+	"winterhat",
+	"walrushat",
+	"beefalohat",
+--避雨降温
+	"red_mushroomhat",
+	"blue_mushroomhat",
+	"green_mushroomhat",
+	"strawhat",
+	"watermelonhat",
+	"icehat",
+	"rainhat",
+	"eyebrellahat",
+--新年装扮
+	"dragonheadhat",
+	"dragonbodyhat",		
+	"dragontailhat",
+--其他帽子
+	"bushhat",
+	"spiderhat",
+--避雨保暖
+	"trunkvest_summer",
+	"raincoat",
+--保暖
+	"sweatervest",
+	"trunkvest_winter",
+	"beargervest",
+--降温
+	"reflectivevest",
+	"hawaiianshirt",
+--延缓饥饿
+	"armorslurper",
+}
