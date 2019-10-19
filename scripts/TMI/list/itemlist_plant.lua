@@ -1,0 +1,108 @@
+return {
+--草
+	"depleted_grass",
+	"grass",
+--树苗
+	"sapling",
+	"sapling_moon",
+--荧光草
+	"flower_cave",
+	"flower_cave_double",
+	"flower_cave_triple",
+--月树
+	"moonbutterfly_sapling",
+	"moon_tree_short",
+	"moon_tree_normal",
+	"moon_tree_tall",
+	"moon_tree",
+--多枝的树
+	"twiggy_nut_sapling",
+	"twiggy_short",
+	"twiggy_normal",
+	"twiggy_tall",
+	"twiggy_old",
+	"twiggytree",
+--花朵
+	"flower_rose",
+	"flower",
+	"planted_flower",
+	"flower_withered",
+	"flower_evil",
+--浆果
+	"berrybush",
+	"berrybush2",
+	"berrybush_juicy",
+--常青树
+	"pinecone_sapling",
+	"evergreen_short",
+	"evergreen_normal",
+	"evergreen_tall",
+	"evergreen_stump",
+	"evergreen_burnt",
+	"evergreen",
+--粗壮常青树
+	"lumpy_sapling",
+	"evergreen_sparse_short",
+	"evergreen_sparse_normal",
+	"evergreen_sparse_tall",
+	"evergreen_sparse",
+--桦树
+	"acorn_sapling",
+	"deciduoustree_short",
+	"deciduoustree_normal",
+	"deciduoustree_tall",
+	"deciduoustree_stump",
+	"deciduoustree_burnt",
+	"deciduoustree",
+--完全正常的树
+	"livingtree_sapling",
+	"livingtree_halloween",
+	"livingtree",
+--仙人掌
+	"cactus",
+	"oasis_cactus",
+--石果
+	"rock_avocado_fruit_sprout_sapling",
+	"rock_avocado_bush",
+--骨架生成植物
+	"stalker_berry",
+	"stalker_bulb",
+	"stalker_bulb_double",	
+	"stalker_fern",
+--蘑菇树
+	"blue_mushroom",
+	"green_mushroom",
+	"red_mushroom",
+	"mushtree_small_stump",
+	"mushtree_medium_stump",
+	"mushtree_tall_stump",
+	"mushroomsprout",
+	"mushroomsprout_dark",
+--香蕉树
+	"cave_banana_tree",
+	"cave_banana_stump",
+	"cave_banana_burnt",
+--农作物
+	"plant_normal_ground",
+	"plant_normal",
+	"carrot_planted",
+	"reeds",
+	"marsh_bush",
+	"burnt_marsh_bush",
+	"mandrake_planted",
+	"succulent_plant",
+	"marsh_plant",
+	"pond_algae",
+	"cave_fern",
+	"lichen",
+	"wormlight_plant",
+	"marsh_tree",
+	"mushtree_tall",
+	"mushtree_small",
+	"mushtree_medium",
+	"mushtree_tall_webbed",
+
+	"bullkelp_plant",
+--风滚草
+	"tumbleweed",
+}

@@ -1,0 +1,77 @@
+return {
+--航海工具
+	"oar",
+	"oar_driftwood",
+	"malbatross_beak",
+	"mast_item",
+	"mast_malbatross_item",
+	"anchor_item",
+	"steeringwheel_item",
+	"boatpatch",
+	"boat_item",
+--采集工具
+	"axe",
+	"goldenaxe",
+	"moonglassaxe",
+	"lucy",
+	"pickaxe",
+	"goldenpickaxe",
+	"multitool_axe_pickaxe",
+	"shovel",
+	"goldenshovel",
+--装修工具
+	"hammer",
+	"pitchfork",
+--刮毛工具
+	"razor",
+--书写工具
+	"featherpencil",
+--训牛工具
+	"brush",
+	"saddle_basic",
+	"saddle_race",
+	"saddle_war",
+	"saddlehorn",
+--烹饪工具
+	"portablecookpot_item",
+	"portableblender_item",
+	"portablespicer_item",
+--施肥工具
+	"fertilizer",
+--照明工具
+	"torch",
+	"lighter",
+	"pumpkin_lantern",
+	"redlantern",
+	"lantern",
+	"minerhat",
+	"molehat",
+--降温灭火工具
+	"waterballoon",
+	"featherfan",
+	"perdfan",
+--狩猎工具
+	"birdtrap",
+	"trap",
+	"bugnet",
+	"fishingrod",
+	"fishingnet",
+--降温避雨工具
+	"minifan",
+	"grass_umbrella",
+	"umbrella",
+--地图工具
+	"compass",
+	"miniflare",
+--打包工具
+	"giftwrap",
+	"bundlewrap",
+--缝纫工具
+	"sewing_kit",
+	"sewing_tape",
+--过夜工具
+	"bedroll_straw",
+	"bedroll_furry",
+--保温工具
+	"heatrock",
+}

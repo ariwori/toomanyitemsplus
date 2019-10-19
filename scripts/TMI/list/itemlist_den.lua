@@ -1,0 +1,46 @@
+return {
+--类人生物小屋
+	"pigtorch",
+	"pighouse",
+	"rabbithouse",
+	"mermhouse",
+	"walrus_camp",
+--蜘蛛巢
+	"spiderden",
+	"spiderden_2",
+	"spiderden_3",
+	"spiderhole",
+	"spiderhole_rock",
+	"moonspiderden",
+	"dropperweb",
+--兔子洞
+	"rabbithole",
+--鼹鼠洞
+	"molehill",
+--浣猫窝
+	"catcoonden",
+--猎犬丘
+	"houndmound",
+--猴子窝
+	"monkeybarrel",
+--蜗牛巢
+	"slurtlehole",
+--蝙蝠洞
+	"batcave",
+--高鸟巢
+	"tallbirdnest",
+--蜂巢
+	"beehive",
+	"wasphive",
+--触手洞
+	"tentacle_pillar_hole",
+--BOSS巢穴
+	"mooseegg",
+	"beequeenhive",
+	"beequeenhivegrown",
+	"klaus_sack",
+	"toadstool_cap",
+--刷新点（不可见）
+	"dragonfly_spawner",
+	"antlion_spawner",
+}

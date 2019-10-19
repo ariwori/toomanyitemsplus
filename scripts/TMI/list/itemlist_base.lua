@@ -1,0 +1,37 @@
+return {
+--指示牌
+	"minisign_drawn",
+	"minisign_item",
+--围栏
+	"fence_item",
+	"fence_gate_item",
+--墙体
+	"wall_hay_item",
+	"wall_wood_item",
+	"wall_stone_item",
+	"wall_ruins_item",
+	"wall_moonrock_item",
+--自然地皮
+	"turf_deciduous",
+	"turf_forest",
+	"turf_grass",
+	"turf_marsh",
+	"turf_rocky",
+	"turf_desertdirt",
+	"turf_savanna",
+	"turf_underrock",
+	"turf_fungus",
+	"turf_fungus_green",
+	"turf_fungus_red",
+	"turf_cave",
+	"turf_mud",
+	"turf_sinkhole",
+	"turf_pebblebeach",
+	"turf_meteor",
+--人造地皮
+	"turf_road",
+	"turf_woodfloor",
+	"turf_checkerfloor",
+	"turf_carpetfloor",
+	"turf_dragonfly",
+}
