@@ -116,26 +116,36 @@ end
 
 function ItemTile:SetImage()
 	local atlas, image = self:GetAsset()
-
-	self.image = self:AddChild(Image(atlas, image, "blueprint.tex"))
-
+	if atlas and image then
+		self.image = self:AddChild(Image(atlas, image, "blueprint.tex"))
+	end
 end
 
 function ItemTile:TrySetImage()
-	local atlas, image = self:GetAsset(true)
-	self.image = self:AddChild(Image(atlas, image))
-	local w,h = self.image:GetSize()
-	if math.max(w,h) < 50 then
-		self.image:Kill()
-		self.image = nil
+	local atlas, image, spiceimage = self:GetAsset(true)
+	if atlas and image then
+		self.image = self:AddChild(Image(atlas, image))
+		-- 调料都在base_atlas_1
+		if spiceimage then
+			self.spiceimage = self:AddChild(Image(base_atlas_1, spiceimage))
+		end
+		local w,h = self.image:GetSize()
+		if math.max(w,h) < 50 then
+			self.image:Kill()
+			self.image = nil
+			self:SetText()
+		end
+	else
 		self:SetText()
 	end
 end
 
+-- 这样写好乱，有空再重写吧
 function ItemTile:GetAsset(find)
 	if self.item == nil then
 		self.item = ""
 	end
+	local spiceimage
 	local newitem = removeadj(self.item)
 	local itemimage = newitem .. ".tex"
 	local itematlas = base_atlas
@@ -172,10 +182,11 @@ function ItemTile:GetAsset(find)
 					if _G.TheSim:AtlasContains(base_atlas, itemimage) then
 						itematlas = base_atlas
 					elseif _G.TheSim:AtlasContains(base_atlas_1, itemimage) then
-							itematlas = base_atlas_1
+						itematlas = base_atlas_1
 					else
 						itematlas = base_atlas_2
 					end
+					spiceimage = "spice_" ..strarr[3].."_over.tex"
 				-- 大理石雕塑
 				elseif string.find(newitem, "chesspiece_") and string.find(newitem, "_marble") then
 					local strarr = split(newitem, "_")
@@ -212,15 +223,19 @@ function ItemTile:GetAsset(find)
 					if _G.TheSim:AtlasContains(base_atlas, myimagename) then
 						itemimage = myimagename
 						itematlas = base_atlas
-					else
+					elseif _G.TheSim:AtlasContains(minimap_atlas, newitem..".png") then
 						itemimage = newitem .. ".png"
 						itematlas = minimap_atlas
+					else
+						itemimage = nil
+						itematlas = nil
 					end
 				end
 			end
+		-- end
 	end
 
-	return itematlas, itemimage
+	return itematlas, itemimage, spiceimage
 end
 
 function ItemTile:OnControl(control, down)
