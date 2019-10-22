@@ -1,5 +1,5 @@
 <Atlas>
-<Texture filename="yshico.tex" />
+<Texture filename="icoysh.tex" />
 <Elements>
 <Element name="spider_hider.tex" u1="0" u2="0.0625" v1="0.9375" v2="1" />
 <Element name="spider_spitter.tex" u1="0.0625" u2="0.125" v1="0.9375" v2="1" />
