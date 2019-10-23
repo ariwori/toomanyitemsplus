@@ -69,7 +69,7 @@ local TooManyItems = Class(Widget, function(self)
 		self.shield:SetTint(1,1,1,0.6)
 
 		local world_id = TheWorld.meta.session_identifier or "world"
-		local savepath = TOOMANYITEMS.TELEPORT_DATA_FILE .. "toomanyitems_teleport_save_"..world_id
+		local savepath = TOOMANYITEMS.TELEPORT_DATA_FILE .. "toomanyitemsplus_teleport_save_"..world_id
 
 		if TOOMANYITEMS.DATA_SAVE == 1 then
 			if TOOMANYITEMS.LoadData(savepath) then
@@ -137,9 +137,11 @@ function TooManyItems:SetPointer()
 end
 
 function TooManyItems:DebugMenu()
-	self.debugwidth = 450
+	--self.debugwidth = 550
+	--self.fontsize = 25
+	self.fontsize = _G.TOOMANYITEMS.DEBUG_FONT_SIZE
+	self.debugwidth = _G.TOOMANYITEMS.DEBUG_MENU_SIZE
 	self.font = BODYTEXTFONT
-	self.fontsize = 26
 	self.minwidth = 36
 	self.nextline = 24
 	self.spacing = 10

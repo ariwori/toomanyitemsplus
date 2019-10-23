@@ -3,34 +3,12 @@ if _G.TheNet and ( ( _G.TheNet:GetIsServer() and _G.TheNet:GetServerIsDedicated(
 
 Assets =
 {
-	Asset("IMAGE", "images/healthmeter.tex"),
-	Asset("ATLAS", "images/healthmeter.xml"),
-	Asset("IMAGE", "images/sanity.tex"),
-	Asset("ATLAS", "images/sanity.xml"),
-	Asset("IMAGE", "images/hunger.tex"),
-	Asset("ATLAS", "images/hunger.xml"),
-	Asset("IMAGE", "images/wdbeaver.tex"),
-	Asset("ATLAS", "images/wdbeaver.xml"),
-	Asset("IMAGE", "images/wdgoose.tex"),
-	Asset("ATLAS", "images/wdgoose.xml"),
-	Asset("IMAGE", "images/wdmoose.tex"),
-	Asset("ATLAS", "images/wdmoose.xml"),
-	Asset("IMAGE", "images/wetness_meter.tex"),
-	Asset("ATLAS", "images/wetness_meter.xml"),
-	Asset("IMAGE", "images/thermal_measurer_build.tex"),
-	Asset("ATLAS", "images/thermal_measurer_build.xml"),
-	Asset("ATLAS", "images/close.xml"),
-	Asset("IMAGE", "images/close.tex"),
-	Asset("ATLAS", "images/creativemode.xml"),
-	Asset("IMAGE", "images/creativemode.tex"),
-	Asset("ATLAS", "images/godmode.xml"),
-	Asset("IMAGE", "images/godmode.tex"),
-	Asset("ATLAS", "images/debug.xml"),
-	Asset("IMAGE", "images/debug.tex"),
+	Asset("ATLAS", "images/customicobyysh.xml"),
+	Asset("IMAGE", "images/customicobyysh.tex"),
 }
 
 _G.TOOMANYITEMS = {
-	DATA_FILE = "mod_config_data/toomanyitems_data_save",
+	DATA_FILE = "mod_config_data/toomanyitemsplus_data_save",
 	TELEPORT_DATA_FILE = "mod_config_data/",
 	CHARACTER_USERID = "",
 	DATA = {},
@@ -42,13 +20,16 @@ _G.TOOMANYITEMS = {
 	R_CLICK_NUM = GetModConfigData("TMI_R_CLICK_NUM"),
 	DATA_SAVE = GetModConfigData("TMI_DATA_SAVE"),
 	SEARCH_HISTORY_NUM = GetModConfigData("TMI_SEARCH_HISTORY_NUM"),
+	CATEGORY_FONT_SIZE = GetModConfigData("TMI_CATEGORY_FONT_SIZE"),
+	DEBUG_FONT_SIZE = GetModConfigData("TMI_DEBUG_FONT_SIZE"),
+	DEBUG_MENU_SIZE = GetModConfigData("TMI_DEBUG_MENU_SIZE"),
 }
 
 if _G.TOOMANYITEMS.DATA_SAVE == -1 then
 	local filepath = _G.TOOMANYITEMS.DATA_FILE
 	_G.TheSim:GetPersistentString(filepath, function(load_success, str) if load_success then _G.ErasePersistentString(filepath, nil) end end)
 elseif _G.TOOMANYITEMS.DATA_SAVE == 1 then
-
+	print(filepath)
 	_G.TOOMANYITEMS.LoadData = function(filepath)
 		local data = nil
 		_G.TheSim:GetPersistentString(filepath,

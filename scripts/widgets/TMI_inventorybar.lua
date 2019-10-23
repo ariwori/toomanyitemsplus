@@ -1,5 +1,4 @@
 local Widget = require "widgets/widget"
-
 local ItemListControl = require "TMI/itemlistcontrol"
 local TMI_InvSlot = require "widgets/TMI_Invslot"
 local TMI_ItemTile = require "widgets/TMI_Itemtile"

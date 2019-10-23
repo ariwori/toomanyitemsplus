@@ -69,5 +69,51 @@ configuration_options =
 		},
 		default = 10,
 	},
-
+	{
+		name = "TMI_CATEGORY_FONT_SIZE",
+		label = "设置分类标签的字体大小",
+		hover = "如果你使用了其他字体，你可以在这里调整字体大小。",
+		options =
+		{
+			{description = "22", data = 22},
+			{description = "23", data = 23},
+			{description = "24", data = 24},
+			{description = "25", data = 25},
+			{description = "26", data = 26},
+			{description = "27", data = 27},
+			{description = "28", data = 28},
+		},
+		default = 25,
+	},
+	{
+		name = "TMI_DEBUG_FONT_SIZE",
+		label = "设置调试菜单的字体大小",
+		hover = "如果你使用了其他字体，你可以在这里调整字体大小。",
+		options =
+		{
+			{description = "22", data = 22},
+			{description = "23", data = 23},
+			{description = "24", data = 24},
+			{description = "25", data = 25},
+			{description = "26", data = 26},
+			{description = "27", data = 27},
+			{description = "28", data = 28},
+		},
+		default = 25,
+	},
+	{
+		name = "TMI_DEBUG_MENU_SIZE",
+		label = "设置调试菜单的窗口宽度",
+		hover = "如果你的分辨率为1920*1080及以上，你可以增加宽度获得更好的显示效果。",
+		options =
+		{
+			{description = "450", data = 450},
+			{description = "500", data = 500},
+			{description = "550", data = 550},
+			{description = "600", data = 600},
+			{description = "650", data = 650},
+			{description = "700", data = 700},
+		},
+		default = 550,
+	},
 }

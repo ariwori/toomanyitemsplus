@@ -42,7 +42,7 @@ end
 
 function TMI_Menubar:InitMenu()
 	local fontsize = 36
-	local spacing = 40
+	local spacing = 39
 	local left = 20 - self.owner.shieldsize_x * .5
 	local right = self.owner.shieldsize_x * .5 - 20
 	local mid = self.sidebar_width * .5
@@ -53,9 +53,9 @@ function TMI_Menubar:InitMenu()
 		left + spacing * 3,
 		left + spacing * 4,
 		left + spacing * 5,
-		right - spacing * 2,
-		right - spacing,
-		right,
+		left + spacing * 6,
+		left + spacing * 7,
+		left + spacing * 8,
 	}
 
 	self.TMI_Menu = TMI_Menu(self, pos)
@@ -64,7 +64,7 @@ function TMI_Menubar:InitMenu()
 	self.pagetext:SetString("1 / 2")
 	-- self.pagetext:SetTooltip("Current Page/Max Pages")
 	self.pagetext:SetColour(1,1,1,0.6)
-	self.pagetext:SetPosition(mid + 10, -218, 0)
+	self.pagetext:SetPosition(mid + 125, -218, 0)
 end
 
 function TMI_Menubar:InitSidebar()
@@ -215,7 +215,8 @@ function TMI_Menubar:InitSidebar()
 	}
 
 	local function MakeSidebar(buttonlist)
-		local fontsize = 26
+		--fontsize = 25
+		local fontsize = _G.TOOMANYITEMS.CATEGORY_FONT_SIZE
 		local left = -self.owner.shieldsize_x * .5
 		local spacing = 3.5
 		local top = self.owner.shieldsize_y * .5

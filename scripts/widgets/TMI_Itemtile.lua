@@ -2,6 +2,7 @@ local Image = require "widgets/image"
 local Text = require "widgets/text"
 local Widget = require "widgets/widget"
 
+local custom_atlas = "images/customicobyysh.xml"
 local base_atlas = "images/inventoryimages.xml"
 local base_atlas_1 = "images/inventoryimages1.xml"
 local base_atlas_2 = "images/inventoryimages2.xml"
@@ -151,6 +152,9 @@ function ItemTile:GetAsset(find)
 	local itematlas = base_atlas
 	-- print("[TooManyItems] "..self.item)
 	-- if find then
+		--print(newitem)
+		--print(itemimage)
+		--print(itematlas)
 		if STRINGS.CHARACTER_NAMES[newitem] then
 			-- local character_item = "skull_"..newitem
 			itematlas = minimap_atlas
@@ -159,17 +163,20 @@ function ItemTile:GetAsset(find)
 		elseif AllRecipes[newitem] and AllRecipes[newitem].atlas and AllRecipes[newitem].image then
 			itematlas = AllRecipes[newitem].atlas
 			itemimage = AllRecipes[newitem].image
-			-- print("[TooManyItems] "..self.item.." re")
+			--print("[TooManyItems] "..self.item.." Recipes")	
 		else
 			if _G.TheSim:AtlasContains(base_atlas, itemimage) then
 				itematlas = base_atlas
-				-- print("[TooManyItems] "..self.item.." old")
+				--print("[TooManyItems] "..self.item.." inventoryimages")
 			elseif _G.TheSim:AtlasContains(base_atlas_1, itemimage) then
 				itematlas = base_atlas_1
-				-- print("[TooManyItems] "..self.item.." 1")
+				--print("[TooManyItems] "..self.item.." inventoryimages1")
 			elseif _G.TheSim:AtlasContains(base_atlas_2, itemimage) then
 				itematlas = base_atlas_2
-				-- print("[TooManyItems] "..self.item.." 2")
+				--print("[TooManyItems] "..self.item.." inventoryimages2")
+			--elseif _G.TheSim:AtlasContains(custom_atlas, itemimage) then
+				--itematlas = custom_atlas
+				--print("[TooManyItems] "..self.item.." customicobyysh")
 			else
 				-- 名字不匹配的雕像
 				if string.find(newitem, "sketch") then

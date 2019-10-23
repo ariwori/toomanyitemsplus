@@ -1,8 +1,8 @@
 name = "Too Many Items Plus"
 forumthread = "" --http://forums.kleientertainment.com/files/file/806-too-many-items/
-version = "1.0.5.1"
-description = "Too Many Items Version:"..version.."\n\nAllows you to spawn any item you want and more powerful features.\nYou must be a Admin to use this.\nPress (T) to open spawn menu.\nLeft Click to spawn 1 item.\nRight Click to spawn 10 items.\n\nToggle Button and spawn num are Configurable\nYou can customize a special item list.(Add or Delete a item by hold down the ctrl key and click.)\n\nCodes by C.J.B. | Items and bug fix by GaRAnTuLA. | DST version by Skull. | FIX By TheMightyPikachu. | UI and codes optimization by Tendy. | Classify and some updates by 乐十画."
-author = "CJB,GaRAnTuLA,Skull,TheMightyPikachu,Tendy,乐十画"
+version = "1.0.5.2"
+description = "Too Many Items Version:"..version.."\n\nAllows you to spawn any item you want and more powerful features.\nYou must be a Admin to use this.\nPress (T) to open spawn menu.\nLeft Click to spawn 1 item.\nRight Click to spawn 10 items.\n\nToggle Button and spawn num are Configurable\nYou can customize a special item list.(Add or Delete a item by hold down the ctrl key and click.)\n\nCodes by C.J.B. | Items and bug fix by GaRAnTuLA. | DST version by Skull. | FIX By TheMightyPikachu & Electroely. | UI and codes optimization by Tendy. | Classify and some updates by 乐十画."
+author = "CJB,GaRAnTuLA,Skull,TheMightyPikachu,Electroely,Tendy,乐十画"
 api_version = 10
 priority = -7000
 dont_starve_compatible = false
@@ -86,5 +86,51 @@ configuration_options =
 		},
 		default = 10,
 	},
-
+	{
+		name = "TMI_CATEGORY_FONT_SIZE",
+		label = "Font size of the category label",
+		hover = "If you use another font, you can adjust it here.",
+		options =
+		{
+			{description = "22", data = 22},
+			{description = "23", data = 23},
+			{description = "24", data = 24},
+			{description = "25", data = 25},
+			{description = "26", data = 26},
+			{description = "27", data = 27},
+			{description = "28", data = 28},
+		},
+		default = 25,
+	},
+	{
+		name = "TMI_DEBUG_FONT_SIZE",
+		label = "Font size of the debug menu",
+		hover = "Sets the font size of the debug menu.",
+		options =
+		{
+			{description = "22", data = 22},
+			{description = "23", data = 23},
+			{description = "24", data = 24},
+			{description = "25", data = 25},
+			{description = "26", data = 26},
+			{description = "27", data = 27},
+			{description = "28", data = 28},
+		},
+		default = 25,
+	},
+	{
+		name = "TMI_DEBUG_MENU_SIZE",
+		label = "Windows width of the debug menu",
+		hover = "Sets the windows width of the debug menu.",
+		options =
+		{
+			{description = "450", data = 450},
+			{description = "500", data = 500},
+			{description = "550", data = 550},
+			{description = "600", data = 600},
+			{description = "650", data = 650},
+			{description = "700", data = 700},
+		},
+		default = 550,
+	},
 }
