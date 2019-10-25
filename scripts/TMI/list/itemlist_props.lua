@@ -23,6 +23,7 @@ return {
 	"halloweenpotion_sanity_large",
 	"halloweenpotion_embers",
 	"halloweenpotion_sparks",
+	"halloweenpotion_moon",
 --温泉道具
 	"bathbomb",
 --驱赶野兽道具

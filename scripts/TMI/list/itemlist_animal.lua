@@ -9,6 +9,8 @@ return {
 	"pigguard",
 	"bunnyman",
 	"merm",
+	"mermguard",
+	"mermking",
 	"little_walrus",
 	"walrus",
 --发条生物

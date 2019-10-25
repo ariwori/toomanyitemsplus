@@ -3,6 +3,10 @@ return {
 	"pigtorch",
 	"pighouse",
 	"rabbithouse",
+	"mermhouse_crafted",
+	"mermwatchtower",
+	"mermthrone_construction",
+	"mermthrone",
 	"mermhouse",
 	"walrus_camp",
 --蜘蛛巢

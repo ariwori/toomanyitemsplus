@@ -28,6 +28,7 @@ return {
 	"dragonbodyhat",		
 	"dragontailhat",
 --其他帽子
+	"mermhat",
 	"bushhat",
 	"spiderhat",
 --避雨保暖
