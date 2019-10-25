@@ -1,75 +1,66 @@
 <Atlas>
-<Texture filename="customicobyysh.tex" />
-<Elements>
-<Element name="spider_hider.tex" u1="0" u2="0.03125" v1="0.96875" v2="1" />
-<Element name="spider_spitter.tex" u1="0.03125" u2="0.0625" v1="0.96875" v2="1" />
-<Element name="spider_moon.tex" u1="0.0625" u2="0.09375" v1="0.96875" v2="1" />
-<Element name="spider.tex" u1="0.09375" u2="0.125" v1="0.96875" v2="1" />
-<Element name="spider_warrior.tex" u1="0.125" u2="0.15625" v1="0.96875" v2="1" />
-<Element name="spider_dropper.tex" u1="0.15625" u2="0.1875" v1="0.96875" v2="1" />
-<Element name="spiderqueen.tex" u1="0.1875" u2="0.21875" v1="0.96875" v2="1" />
-<Element name="hound.tex" u1="0.21875" u2="0.25" v1="0.96875" v2="1" />
-<Element name="firehound.tex" u1="0.25" u2="0.28125" v1="0.96875" v2="1" />
-<Element name="icehound.tex" u1="0.28125" u2="0.3125" v1="0.96875" v2="1" />
-<Element name="clayhound.tex" u1="0.3125" u2="0.34375" v1="0.96875" v2="1" />
-<Element name="mutatedhound.tex" u1="0.34375" u2="0.375" v1="0.96875" v2="1" />
-<Element name="warg.tex" u1="0.375" u2="0.40625" v1="0.96875" v2="1" />
-<Element name="claywarg.tex" u1="0.40625" u2="0.4375" v1="0.96875" v2="1" />
-<Element name="pigman.tex" u1="0.4375" u2="0.46875" v1="0.96875" v2="1" />
-<Element name="pigguard.tex" u1="0.46875" u2="0.5" v1="0.96875" v2="1" />
-<Element name="leif_sparse.tex" u1="0.5" u2="0.53125" v1="0.96875" v2="1" />
-<Element name="leif.tex" u1="0.53125" u2="0.5625" v1="0.96875" v2="1" />
-
-
-
-
-<Element name="bunnyman.tex" u1="0.125" u2="0.15625" v1="0.9375" v2="0.96875" />
-<Element name="walrus.tex" u1="0.15625" u2="0.1875" v1="0.9375" v2="0.96875" />
-<Element name="little_walrus.tex" u1="0.1875" u2="0.21875" v1="0.9375" v2="0.96875" />
-<Element name="bishop.tex" u1="0.21875" u2="0.25" v1="0.9375" v2="0.96875" />
-<Element name="bishop_nightmare.tex" u1="0.25" u2="0.28125" v1="0.9375" v2="0.96875" />
-<Element name="shadow_bishop.tex" u1="0.28125" u2="0.3125" v1="0.9375" v2="0.96875" />
-<Element name="knight.tex" u1="0.3125" u2="0.34375" v1="0.9375" v2="0.96875" />
-<Element name="knight_nightmare.tex" u1="0.34375" u2="0.375" v1="0.9375" v2="0.96875" />
-<Element name="shadow_knight.tex" u1="0.375" u2="0.40625" v1="0.9375" v2="0.96875" />
-<Element name="rook.tex" u1="0.40625" u2="0.4375" v1="0.9375" v2="0.96875" />
-<Element name="rook_nightmare.tex" u1="0.4375" u2="0.46875" v1="0.9375" v2="0.96875" />
-<Element name="shadow_rook.tex" u1="0.46875" u2="0.5" v1="0.9375" v2="0.96875" />
-
-<Element name="merm.tex" u1="0" u2="0.03125" v1="0.90625" v2="0.9375" />
-
-
-<Element name="tmipbutton_health.tex" u1="0" u2="0.03125" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_sanity.tex" u1="0.03125" u2="0.0625" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_hunger.tex" u1="0.0625" u2="0.09375" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_temperature.tex" u1="0.09375" u2="0.125" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_wet.tex" u1="0.125" u2="0.15625" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_creativemode.tex" u1="0.15625" u2="0.1875" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_godmode.tex" u1="0.1875" u2="0.21875" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_debugmod.tex" u1="0.21875" u2="0.25" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_onehitkillmode.tex" u1="0.25" u2="0.28125" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_left.tex" u1="0.28125" u2="0.3125" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_right.tex" u1="0.3125" u2="0.34375" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_empbackpack.tex" u1="0.34375" u2="0.375" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_close.tex" u1="0.375" u2="0.40625" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_woodbeavermode.tex" u1="0.40625" u2="0.4375" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_woodgoosemode.tex" u1="0.4375" u2="0.46875" v1="0.875" v2="0.90625" />
-<Element name="tmipbutton_woodmoosemode.tex" u1="0.46875" u2="0.5" v1="0.875" v2="0.90625" />
-
-<Element name="bearger.tex" u1="0.5" u2="0.53125" v1="0.875" v2="0.90625" />
-<Element name="moose.tex" u1="0.53125" u2="0.5625" v1="0.875" v2="0.90625" />
-<Element name="dragonfly.tex" u1="0.5625" u2="0.59375" v1="0.875" v2="0.90625" />
-<Element name="deerclops.tex" u1="0.59375" u2="0.625" v1="0.875" v2="0.90625" />
-<Element name="antlion.tex" u1="0.625" u2="0.65625" v1="0.875" v2="0.90625" />
-<Element name="beequeen.tex" u1="0.65625" u2="0.6875" v1="0.875" v2="0.90625" />
-<Element name="toadstool.tex" u1="0.6875" u2="0.71875" v1="0.875" v2="0.90625" />
-<Element name="toadstool_dark.tex" u1="0.71875" u2="0.75" v1="0.875" v2="0.90625" />
-<Element name="klaus.tex" u1="0.75" u2="0.78125" v1="0.875" v2="0.90625" />
-<Element name="minotaur.tex" u1="0.78125" u2="0.8125" v1="0.875" v2="0.90625" />
-<Element name="stalker.tex" u1="0.8125" u2="0.84375" v1="0.875" v2="0.90625" />
-<Element name="stalker_forest.tex" u1="0.84375" u2="0.875" v1="0.875" v2="0.90625" />
-<Element name="stalker_atrium.tex" u1="0.875" u2="0.90625" v1="0.875" v2="0.90625" />
-<Element name="malbatross.tex" u1="0.90625" u2="0.9375" v1="0.875" v2="0.90625" />
-
-</Elements>
+  <Texture filename="customicobyysh.tex" />
+  <Elements>
+    <Element name="spider_hider.tex" u1="0" u2="0.03125" v1="0.96875" v2="1" />
+    <Element name="spider_spitter.tex" u1="0.03125" u2="0.0625" v1="0.96875" v2="1" />
+    <Element name="spider_moon.tex" u1="0.0625" u2="0.09375" v1="0.96875" v2="1" />
+    <Element name="spider.tex" u1="0.09375" u2="0.125" v1="0.96875" v2="1" />
+    <Element name="spider_warrior.tex" u1="0.125" u2="0.15625" v1="0.96875" v2="1" />
+    <Element name="spider_dropper.tex" u1="0.15625" u2="0.1875" v1="0.96875" v2="1" />
+    <Element name="spiderqueen.tex" u1="0.1875" u2="0.21875" v1="0.96875" v2="1" />
+    <Element name="hound.tex" u1="0.21875" u2="0.25" v1="0.96875" v2="1" />
+    <Element name="firehound.tex" u1="0.25" u2="0.28125" v1="0.96875" v2="1" />
+    <Element name="icehound.tex" u1="0.28125" u2="0.3125" v1="0.96875" v2="1" />
+    <Element name="clayhound.tex" u1="0.3125" u2="0.34375" v1="0.96875" v2="1" />
+    <Element name="mutatedhound.tex" u1="0.34375" u2="0.375" v1="0.96875" v2="1" />
+    <Element name="warg.tex" u1="0.375" u2="0.40625" v1="0.96875" v2="1" />
+    <Element name="claywarg.tex" u1="0.40625" u2="0.4375" v1="0.96875" v2="1" />
+    <Element name="pigman.tex" u1="0.4375" u2="0.46875" v1="0.96875" v2="1" />
+    <Element name="pigguard.tex" u1="0.46875" u2="0.5" v1="0.96875" v2="1" />
+    <Element name="leif_sparse.tex" u1="0.5" u2="0.53125" v1="0.96875" v2="1" />
+    <Element name="leif.tex" u1="0.53125" u2="0.5625" v1="0.96875" v2="1" />
+    <Element name="bunnyman.tex" u1="0.125" u2="0.15625" v1="0.9375" v2="0.96875" />
+    <Element name="walrus.tex" u1="0.15625" u2="0.1875" v1="0.9375" v2="0.96875" />
+    <Element name="little_walrus.tex" u1="0.1875" u2="0.21875" v1="0.9375" v2="0.96875" />
+    <Element name="bishop.tex" u1="0.21875" u2="0.25" v1="0.9375" v2="0.96875" />
+    <Element name="bishop_nightmare.tex" u1="0.25" u2="0.28125" v1="0.9375" v2="0.96875" />
+    <Element name="shadow_bishop.tex" u1="0.28125" u2="0.3125" v1="0.9375" v2="0.96875" />
+    <Element name="knight.tex" u1="0.3125" u2="0.34375" v1="0.9375" v2="0.96875" />
+    <Element name="knight_nightmare.tex" u1="0.34375" u2="0.375" v1="0.9375" v2="0.96875" />
+    <Element name="shadow_knight.tex" u1="0.375" u2="0.40625" v1="0.9375" v2="0.96875" />
+    <Element name="rook.tex" u1="0.40625" u2="0.4375" v1="0.9375" v2="0.96875" />
+    <Element name="rook_nightmare.tex" u1="0.4375" u2="0.46875" v1="0.9375" v2="0.96875" />
+    <Element name="shadow_rook.tex" u1="0.46875" u2="0.5" v1="0.9375" v2="0.96875" />
+    <Element name="merm.tex" u1="0" u2="0.03125" v1="0.90625" v2="0.9375" />
+    <Element name="tmipbutton_health.tex" u1="0" u2="0.03125" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_sanity.tex" u1="0.03125" u2="0.0625" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_hunger.tex" u1="0.0625" u2="0.09375" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_temperature.tex" u1="0.09375" u2="0.125" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_wet.tex" u1="0.125" u2="0.15625" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_creativemode.tex" u1="0.15625" u2="0.1875" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_godmode.tex" u1="0.1875" u2="0.21875" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_debugmod.tex" u1="0.21875" u2="0.25" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_onehitkillmode.tex" u1="0.25" u2="0.28125" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_left.tex" u1="0.28125" u2="0.3125" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_right.tex" u1="0.3125" u2="0.34375" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_empbackpack.tex" u1="0.34375" u2="0.375" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_close.tex" u1="0.375" u2="0.40625" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_woodbeavermode.tex" u1="0.40625" u2="0.4375" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_woodgoosemode.tex" u1="0.4375" u2="0.46875" v1="0.875" v2="0.90625" />
+    <Element name="tmipbutton_woodmoosemode.tex" u1="0.46875" u2="0.5" v1="0.875" v2="0.90625" />
+    <Element name="bearger.tex" u1="0.5" u2="0.53125" v1="0.875" v2="0.90625" />
+    <Element name="moose.tex" u1="0.53125" u2="0.5625" v1="0.875" v2="0.90625" />
+    <Element name="dragonfly.tex" u1="0.5625" u2="0.59375" v1="0.875" v2="0.90625" />
+    <Element name="deerclops.tex" u1="0.59375" u2="0.625" v1="0.875" v2="0.90625" />
+    <Element name="antlion.tex" u1="0.625" u2="0.65625" v1="0.875" v2="0.90625" />
+    <Element name="beequeen.tex" u1="0.65625" u2="0.6875" v1="0.875" v2="0.90625" />
+    <Element name="toadstool.tex" u1="0.6875" u2="0.71875" v1="0.875" v2="0.90625" />
+    <Element name="toadstool_dark.tex" u1="0.71875" u2="0.75" v1="0.875" v2="0.90625" />
+    <Element name="klaus.tex" u1="0.75" u2="0.78125" v1="0.875" v2="0.90625" />
+    <Element name="minotaur.tex" u1="0.78125" u2="0.8125" v1="0.875" v2="0.90625" />
+    <Element name="stalker.tex" u1="0.8125" u2="0.84375" v1="0.875" v2="0.90625" />
+    <Element name="stalker_forest.tex" u1="0.84375" u2="0.875" v1="0.875" v2="0.90625" />
+    <Element name="stalker_atrium.tex" u1="0.875" u2="0.90625" v1="0.875" v2="0.90625" />
+    <Element name="malbatross.tex" u1="0.90625" u2="0.9375" v1="0.875" v2="0.90625" />
+  </Elements>
 </Atlas>

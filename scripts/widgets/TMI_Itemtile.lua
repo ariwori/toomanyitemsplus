@@ -160,7 +160,7 @@ function ItemTile:GetAsset(find)
 		elseif AllRecipes[newitem] and AllRecipes[newitem].atlas and AllRecipes[newitem].image then
 			itematlas = AllRecipes[newitem].atlas
 			itemimage = AllRecipes[newitem].image
-			--print("[TooManyItems] "..self.item.." Recipes")	
+			--print("[TooManyItems] "..self.item.." Recipes")
 		else
 		--将自建图库放在判断条件最前面，确保同名的文件优先使用自建图库的图标。
 			if _G.TheSim:AtlasContains(custom_atlas, itemimage) then
@@ -180,7 +180,7 @@ function ItemTile:GetAsset(find)
 				if string.find(newitem, "sketch") then
 					itemimage = "sketch.tex"
 					itematlas = base_atlas
-				-- 调料食物，暂时没找到图片叠加，可能是动画文件
+				-- 调料食物
 				elseif string.find(newitem, "_spice_") then
 					local strarr = split(newitem, "_")
 					itemimage = strarr[1] .. ".tex"
@@ -317,6 +317,16 @@ function ItemTile:DescriptionInit()
 		else
 			str = STRINGS.NAMES[string.upper(strarr[1].."_"..strarr[2])]
 		end
+	-- 刷新点
+	elseif self.item == "deciduoustree" then
+		str =STRINGS.NAMES[string.upper(strarr[1])]..STRINGS.NAMES.MONSTER
+  -- 刷新点
+	elseif string.find(self.item, "_spawner") and #strarr == 2 and STRINGS.NAMES[string.upper(strarr[1])] then
+		str =STRINGS.NAMES[string.upper(strarr[1])]..STRINGS.NAMES.SPAWNER
+	-- 刷新点
+	elseif self.item == "dropperweb" then self.item = "spider_dropper"
+		str =STRINGS.NAMES[string.upper("spider_dropper")]
+  -- 雕像、雕像草图
 	elseif string.find(self.item, "deer_") then
 		str = STRINGS.NAMES["DEER_GEMMED"]
   -- 雕像、雕像草图
