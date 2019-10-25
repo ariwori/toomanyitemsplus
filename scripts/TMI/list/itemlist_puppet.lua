@@ -15,4 +15,5 @@ return {
 	"warly",
 	"wortox",
 	"wormwood",
+	"wurt",
 }
