@@ -87,6 +87,25 @@ local function removeadj(str)
 	return newstr
 end
 
+-- 调料食物
+local function removespice(str)
+	local newstr = str
+	local strarr = split(str, "_")
+	if strarr ~= nil then
+		table.remove(strarr, #strarr)
+		table.remove(strarr, #strarr)
+
+		newstr=""
+		for k,v in ipairs(strarr) do
+			if k ~= #strarr then
+				newstr = newstr..strarr[k].."_"
+			else
+				newstr = newstr..strarr[k]
+			end
+		end
+	end
+	return newstr
+end
 
 local ItemTile = Class(Widget, function(self, invitem)
 		Widget._ctor(self, "ItemTile")
@@ -183,7 +202,7 @@ function ItemTile:GetAsset(find)
 				-- 调料食物
 				elseif string.find(newitem, "_spice_") then
 					local strarr = split(newitem, "_")
-					itemimage = strarr[1] .. ".tex"
+					itemimage = removespice(newitem) .. ".tex"
 					if _G.TheSim:AtlasContains(base_atlas, itemimage) then
 						itematlas = base_atlas
 					elseif _G.TheSim:AtlasContains(base_atlas_1, itemimage) then
@@ -191,7 +210,7 @@ function ItemTile:GetAsset(find)
 					else
 						itematlas = base_atlas_2
 					end
-					spiceimage = "spice_" ..strarr[3].."_over.tex"
+					spiceimage = "spice_" ..strarr[#strarr].."_over.tex"
 				-- 大理石雕塑
 				elseif string.find(newitem, "chesspiece_") and string.find(newitem, "_marble") then
 					local strarr = split(newitem, "_")
@@ -302,12 +321,12 @@ function ItemTile:DescriptionInit()
 	-- 调料食物
 	if string.find(self.item, "_spice_") then
 		local str1 = "Unknown"
-		local itemtip = string.upper(strarr[1])
+		local itemtip = string.upper(removespice(self.item))
 		if STRINGS.NAMES[itemtip] ~= nil and STRINGS.NAMES[itemtip] ~= "" then
 			str1 = STRINGS.NAMES[itemtip]
 		end
 		local subfix = STRINGS.NAMES["SPICE_".. string.upper(strarr[3]).."_FOOD"]
-		str = subfmt(subfix, { food = str1 })
+		if subfix then str = subfmt(subfix, { food = str1 }) end
 	-- 挂饰、彩灯
 	elseif string.find(self.item, "winter_ornament_") then
 		if #strarr == 4 then
@@ -317,13 +336,13 @@ function ItemTile:DescriptionInit()
 		else
 			str = STRINGS.NAMES[string.upper(strarr[1].."_"..strarr[2])]
 		end
-	-- 刷新点
+	-- 桦树精
 	elseif self.item == "deciduoustree" then
 		str =STRINGS.NAMES[string.upper(strarr[1])]..STRINGS.NAMES.MONSTER
   -- 刷新点
 	elseif string.find(self.item, "_spawner") and #strarr == 2 and STRINGS.NAMES[string.upper(strarr[1])] then
 		str =STRINGS.NAMES[string.upper(strarr[1])]..STRINGS.NAMES.SPAWNER
-	-- 刷新点
+	-- 洞穴白蜘蛛巢穴
 	elseif self.item == "dropperweb" then self.item = "spider_dropper"
 		str =STRINGS.NAMES[string.upper("spider_dropper")]
   -- 雕像、雕像草图
@@ -343,6 +362,8 @@ function ItemTile:DescriptionInit()
 			end
 		end
 	end
+
+	if not str then str = "Unknown" end
 
 	return str
 end

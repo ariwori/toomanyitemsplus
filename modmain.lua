@@ -82,23 +82,27 @@ local support_languages = {
 	br = true,
 }
 
+local defaultlangdebug = true
+
 local function LoadTranslation()
-	local steamlang = _G.TheNet:GetLanguageCode() or nil
-	if steamlang and steam_support_languages[steamlang] then
-		print("[TooManyItems] Get your language from steam!")
-		modimport("Stringslocalization_"..steam_support_languages[steamlang]..".lua")
-	else
-		local lang = _G.LanguageTranslator.defaultlang or nil
-		if lang ~= nil and support_languages[lang] ~= nil then
-			if support_languages[lang] ~= true then
-				lang = support_languages[lang]
-			end
-			print("[TooManyItems] Get your language from language mod!")
-			modimport("Stringslocalization_"..lang..".lua")
+	-- anyway ... load default language.
+	modimport("Stringslocalization.lua")
+	-- if not defaultlangdebug then
+		local steamlang = _G.TheNet:GetLanguageCode() or nil
+		if steamlang and steam_support_languages[steamlang] then
+			print("[TooManyItems] Get your language from steam!")
+			modimport("Stringslocalization_"..steam_support_languages[steamlang]..".lua")
 		else
-			modimport("Stringslocalization.lua")
+			local lang = _G.LanguageTranslator.defaultlang or nil
+			if lang ~= nil and support_languages[lang] ~= nil then
+				if support_languages[lang] ~= true then
+					lang = support_languages[lang]
+				end
+				print("[TooManyItems] Get your language from language mod!")
+				modimport("Stringslocalization_"..lang..".lua")
+			end
 		end
-	end
+	-- end
 end
 
 local function DataInit()
