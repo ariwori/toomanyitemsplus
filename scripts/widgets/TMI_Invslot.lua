@@ -3,7 +3,6 @@ local ItemSlot = require "widgets/itemslot"
 function c_spawnplayer(prefab, count, dontselect)
 	count = count or 1
 	local inst = nil
-
 	prefab = string.lower(prefab)
 
 	for i = 1, count do
@@ -98,7 +97,7 @@ function InvSlot:Click(stack_mod)
 			SendCommand(fnstr)
 			TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/click_object")
 		else
-			local fnstr = "local player = %s if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() for i = 1, %s or 1 do local inst = SpawnPrefab('%s') if inst ~= nil and inst.components then if inst.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(inst) end else inst.Transform:SetPosition(x,y,z) if inst.prefab == 'deciduoustree' then inst:StartMonster(true) end end end end end"
+			local fnstr = "local player = %s if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() for i = 1, %s or 1 do local inst = SpawnPrefab('%s') if inst ~= nil and inst.components then if inst.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(inst) end else inst.Transform:SetPosition(x,y,z) if inst.prefab == 'deciduousmonster' then inst.prefab = inst.prefab = 'deciduoustree' inst:StartMonster(true) end end end end end"
 			SendCommand(string.format(fnstr, GetCharacter(), stack_mod and TOOMANYITEMS.R_CLICK_NUM or TOOMANYITEMS.L_CLICK_NUM, self.item))
 			TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/click_object")
 		end

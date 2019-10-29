@@ -1,6 +1,6 @@
 name = "Too Many Items Plus"
 forumthread = "" --http://forums.kleientertainment.com/files/file/806-too-many-items/
-version = "1.0.5.3"
+version = "1.0.5.5"
 description = "Too Many Items Plus Version:"..version.."\n\nAllows you to spawn any item you want and more powerful features.\nYou must be a Admin to use this.\nPress (T) to open spawn menu.\nLeft Click to spawn 1 item.\nRight Click to spawn 10 items.\n\nToggle Button and spawn num are Configurable\nYou can customize a special item list.(Add or Delete a item by hold down the ctrl key and click.)\n\nCodes by C.J.B. | Items and bug fix by GaRAnTuLA. | DST version by Skull. | FIX By TheMightyPikachu & Electroely. | UI and codes optimization by Tendy. | Classify and some updates by 乐十画."
 author = "CJB,GaRAnTuLA,Skull,TheMightyPikachu,Electroely,Tendy,乐十画"
 api_version = 10

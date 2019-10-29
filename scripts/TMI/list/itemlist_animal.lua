@@ -35,8 +35,18 @@ return {
 	"houndcorpse",
 	"moonhound",
 	"clayhound",
+--boss的召唤物和随从
+	"deer",
+	"deer_red",
+	"deer_blue",
+	"lavae",
+	"mossling",
+	"beeguard",
+	"stalker_minion1",
+	"stalker_minion2",
+	"birchnutdrake",
+--小动物
 	"moonpig",
-	"tentacle_pillar_arm",
 	"rabbit",
 	"perd",
 	"frog",
@@ -60,7 +70,12 @@ return {
 	"koalefant_summer",
 	"koalefant_winter",
 	"grassgekko",
-	"deer",
+--触手
+	"tentacle_pillar_arm",
+	"tentacle",
+	"tentacle_pillar",
+
+
 	"bee",
 	"killerbee",
 	"butterfly",
@@ -82,8 +97,6 @@ return {
 	"snurtle",
 	"rocky",
 	"slurper",
-	"tentacle_pillar",
-	"tentacle",
 	"worm",
 	"krampus",
 	"ghost",

@@ -58,6 +58,9 @@ return {
 	"deer_antler2",
 	"deer_antler3",
 	"klaussackkey",
+	"minotaurhorn",
+--生物材料 眼球
+	"deerclops_eyeball",
 --生物材料 甲壳
 	"slurtle_shellpieces",
 	"cookiecuttershell",
