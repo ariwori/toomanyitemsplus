@@ -19,20 +19,20 @@
     <Element name="pigguard.tex" u1="0.46875" u2="0.5" v1="0.96875" v2="1" />
     <Element name="leif_sparse.tex" u1="0.5" u2="0.53125" v1="0.96875" v2="1" />
     <Element name="leif.tex" u1="0.53125" u2="0.5625" v1="0.96875" v2="1" />
-	<Element name="deciduousmonster.tex" u1="0.5625" u2="0.59375" v1="0.96875" v2="1" />
-	<Element name="spat.tex" u1="0.59375" u2="0.625" v1="0.96875" v2="1" />
-	<Element name="deer.tex" u1="0.625" u2="0.65625" v1="0.96875" v2="1" />
-	<Element name="deer_red.tex" u1="0.65625" u2="0.6875" v1="0.96875" v2="1" />
-	<Element name="deer_blue.tex" u1="0.6875" u2="0.71875" v1="0.96875" v2="1" />
-	<Element name="lavae.tex" u1="0.71875" u2="0.75" v1="0.96875" v2="1" />
-	<Element name="mossling.tex" u1="0.75" u2="0.78125" v1="0.96875" v2="1" />
-	<Element name="beeguard.tex" u1="0.78125" u2="0.8125" v1="0.96875" v2="1" />
-	<Element name="stalker_minion1.tex" u1="0.8125" u2="0.84375" v1="0.96875" v2="1" />
-	<Element name="stalker_minion2.tex" u1="0.84375" u2="0.875" v1="0.96875" v2="1" />
-	<Element name="birchnutdrake.tex" u1="0.875" u2="0.90625" v1="0.96875" v2="1" />
-	<Element name="tentacle_pillar_arm.tex" u1="0.90625" u2="0.9375" v1="0.96875" v2="1" />
-	<Element name="tentacle.tex" u1="0.9375" u2="0.96875" v1="0.96875" v2="1" />
-	<Element name="tentacle_pillar_hole.tex" u1="0.96875" u2="1" v1="0.96875" v2="1" />
+    <Element name="deciduoustree.tex" u1="0.5625" u2="0.59375" v1="0.96875" v2="1" />
+    <Element name="spat.tex" u1="0.59375" u2="0.625" v1="0.96875" v2="1" />
+    <Element name="deer.tex" u1="0.625" u2="0.65625" v1="0.96875" v2="1" />
+    <Element name="deer_red.tex" u1="0.65625" u2="0.6875" v1="0.96875" v2="1" />
+    <Element name="deer_blue.tex" u1="0.6875" u2="0.71875" v1="0.96875" v2="1" />
+    <Element name="lavae.tex" u1="0.71875" u2="0.75" v1="0.96875" v2="1" />
+    <Element name="mossling.tex" u1="0.75" u2="0.78125" v1="0.96875" v2="1" />
+    <Element name="beeguard.tex" u1="0.78125" u2="0.8125" v1="0.96875" v2="1" />
+    <Element name="stalker_minion1.tex" u1="0.8125" u2="0.84375" v1="0.96875" v2="1" />
+    <Element name="stalker_minion2.tex" u1="0.84375" u2="0.875" v1="0.96875" v2="1" />
+    <Element name="birchnutdrake.tex" u1="0.875" u2="0.90625" v1="0.96875" v2="1" />
+    <Element name="tentacle_pillar_arm.tex" u1="0.90625" u2="0.9375" v1="0.96875" v2="1" />
+    <Element name="tentacle.tex" u1="0.9375" u2="0.96875" v1="0.96875" v2="1" />
+    <Element name="tentacle_pillar_hole.tex" u1="0.96875" u2="1" v1="0.96875" v2="1" />
     <Element name="bunnyman.tex" u1="0.125" u2="0.15625" v1="0.9375" v2="0.96875" />
     <Element name="walrus.tex" u1="0.15625" u2="0.1875" v1="0.9375" v2="0.96875" />
     <Element name="little_walrus.tex" u1="0.1875" u2="0.21875" v1="0.9375" v2="0.96875" />
@@ -45,18 +45,18 @@
     <Element name="rook.tex" u1="0.40625" u2="0.4375" v1="0.9375" v2="0.96875" />
     <Element name="rook_nightmare.tex" u1="0.4375" u2="0.46875" v1="0.9375" v2="0.96875" />
     <Element name="shadow_rook.tex" u1="0.46875" u2="0.5" v1="0.9375" v2="0.96875" />
-	<Element name="perd.tex" u1="0" u2="0.03125" v1="0.90625" v2="0.9375" />
-	<Element name="catcoon.tex" u1="0.03125" u2="0.0625" v1="0.90625" v2="0.9375" />
-	<Element name="beefalo.tex" u1="0.0625" u2="0.09375" v1="0.90625" v2="0.9375" />
-	<Element name="smallbird.tex" u1="0.125" u2="0.15625" v1="0.90625" v2="0.9375" />
-	<Element name="teenbird.tex" u1="0.15625" u2="0.1875" v1="0.90625" v2="0.9375" />
-	<Element name="tallbird.tex" u1="0.1875" u2="0.21875" v1="0.90625" v2="0.9375" />
-	<Element name="mandrake_active.tex" u1="0.21875" u2="0.25" v1="0.90625" v2="0.9375" />
-	<Element name="fruitdragon.tex" u1="0.25" u2="0.28125" v1="0.90625" v2="0.9375" />
-	<Element name="merm.tex" u1="0" u2="0.03125" v1="0.9375" v2="0.96875" />
-	<Element name="mermguard.tex" u1="0.03125" u2="0.0625" v1="0.9375" v2="0.96875" />
-	<Element name="mermking.tex" u1="0.0625" u2="0.09375" v1="0.9375" v2="0.96875" />
-	<Element name="frog.tex" u1="0.09375" u2="0.125" v1="0.9375" v2="0.96875" />
+    <Element name="perd.tex" u1="0" u2="0.03125" v1="0.90625" v2="0.9375" />
+    <Element name="catcoon.tex" u1="0.03125" u2="0.0625" v1="0.90625" v2="0.9375" />
+    <Element name="beefalo.tex" u1="0.0625" u2="0.09375" v1="0.90625" v2="0.9375" />
+    <Element name="smallbird.tex" u1="0.125" u2="0.15625" v1="0.90625" v2="0.9375" />
+    <Element name="teenbird.tex" u1="0.15625" u2="0.1875" v1="0.90625" v2="0.9375" />
+    <Element name="tallbird.tex" u1="0.1875" u2="0.21875" v1="0.90625" v2="0.9375" />
+    <Element name="mandrake_active.tex" u1="0.21875" u2="0.25" v1="0.90625" v2="0.9375" />
+    <Element name="fruitdragon.tex" u1="0.25" u2="0.28125" v1="0.90625" v2="0.9375" />
+    <Element name="merm.tex" u1="0" u2="0.03125" v1="0.9375" v2="0.96875" />
+    <Element name="mermguard.tex" u1="0.03125" u2="0.0625" v1="0.9375" v2="0.96875" />
+    <Element name="mermking.tex" u1="0.0625" u2="0.09375" v1="0.9375" v2="0.96875" />
+    <Element name="frog.tex" u1="0.09375" u2="0.125" v1="0.9375" v2="0.96875" />
     <Element name="tmipbutton_health.tex" u1="0" u2="0.03125" v1="0.875" v2="0.90625" />
     <Element name="tmipbutton_sanity.tex" u1="0.03125" u2="0.0625" v1="0.875" v2="0.90625" />
     <Element name="tmipbutton_hunger.tex" u1="0.0625" u2="0.09375" v1="0.875" v2="0.90625" />

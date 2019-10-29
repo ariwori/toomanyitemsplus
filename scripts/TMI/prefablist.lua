@@ -14,6 +14,7 @@ return {
 		["shadowminer"] = "shadowminer_builder",
 		["stagehand"] = "endtable",
 		["winter_tree"] = "winter_treestand",
+		["spiderden_2"] = "spiderden"
 	},
 	desclist = {
 --玻璃制品

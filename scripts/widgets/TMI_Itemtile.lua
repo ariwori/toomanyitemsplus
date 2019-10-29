@@ -27,7 +27,8 @@ local not_remove = {
 	"spore",
 	"bravery",
 	"halloweenpotion",
-	"bundle"
+	"bundle",
+	"deciduoustree"
 }
 
 local function do_not_remove(str)

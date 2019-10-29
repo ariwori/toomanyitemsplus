@@ -23,7 +23,7 @@ return {
 --树精
 	"leif",
 	"leif_sparse",
-	"deciduousmonster",
+	"deciduoustree",
 --怪物首领
 	"spiderqueen",
 	"warg",
