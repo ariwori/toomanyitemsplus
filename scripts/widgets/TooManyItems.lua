@@ -41,7 +41,19 @@ local function SendCommand(fnstr)
 	end
 end
 
+local function PlayerOnCurrentShard(userid)
+	for k, v in pairs(AllPlayers) do
+		if v.userid == userid then
+			return true
+		end
+	end
+	return false
+end
+
 local function GetCharacterName()
+	if not PlayerOnCurrentShard(TOOMANYITEMS.CHARACTER_USERID) then
+		TOOMANYITEMS.CHARACTER_USERID = ThePlayer.userid
+	end
 	return UserToName(TOOMANYITEMS.CHARACTER_USERID)
 end
 
@@ -124,6 +136,22 @@ function TooManyItems:FlushPlayer()
 	self:SetPointer()
 end
 
+function TooManyItems:NextPlayer()
+	local index = 1
+	for k, v in pairs(AllPlayers) do
+		v.userid = TOOMANYITEMS.CHARACTER_USERID
+		index = k
+		break
+	end
+
+	if index + 1 <= #AllPlayers then
+		TOOMANYITEMS.CHARACTER_USERID = AllPlayers[index+1].userid
+	else
+		TOOMANYITEMS.CHARACTER_USERID = AllPlayers[1].userid
+	end
+	self:SetPointer()
+end
+
 function TooManyItems:SetPointer()
 	local mainstr = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_POINTER
 	local prefix = ""
@@ -163,6 +191,17 @@ function TooManyItems:DebugMenu()
 	self.pointer:SetOnClick(function() self:FlushPlayer() end)
 
 	self:SetPointer()
+
+	local pointerw, pointerh = self.pointer.text:GetRegionSize()
+	self.nextplayerbutton = self.debugshield:AddChild(TextButton())
+	self.nextplayerbutton:SetFont(self.font)
+	self.nextplayerbutton:SetTextSize(self.fontsize)
+	self.nextplayerbutton:SetColour(0.9,0.8,0.6,1)
+	self.nextplayerbutton:SetText(STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER)
+	self.nextplayerbutton:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER_TIP)
+	local width, height = self.nextplayerbutton.text:GetRegionSize()
+	self.nextplayerbutton:SetPosition(pointerw - self.debugwidth / 2 + width, self.shieldsize_y * 0.5 - height * 0.5 , 0)
+	self.nextplayerbutton:SetOnClick(function() self:NextPlayer() end)
 
 	self.debugbuttonlist = require "TMI/debug"
 	self.top = self.shieldsize_y * .5 - self.pointersizey - self.spacing
