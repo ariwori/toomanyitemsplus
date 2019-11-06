@@ -50,4 +50,6 @@ return {
 	"stalagmite_tall_med",
 	"stalagmite_tall_full",
 	"stalagmite_tall",
+--蛛网岩
+	"spiderhole_rock",
 }

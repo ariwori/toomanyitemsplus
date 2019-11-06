@@ -1,91 +1,188 @@
 <Atlas>
-  <Texture filename="customicobyysh.tex" />
-  <Elements>
-    <Element name="spider_hider.tex" u1="0" u2="0.03125" v1="0.96875" v2="1" />
-    <Element name="spider_spitter.tex" u1="0.03125" u2="0.0625" v1="0.96875" v2="1" />
-    <Element name="spider_moon.tex" u1="0.0625" u2="0.09375" v1="0.96875" v2="1" />
-    <Element name="spider.tex" u1="0.09375" u2="0.125" v1="0.96875" v2="1" />
-    <Element name="spider_warrior.tex" u1="0.125" u2="0.15625" v1="0.96875" v2="1" />
-    <Element name="spider_dropper.tex" u1="0.15625" u2="0.1875" v1="0.96875" v2="1" />
-    <Element name="spiderqueen.tex" u1="0.1875" u2="0.21875" v1="0.96875" v2="1" />
-    <Element name="hound.tex" u1="0.21875" u2="0.25" v1="0.96875" v2="1" />
-    <Element name="firehound.tex" u1="0.25" u2="0.28125" v1="0.96875" v2="1" />
-    <Element name="icehound.tex" u1="0.28125" u2="0.3125" v1="0.96875" v2="1" />
-    <Element name="clayhound.tex" u1="0.3125" u2="0.34375" v1="0.96875" v2="1" />
-    <Element name="mutatedhound.tex" u1="0.34375" u2="0.375" v1="0.96875" v2="1" />
-    <Element name="warg.tex" u1="0.375" u2="0.40625" v1="0.96875" v2="1" />
-    <Element name="claywarg.tex" u1="0.40625" u2="0.4375" v1="0.96875" v2="1" />
-    <Element name="pigman.tex" u1="0.4375" u2="0.46875" v1="0.96875" v2="1" />
-    <Element name="pigguard.tex" u1="0.46875" u2="0.5" v1="0.96875" v2="1" />
-    <Element name="leif_sparse.tex" u1="0.5" u2="0.53125" v1="0.96875" v2="1" />
-    <Element name="leif.tex" u1="0.53125" u2="0.5625" v1="0.96875" v2="1" />
-    <Element name="deciduoustree.tex" u1="0.5625" u2="0.59375" v1="0.96875" v2="1" />
-    <Element name="spat.tex" u1="0.59375" u2="0.625" v1="0.96875" v2="1" />
-    <Element name="deer.tex" u1="0.625" u2="0.65625" v1="0.96875" v2="1" />
-    <Element name="deer_red.tex" u1="0.65625" u2="0.6875" v1="0.96875" v2="1" />
-    <Element name="deer_blue.tex" u1="0.6875" u2="0.71875" v1="0.96875" v2="1" />
-    <Element name="lavae.tex" u1="0.71875" u2="0.75" v1="0.96875" v2="1" />
-    <Element name="mossling.tex" u1="0.75" u2="0.78125" v1="0.96875" v2="1" />
-    <Element name="beeguard.tex" u1="0.78125" u2="0.8125" v1="0.96875" v2="1" />
-    <Element name="stalker_minion1.tex" u1="0.8125" u2="0.84375" v1="0.96875" v2="1" />
-    <Element name="stalker_minion2.tex" u1="0.84375" u2="0.875" v1="0.96875" v2="1" />
-    <Element name="birchnutdrake.tex" u1="0.875" u2="0.90625" v1="0.96875" v2="1" />
-    <Element name="tentacle_pillar_arm.tex" u1="0.90625" u2="0.9375" v1="0.96875" v2="1" />
-    <Element name="tentacle.tex" u1="0.9375" u2="0.96875" v1="0.96875" v2="1" />
-    <Element name="tentacle_pillar_hole.tex" u1="0.96875" u2="1" v1="0.96875" v2="1" />
-    <Element name="bunnyman.tex" u1="0.125" u2="0.15625" v1="0.9375" v2="0.96875" />
-    <Element name="walrus.tex" u1="0.15625" u2="0.1875" v1="0.9375" v2="0.96875" />
-    <Element name="little_walrus.tex" u1="0.1875" u2="0.21875" v1="0.9375" v2="0.96875" />
-    <Element name="bishop.tex" u1="0.21875" u2="0.25" v1="0.9375" v2="0.96875" />
-    <Element name="bishop_nightmare.tex" u1="0.25" u2="0.28125" v1="0.9375" v2="0.96875" />
-    <Element name="shadow_bishop.tex" u1="0.28125" u2="0.3125" v1="0.9375" v2="0.96875" />
-    <Element name="knight.tex" u1="0.3125" u2="0.34375" v1="0.9375" v2="0.96875" />
-    <Element name="knight_nightmare.tex" u1="0.34375" u2="0.375" v1="0.9375" v2="0.96875" />
-    <Element name="shadow_knight.tex" u1="0.375" u2="0.40625" v1="0.9375" v2="0.96875" />
-    <Element name="rook.tex" u1="0.40625" u2="0.4375" v1="0.9375" v2="0.96875" />
-    <Element name="rook_nightmare.tex" u1="0.4375" u2="0.46875" v1="0.9375" v2="0.96875" />
-    <Element name="shadow_rook.tex" u1="0.46875" u2="0.5" v1="0.9375" v2="0.96875" />
-    <Element name="perd.tex" u1="0" u2="0.03125" v1="0.90625" v2="0.9375" />
-    <Element name="catcoon.tex" u1="0.03125" u2="0.0625" v1="0.90625" v2="0.9375" />
-    <Element name="beefalo.tex" u1="0.0625" u2="0.09375" v1="0.90625" v2="0.9375" />
-    <Element name="smallbird.tex" u1="0.125" u2="0.15625" v1="0.90625" v2="0.9375" />
-    <Element name="teenbird.tex" u1="0.15625" u2="0.1875" v1="0.90625" v2="0.9375" />
-    <Element name="tallbird.tex" u1="0.1875" u2="0.21875" v1="0.90625" v2="0.9375" />
-    <Element name="mandrake_active.tex" u1="0.21875" u2="0.25" v1="0.90625" v2="0.9375" />
-    <Element name="fruitdragon.tex" u1="0.25" u2="0.28125" v1="0.90625" v2="0.9375" />
-    <Element name="merm.tex" u1="0" u2="0.03125" v1="0.9375" v2="0.96875" />
-    <Element name="mermguard.tex" u1="0.03125" u2="0.0625" v1="0.9375" v2="0.96875" />
-    <Element name="mermking.tex" u1="0.0625" u2="0.09375" v1="0.9375" v2="0.96875" />
-    <Element name="frog.tex" u1="0.09375" u2="0.125" v1="0.9375" v2="0.96875" />
-    <Element name="tmipbutton_health.tex" u1="0" u2="0.03125" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_sanity.tex" u1="0.03125" u2="0.0625" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_hunger.tex" u1="0.0625" u2="0.09375" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_temperature.tex" u1="0.09375" u2="0.125" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_wet.tex" u1="0.125" u2="0.15625" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_creativemode.tex" u1="0.15625" u2="0.1875" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_godmode.tex" u1="0.1875" u2="0.21875" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_debugmod.tex" u1="0.21875" u2="0.25" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_onehitkillmode.tex" u1="0.25" u2="0.28125" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_left.tex" u1="0.28125" u2="0.3125" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_right.tex" u1="0.3125" u2="0.34375" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_empbackpack.tex" u1="0.34375" u2="0.375" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_close.tex" u1="0.375" u2="0.40625" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_woodbeavermode.tex" u1="0.40625" u2="0.4375" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_woodgoosemode.tex" u1="0.4375" u2="0.46875" v1="0.875" v2="0.90625" />
-    <Element name="tmipbutton_woodmoosemode.tex" u1="0.46875" u2="0.5" v1="0.875" v2="0.90625" />
-    <Element name="bearger.tex" u1="0.5" u2="0.53125" v1="0.875" v2="0.90625" />
-    <Element name="moose.tex" u1="0.53125" u2="0.5625" v1="0.875" v2="0.90625" />
-    <Element name="dragonfly.tex" u1="0.5625" u2="0.59375" v1="0.875" v2="0.90625" />
-    <Element name="deerclops.tex" u1="0.59375" u2="0.625" v1="0.875" v2="0.90625" />
-    <Element name="antlion.tex" u1="0.625" u2="0.65625" v1="0.875" v2="0.90625" />
-    <Element name="beequeen.tex" u1="0.65625" u2="0.6875" v1="0.875" v2="0.90625" />
-    <Element name="toadstool.tex" u1="0.6875" u2="0.71875" v1="0.875" v2="0.90625" />
-    <Element name="toadstool_dark.tex" u1="0.71875" u2="0.75" v1="0.875" v2="0.90625" />
-    <Element name="klaus.tex" u1="0.75" u2="0.78125" v1="0.875" v2="0.90625" />
-    <Element name="minotaur.tex" u1="0.78125" u2="0.8125" v1="0.875" v2="0.90625" />
-    <Element name="stalker.tex" u1="0.8125" u2="0.84375" v1="0.875" v2="0.90625" />
-    <Element name="stalker_forest.tex" u1="0.84375" u2="0.875" v1="0.875" v2="0.90625" />
-    <Element name="stalker_atrium.tex" u1="0.875" u2="0.90625" v1="0.875" v2="0.90625" />
-    <Element name="malbatross.tex" u1="0.90625" u2="0.9375" v1="0.875" v2="0.90625" />
-  </Elements>
+	<Texture filename="customicobyysh.tex"/>
+	<Elements>
+		<Element name="mermguard.tex" u1="0.285714" u2="0.354978" v1="0.145022" v2="0.214286"/>
+		<Element name="stalker_minion2.tex" u1="0.285714" u2="0.354978" v1="0.573593" v2="0.642857"/>
+		<Element name="tentacle.tex" u1="0.142857" u2="0.212121" v1="0.573593" v2="0.642857"/>
+		<Element name="bearger.tex" u1="0.571429" u2="0.640693" v1="0.359307" v2="0.428571"/>
+		<Element name="spiderden_2.tex" u1="0.428571" u2="0.497835" v1="0.859307" v2="0.928571"/>
+		<Element name="shadow_rook.tex" u1="0.357143" u2="0.426407" v1="0.930736" v2="1.000000"/>
+		<Element name="walrus_camp.tex" u1="0.357143" u2="0.426407" v1="0.645022" v2="0.714286"/>
+		<Element name="walrus.tex" u1="0.285714" u2="0.354978" v1="0.645022" v2="0.714286"/>
+		<Element name="tentacle_pillar_hole.tex" u1="0.714286" u2="0.783550" v1="0.573593" v2="0.642857"/>
+		<Element name="deciduoustree_tall.tex" u1="0.071429" u2="0.140693" v1="0.430736" v2="0.500000"/>
+		<Element name="evergreen_sparse_short.tex" u1="0.500000" u2="0.569264" v1="0.430736" v2="0.500000"/>
+		<Element name="tmipbutton_health.tex" u1="0.142857" u2="0.212121" v1="0.502165" v2="0.571429"/>
+		<Element name="rabbithole.tex" u1="0.642857" u2="0.712121" v1="0.859307" v2="0.928571"/>
+		<Element name="flower.tex" u1="0.071429" u2="0.140693" v1="0.073593" v2="0.142857"/>
+		<Element name="teenbird.tex" u1="0.071429" u2="0.140693" v1="0.573593" v2="0.642857"/>
+		<Element name="brokenwall_ruins.tex" u1="0.500000" u2="0.569264" v1="0.287879" v2="0.357143"/>
+		<Element name="tmipbutton_temperature.tex" u1="0.857143" u2="0.926407" v1="0.645022" v2="0.714286"/>
+		<Element name="tmipbutton_woodbeavermode.tex" u1="0.857143" u2="0.926407" v1="0.716450" v2="0.785714"/>
+		<Element name="stalker.tex" u1="0.500000" u2="0.569264" v1="0.573593" v2="0.642857"/>
+		<Element name="leif.tex" u1="0.428571" u2="0.497835" v1="0.216450" v2="0.285714"/>
+		<Element name="twiggy_short.tex" u1="0.428571" u2="0.497835" v1="0.645022" v2="0.714286"/>
+		<Element name="monkeybarrel.tex" u1="0.571429" u2="0.640693" v1="0.502165" v2="0.571429"/>
+		<Element name="shadow_knight.tex" u1="0.500000" u2="0.569264" v1="0.930736" v2="1.000000"/>
+		<Element name="koalefant_summer.tex" u1="0.571429" u2="0.640693" v1="0.073593" v2="0.142857"/>
+		<Element name="tmipbutton_onehitkillmode.tex" u1="0.000000" u2="0.069264" v1="0.502165" v2="0.571429"/>
+		<Element name="deer.tex" u1="0.928571" u2="0.997835" v1="0.502165" v2="0.571429"/>
+		<Element name="slurtlehole.tex" u1="0.142857" u2="0.212121" v1="0.930736" v2="1.000000"/>
+		<Element name="antlion.tex" u1="0.857143" u2="0.926407" v1="0.359307" v2="0.428571"/>
+		<Element name="pigtorch.tex" u1="0.571429" u2="0.640693" v1="0.787879" v2="0.857143"/>
+		<Element name="deer_red.tex" u1="0.785714" u2="0.854978" v1="0.502165" v2="0.571429"/>
+		<Element name="rook.tex" u1="0.571429" u2="0.640693" v1="0.859307" v2="0.928571"/>
+		<Element name="sapling.tex" u1="0.571429" u2="0.640693" v1="0.930736" v2="1.000000"/>
+		<Element name="wall_moonrock.tex" u1="0.571429" u2="0.640693" v1="0.645022" v2="0.714286"/>
+		<Element name="tmipbutton_creativemode.tex" u1="0.785714" u2="0.854978" v1="0.573593" v2="0.642857"/>
+		<Element name="moonspiderden.tex" u1="0.142857" u2="0.212121" v1="0.716450" v2="0.785714"/>
+		<Element name="tmipbutton_sanity.tex" u1="0.642857" u2="0.712121" v1="0.573593" v2="0.642857"/>
+		<Element name="stagehand.tex" u1="0.285714" u2="0.354978" v1="0.716450" v2="0.785714"/>
+		<Element name="hound.tex" u1="0.928571" u2="0.997835" v1="0.073593" v2="0.142857"/>
+		<Element name="fruitdragon.tex" u1="0.785714" u2="0.854978" v1="0.145022" v2="0.214286"/>
+		<Element name="evergreen_sparse_tall.tex" u1="0.571429" u2="0.640693" v1="0.430736" v2="0.500000"/>
+		<Element name="evergreen_sparse_normal.tex" u1="0.785714" u2="0.854978" v1="0.430736" v2="0.500000"/>
+		<Element name="nightmarebeak.tex" u1="0.500000" u2="0.569264" v1="0.787879" v2="0.857143"/>
+		<Element name="bunnyman.tex" u1="0.142857" u2="0.212121" v1="0.287879" v2="0.357143"/>
+		<Element name="pigman.tex" u1="0.857143" u2="0.926407" v1="0.787879" v2="0.857143"/>
+		<Element name="rook_nightmare.tex" u1="0.714286" u2="0.783550" v1="0.930736" v2="1.000000"/>
+		<Element name="multiplayer_portal.tex" u1="0.857143" u2="0.926407" v1="0.859307" v2="0.928571"/>
+		<Element name="brokenwall_wood.tex" u1="0.428571" u2="0.497835" v1="0.287879" v2="0.357143"/>
+		<Element name="twiggy_old.tex" u1="0.071429" u2="0.140693" v1="0.645022" v2="0.714286"/>
+		<Element name="abigail.tex" u1="0.000000" u2="0.069264" v1="0.930736" v2="1.000000"/>
+		<Element name="icehound.tex" u1="0.857143" u2="0.926407" v1="0.073593" v2="0.142857"/>
+		<Element name="spiderden_3.tex" u1="0.285714" u2="0.354978" v1="0.859307" v2="0.928571"/>
+		<Element name="houndmound.tex" u1="0.785714" u2="0.854978" v1="0.073593" v2="0.142857"/>
+		<Element name="klaus.tex" u1="0.714286" u2="0.783550" v1="0.073593" v2="0.142857"/>
+		<Element name="moon_tree_normal.tex" u1="0.285714" u2="0.354978" v1="0.787879" v2="0.857143"/>
+		<Element name="livingtree.tex" u1="0.214286" u2="0.283550" v1="0.216450" v2="0.285714"/>
+		<Element name="beefalo.tex" u1="0.285714" u2="0.354978" v1="0.359307" v2="0.428571"/>
+		<Element name="knight.tex" u1="0.428571" u2="0.497835" v1="0.073593" v2="0.142857"/>
+		<Element name="grassgekko.tex" u1="0.357143" u2="0.426407" v1="0.073593" v2="0.142857"/>
+		<Element name="deciduoustree_normal.tex" u1="0.214286" u2="0.283550" v1="0.430736" v2="0.500000"/>
+		<Element name="ghost.tex" u1="0.285714" u2="0.354978" v1="0.073593" v2="0.142857"/>
+		<Element name="krampus.tex" u1="0.214286" u2="0.283550" v1="0.073593" v2="0.142857"/>
+		<Element name="flower_cave.tex" u1="0.142857" u2="0.212121" v1="0.073593" v2="0.142857"/>
+		<Element name="flower_cave_double.tex" u1="0.928571" u2="0.997835" v1="0.145022" v2="0.214286"/>
+		<Element name="flower_cave_triple.tex" u1="0.000000" u2="0.069264" v1="0.073593" v2="0.142857"/>
+		<Element name="spat.tex" u1="0.785714" u2="0.854978" v1="0.930736" v2="1.000000"/>
+		<Element name="spiderhole_rock.tex" u1="0.214286" u2="0.283550" v1="0.859307" v2="0.928571"/>
+		<Element name="monkey.tex" u1="0.928571" u2="0.997835" v1="0.216450" v2="0.285714"/>
+		<Element name="pigguard.tex" u1="0.928571" u2="0.997835" v1="0.787879" v2="0.857143"/>
+		<Element name="tmipbutton_woodgoosemode.tex" u1="0.928571" u2="0.997835" v1="0.716450" v2="0.785714"/>
+		<Element name="frog.tex" u1="0.714286" u2="0.783550" v1="0.145022" v2="0.214286"/>
+		<Element name="flower_withered.tex" u1="0.642857" u2="0.712121" v1="0.145022" v2="0.214286"/>
+		<Element name="flower_rose.tex" u1="0.571429" u2="0.640693" v1="0.145022" v2="0.214286"/>
+		<Element name="koalefant_winter.tex" u1="0.500000" u2="0.569264" v1="0.145022" v2="0.214286"/>
+		<Element name="lavae.tex" u1="0.428571" u2="0.497835" v1="0.145022" v2="0.214286"/>
+		<Element name="mossling.tex" u1="0.785714" u2="0.854978" v1="0.859307" v2="0.928571"/>
+		<Element name="toadstool_dark.tex" u1="0.642857" u2="0.712121" v1="0.716450" v2="0.785714"/>
+		<Element name="mermking.tex" u1="0.214286" u2="0.283550" v1="0.145022" v2="0.214286"/>
+		<Element name="minotaur.tex" u1="0.785714" u2="0.854978" v1="0.216450" v2="0.285714"/>
+		<Element name="deerclops.tex" u1="0.642857" u2="0.712121" v1="0.502165" v2="0.571429"/>
+		<Element name="beeguard.tex" u1="0.357143" u2="0.426407" v1="0.359307" v2="0.428571"/>
+		<Element name="wall_stone.tex" u1="0.500000" u2="0.569264" v1="0.645022" v2="0.714286"/>
+		<Element name="moonglass_rock.tex" u1="0.500000" u2="0.569264" v1="0.502165" v2="0.571429"/>
+		<Element name="migration_portal.tex" u1="0.071429" u2="0.140693" v1="0.145022" v2="0.214286"/>
+		<Element name="deciduoustree_short.tex" u1="0.000000" u2="0.069264" v1="0.430736" v2="0.500000"/>
+		<Element name="mandrake_active.tex" u1="0.000000" u2="0.069264" v1="0.145022" v2="0.214286"/>
+		<Element name="flower_evil.tex" u1="0.857143" u2="0.926407" v1="0.145022" v2="0.214286"/>
+		<Element name="spider_spitter.tex" u1="0.214286" u2="0.283550" v1="0.716450" v2="0.785714"/>
+		<Element name="mooseegg.tex" u1="0.714286" u2="0.783550" v1="0.859307" v2="0.928571"/>
+		<Element name="malbatross.tex" u1="0.642857" u2="0.712121" v1="0.216450" v2="0.285714"/>
+		<Element name="bishop_nightmare.tex" u1="0.357143" u2="0.426407" v1="0.287879" v2="0.357143"/>
+		<Element name="stalker_minion1.tex" u1="0.428571" u2="0.497835" v1="0.573593" v2="0.642857"/>
+		<Element name="smallbird.tex" u1="0.214286" u2="0.283550" v1="0.930736" v2="1.000000"/>
+		<Element name="merm.tex" u1="0.714286" u2="0.783550" v1="0.216450" v2="0.285714"/>
+		<Element name="moon_tree_short.tex" u1="0.071429" u2="0.140693" v1="0.787879" v2="0.857143"/>
+		<Element name="snurtle.tex" u1="0.285714" u2="0.354978" v1="0.930736" v2="1.000000"/>
+		<Element name="deciduoustree.tex" u1="0.142857" u2="0.212121" v1="0.430736" v2="0.500000"/>
+		<Element name="wall_ruins.tex" u1="0.642857" u2="0.712121" v1="0.645022" v2="0.714286"/>
+		<Element name="dropperweb.tex" u1="0.714286" u2="0.783550" v1="0.430736" v2="0.500000"/>
+		<Element name="tentacle_pillar_arm.tex" u1="0.214286" u2="0.283550" v1="0.573593" v2="0.642857"/>
+		<Element name="tmipbutton_hunger.tex" u1="0.857143" u2="0.926407" v1="0.573593" v2="0.642857"/>
+		<Element name="lavae_pet.tex" u1="0.571429" u2="0.640693" v1="0.216450" v2="0.285714"/>
+		<Element name="tallbird.tex" u1="0.000000" u2="0.069264" v1="0.573593" v2="0.642857"/>
+		<Element name="spiderhole.tex" u1="0.357143" u2="0.426407" v1="0.859307" v2="0.928571"/>
+		<Element name="leif_sparse.tex" u1="0.500000" u2="0.569264" v1="0.216450" v2="0.285714"/>
+		<Element name="moonbutterfly_sapling.tex" u1="0.714286" u2="0.783550" v1="0.287879" v2="0.357143"/>
+		<Element name="little_walrus.tex" u1="0.357143" u2="0.426407" v1="0.216450" v2="0.285714"/>
+		<Element name="moon_tree_tall.tex" u1="0.142857" u2="0.212121" v1="0.787879" v2="0.857143"/>
+		<Element name="pinecone_sapling.tex" u1="0.642857" u2="0.712121" v1="0.787879" v2="0.857143"/>
+		<Element name="stalker_atrium.tex" u1="0.571429" u2="0.640693" v1="0.573593" v2="0.642857"/>
+		<Element name="tmipbutton_empbackpack.tex" u1="0.214286" u2="0.283550" v1="0.502165" v2="0.571429"/>
+		<Element name="eyeplant.tex" u1="0.071429" u2="0.140693" v1="0.359307" v2="0.428571"/>
+		<Element name="knight_nightmare.tex" u1="0.500000" u2="0.569264" v1="0.073593" v2="0.142857"/>
+		<Element name="depleted_grass.tex" u1="0.857143" u2="0.926407" v1="0.502165" v2="0.571429"/>
+		<Element name="lumpy_sapling.tex" u1="0.071429" u2="0.140693" v1="0.216450" v2="0.285714"/>
+		<Element name="livingtree_sapling.tex" u1="0.000000" u2="0.069264" v1="0.216450" v2="0.285714"/>
+		<Element name="twiggy_nut_sapling.tex" u1="0.571429" u2="0.640693" v1="0.716450" v2="0.785714"/>
+		<Element name="livingtree_halloween.tex" u1="0.928571" u2="0.997835" v1="0.287879" v2="0.357143"/>
+		<Element name="bishop.tex" u1="0.000000" u2="0.069264" v1="0.287879" v2="0.357143"/>
+		<Element name="fence.tex" u1="0.785714" u2="0.854978" v1="0.287879" v2="0.357143"/>
+		<Element name="grass.tex" u1="0.642857" u2="0.712121" v1="0.073593" v2="0.142857"/>
+		<Element name="brokenwall_stone.tex" u1="0.571429" u2="0.640693" v1="0.287879" v2="0.357143"/>
+		<Element name="catcoon.tex" u1="0.285714" u2="0.354978" v1="0.287879" v2="0.357143"/>
+		<Element name="pighead.tex" u1="0.000000" u2="0.069264" v1="0.716450" v2="0.785714"/>
+		<Element name="toadstool.tex" u1="0.785714" u2="0.854978" v1="0.716450" v2="0.785714"/>
+		<Element name="twiggy_tall.tex" u1="0.142857" u2="0.212121" v1="0.645022" v2="0.714286"/>
+		<Element name="carrat_planted.tex" u1="0.214286" u2="0.283550" v1="0.287879" v2="0.357143"/>
+		<Element name="spider.tex" u1="0.142857" u2="0.212121" v1="0.859307" v2="0.928571"/>
+		<Element name="wall_wood.tex" u1="0.214286" u2="0.283550" v1="0.645022" v2="0.714286"/>
+		<Element name="spiderden.tex" u1="0.857143" u2="0.926407" v1="0.930736" v2="1.000000"/>
+		<Element name="firehound.tex" u1="0.857143" u2="0.926407" v1="0.287879" v2="0.357143"/>
+		<Element name="clayhound.tex" u1="0.928571" u2="0.997835" v1="0.359307" v2="0.428571"/>
+		<Element name="crawlingnightmare.tex" u1="0.285714" u2="0.354978" v1="0.430736" v2="0.500000"/>
+		<Element name="perd.tex" u1="0.071429" u2="0.140693" v1="0.716450" v2="0.785714"/>
+		<Element name="deer_blue.tex" u1="0.714286" u2="0.783550" v1="0.502165" v2="0.571429"/>
+		<Element name="brokenwall_moonrock.tex" u1="0.642857" u2="0.712121" v1="0.287879" v2="0.357143"/>
+		<Element name="shadow_bishop.tex" u1="0.428571" u2="0.497835" v1="0.930736" v2="1.000000"/>
+		<Element name="twiggytree.tex" u1="0.428571" u2="0.497835" v1="0.716450" v2="0.785714"/>
+		<Element name="acorn_sapling.tex" u1="0.785714" u2="0.854978" v1="0.359307" v2="0.428571"/>
+		<Element name="babybeefalo.tex" u1="0.642857" u2="0.712121" v1="0.359307" v2="0.428571"/>
+		<Element name="batcave.tex" u1="0.714286" u2="0.783550" v1="0.359307" v2="0.428571"/>
+		<Element name="moon_tree.tex" u1="0.214286" u2="0.283550" v1="0.787879" v2="0.857143"/>
+		<Element name="tmipbutton_godmode.tex" u1="0.285714" u2="0.354978" v1="0.502165" v2="0.571429"/>
+		<Element name="mermhead.tex" u1="0.142857" u2="0.212121" v1="0.145022" v2="0.214286"/>
+		<Element name="spider_moon.tex" u1="0.500000" u2="0.569264" v1="0.859307" v2="0.928571"/>
+		<Element name="birchnutdrake.tex" u1="0.500000" u2="0.569264" v1="0.359307" v2="0.428571"/>
+		<Element name="tmipbutton_close.tex" u1="0.071429" u2="0.140693" v1="0.502165" v2="0.571429"/>
+		<Element name="fence_gate.tex" u1="0.357143" u2="0.426407" v1="0.145022" v2="0.214286"/>
+		<Element name="beequeen.tex" u1="0.428571" u2="0.497835" v1="0.359307" v2="0.428571"/>
+		<Element name="catcoonden.tex" u1="0.214286" u2="0.283550" v1="0.359307" v2="0.428571"/>
+		<Element name="claywarg.tex" u1="0.142857" u2="0.212121" v1="0.359307" v2="0.428571"/>
+		<Element name="molehill.tex" u1="0.857143" u2="0.926407" v1="0.216450" v2="0.285714"/>
+		<Element name="stalker_forest.tex" u1="0.357143" u2="0.426407" v1="0.573593" v2="0.642857"/>
+		<Element name="lightninggoat.tex" u1="0.285714" u2="0.354978" v1="0.216450" v2="0.285714"/>
+		<Element name="worm.tex" u1="0.000000" u2="0.069264" v1="0.002165" v2="0.071429"/>
+		<Element name="evergreen_sparse.tex" u1="0.928571" u2="0.997835" v1="0.430736" v2="0.500000"/>
+		<Element name="tmipbutton_right.tex" u1="0.928571" u2="0.997835" v1="0.645022" v2="0.714286"/>
+		<Element name="slurtle.tex" u1="0.071429" u2="0.140693" v1="0.930736" v2="1.000000"/>
+		<Element name="evergreen_short.tex" u1="0.857143" u2="0.926407" v1="0.430736" v2="0.500000"/>
+		<Element name="multiplayer_portal_moonrock.tex" u1="0.928571" u2="0.997835" v1="0.859307" v2="0.928571"/>
+		<Element name="rocky.tex" u1="0.357143" u2="0.426407" v1="0.787879" v2="0.857143"/>
+		<Element name="moose.tex" u1="0.000000" u2="0.069264" v1="0.787879" v2="0.857143"/>
+		<Element name="spider_warrior.tex" u1="0.785714" u2="0.854978" v1="0.645022" v2="0.714286"/>
+		<Element name="mutatedhound.tex" u1="0.785714" u2="0.854978" v1="0.787879" v2="0.857143"/>
+		<Element name="evergreen_tall.tex" u1="0.642857" u2="0.712121" v1="0.430736" v2="0.500000"/>
+		<Element name="sapling_moon.tex" u1="0.642857" u2="0.712121" v1="0.930736" v2="1.000000"/>
+		<Element name="spider_dropper.tex" u1="0.000000" u2="0.069264" v1="0.859307" v2="0.928571"/>
+		<Element name="dragonfly.tex" u1="0.357143" u2="0.426407" v1="0.430736" v2="0.500000"/>
+		<Element name="planted_flower.tex" u1="0.714286" u2="0.783550" v1="0.787879" v2="0.857143"/>
+		<Element name="evergreen_normal.tex" u1="0.000000" u2="0.069264" v1="0.359307" v2="0.428571"/>
+		<Element name="twiggy_normal.tex" u1="0.500000" u2="0.569264" v1="0.716450" v2="0.785714"/>
+		<Element name="spiderqueen.tex" u1="0.928571" u2="0.997835" v1="0.930736" v2="1.000000"/>
+		<Element name="evergreen.tex" u1="0.428571" u2="0.497835" v1="0.430736" v2="0.500000"/>
+		<Element name="spider_hider.tex" u1="0.071429" u2="0.140693" v1="0.859307" v2="0.928571"/>
+		<Element name="lureplant.tex" u1="0.142857" u2="0.212121" v1="0.216450" v2="0.285714"/>
+		<Element name="brokenwall_hay.tex" u1="0.071429" u2="0.140693" v1="0.287879" v2="0.357143"/>
+		<Element name="multiplayer_portal_moonrock_constr.tex" u1="0.428571" u2="0.497835" v1="0.787879" v2="0.857143"/>
+		<Element name="trap_starfish.tex" u1="0.357143" u2="0.426407" v1="0.716450" v2="0.785714"/>
+		<Element name="tmipbutton_woodmoosemode.tex" u1="0.714286" u2="0.783550" v1="0.716450" v2="0.785714"/>
+		<Element name="warg.tex" u1="0.428571" u2="0.497835" v1="0.502165" v2="0.571429"/>
+		<Element name="tmipbutton_debugmod.tex" u1="0.357143" u2="0.426407" v1="0.502165" v2="0.571429"/>
+		<Element name="wall_hay.tex" u1="0.714286" u2="0.783550" v1="0.645022" v2="0.714286"/>
+		<Element name="tmipbutton_wet.tex" u1="0.000000" u2="0.069264" v1="0.645022" v2="0.714286"/>
+		<Element name="tmipbutton_left.tex" u1="0.928571" u2="0.997835" v1="0.573593" v2="0.642857"/>
+	</Elements>
 </Atlas>

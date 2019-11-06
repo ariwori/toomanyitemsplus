@@ -14,7 +14,6 @@ return {
 	"spiderden_2",
 	"spiderden_3",
 	"spiderhole",
-	"spiderhole_rock",
 	"moonspiderden",
 	"dropperweb",
 --兔子洞

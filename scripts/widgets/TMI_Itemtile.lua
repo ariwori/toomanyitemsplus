@@ -167,7 +167,8 @@ function ItemTile:GetAsset(find)
 		self.item = ""
 	end
 	local spiceimage
-	local newitem = removeadj(self.item)
+	--local newitem = removeadj(self.item) 去掉形容词会导致树的形态名词错乱，无法匹配正确的图片
+	local newitem = self.item
 	local itemimage = newitem .. ".tex"
 	local itematlas = custom_atlas
 	-- print("[TooManyItems] "..self.item)
@@ -343,9 +344,7 @@ function ItemTile:DescriptionInit()
   -- 刷新点
 	elseif string.find(self.item, "_spawner") and #strarr == 2 and STRINGS.NAMES[string.upper(strarr[1])] then
 		str =STRINGS.NAMES[string.upper(strarr[1])]..STRINGS.NAMES.SPAWNER
-	-- 洞穴白蜘蛛巢穴
-	elseif self.item == "dropperweb" then self.item = "spider_dropper"
-		str =STRINGS.NAMES[string.upper("spider_dropper")]
+
   -- 雕像、雕像草图
 	elseif string.find(self.item, "deer_") then
 		str = STRINGS.NAMES["DEER_GEMMED"]

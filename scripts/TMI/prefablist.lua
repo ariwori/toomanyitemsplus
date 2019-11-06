@@ -1,5 +1,7 @@
 return {
+--prefab名称转换，以匹配图标xml中的名称
 	prefablist = {
+--宠物
 		["critter_dragonling"] = "critter_dragonling_builder",
 		["critter_glomling"] = "critter_glomling_builder",
 		["critter_kitten"] = "critter_kitten_builder",
@@ -7,16 +9,58 @@ return {
 		["critter_perdling"] = "critter_perdling_builder",
 		["critter_puppy"] = "critter_puppy_builder",
 		["critter_lunarmothling"] = "critter_lunarmothling_builder",
-		["minisign"] = "minisign_drawn",
+--麦斯威尔的阴影
 		["shadowdigger"] = "shadowdigger_builder",
 		["shadowduelist"] = "shadowduelist_builder",
 		["shadowlumber"] = "shadowlumber_builder",
 		["shadowminer"] = "shadowminer_builder",
-		["stagehand"] = "endtable",
+--迷你指示牌
+		["minisign"] = "minisign_drawn",
+--圣诞树
 		["winter_tree"] = "winter_treestand",
-		["spiderden_2"] = "spiderden"
-	},
+
+		["wormhole_limited_1"] = "wormhole_sick",
+		["oasislake"] = "oasis",
+		["resurrectionstone"] = "resurrection_stone",
+		["moon_altar_rock_idol"] = "moon_altar_idol_rock",
+		["moon_altar_rock_glass"] = "moon_altar_glass_rock",
+		["moon_altar_rock_seed"] = "moon_altar_seed_rock",
+		["gravestone"] = "gravestones",
+		["eyeturret"] = "eyeball_turret",
+		["ancient_altar"] = "tab_crafting_table",
+		["mermthrone"] = "merm_king_carpet",
+		
+		["deciduoustree_burnt"] = "tree_leaf_burnt",
+		["deciduoustree_stump"] = "tree_leaf_stump",
+ 	},
+--prefab名称赋值，以匹配对应文本字符串。
 	desclist = {
+--桦树
+		["tree_leaf_burnt"] = STRINGS.NAMES.DECIDUOUSTREE,
+		["tree_leaf_stump"] = STRINGS.NAMES.DECIDUOUSTREE,
+--复活骨架
+		["stalker_forest"] = STRINGS.NAMES.STALKER,
+--绿洲湖泊
+		["oasis"] = STRINGS.NAMES.OASISLAKE,
+--试金石
+		["resurrection_stone"] = STRINGS.NAMES.RESURRECTIONSTONE,
+--天梯祭坛零件
+		["moon_altar_glass_rock"] = STRINGS.NAMES.MOON_ALTAR_ROCK_GLASS,
+		["moon_altar_idol_rock"] = STRINGS.NAMES.MOON_ALTAR_ROCK_IDOL,
+		["moon_altar_seed_rock"] = STRINGS.NAMES.MOON_ALTAR_ROCK_SEED,
+--生病的虫洞
+		["wormhole_sick"] = STRINGS.NAMES.WORMHOLE_LIMITED,
+--墓碑
+		["gravestones"] = STRINGS.NAMES.GRAVESTONE,
+--眼球塔
+		["eyeball_turret"] = STRINGS.NAMES.EYETURRET,
+--远古祭坛
+		["tab_crafting_table"] = STRINGS.NAMES.ANCIENT_ALTAR,
+--编织的暗影
+		["stalker_minion1"] = STRINGS.NAMES.STALKER_MINION,
+		["stalker_minion2"] = STRINGS.NAMES.STALKER_MINION,
+--鱼人王地毯
+		["merm_king_carpet"] = STRINGS.NAMES.MERMTHRONE,
 --玻璃制品
 		["glassspike_short"] = STRINGS.NAMES.GLASSSPIKE,
 		["glassspike_med"] = STRINGS.NAMES.GLASSSPIKE,
@@ -55,6 +99,8 @@ return {
 		["deciduoustree_burnt"] = STRINGS.NAMES.DECIDUOUSTREE,
 --完全正常的树
 		["livingtree_halloween"] = STRINGS.NAMES.LIVINGTREE,
+--树苗
+		["sapling_moon"] = STRINGS.NAMES.SAPLING,
 --仙人掌
 		["oasis_cactus"] = STRINGS.NAMES.CACTUS,
 --石化树
@@ -95,8 +141,8 @@ return {
 		["sculpture_bishop"] = STRINGS.NAMES.SCULPTURE_BISHOPBODY,
 		["sculpture_knight"] = STRINGS.NAMES.SCULPTURE_KNIGHTBODY,
 		["sculpture_rook"] = STRINGS.NAMES.SCULPTURE_ROOKBODY,
-		["spiderden_2"] = STRINGS.NAMES.SPIDERDEN.."2",
-		["spiderden_3"] = STRINGS.NAMES.SPIDERDEN.."3",
+		["spiderden_2"] = STRINGS.NAMES.SPIDERDEN,
+		["spiderden_3"] = STRINGS.NAMES.SPIDERDEN,
 		["spiderhole_rock"] = STRINGS.NAMES.SPIDERHOLE,
 		["winter_tree"] = STRINGS.NAMES.WINTER_TREE,
 		["moonhound"] = STRINGS.NAMES.HOUND,
