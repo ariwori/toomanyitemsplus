@@ -391,14 +391,14 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESET,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP,
-				fn = 'local PopupDialogScreen = require "screens/redux/popupdialog" local mys mys = PopupDialogScreen( STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESET, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP, {{ text = STRINGS.UI.SERVERLISTINGSCREEN.OK, cb = function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end }, { text = STRINGS.UI.SERVERLISTINGSCREEN.CANCEL, cb = function() TheFrontEnd:PopScreen(mys) end }} ) TheFrontEnd:PushScreen(mys)',
+				fn = {'c_reset()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESET, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP}
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATETIP,
-				fn = 'local PopupDialogScreen = require "screens/redux/popupdialog" local mys mys = PopupDialogScreen( STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATE, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATETIP, {{ text = STRINGS.UI.SERVERLISTINGSCREEN.OK, cb = function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldResetRequestToServer() end end }, { text = STRINGS.UI.SERVERLISTINGSCREEN.CANCEL, cb = function() TheFrontEnd:PopScreen(mys) end }} ) TheFrontEnd:PushScreen(mys)',
+				fn = {'c_regenerateworld()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATE, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATETIP}
 			},
 			{
 				beta = false,

@@ -4,7 +4,10 @@ local TextButton = require "widgets/textbutton"
 local Widget = require "widgets/widget"
 
 local WriteableWidget = require "screens/TMI_writeablewidget"
+local ConfirmWidget = require "screens/TMI_confirmwidget"
 local TMI_menubar = require "widgets/TMI_menubar"
+
+local confirm_command = ""
 
 local function RandomPlayer(widget)
 	widget:OverrideText(AllPlayers[math.random(1, #AllPlayers)]:GetDisplayName())
@@ -19,26 +22,15 @@ local function AcceptPlayer(widget)
 	end
 end
 
-local writeable_config = {
-	animbank = "ui_board_5x3",
-	animbuild = "ui_board_5x3",
-	menuoffset = Vector3(6, -70, 0),
-
-	cancelbtn = { text = STRINGS.UI.TRADESCREEN.CANCEL, cb = nil, control = CONTROL_CANCEL },
-	middlebtn = { text = STRINGS.UI.HELP.RANDOM, cb = RandomPlayer, control = CONTROL_MENU_MISC_2 },
-	acceptbtn = { text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = AcceptPlayer, control = CONTROL_ACCEPT },
-
-	--defaulttext = SignGenerator,
-}
-
-local function SendCommand(fnstr)
-	local x, _, z = TheSim:ProjectScreenPos(TheSim:GetPosition())
-	local is_valid_time_to_use_remote = TheNet:GetIsClient() and TheNet:GetIsServerAdmin()
-	if is_valid_time_to_use_remote then
-		TheNet:SendRemoteExecute(fnstr, x, z)
-	else
-		ExecuteConsoleCommand(fnstr)
+local function needconfirmfn(fnstr)
+	local need_confirm_fns = {
+		'c_reset()',
+		'c_regenerateworld()'
+	}
+	for k, v in pairs(need_confirm_fns) do
+		if fnstr == v then return true end
 	end
+	return false
 end
 
 local function PlayerOnCurrentShard(userid)
@@ -60,6 +52,44 @@ end
 local function GetCharacter()
 	return "UserToPlayer('"..TOOMANYITEMS.CHARACTER_USERID.."')"
 end
+
+local function SendCommand(fnstr)
+	local x, _, z = TheSim:ProjectScreenPos(TheSim:GetPosition())
+	local is_valid_time_to_use_remote = TheNet:GetIsClient() and TheNet:GetIsServerAdmin()
+	if is_valid_time_to_use_remote then
+		TheNet:SendRemoteExecute(fnstr, x, z)
+	else
+		ExecuteConsoleCommand(fnstr)
+	end
+end
+
+local function SendConfirmCommand(widget)
+	SendCommand(string.format(confirm_command, GetCharacter()))
+end
+
+
+local writeable_config = {
+	animbank = "ui_board_5x3",
+	animbuild = "ui_board_5x3",
+	menuoffset = Vector3(6, -70, 0),
+
+	cancelbtn = { text = STRINGS.UI.TRADESCREEN.CANCEL, cb = nil, control = CONTROL_CANCEL },
+	middlebtn = { text = STRINGS.UI.HELP.RANDOM, cb = RandomPlayer, control = CONTROL_MENU_MISC_2 },
+	acceptbtn = { text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = AcceptPlayer, control = CONTROL_ACCEPT },
+
+	--defaulttext = SignGenerator,
+}
+
+local confirm_config = {
+	animbank = "ui_board_5x3",
+	animbuild = "ui_board_5x3",
+	menuoffset = Vector3(6, -80, 0),
+
+	cancelbtn = { text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = SendConfirmCommand, control = CONTROL_CANCEL },
+	acceptbtn = { text = STRINGS.UI.TRADESCREEN.CANCEL, cb = nil, control = CONTROL_ACCEPT },
+
+	--defaulttext = SignGenerator,
+}
 
 local TooManyItems = Class(Widget, function(self)
 		Widget._ctor(self, "TooManyItems")
@@ -134,6 +164,21 @@ function TooManyItems:FlushPlayer()
 	end
 
 	self:SetPointer()
+end
+
+function TooManyItems:FlushConfirmScreen(fn)
+	if self.confirmscreen then
+		self.confirmscreen:KillAllChildren()
+		self.confirmscreen:Kill()
+		self.confirmscreen = nil
+	end
+	self.confirmscreen = ConfirmWidget(confirm_config)
+	ThePlayer.HUD:OpenScreenUnderPause(self.confirmscreen)
+	if TheFrontEnd:GetActiveScreen() == self.confirmscreen then
+		self.confirmscreen.edit_text:SetEditing(false)
+		self.confirmscreen.edit_text:SetString(fn[2]..'\n\n'..STRINGS.TOO_MANY_ITEMS_UI.CONFIRM..fn[3])
+		confirm_command = fn[1]
+	end
 end
 
 function TooManyItems:NextPlayer()
@@ -245,9 +290,13 @@ function TooManyItems:DebugMenu()
 
 				local fn = buttonlist[i].fn
 				if type(fn) == "table" then
-					button:SetOnClick( function() fn.TeleportFn(fn.TeleportNum) end)
+					if not needconfirmfn(fn[1]) then
+						button:SetOnClick( function() fn.TeleportFn(fn.TeleportNum) end)
+					else
+						button:SetOnClick(function() self:FlushConfirmScreen(fn) end)
+					end
 				elseif type(fn) == "string" then
-					button:SetOnClick( function() SendCommand(string.format(fn, GetCharacter())) end)
+						button:SetOnClick( function() SendCommand(string.format(fn, GetCharacter())) end)
 				elseif type(fn) == "function" then
 					button:SetOnClick(fn)
 				end
