@@ -498,22 +498,15 @@ return {
 			{
 				beta = false,
 				pos = "all",
-				name = STRINGS.NAMES.MULTIPLAYER_PORTAL,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.MULTIPLAYER_PORTAL,
-				fn = gotoswitch("multiplayer_portal"),
-			},
-			{
-				beta = false,
-				pos = "all",
-				name = STRINGS.NAMES.MULTIPLAYER_PORTAL_MOONROCK,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.MULTIPLAYER_PORTAL_MOONROCK,
-				fn = gotoswitch("multiplayer_portal_moonrock"),
+				name = STRINGS.NAMES.MULTIPLAYER_PORTAL.."/"..STRINGS.NAMES.MULTIPLAYER_PORTAL_MOONROCK,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.MULTIPLAYER_PORTAL.."/"..STRINGS.NAMES.MULTIPLAYER_PORTAL_MOONROCK,
+				fn = gotoswitch("multiplayer_portal","multiplayer_portal_moonrock"),
 			},
 			{
 				beta = false,
 				pos = "forest",
-				name = STRINGS.NAMES.CAVE_ENTRANCE_OPEN,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.CAVE_ENTRANCE_OPEN,
+				name = STRINGS.NAMES.CAVE_ENTRANCE_OPEN.."/"..STRINGS.NAMES.CAVE_ENTRANCE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.CAVE_ENTRANCE_OPEN.."/"..STRINGS.NAMES.CAVE_ENTRANCE,
 				fn = gotoswitch("cave_entrance_open", "cave_entrance"),
 			},
 			{
@@ -549,7 +542,7 @@ return {
 				pos = "forest",
 				name = STRINGS.NAMES.SCULPTURE_BODY,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.SCULPTURE_BODY,
-				fn = gotoswitch("sculpture_rookbody","sculpture_knightbody","sculpture_bishopbody","sculpture_rook","sculpture_knight","sculpture_bishop"),
+				fn = gotoswitch("sculpture_rookbody","sculpture_knightbody","sculpture_bishopbody"),
 			},
 			{
 				beta = false,

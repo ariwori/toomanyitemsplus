@@ -5,33 +5,16 @@ return {
 --树苗
 	"sapling",
 	"sapling_moon",
---荧光草
-	"flower_cave",
-	"flower_cave_double",
-	"flower_cave_triple",
---月树
-	"moonbutterfly_sapling",
-	"moon_tree_short",
-	"moon_tree_normal",
-	"moon_tree_tall",
-	"moon_tree",
---多枝的树
-	"twiggy_nut_sapling",
-	"twiggy_short",
-	"twiggy_normal",
-	"twiggy_tall",
-	"twiggy_old",
-	"twiggytree",
 --花朵
 	"flower_rose",
 	"flower",
 	"planted_flower",
 	"flower_withered",
 	"flower_evil",
---浆果
-	"berrybush",
-	"berrybush2",
-	"berrybush_juicy",
+--荧光草
+	"flower_cave",
+	"flower_cave_double",
+	"flower_cave_triple",
 --常青树
 	"pinecone_sapling",
 	"evergreen_short",
@@ -53,11 +36,28 @@ return {
 	"deciduoustree_tall",
 	"deciduoustree_stump",
 	"deciduoustree_burnt",
-	"deciduoustree",
+	--与桦树精有冲突，暂时注释掉"deciduoustree",
 --完全正常的树
 	"livingtree_sapling",
 	"livingtree_halloween",
 	"livingtree",
+--多枝的树
+	"twiggy_nut_sapling",
+	"twiggy_short",
+	"twiggy_normal",
+	"twiggy_tall",
+	"twiggy_old",
+	"twiggytree",
+--月树
+	"moonbutterfly_sapling",
+	"moon_tree_short",
+	"moon_tree_normal",
+	"moon_tree_tall",
+	"moon_tree",
+--浆果
+	"berrybush",
+	"berrybush2",
+	"berrybush_juicy",
 --仙人掌
 	"cactus",
 	"oasis_cactus",
@@ -101,7 +101,6 @@ return {
 	"mushtree_small",
 	"mushtree_medium",
 	"mushtree_tall_webbed",
-
 	"bullkelp_plant",
 --风滚草
 	"tumbleweed",

@@ -1,4 +1,4 @@
-name = "Too Many Items Plus"
+﻿name = "Too Many Items Plus"
 version = "1.0.5.5"
 description = "Too Many Items Plus 版本: "..version..
 [[

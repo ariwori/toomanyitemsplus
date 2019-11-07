@@ -10,6 +10,8 @@ return {
 --复活
 	"resurrectionstone",
 --传送门
+	"multiplayer_portal",
+	"multiplayer_portal_moonrock_constr",
 	"multiplayer_portal_moonrock",
 	"migration_portal",
 --池塘
@@ -52,5 +54,6 @@ return {
 --虫洞
 	"wormhole",
 	"wormhole_limited_1",
-	
+--裂缝
+	"moon_fissure",
 }
