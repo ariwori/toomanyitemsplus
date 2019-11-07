@@ -1,6 +1,6 @@
 name = "Too Many Items Plus"
 version = "1.0.5.6"
-description = "Too Many Items Plus Version: "..version..
+description = name .." Version: "..version..
 [[
 
 
@@ -37,8 +37,7 @@ local KEY_A = 97
 local keyslist = {}
 for i = 1,#alpha do keyslist[i] = {description = alpha[i],data = i + KEY_A - 1} end
 
-configuration_options =
-{
+configuration_options = {
 	{
 		name = "TMI_TOGGLE_KEY",
 		label = "Toggle Button",

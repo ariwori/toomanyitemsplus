@@ -1,8 +1,4 @@
-﻿name = "Too Many Items Plus"
-version = "1.0.5.5"
-description = "Too Many Items Plus 版本: "..version..
-[[
-
+description = [[
 
 随意获得需要的物品和使用很多服务器控制命令。
 必须管理员权限才可以使用。
@@ -37,8 +33,7 @@ local KEY_A = 97
 local keyslist = {}
 for i = 1,#alpha do keyslist[i] = {description = alpha[i],data = i + KEY_A - 1} end
 
-configuration_options =
-{
+configuration_options = {
 	{
 		name = "TMI_TOGGLE_KEY",
 		label = "按键",
