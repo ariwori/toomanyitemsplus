@@ -4,10 +4,9 @@ local TextButton = require "widgets/textbutton"
 local Widget = require "widgets/widget"
 
 local WriteableWidget = require "screens/TMI_writeablewidget"
-local ConfirmWidget = require "screens/TMI_confirmwidget"
 local TMI_menubar = require "widgets/TMI_menubar"
 
-local confirm_command = ""
+local PopupDialogScreen = require "screens/redux/popupdialog"
 
 local function RandomPlayer(widget)
 	widget:OverrideText(AllPlayers[math.random(1, #AllPlayers)]:GetDisplayName())
@@ -63,11 +62,6 @@ local function SendCommand(fnstr)
 	end
 end
 
-local function SendConfirmCommand(widget)
-	SendCommand(string.format(confirm_command, GetCharacter()))
-end
-
-
 local writeable_config = {
 	animbank = "ui_board_5x3",
 	animbuild = "ui_board_5x3",
@@ -76,17 +70,6 @@ local writeable_config = {
 	cancelbtn = { text = STRINGS.UI.TRADESCREEN.CANCEL, cb = nil, control = CONTROL_CANCEL },
 	middlebtn = { text = STRINGS.UI.HELP.RANDOM, cb = RandomPlayer, control = CONTROL_MENU_MISC_2 },
 	acceptbtn = { text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = AcceptPlayer, control = CONTROL_ACCEPT },
-
-	--defaulttext = SignGenerator,
-}
-
-local confirm_config = {
-	animbank = "ui_board_5x3",
-	animbuild = "ui_board_5x3",
-	menuoffset = Vector3(6, -80, 0),
-
-	cancelbtn = { text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = SendConfirmCommand, control = CONTROL_CANCEL },
-	acceptbtn = { text = STRINGS.UI.TRADESCREEN.CANCEL, cb = nil, control = CONTROL_ACCEPT },
 
 	--defaulttext = SignGenerator,
 }
@@ -167,18 +150,9 @@ function TooManyItems:FlushPlayer()
 end
 
 function TooManyItems:FlushConfirmScreen(fn)
-	if self.confirmscreen then
-		self.confirmscreen:KillAllChildren()
-		self.confirmscreen:Kill()
-		self.confirmscreen = nil
-	end
-	self.confirmscreen = ConfirmWidget(confirm_config)
-	ThePlayer.HUD:OpenScreenUnderPause(self.confirmscreen)
-	if TheFrontEnd:GetActiveScreen() == self.confirmscreen then
-		self.confirmscreen.edit_text:SetEditing(false)
-		self.confirmscreen.edit_text:SetString(fn[2]..'\n\n'..STRINGS.TOO_MANY_ITEMS_UI.CONFIRM..fn[3])
-		confirm_command = fn[1]
-	end
+	local confirmscreen
+	confirmscreen = PopupDialogScreen(fn[2], fn[3],	{{text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = function() SendCommand(fn[1]) end },	{ text = STRINGS.UI.TRADESCREEN.CANCEL, cb = function()	TheFrontEnd:PopScreen(confirmscreen) end}})
+	TheFrontEnd:PushScreen(confirmscreen)
 end
 
 function TooManyItems:NextPlayer()

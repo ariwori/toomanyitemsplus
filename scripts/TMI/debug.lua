@@ -486,7 +486,7 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_SHOW,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_SHOWTIP,
-				fn = 'local w,h = TheWorld.Map:GetSize() for x=-w*2,w*2,10 do for z=-h*2,h*2,10 do if TheWorld.Map:IsAboveGroundAtPoint(x,0,z) then ThePlayer.player_classified.MapExplorer:RevealArea(x,0,z) end end end',
+				fn = 'local w,h = TheWorld.Map:GetSize() for x=-w*2,w*2,10 do for z=-h*2,h*2,10 do if TheWorld.Map:IsValidTileAtPoint(x,0,z) then ThePlayer.player_classified.MapExplorer:RevealArea(x,0,z) end end end',
 			},
 			{
 				beta = false,
@@ -718,6 +718,13 @@ return {
 				name = STRINGS.NAMES.ATRIUM_GATE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.ATRIUM_GATE,
 				fn = gotoswitch("atrium_gate"),
+			},
+			{
+				beta = false,
+				pos = "cave",
+				name = STRINGS.NAMES.HUTCH_FISHBOWL,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.HUTCH_FISHBOWL,
+				fn = gotoswitch("hutch_fishbowl"),
 			},
 		},
 	},
