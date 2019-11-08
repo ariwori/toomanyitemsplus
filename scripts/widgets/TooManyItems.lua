@@ -8,8 +8,20 @@ local TMI_menubar = require "widgets/TMI_menubar"
 
 local PopupDialogScreen = require "screens/redux/popupdialog"
 
-local function RandomPlayer(widget)
-	widget:OverrideText(AllPlayers[math.random(1, #AllPlayers)]:GetDisplayName())
+local function NextPlayer(widget)
+	local cur_index
+	for k, v in pairs(AllPlayers) do
+		if v.userid == TOOMANYITEMS.CHARACTER_USERID then
+			cur_index = k
+			break
+		end
+	end
+	if cur_index + 1 <= #AllPlayers then
+		cur_index = cur_index + 1
+	else
+		cur_index = 1
+	end
+	widget:OverrideText(AllPlayers[cur_index]:GetDisplayName())
 end
 
 local function AcceptPlayer(widget)
@@ -19,36 +31,6 @@ local function AcceptPlayer(widget)
 	else
 		TOOMANYITEMS.CHARACTER_USERID = ThePlayer.userid
 	end
-end
-
-local function needconfirmfn(fnstr)
-	local need_confirm_fns = {
-		'ApplySpecialEvent("none") TheWorld.topology.overrides.specialevent = "none" c_save()',
-		'ApplySpecialEvent("default") TheWorld.topology.overrides.specialevent = "default" c_save()',
-		'ApplySpecialEvent("hallowed_nights") TheWorld.topology.overrides.specialevent = "hallowed_nights" c_save()',
-		'ApplySpecialEvent("winters_feast") TheWorld.topology.overrides.specialevent = "winters_feast" c_save()',
-		'ApplySpecialEvent("year_of_the_gobbler") TheWorld.topology.overrides.specialevent = "year_of_the_gobbler" c_save()',
-		'ApplySpecialEvent("year_of_the_varg") TheWorld.topology.overrides.specialevent = "year_of_the_varg" c_save()',
-		'ApplySpecialEvent("year_of_the_pig") TheWorld.topology.overrides.specialevent = "year_of_the_pig" c_save()',
-		'%s:PushEvent("death")',
-		'%s:PushEvent("respawnfromghost")',
-		'local x,y,z = %s.Transform:GetWorldPosition() for k,v in pairs(AllPlayers) do v.Transform:SetPosition(x,y,z) end',
-		'c_despawn(%s)',
-		'TheSim:SetTimeScale(0.5) print("Speed is now ", TheSim:GetTimeScale())',
-		'TheSim:SetTimeScale(1) print("Speed is now ", TheSim:GetTimeScale())',
-		'TheSim:SetTimeScale(2) print("Speed is now ", TheSim:GetTimeScale())',
-		'TheSim:SetTimeScale(3) print("Speed is now ", TheSim:GetTimeScale())',
-		'TheSim:SetTimeScale(4) print("Speed is now ", TheSim:GetTimeScale())',
-		'c_regenerateworld()',
-		'c_reset()',
-		'c_skip(10)',
-		'c_skip(20)',
-		'c_skip(5)'
-	}
-	for k, v in pairs(need_confirm_fns) do
-		if fnstr == v then 	print(fnstr) return true end
-	end
-	return false
 end
 
 local function PlayerOnCurrentShard(userid)
@@ -86,7 +68,7 @@ local writeable_config = {
 	menuoffset = Vector3(6, -70, 0),
 
 	cancelbtn = { text = STRINGS.UI.TRADESCREEN.CANCEL, cb = nil, control = CONTROL_CANCEL },
-	middlebtn = { text = STRINGS.UI.HELP.RANDOM, cb = RandomPlayer, control = CONTROL_MENU_MISC_2 },
+	middlebtn = { text = STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER, cb = NextPlayer, control = CONTROL_MENU_MISC_2 },
 	acceptbtn = { text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = AcceptPlayer, control = CONTROL_ACCEPT },
 
 	--defaulttext = SignGenerator,
@@ -169,24 +151,8 @@ end
 
 function TooManyItems:FlushConfirmScreen(fn)
 	local confirmscreen
-	confirmscreen = PopupDialogScreen(fn[2], fn[3],	{{text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = function() SendCommand(fn[1]) TheFrontEnd:PopScreen(confirmscreen) end },	{ text = STRINGS.UI.TRADESCREEN.CANCEL, cb = function()	TheFrontEnd:PopScreen(confirmscreen) end}})
+	confirmscreen = PopupDialogScreen(fn[3], fn[4],	{{text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = function() SendCommand(string.format(fn[2], GetCharacter())) TheFrontEnd:PopScreen(confirmscreen) end },	{ text = STRINGS.UI.TRADESCREEN.CANCEL, cb = function()	TheFrontEnd:PopScreen(confirmscreen) end}})
 	TheFrontEnd:PushScreen(confirmscreen)
-end
-
-function TooManyItems:NextPlayer()
-	local index = 1
-	for k, v in pairs(AllPlayers) do
-		v.userid = TOOMANYITEMS.CHARACTER_USERID
-		index = k
-		break
-	end
-
-	if index + 1 <= #AllPlayers then
-		TOOMANYITEMS.CHARACTER_USERID = AllPlayers[index+1].userid
-	else
-		TOOMANYITEMS.CHARACTER_USERID = AllPlayers[1].userid
-	end
-	self:SetPointer()
 end
 
 function TooManyItems:SetPointer()
@@ -229,16 +195,16 @@ function TooManyItems:DebugMenu()
 
 	self:SetPointer()
 
-	local pointerw, pointerh = self.pointer.text:GetRegionSize()
-	self.nextplayerbutton = self.debugshield:AddChild(TextButton())
-	self.nextplayerbutton:SetFont(self.font)
-	self.nextplayerbutton:SetTextSize(self.fontsize)
-	self.nextplayerbutton:SetColour(0.9,0.8,0.6,1)
-	self.nextplayerbutton:SetText(STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER)
-	self.nextplayerbutton:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER_TIP)
-	local width, height = self.nextplayerbutton.text:GetRegionSize()
-	self.nextplayerbutton:SetPosition(pointerw - self.debugwidth / 2 + width, self.shieldsize_y * 0.5 - height * 0.5 , 0)
-	self.nextplayerbutton:SetOnClick(function() self:NextPlayer() end)
+	-- local pointerw, pointerh = self.pointer.text:GetRegionSize()
+	-- self.nextplayerbutton = self.debugshield:AddChild(TextButton())
+	-- self.nextplayerbutton:SetFont(self.font)
+	-- self.nextplayerbutton:SetTextSize(self.fontsize)
+	-- self.nextplayerbutton:SetColour(0.9,0.8,0.6,1)
+	-- self.nextplayerbutton:SetText(STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER)
+	-- self.nextplayerbutton:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER_TIP)
+	-- local width, height = self.nextplayerbutton.text:GetRegionSize()
+	-- self.nextplayerbutton:SetPosition(pointerw - self.debugwidth / 2 + width, self.shieldsize_y * 0.5 - height * 0.5 , 0)
+	-- self.nextplayerbutton:SetOnClick(function() self:NextPlayer() end)
 
 	self.debugbuttonlist = require "TMI/debug"
 	self.top = self.shieldsize_y * .5 - self.pointersizey - self.spacing
@@ -282,7 +248,7 @@ function TooManyItems:DebugMenu()
 
 				local fn = buttonlist[i].fn
 				if type(fn) == "table" then
-					if not needconfirmfn(fn[1]) then
+					if not fn[1] == "confirm" then
 						button:SetOnClick( function() fn.TeleportFn(fn.TeleportNum) end)
 					else
 						button:SetOnClick( function() self:FlushConfirmScreen(fn) end)
