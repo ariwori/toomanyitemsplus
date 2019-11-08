@@ -45,7 +45,6 @@ function SearchScreen:OnRawKey(key, down)
 	if self.config.rawkeyfn ~= nil then
 		self.config.rawkeyfn(key, self)
 	end
-
 	return true
 end
 

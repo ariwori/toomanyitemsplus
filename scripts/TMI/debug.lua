@@ -125,21 +125,57 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_FDAYS,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_FDAYSTIP,
-				fn = 'c_skip(5)',
+				fn = {'c_skip(5)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRMTIP}
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_TDAYS,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_TDAYSTIP,
-				fn = 'c_skip(10)',
+				fn = {'c_skip(10)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRMTIP}
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_20DAYS,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_20DAYSTIP,
-				fn = 'c_skip(20)',
+				fn = {'c_skip(20)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRMTIP}
+			},
+
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_0P5XRUM,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_0P5XRUMTIP,
+				fn = {'TheSim:SetTimeScale(0.5) print("Speed is now ", TheSim:GetTimeScale())', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRMTIP }
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_1XRUM,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_1XRUMTIP,
+				fn = {'TheSim:SetTimeScale(1) print("Speed is now ", TheSim:GetTimeScale())', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRMTIP }
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_2XRUM,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_2XRUMTIP,
+				fn = {'TheSim:SetTimeScale(2) print("Speed is now ", TheSim:GetTimeScale())', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRMTIP }
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_3XRUM,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_3XRUMTIP,
+				fn = {'TheSim:SetTimeScale(3) print("Speed is now ", TheSim:GetTimeScale())', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRMTIP }
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_4XRUM,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_4XRUMTIP,
+				fn = {'TheSim:SetTimeScale(4) print("Speed is now ", TheSim:GetTimeScale())', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRMTIP }
 			},
 		},
 	},
@@ -217,28 +253,28 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_KILL,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_KILLTIP,
-				fn = '%s:PushEvent("death")',
+				fn = {'%s:PushEvent("death")', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_KILLTIP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_KILLCONFIRMTIP}
 			},
 			{
 				beta = false,
 				pos = "all",
-				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTERREBIRTH,
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTH,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTHTIP,
-				fn = '%s:PushEvent("respawnfromghost")',
+				fn = {'%s:PushEvent("respawnfromghost")', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTHTIP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTHCONFIRMTIP}
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_DESPAWN,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_DESPAWNTIP,
-				fn = 'c_despawn(%s)',
+				fn = {'c_despawn(%s)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_DESPAWN, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_DESPAWNCONFIRMTIP}
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_GATHER,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_GATHERTIP,
-				fn = 'local x,y,z = %s.Transform:GetWorldPosition() for k,v in pairs(AllPlayers) do v.Transform:SetPosition(x,y,z) end',
+				fn = {'local x,y,z = %s.Transform:GetWorldPosition() for k,v in pairs(AllPlayers) do v.Transform:SetPosition(x,y,z) end', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_GATHERTIP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_GATHERCONFIRMTIP}
 			},
 			{
 				beta = false,
@@ -391,14 +427,14 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESET,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP,
-				fn = {'c_reset()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETCONFIRM}
+				fn = {'c_reset()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESET, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETCONFIRM}
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATETIP,
-				fn = {'c_regenerateworld()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATETIP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATECONFIRM}
+				fn = {'c_regenerateworld()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATE, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATECONFIRM}
 			},
 			{
 				beta = false,
@@ -424,6 +460,61 @@ return {
 		},
 	},
 	{
+		tittle = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXT,
+		list = {
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.UI.SANDBOXMENU.NONE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.NONE,
+				fn = {'ApplySpecialEvent("none") TheWorld.topology.overrides.specialevent = "none" c_save()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.NONE, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.DEFAULT,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.DEFAULT,
+				fn = {'ApplySpecialEvent("default") TheWorld.topology.overrides.specialevent = "default" c_save()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.DEFAULT, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.HALLOWED_NIGHTS,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.HALLOWED_NIGHTS,
+				fn = {'ApplySpecialEvent("hallowed_nights") TheWorld.topology.overrides.specialevent = "hallowed_nights" c_save()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.HALLOWED_NIGHTS, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.WINTERS_FEAST,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.WINTERS_FEAST,
+				fn = {'ApplySpecialEvent("winters_feast") TheWorld.topology.overrides.specialevent = "winters_feast" c_save()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.WINTERS_FEAST, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG,
+				fn = {'ApplySpecialEvent("year_of_the_gobbler") TheWorld.topology.overrides.specialevent = "year_of_the_gobbler" c_save()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV,
+				fn = {'ApplySpecialEvent("year_of_the_varg") TheWorld.topology.overrides.specialevent = "year_of_the_varg" c_save()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP,
+				fn = {'ApplySpecialEvent("year_of_the_pig") TheWorld.topology.overrides.specialevent = "year_of_the_pig" c_save()', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+			},
+
+		},
+	},	
+	{
 		tittle = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK,
 		list = {
 			{
@@ -432,6 +523,7 @@ return {
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_ONE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_ONETIP,
 				fn = 'c_rollback(1)',
+				
 			},
 			{
 				beta = false,
@@ -495,228 +587,233 @@ return {
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDETIP,
 				fn = function() ExecuteConsoleCommand('TheWorld.minimap.MiniMap:ClearRevealedAreas()') end,
 			},
+		},	
+	},
+	{
+		tittle = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TEXT,
+		list = {
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.NAMES.MULTIPLAYER_PORTAL.."/"..STRINGS.NAMES.MULTIPLAYER_PORTAL_MOONROCK,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.MULTIPLAYER_PORTAL.."/"..STRINGS.NAMES.MULTIPLAYER_PORTAL_MOONROCK,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MULTIPLAYER_PORTAL.."/"..STRINGS.NAMES.MULTIPLAYER_PORTAL_MOONROCK,
 				fn = gotoswitch("multiplayer_portal","multiplayer_portal_moonrock"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.CAVE_ENTRANCE_OPEN.."/"..STRINGS.NAMES.CAVE_ENTRANCE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.CAVE_ENTRANCE_OPEN.."/"..STRINGS.NAMES.CAVE_ENTRANCE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.CAVE_ENTRANCE_OPEN.."/"..STRINGS.NAMES.CAVE_ENTRANCE,
 				fn = gotoswitch("cave_entrance_open", "cave_entrance"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.PIGKING,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.PIGKING,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.PIGKING,
 				fn = gotoswitch("pigking"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.WALRUS_CAMP,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.WALRUS_CAMP,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.WALRUS_CAMP,
 				fn = gotoswitch("walrus_camp"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.MOONBASE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.MOONBASE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MOONBASE,
 				fn = gotoswitch("moonbase"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.STAGEHAND,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.STAGEHAND,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.STAGEHAND,
 				fn = gotoswitch("stagehand"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.SCULPTURE_BODY,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.SCULPTURE_BODY,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.SCULPTURE_BODY,
 				fn = gotoswitch("sculpture_rookbody","sculpture_knightbody","sculpture_bishopbody"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.OASISLAKE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.OASISLAKE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.OASISLAKE,
 				fn = gotoswitch("oasislake"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.MOON_ALTAR_ROCK_GLASS,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.MOON_ALTAR_ROCK_GLASS,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MOON_ALTAR_ROCK_GLASS,
 				fn = gotoswitch("moon_altar_rock_glass","moon_altar_rock_idol","moon_altar_rock_seed"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.MOON_FISSURE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.MOON_FISSURE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MOON_FISSURE,
 				fn = gotoswitch("moon_fissure"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.LAVA_POND,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.LAVA_POND,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.LAVA_POND,
 				fn = gotoswitch("lava_pond"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.BEEQUEENHIVE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.BEEQUEENHIVE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.BEEQUEENHIVE,
 				fn = gotoswitch("beequeenhive"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.CRITTERLAB,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.CRITTERLAB,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.CRITTERLAB,
 				fn = gotoswitch("critterlab"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.KLAUS_SACK,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.KLAUS_SACK,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.KLAUS_SACK,
 				fn = gotoswitch("klaus_sack"),
 			},
 			{
 				beta = false,
 				pos = "cave",
 				name = STRINGS.NAMES.CAVE_EXIT,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.CAVE_EXIT,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.CAVE_EXIT,
 				fn = gotoswitch("cave_exit"),
 			},
 			{
 				beta = false,
 				pos = "cave",
 				name = STRINGS.NAMES.ANCIENT_ALTAR,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.ANCIENT_ALTAR,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.ANCIENT_ALTAR,
 				fn = gotoswitch("ancient_altar", "ancient_altar_broken"),
 			},
 			{
 				beta = false,
 				pos = "cave",
 				name = STRINGS.NAMES.TOADSTOOL,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.TOADSTOOL,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.TOADSTOOL,
 				fn = gotoswitch("toadstool_cap"),
 			},
 			{
 				beta = false,
 				pos = "cave",
 				name = STRINGS.NAMES.RABBITHOUSE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.RABBITHOUSE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.RABBITHOUSE,
 				fn = gotoswitch("rabbithouse"),
 			},
 			{
 				beta = false,
 				pos = "cave",
 				name = STRINGS.NAMES.MONKEYBARREL,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.MONKEYBARREL,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MONKEYBARREL,
 				fn = gotoswitch("monkeybarrel"),
 			},
 			{
 				beta = false,
 				pos = "cave",
 				name = STRINGS.NAMES.ATRIUM_GATE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.ATRIUM_GATE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.ATRIUM_GATE,
 				fn = gotoswitch("atrium_gate"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.ANTLION,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.ANTLION,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.ANTLION,
 				fn = gotoswitch("antlion"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.STATUEMAXWELL,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.STATUEMAXWELL,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.STATUEMAXWELL,
 				fn = gotoswitch("statuemaxwell"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.STATUEGLOMMER,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.STATUEGLOMMER,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.STATUEGLOMMER,
 				fn = gotoswitch("statueglommer"),
 			},
 --[[ 			{
 				beta = true,
 				pos = "forest",
 				name = STRINGS.NAMES.HOTSPRING,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.HOTSPRING,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.HOTSPRING,
 				fn = gotoswitch("hotspring"),
 			}, ]]
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.LIGHTNINGGOAT,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.LIGHTNINGGOAT,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.LIGHTNINGGOAT,
 				fn = gotoswitch("lightninggoat"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.CHESTER_EYEBONE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.CHESTER_EYEBONE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.CHESTER_EYEBONE,
 				fn = gotoswitch("chester_eyebone"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.GEARS,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.GEARS,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.GEARS,
 				fn = gotoswitch("knight","bishop","rook","gears","knight_nightmare","bishop_nightmare","rook_nightmare"),
 			},
 			{
 				beta = false,
 				pos = "forest",
 				name = STRINGS.NAMES.SCULTURE_HEAD,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.SCULTURE_HEAD,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.SCULTURE_HEAD,
 				fn = gotoswitch("sculpture_knighthead","sculpture_bishophead","sculpture_rookhead"),
 			},
 			{
 				beta = false,
 				pos = "cave",
 				name = STRINGS.NAMES.MINOTAUR,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.MINOTAUR,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MINOTAUR,
 				fn = gotoswitch("minotaur"),
 			},
 			{
 				beta = false,
 				pos = "cave",
 				name = STRINGS.NAMES.TENTACLE_PILLAR,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.TENTACLE_PILLAR,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.TENTACLE_PILLAR,
 				fn = gotoswitch("tentacle_pillar"),
 			},
 			{
 				beta = false,
 				pos = "cave",
 				name = STRINGS.NAMES.ATRIUM_GATE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.ATRIUM_GATE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.ATRIUM_GATE,
 				fn = gotoswitch("atrium_gate"),
 			},
 			{
 				beta = false,
 				pos = "cave",
 				name = STRINGS.NAMES.HUTCH_FISHBOWL,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TELEPORTTIP..STRINGS.NAMES.HUTCH_FISHBOWL,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.HUTCH_FISHBOWL,
 				fn = gotoswitch("hutch_fishbowl"),
 			},
 		},

@@ -23,11 +23,30 @@ end
 
 local function needconfirmfn(fnstr)
 	local need_confirm_fns = {
+		'ApplySpecialEvent("none") TheWorld.topology.overrides.specialevent = "none" c_save()',
+		'ApplySpecialEvent("default") TheWorld.topology.overrides.specialevent = "default" c_save()',
+		'ApplySpecialEvent("hallowed_nights") TheWorld.topology.overrides.specialevent = "hallowed_nights" c_save()',
+		'ApplySpecialEvent("winters_feast") TheWorld.topology.overrides.specialevent = "winters_feast" c_save()',
+		'ApplySpecialEvent("year_of_the_gobbler") TheWorld.topology.overrides.specialevent = "year_of_the_gobbler" c_save()',
+		'ApplySpecialEvent("year_of_the_varg") TheWorld.topology.overrides.specialevent = "year_of_the_varg" c_save()',
+		'ApplySpecialEvent("year_of_the_pig") TheWorld.topology.overrides.specialevent = "year_of_the_pig" c_save()',
+		'%s:PushEvent("death")',
+		'%s:PushEvent("respawnfromghost")',
+		'local x,y,z = %s.Transform:GetWorldPosition() for k,v in pairs(AllPlayers) do v.Transform:SetPosition(x,y,z) end',
+		'c_despawn(%s)',
+		'TheSim:SetTimeScale(0.5) print("Speed is now ", TheSim:GetTimeScale())',
+		'TheSim:SetTimeScale(1) print("Speed is now ", TheSim:GetTimeScale())',
+		'TheSim:SetTimeScale(2) print("Speed is now ", TheSim:GetTimeScale())',
+		'TheSim:SetTimeScale(3) print("Speed is now ", TheSim:GetTimeScale())',
+		'TheSim:SetTimeScale(4) print("Speed is now ", TheSim:GetTimeScale())',
+		'c_regenerateworld()',
 		'c_reset()',
-		'c_regenerateworld()'
+		'c_skip(10)',
+		'c_skip(20)',
+		'c_skip(5)'
 	}
 	for k, v in pairs(need_confirm_fns) do
-		if fnstr == v then return true end
+		if fnstr == v then 	print(fnstr) return true end
 	end
 	return false
 end
@@ -61,7 +80,6 @@ local function SendCommand(fnstr)
 		ExecuteConsoleCommand(fnstr)
 	end
 end
-
 local writeable_config = {
 	animbank = "ui_board_5x3",
 	animbuild = "ui_board_5x3",
@@ -151,7 +169,7 @@ end
 
 function TooManyItems:FlushConfirmScreen(fn)
 	local confirmscreen
-	confirmscreen = PopupDialogScreen(fn[2], fn[3],	{{text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = function() SendCommand(fn[1]) end },	{ text = STRINGS.UI.TRADESCREEN.CANCEL, cb = function()	TheFrontEnd:PopScreen(confirmscreen) end}})
+	confirmscreen = PopupDialogScreen(fn[2], fn[3],	{{text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = function() SendCommand(fn[1]) TheFrontEnd:PopScreen(confirmscreen) end },	{ text = STRINGS.UI.TRADESCREEN.CANCEL, cb = function()	TheFrontEnd:PopScreen(confirmscreen) end}})
 	TheFrontEnd:PushScreen(confirmscreen)
 end
 
@@ -267,10 +285,10 @@ function TooManyItems:DebugMenu()
 					if not needconfirmfn(fn[1]) then
 						button:SetOnClick( function() fn.TeleportFn(fn.TeleportNum) end)
 					else
-						button:SetOnClick(function() self:FlushConfirmScreen(fn) end)
+						button:SetOnClick( function() self:FlushConfirmScreen(fn) end)
 					end
 				elseif type(fn) == "string" then
-						button:SetOnClick( function() SendCommand(string.format(fn, GetCharacter())) end)
+					button:SetOnClick( function() SendCommand(string.format(fn, GetCharacter())) end)
 				elseif type(fn) == "function" then
 					button:SetOnClick(fn)
 				end
@@ -320,7 +338,6 @@ function TooManyItems:OnControl(control, down)
 			self:Close()
 		end
 	end
-
 	return true
 end
 
