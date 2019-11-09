@@ -12,80 +12,12 @@ local NAMES_DEFAULTS = {
 	MOON_ALTAR = "MOON_ALTAR",
 }
 
--- 修饰词
-local adj_words = {
-	"small",
-	"medium",
-	"large",
-	"short",
-	"tall",
-	"med"
-}
-
--- 包含这些词则不能删形容词
-local not_remove = {
-	"spore",
-	"bravery",
-	"halloweenpotion",
-	"bundle",
-	"deciduoustree"
-}
-
-local function do_not_remove(str)
-	for k,v in ipairs(not_remove) do
-		if v == str then
-				return true
-		end
-	end
-	return false
-end
-
-local function is_adj(str)
-	for k,v in ipairs(adj_words) do
-		if v == str then
-				return true
-		end
-	end
-	return false
-end
-
 local function split(str,reps)
 	local resultStrList = {}
 	string.gsub(str,'[^'..reps..']+',function (w)
 			table.insert(resultStrList,w)
 	end)
 	return resultStrList
-end
-
--- 去除形容词
-local function removeadj(str)
-	local newstr = str
-	local strarr = split(str, "_")
-	if strarr ~= nil and next(strarr) ~= nil then
-		local canremove = true
-		for i = #strarr, 1, -1 do
-			if do_not_remove(strarr[i]) then
-				canremove = false
-				break
-			end
-		end
-		if canremove then
-			for i = #strarr, 1, -1 do
-				if is_adj(strarr[i]) and strarr[i] ~= "spore" then
-						table.remove(strarr, i)
-				end
-			end
-			newstr=""
-			for k,v in ipairs(strarr) do
-				if k ~= #strarr then
-					newstr = newstr..strarr[k].."_"
-				else
-					newstr = newstr..strarr[k]
-				end
-			end
-		end
-	end
-	return newstr
 end
 
 -- 调料食物
