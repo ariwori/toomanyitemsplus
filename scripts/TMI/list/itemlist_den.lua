@@ -44,6 +44,13 @@ return {
 	"klaus_sack",
 	"toadstool_cap",
 --刷新点（不可见）
+	"slurper_spawner",
+	"worm_spawner",
+	"monkeybarrel_spawner",
+	"bishop_nightmare_spawner",
+	"knight_nightmare_spawner",
+	"rook_nightmare_spawner",
 	"dragonfly_spawner",
 	"antlion_spawner",
+	"minotaur_spawner",
 }

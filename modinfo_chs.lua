@@ -35,14 +35,14 @@ for i = 1,#alpha do keyslist[i] = {description = alpha[i],data = i + KEY_A - 1} 
 
 configuration_options = {
 	{
-		name = "TMI_TOGGLE_KEY",
+		name = "GOP_TMIP_TOGGLE_KEY",
 		label = "按键",
 		hover = "显示和隐藏 TMI 面板的键位设置.",
 		options = keyslist,
 		default = 116, --T
 	},
 	{
-		name = "TMI_L_CLICK_NUM",
+		name = "GOP_TMIP_L_CLICK_NUM",
 		label = "左击",
 		hover = "鼠标左键获得的物品数量.",
 		options =
@@ -56,7 +56,7 @@ configuration_options = {
 		default = 1,
 	},
 	{
-		name = "TMI_R_CLICK_NUM",
+		name = "GOP_TMIP_R_CLICK_NUM",
 		label = "右击",
 		hover = "鼠标右键获得的物品数量.",
 		options =
@@ -70,7 +70,7 @@ configuration_options = {
 		default = 10,
 	},
 	{
-		name = "TMI_DATA_SAVE",
+		name = "GOP_TMIP_DATA_SAVE",
 		label = "储存数据?",
 		hover = "是否储存 TMI 的数据?",
 		options =
@@ -82,7 +82,7 @@ configuration_options = {
 		default = 1,
 	},
 	{
-		name = "TMI_SEARCH_HISTORY_NUM",
+		name = "GOP_TMIP_SEARCH_HISTORY_NUM",
 		label = "搜索历史最大数量",
 		hover = "仅仅存储这些数目的搜索历史.",
 		options =
@@ -97,39 +97,45 @@ configuration_options = {
 		default = 10,
 	},
 	{
-		name = "TMI_CATEGORY_FONT_SIZE",
+		name = "GOP_TMIP_CATEGORY_FONT_SIZE",
 		label = "设置分类标签的字体大小",
 		hover = "如果你使用了其他字体，你可以在这里调整字体大小。",
 		options =
 		{
+			{description = "12", data = 12},
+			{description = "14", data = 14},
+			{description = "16", data = 16},
+			{description = "18", data = 18},
+			{description = "20", data = 20},
 			{description = "22", data = 22},
-			{description = "23", data = 23},
 			{description = "24", data = 24},
-			{description = "25", data = 25},
 			{description = "26", data = 26},
-			{description = "27", data = 27},
 			{description = "28", data = 28},
+			{description = "30", data = 30},
 		},
-		default = 25,
+		default = 24,
 	},
 	{
-		name = "TMI_DEBUG_FONT_SIZE",
+		name = "GOP_TMIP_DEBUG_FONT_SIZE",
 		label = "设置调试菜单的字体大小",
 		hover = "如果你使用了其他字体，你可以在这里调整字体大小。",
 		options =
 		{
+			{description = "12", data = 12},
+			{description = "14", data = 14},
+			{description = "16", data = 16},
+			{description = "18", data = 18},
+			{description = "20", data = 20},
 			{description = "22", data = 22},
-			{description = "23", data = 23},
 			{description = "24", data = 24},
-			{description = "25", data = 25},
 			{description = "26", data = 26},
-			{description = "27", data = 27},
 			{description = "28", data = 28},
+			{description = "30", data = 30},
 		},
-		default = 25,
+		default = 24,
 	},
 	{
-		name = "TMI_DEBUG_MENU_SIZE",
+		name = "GOP_TMIP_DEBUG_MENU_SIZE",
 		label = "设置调试菜单的窗口宽度",
 		hover = "如果你的分辨率为1920*1080及以上，你可以增加宽度获得更好的显示效果。",
 		options =
@@ -142,5 +148,16 @@ configuration_options = {
 			{description = "700", data = 700},
 		},
 		default = 550,
+	},
+	{
+		name = "GOP_TMIP_SPAWN_ITEMS_TIPS",
+		label = "生成物品的提示",
+		hover = "如果你已经知道怎么使用这个mod，可以关闭提示。",
+		options =
+		{
+			{description = "开启提示", data = true},
+			{description = "关闭提示", data = false},
+		},
+		default = true,
 	},
 }

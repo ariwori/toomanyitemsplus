@@ -216,7 +216,7 @@ function TMI_Menubar:InitSidebar()
 
 	local function MakeSidebar(buttonlist)
 		--fontsize = 25
-		local fontsize = _G.TOOMANYITEMS.CATEGORY_FONT_SIZE
+		local fontsize = _G.TOOMANYITEMS.G_TMIP_CATEGORY_FONT_SIZE
 		local left = -self.owner.shieldsize_x * .5
 		local spacing = 3.5
 		local top = self.owner.shieldsize_y * .5
@@ -448,7 +448,7 @@ function TMI_Menubar:LoadSearchData()
 end
 
 function TMI_Menubar:SaveData()
-	if TOOMANYITEMS.DATA_SAVE == 1 then
+	if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
 		TOOMANYITEMS.SaveNormalData()
 	end
 end

@@ -1,5 +1,5 @@
 return {
---prefab名称转换，以匹配图标xml中的名称
+--prefab名称转换，以匹配贴图xml中现成可用的图片名称
 	prefablist = {
 --宠物
 		["critter_dragonling"] = "critter_dragonling_builder",

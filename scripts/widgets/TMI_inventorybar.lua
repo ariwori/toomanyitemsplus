@@ -86,7 +86,7 @@ function TMI_Inventory:Scroll(dir)
 	if tempcurrentpage ~= self.currentpage then
 		if not TOOMANYITEMS.DATA.issearch then
 			TOOMANYITEMS.DATA.currentpage[TOOMANYITEMS.DATA.listinuse] = self.currentpage
-			if TOOMANYITEMS.DATA_SAVE == 1 then
+			if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
 				TOOMANYITEMS.SaveNormalData()
 			end
 		end

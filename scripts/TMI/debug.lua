@@ -46,7 +46,7 @@ local function SaveTeleportData(slot_num)
 		TOOMANYITEMS.TELEPORT_DATA[slot_num]["x"] = x
 		TOOMANYITEMS.TELEPORT_DATA[slot_num]["z"] = z
 
-		if TOOMANYITEMS.DATA_SAVE == 1 then
+		if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
 			TOOMANYITEMS.SaveData(savepath, TOOMANYITEMS.TELEPORT_DATA)
 		end
 	end
@@ -522,7 +522,7 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_ONE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_ONETIP,
-				fn = 'c_rollback(1)',
+				fn =  {'confirm', 'c_rollback(1)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 
 			},
 			{
@@ -530,35 +530,35 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_TWO,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_TWOTIP,
-				fn = 'c_rollback(2)',
+				fn =  {'confirm', 'c_rollback(2)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_THREE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_THREETIP,
-				fn = 'c_rollback(3)',
+				fn =  {'confirm', 'c_rollback(3)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FOUR,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FOURTIP,
-				fn = 'c_rollback(4)',
+				fn =  {'confirm', 'c_rollback(4)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FIVE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FIVETIP,
-				fn = 'c_rollback(5)',
+				fn =  {'confirm', 'c_rollback(5)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_SIX,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_SIXTIP,
-				fn = 'c_rollback(6)',
+				fn =  {'confirm', 'c_rollback(6)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 			},
 		},
 	},

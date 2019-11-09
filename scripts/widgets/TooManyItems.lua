@@ -96,11 +96,11 @@ local TooManyItems = Class(Widget, function(self)
 		local world_id = TheWorld.meta.session_identifier or "world"
 		local savepath = TOOMANYITEMS.TELEPORT_DATA_FILE .. "toomanyitemsplus_teleport_save_"..world_id
 
-		if TOOMANYITEMS.DATA_SAVE == 1 then
+		if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
 			if TOOMANYITEMS.LoadData(savepath) then
 				TOOMANYITEMS.TELEPORT_DATA = TOOMANYITEMS.LoadData(savepath)
 			end
-		elseif TOOMANYITEMS.DATA_SAVE == -1 then
+		elseif TOOMANYITEMS.G_TMIP_DATA_SAVE == -1 then
 			_G.TheSim:GetPersistentString(savepath, function(load_success, str) if load_success then _G.ErasePersistentString(savepath, nil) end end)
 		end
 
@@ -129,7 +129,7 @@ function TooManyItems:ShowDebugMenu()
 		self.debugshield:Show()
 		TOOMANYITEMS.DATA.IsDebugMenuShow = true
 	end
-	if TOOMANYITEMS.DATA_SAVE == 1 then
+	if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
 		TOOMANYITEMS.SaveNormalData()
 	end
 end
@@ -170,8 +170,8 @@ end
 function TooManyItems:DebugMenu()
 	--self.debugwidth = 550
 	--self.fontsize = 25
-	self.fontsize = _G.TOOMANYITEMS.DEBUG_FONT_SIZE
-	self.debugwidth = _G.TOOMANYITEMS.DEBUG_MENU_SIZE
+	self.fontsize = _G.TOOMANYITEMS.G_TMIP_DEBUG_FONT_SIZE
+	self.debugwidth = _G.TOOMANYITEMS.G_TMIP_DEBUG_MENU_SIZE
 	self.font = BODYTEXTFONT
 	self.minwidth = 36
 	self.nextline = 24
@@ -248,10 +248,10 @@ function TooManyItems:DebugMenu()
 
 				local fn = buttonlist[i].fn
 				if type(fn) == "table" then
-					if not fn[1] == "confirm" then
-						button:SetOnClick( function() fn.TeleportFn(fn.TeleportNum) end)
-					else
+					if fn[1] == "confirm" then
 						button:SetOnClick( function() self:FlushConfirmScreen(fn) end)
+					else
+						button:SetOnClick( function() fn.TeleportFn(fn.TeleportNum) end)
 					end
 				elseif type(fn) == "string" then
 					button:SetOnClick( function() SendCommand(string.format(fn, GetCharacter())) end)

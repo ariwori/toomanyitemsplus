@@ -1,4 +1,4 @@
---Ӱ�쵽��ȫ����Ʒ���е���Ʒ��ֵΪtrue�ķ���ᱻ���롰ȫ����Ʒ����ֵΪfalse�ķ��಻�ᱻ���롰ȫ����Ʒ��
+--影响到“全部物品”中的物品，值为true的分类会被列入“全部物品”，值为false的分类不会被列入“全部物品”
 local Listload = {
 	["food"] = true,
 	["seeds"] = true,

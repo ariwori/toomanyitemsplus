@@ -2,7 +2,7 @@ local Image = require "widgets/image"
 local Text = require "widgets/text"
 local Widget = require "widgets/widget"
 
-local custom_atlas = _G.TOOMANYITEMS.TMIP_MOD_ROOT .. "images/customicobyysh.xml"
+local custom_atlas = _G.TOOMANYITEMS.G_TMIP_MOD_ROOT .. "images/customicobyysh.xml"
 local base_atlas = "images/inventoryimages.xml"
 local base_atlas_1 = "images/inventoryimages1.xml"
 local base_atlas_2 = "images/inventoryimages2.xml"

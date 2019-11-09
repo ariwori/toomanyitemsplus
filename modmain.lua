@@ -15,22 +15,22 @@ _G.TOOMANYITEMS = {
 	TELEPORT_DATA = {},
 	LIST = {},
 
-	TMI_TOGGLE_KEY = GetModConfigData("TMI_TOGGLE_KEY"),
-	L_CLICK_NUM = GetModConfigData("TMI_L_CLICK_NUM"),
-	R_CLICK_NUM = GetModConfigData("TMI_R_CLICK_NUM"),
-	DATA_SAVE = GetModConfigData("TMI_DATA_SAVE"),
-	SEARCH_HISTORY_NUM = GetModConfigData("TMI_SEARCH_HISTORY_NUM"),
-	CATEGORY_FONT_SIZE = GetModConfigData("TMI_CATEGORY_FONT_SIZE"),
-	DEBUG_FONT_SIZE = GetModConfigData("TMI_DEBUG_FONT_SIZE"),
-	DEBUG_MENU_SIZE = GetModConfigData("TMI_DEBUG_MENU_SIZE"),
-	TMIP_MOD_ROOT = MODROOT,
+	G_TMIP_TOGGLE_KEY = GetModConfigData("GOP_TMIP_TOGGLE_KEY"),
+	G_TMIP_L_CLICK_NUM = GetModConfigData("GOP_TMIP_L_CLICK_NUM"),
+	G_TMIP_R_CLICK_NUM = GetModConfigData("GOP_TMIP_R_CLICK_NUM"),
+	G_TMIP_DATA_SAVE = GetModConfigData("GOP_TMIP_DATA_SAVE"),
+	G_TMIP_SEARCH_HISTORY_NUM = GetModConfigData("GOP_TMIP_SEARCH_HISTORY_NUM"),
+	G_TMIP_CATEGORY_FONT_SIZE = GetModConfigData("GOP_TMIP_CATEGORY_FONT_SIZE"),
+	G_TMIP_DEBUG_FONT_SIZE = GetModConfigData("GOP_TMIP_DEBUG_FONT_SIZE"),
+	G_TMIP_DEBUG_MENU_SIZE = GetModConfigData("GOP_TMIP_DEBUG_MENU_SIZE"),
+	G_TMIP_MOD_ROOT = MODROOT,
+	G_TMIP_SPAWN_ITEMS_TIPS = GetModConfigData("GOP_TMIP_SPAWN_ITEMS_TIPS"),
 }
 
-if _G.TOOMANYITEMS.DATA_SAVE == -1 then
+if _G.TOOMANYITEMS.G_TMIP_DATA_SAVE == -1 then
 	local filepath = _G.TOOMANYITEMS.DATA_FILE
 	_G.TheSim:GetPersistentString(filepath, function(load_success, str) if load_success then _G.ErasePersistentString(filepath, nil) end end)
-elseif _G.TOOMANYITEMS.DATA_SAVE == 1 then
-	print(filepath)
+elseif _G.TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
 	_G.TOOMANYITEMS.LoadData = function(filepath)
 		local data = nil
 		_G.TheSim:GetPersistentString(filepath,
@@ -102,7 +102,7 @@ local function LoadTranslation()
 end
 
 local function DataInit()
-	if _G.TOOMANYITEMS.DATA_SAVE == 1 then
+	if _G.TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
 		_G.TOOMANYITEMS.DATA = _G.TOOMANYITEMS.LoadData(_G.TOOMANYITEMS.DATA_FILE)
 	end
 	if _G.TOOMANYITEMS.DATA == nil then
@@ -124,7 +124,7 @@ local function DataInit()
 		_G.TOOMANYITEMS.DATA.searchhistory = {}
 	else
 		local history_num = #_G.TOOMANYITEMS.DATA.searchhistory
-		local beyond = history_num - _G.TOOMANYITEMS.SEARCH_HISTORY_NUM
+		local beyond = history_num - _G.TOOMANYITEMS.G_TMIP_SEARCH_HISTORY_NUM
 		if beyond > 0 then
 			local history = {}
 			for i = beyond + 1, history_num do
@@ -189,4 +189,4 @@ local function ShowTMIMenu()
 	end
 end
 
-_G.TheInput:AddKeyUpHandler(_G.TOOMANYITEMS.TMI_TOGGLE_KEY, ShowTMIMenu)
+_G.TheInput:AddKeyUpHandler(_G.TOOMANYITEMS.G_TMIP_TOGGLE_KEY, ShowTMIMenu)
