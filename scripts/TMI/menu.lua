@@ -16,12 +16,13 @@ local function GetCharacter()
 end
 
 local function OperateAnnnounce(message)
-	--鍒ゆ柇鐢ㄦ埛鏄惁寮�鍚簡鎻愮ず
+	--判断用户是否开启了提示
 	if _G.TOOMANYITEMS.G_TMIP_SPAWN_ITEMS_TIPS then
 		if ThePlayer then
 			ThePlayer:DoTaskInTime(0.1, function()
 				if ThePlayer.components.talker then
-					ThePlayer.components.talker:Say("[TMIP]("..UserToName(TOOMANYITEMS.CHARACTER_USERID)..") " .. message)
+					--ThePlayer.components.talker:Say("[TMIP]("..UserToName(TOOMANYITEMS.CHARACTER_USERID)..") " .. message)
+					ThePlayer.components.talker:Say("[TMIP]".. message)
 				end
 			end)
 		end
@@ -34,6 +35,7 @@ local function HealthSet()
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH_1)
 	else
 		SendCommand(string.format('local player = %s local v = player.components.health if player and not player:HasTag("playerghost") and v then v:SetPercent(1) end', GetCharacter()))
+		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH)
 	end
 end
 
@@ -43,6 +45,7 @@ local function SanitySet()
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SANITY_1)
 	else
 		SendCommand(string.format('local player = %s local v = player.components.sanity if player and not player:HasTag("playerghost") and v then v:SetPercent(1) end', GetCharacter()))
+		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SANITY)
 	end
 end
 
@@ -52,6 +55,7 @@ local function HungerSet()
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HUNGER_1)
 	else
 		SendCommand(string.format('local player = %s local v = player.components.hunger if player and not player:HasTag("playerghost") and v then v:SetPercent(1) end', GetCharacter()))
+		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HUNGER)
 	end
 end
 
@@ -61,6 +65,7 @@ local function MoistureSet()
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WET_1)
 	else
 		SendCommand(string.format('local player = %s local v = player.components.moisture if player and not player:HasTag("playerghost") and v then v:SetPercent(0) end', GetCharacter()))
+		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WET)
 	end
 end
 
@@ -70,31 +75,35 @@ local function TemperatureSet()
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_TEMPERATURE_1)
 	else
 		SendCommand(string.format('local player = %s local v = player.components.temperature if player and not player:HasTag("playerghost") and v then v:SetTemperature(25) end', GetCharacter()))
+		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_TEMPERATURE)
 	end
 end
 
 local function BeavernessSet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
 		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(0) end', GetCharacter()))
-		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_BEAVER_WEREMETER_1)
+		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
 	else
 		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(1) end', GetCharacter()))
+		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_BEAVER_WEREMETER)
 	end
 end
 local function GoosenessSet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
 		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(0) end', GetCharacter()))
-		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GOOSE_WEREMETER_1)
+		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
 	else
 		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(1) end', GetCharacter()))
+		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GOOSE_WEREMETER)
 	end
 end
 local function MoosenessSet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
 		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(0) end', GetCharacter()))
-		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_MOOSE_WEREMETER_1)
+		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
 	else
 		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(1) end', GetCharacter()))
+		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_MOOSE_WEREMETER)
 	end
 end
 

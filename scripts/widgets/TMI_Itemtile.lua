@@ -27,6 +27,7 @@ local function removespice(str)
 	if strarr ~= nil then
 		table.remove(strarr, #strarr)
 		table.remove(strarr, #strarr)
+
 		newstr=""
 		for k,v in ipairs(strarr) do
 			if k ~= #strarr then

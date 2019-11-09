@@ -522,7 +522,7 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_ONE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_ONETIP,
-				fn =  {'confirm', 'c_rollback(1)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
+				fn =  {'confirm', 'c_rollback(1)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 
 			},
 			{
@@ -530,35 +530,35 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_TWO,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_TWOTIP,
-				fn =  {'confirm', 'c_rollback(2)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
+				fn =  {'confirm', 'c_rollback(2)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_THREE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_THREETIP,
-				fn =  {'confirm', 'c_rollback(3)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
+				fn =  {'confirm', 'c_rollback(3)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FOUR,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FOURTIP,
-				fn =  {'confirm', 'c_rollback(4)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
+				fn =  {'confirm', 'c_rollback(4)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FIVE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FIVETIP,
-				fn =  {'confirm', 'c_rollback(5)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
+				fn =  {'confirm', 'c_rollback(5)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_SIX,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_SIXTIP,
-				fn =  {'confirm', 'c_rollback(6)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
+				fn =  {'confirm', 'c_rollback(6)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
 			},
 		},
 	},
@@ -597,12 +597,12 @@ return {
 				pos = "all",
 				name = STRINGS.NAMES.MULTIPLAYER_PORTAL.."/"..STRINGS.NAMES.MULTIPLAYER_PORTAL_MOONROCK,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MULTIPLAYER_PORTAL.."/"..STRINGS.NAMES.MULTIPLAYER_PORTAL_MOONROCK,
-				fn = gotoswitch("multiplayer_portal","multiplayer_portal_moonrock"),
+				fn = gotoswitch("multiplayer_portal", "multiplayer_portal_moonrock"),
 			},
 			{
 				beta = false,
 				pos = "forest",
-				name = STRINGS.NAMES.CAVE_ENTRANCE_OPEN.."/"..STRINGS.NAMES.CAVE_ENTRANCE,
+				name = STRINGS.NAMES.CAVE_ENTRANCE_OPEN,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.CAVE_ENTRANCE_OPEN.."/"..STRINGS.NAMES.CAVE_ENTRANCE,
 				fn = gotoswitch("cave_entrance_open", "cave_entrance"),
 			},
@@ -616,30 +616,9 @@ return {
 			{
 				beta = false,
 				pos = "forest",
-				name = STRINGS.NAMES.WALRUS_CAMP,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.WALRUS_CAMP,
-				fn = gotoswitch("walrus_camp"),
-			},
-			{
-				beta = false,
-				pos = "forest",
 				name = STRINGS.NAMES.MOONBASE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MOONBASE,
 				fn = gotoswitch("moonbase"),
-			},
-			{
-				beta = false,
-				pos = "forest",
-				name = STRINGS.NAMES.STAGEHAND,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.STAGEHAND,
-				fn = gotoswitch("stagehand"),
-			},
-			{
-				beta = false,
-				pos = "forest",
-				name = STRINGS.NAMES.SCULPTURE_BODY,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.SCULPTURE_BODY,
-				fn = gotoswitch("sculpture_rookbody","sculpture_knightbody","sculpture_bishopbody"),
 			},
 			{
 				beta = false,
@@ -651,9 +630,23 @@ return {
 			{
 				beta = false,
 				pos = "forest",
-				name = STRINGS.NAMES.MOON_ALTAR_ROCK_GLASS,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MOON_ALTAR_ROCK_GLASS,
-				fn = gotoswitch("moon_altar_rock_glass","moon_altar_rock_idol","moon_altar_rock_seed"),
+				name = STRINGS.NAMES.CRITTERLAB,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.CRITTERLAB,
+				fn = gotoswitch("critterlab"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.CHESTER_EYEBONE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.CHESTER_EYEBONE,
+				fn = gotoswitch("chester_eyebone"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.STAGEHAND,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.STAGEHAND,
+				fn = gotoswitch("stagehand"),
 			},
 			{
 				beta = false,
@@ -665,23 +658,9 @@ return {
 			{
 				beta = false,
 				pos = "forest",
-				name = STRINGS.NAMES.LAVA_POND,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.LAVA_POND,
-				fn = gotoswitch("lava_pond"),
-			},
-			{
-				beta = false,
-				pos = "forest",
 				name = STRINGS.NAMES.BEEQUEENHIVE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.BEEQUEENHIVE,
-				fn = gotoswitch("beequeenhive"),
-			},
-			{
-				beta = false,
-				pos = "forest",
-				name = STRINGS.NAMES.CRITTERLAB,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.CRITTERLAB,
-				fn = gotoswitch("critterlab"),
+				fn = gotoswitch("beequeenhive","beequeenhivegrown"),
 			},
 			{
 				beta = false,
@@ -692,6 +671,91 @@ return {
 			},
 			{
 				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.MOOSENEST1,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MOOSENEST1,
+				fn = gotoswitch("mooseegg","moose_nesting_ground"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.DRAGONFLY,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.DRAGONFLY,
+				fn = gotoswitch("dragonfly","dragonfly_spawner"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.ANTLION,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.ANTLION,
+				fn = gotoswitch("antlion","antlion_spawner"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.WALRUS_CAMP,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.WALRUS_CAMP,
+				fn = gotoswitch("walrus_camp"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.STATUEGLOMMER,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.STATUEGLOMMER,
+				fn = gotoswitch("statueglommer"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.STATUEMAXWELL,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.STATUEMAXWELL,
+				fn = gotoswitch("statuemaxwell"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.SCULPTURE_ROOKNOSE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.SCULPTURE_ROOKNOSE,
+				fn = gotoswitch("sculpture_rookhead","sculpture_knighthead","sculpture_bishophead"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.SCULPTURE_ROOKBODY,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.SCULPTURE_ROOKBODY,
+				fn = gotoswitch("sculpture_rookbody","sculpture_knightbody","sculpture_bishopbody"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.MOON_ALTAR_ROCK_GLASS,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MOON_ALTAR_ROCK_GLASS,
+				fn = gotoswitch("moon_altar_rock_glass","moon_altar_rock_idol","moon_altar_rock_seed"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.LIGHTNINGGOAT,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.LIGHTNINGGOAT,
+				fn = gotoswitch("lightninggoat"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.BEEFALO,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.BEEFALO,
+				fn = gotoswitch("beefalo"),
+			},
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.DEER,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.DEER,
+				fn = gotoswitch("deer"),
+			},
+
+			{
+				beta = false,
 				pos = "cave",
 				name = STRINGS.NAMES.CAVE_EXIT,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.CAVE_EXIT,
@@ -700,9 +764,37 @@ return {
 			{
 				beta = false,
 				pos = "cave",
+				name = STRINGS.NAMES.TENTACLE_PILLAR,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.TENTACLE_PILLAR,
+				fn = gotoswitch("tentacle_pillar","tentacle_pillar_hole"),
+			},
+			{
+				beta = false,
+				pos = "cave",
+				name = STRINGS.NAMES.ATRIUM_GATE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.ATRIUM_GATE,
+				fn = gotoswitch("atrium_gate"),
+			},
+			{
+				beta = false,
+				pos = "cave",
 				name = STRINGS.NAMES.ANCIENT_ALTAR,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.ANCIENT_ALTAR,
 				fn = gotoswitch("ancient_altar", "ancient_altar_broken"),
+			},
+			{
+				beta = false,
+				pos = "cave",
+				name = STRINGS.NAMES.HUTCH_FISHBOWL,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.HUTCH_FISHBOWL,
+				fn = gotoswitch("hutch_fishbowl"),
+			},
+			{
+				beta = false,
+				pos = "cave",
+				name = STRINGS.NAMES.MINOTAUR,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MINOTAUR,
+				fn = gotoswitch("minotaur","minotaurchest"),
 			},
 			{
 				beta = false,
@@ -728,95 +820,11 @@ return {
 			{
 				beta = false,
 				pos = "cave",
-				name = STRINGS.NAMES.ATRIUM_GATE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.ATRIUM_GATE,
-				fn = gotoswitch("atrium_gate"),
+				name = STRINGS.NAMES.ROCKY,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.ROCKY,
+				fn = gotoswitch("rocky"),
 			},
-			{
-				beta = false,
-				pos = "forest",
-				name = STRINGS.NAMES.ANTLION,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.ANTLION,
-				fn = gotoswitch("antlion"),
-			},
-			{
-				beta = false,
-				pos = "forest",
-				name = STRINGS.NAMES.STATUEMAXWELL,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.STATUEMAXWELL,
-				fn = gotoswitch("statuemaxwell"),
-			},
-			{
-				beta = false,
-				pos = "forest",
-				name = STRINGS.NAMES.STATUEGLOMMER,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.STATUEGLOMMER,
-				fn = gotoswitch("statueglommer"),
-			},
---[[ 			{
-				beta = true,
-				pos = "forest",
-				name = STRINGS.NAMES.HOTSPRING,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.HOTSPRING,
-				fn = gotoswitch("hotspring"),
-			}, ]]
-			{
-				beta = false,
-				pos = "forest",
-				name = STRINGS.NAMES.LIGHTNINGGOAT,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.LIGHTNINGGOAT,
-				fn = gotoswitch("lightninggoat"),
-			},
-			{
-				beta = false,
-				pos = "forest",
-				name = STRINGS.NAMES.CHESTER_EYEBONE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.CHESTER_EYEBONE,
-				fn = gotoswitch("chester_eyebone"),
-			},
-			{
-				beta = false,
-				pos = "forest",
-				name = STRINGS.NAMES.GEARS,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.GEARS,
-				fn = gotoswitch("knight","bishop","rook","gears","knight_nightmare","bishop_nightmare","rook_nightmare"),
-			},
-			{
-				beta = false,
-				pos = "forest",
-				name = STRINGS.NAMES.SCULTURE_HEAD,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.SCULTURE_HEAD,
-				fn = gotoswitch("sculpture_knighthead","sculpture_bishophead","sculpture_rookhead"),
-			},
-			{
-				beta = false,
-				pos = "cave",
-				name = STRINGS.NAMES.MINOTAUR,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.MINOTAUR,
-				fn = gotoswitch("minotaur"),
-			},
-			{
-				beta = false,
-				pos = "cave",
-				name = STRINGS.NAMES.TENTACLE_PILLAR,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.TENTACLE_PILLAR,
-				fn = gotoswitch("tentacle_pillar"),
-			},
-			{
-				beta = false,
-				pos = "cave",
-				name = STRINGS.NAMES.ATRIUM_GATE,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.ATRIUM_GATE,
-				fn = gotoswitch("atrium_gate"),
-			},
-			{
-				beta = false,
-				pos = "cave",
-				name = STRINGS.NAMES.HUTCH_FISHBOWL,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.HUTCH_FISHBOWL,
-				fn = gotoswitch("hutch_fishbowl"),
-			},
+
 		},
 	},
-
 }
