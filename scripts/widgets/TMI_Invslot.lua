@@ -14,12 +14,16 @@ local function GetCharacter()
 	return "UserToPlayer('"..TOOMANYITEMS.CHARACTER_USERID.."')"
 end
 
-local function OperateAnnnounce(message, whisper)
---判断用户是否开启了提示
-	if _G.TOOMANYITEMS.G_TMIP_SPAWN_ITEMS_TIPS == true then
-		ThePlayer:DoTaskInTime(1, function()
-		TheNet:Say("[TMIP] " .. message, whisper)
-		end)
+local function OperateAnnnounce(message)
+	--判断用户是否开启了提示
+	if _G.TOOMANYITEMS.G_TMIP_SPAWN_ITEMS_TIPS then
+		if ThePlayer then
+			ThePlayer:DoTaskInTime(0.1, function()
+				if ThePlayer.components.talker then
+					ThePlayer.components.talker:Say("[TMIP]("..UserToName(TOOMANYITEMS.CHARACTER_USERID)..") " .. message)
+				end
+			end)
+		end
 	end
 end
 
@@ -51,6 +55,12 @@ local function removespice(str)
 	return newstr
 end
 
+local function gotoswitch(point1, point2)
+	point1 = point1 or ""
+	point2 = point2 or ""
+	return string.format('local player = %s if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target = c_findnext("'..point1..'") if target == nil then target = c_findnext("'..point2..'") end tmi_goto(target) end', GetCharacter())
+end
+
 local InvSlot = Class(ItemSlot, function(self, owner, atlas, bgim, item)
 		ItemSlot._ctor(self, atlas, bgim, owner)
 		self.owner = owner
@@ -59,15 +69,12 @@ local InvSlot = Class(ItemSlot, function(self, owner, atlas, bgim, item)
 
 function InvSlot:OnControl(control, down)
 	if InvSlot._base.OnControl(self, control, down) then return true end
-
 	if down then
-
 		if control == CONTROL_ACCEPT then
 			self:Click(false)
 		elseif control == CONTROL_SECONDARY then
 			self:Click(true)
 		end
-
 		return true
 	end
 
@@ -75,7 +82,6 @@ end
 
 function InvSlot:GetDescription()
 	local str = self.item
-
 	if self.item ~= nil and self.item ~= "" then
 		local itemtip = string.upper(self.item)
 		if STRINGS.NAMES[itemtip] ~= nil and STRINGS.NAMES[itemtip] ~= "" then
@@ -157,48 +163,51 @@ function InvSlot:Click(stack_mod)
 		local itemdescription = self:GetDescription()
 		local spawnnum = stack_mod and TOOMANYITEMS.G_TMIP_R_CLICK_NUM or TOOMANYITEMS.G_TMIP_L_CLICK_NUM
 		if TheInput:IsKeyDown(KEY_CTRL) then
-			local customitems = {}
-			if table.contains(TOOMANYITEMS.DATA.customitems, self.item) then
-				for i = 1, #TOOMANYITEMS.DATA.customitems do
-					if TOOMANYITEMS.DATA.customitems[i] ~= self.item then
+			if TheInput:IsKeyDown(KEY_ALT) then
+				SendCommand(gotoswitch(self.item))
+				-- OperateAnnnounce("ALT")
+			else
+				local customitems = {}
+				if table.contains(TOOMANYITEMS.DATA.customitems, self.item) then
+					for i = 1, #TOOMANYITEMS.DATA.customitems do
+						if TOOMANYITEMS.DATA.customitems[i] ~= self.item then
+							table.insert(customitems, TOOMANYITEMS.DATA.customitems[i])
+						end
+					end
+					TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/research_unlock")
+					-- Ctrl按下，调整自定义物品
+					OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..itemdescription..STRINGS.NAMES.REMOVEEDITEMSTIP)
+				else
+					table.insert(customitems, self.item)
+					for i = 1, #TOOMANYITEMS.DATA.customitems do
 						table.insert(customitems, TOOMANYITEMS.DATA.customitems[i])
 					end
+					TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/research_available")
+					OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..itemdescription..STRINGS.NAMES.ADDEDITEMSTIP)
 				end
-				TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/research_unlock")
-				-- Ctrl按下，调整自定义物品
-				OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..itemdescription..STRINGS.NAMES.REMOVEEDITEMSTIP, true)
-			else
-				table.insert(customitems, self.item)
-				for i = 1, #TOOMANYITEMS.DATA.customitems do
-					table.insert(customitems, TOOMANYITEMS.DATA.customitems[i])
+				TOOMANYITEMS.DATA.customitems = customitems
+				if TOOMANYITEMS.DATA.listinuse == "custom" then
+					if TOOMANYITEMS.DATA.issearch then
+						self.owner:Search()
+					else
+						self.owner:TryBuild()
+					end
 				end
-				TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/research_available")
-				OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..itemdescription..STRINGS.NAMES.ADDEDITEMSTIP, true)
-			end
-			TOOMANYITEMS.DATA.customitems = customitems
-			if TOOMANYITEMS.DATA.listinuse == "custom" then
-				if TOOMANYITEMS.DATA.issearch then
-					self.owner:Search()
-				else
-					self.owner:TryBuild()
+				if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
+					TOOMANYITEMS.SaveNormalData()
 				end
-			end
-			if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
-				TOOMANYITEMS.SaveNormalData()
 			end
 		elseif TheInput:IsKeyDown(KEY_SHIFT) then
 			local fnstr = 'local player = %s local function tmi_give(item) if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() if item ~= nil and item.components then if item.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(item) end else item.Transform:SetPosition(x,y,z) end end end end local function tmi_mat(name) local recipe = AllRecipes[name] if recipe then for _, iv in pairs(recipe.ingredients) do for i = 1, iv.amount do local item = SpawnPrefab(iv.type) tmi_give(item) end end end end for i = 1, %s or 1 do tmi_mat("%s") end'
 			SendCommand(string.format(fnstr, GetCharacter(), spawnnum, self.item))
 			TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/click_object")
-			OperateAnnnounce(STRINGS.NAMES.SHIFTKEYDOWNTIP..STRINGS.NAMES.GETITEMSMATERIALHTIP..itemdescription..STRINGS.NAMES.GETITEMSMATERIALETIP.." *"..spawnnum, true)
+			OperateAnnnounce(STRINGS.NAMES.SHIFTKEYDOWNTIP..STRINGS.NAMES.GETITEMSMATERIALHTIP..itemdescription..STRINGS.NAMES.GETITEMSMATERIALETIP.." *"..spawnnum)
 		else
 			local fnstr = "local player = %s if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() for i = 1, %s or 1 do local inst = DebugSpawn('%s') if inst ~= nil and inst.components then if inst.components.skinner ~= nil and IsRestrictedCharacter(inst.prefab) then inst.components.skinner:SetSkinMode('normal_skin') end if inst.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(inst) end else inst.Transform:SetPosition(x,y,z) if '%s' == 'deciduoustree' then inst:StartMonster(true) end end end end end"
 			SendCommand(string.format(fnstr, GetCharacter(), spawnnum, self.item, self.item))
 			TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/click_object")
-			OperateAnnnounce(STRINGS.NAMES.SPAWNITEMSTIP..itemdescription.." *"..spawnnum, true)
+			OperateAnnnounce(STRINGS.NAMES.SPAWNITEMSTIP..itemdescription.." *"..spawnnum)
 		end
 	end
-
 end
-
 return InvSlot
