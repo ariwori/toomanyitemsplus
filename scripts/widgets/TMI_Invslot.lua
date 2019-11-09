@@ -163,7 +163,8 @@ function InvSlot:Click(stack_mod)
 		local itemdescription = self:GetDescription()
 		local spawnnum = stack_mod and TOOMANYITEMS.G_TMIP_R_CLICK_NUM or TOOMANYITEMS.G_TMIP_L_CLICK_NUM
 		if TheInput:IsKeyDown(KEY_CTRL) then
-			if TheInput:IsKeyDown(KEY_ALT) then
+			-- Ctrl+ALT+左键传送，要右键就取消下面一行里的注释
+			if TheInput:IsKeyDown(KEY_ALT) --[[ and stack_mod]] then
 				SendCommand(gotoswitch(self.item))
 				-- OperateAnnnounce("ALT")
 			else
