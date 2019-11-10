@@ -16,7 +16,7 @@ local function GetCharacter()
 end
 
 local function OperateAnnnounce(message)
-	--ÅÐ¶ÏÓÃ»§ÊÇ·ñ¿ªÆôÁËÌáÊ¾
+	--ï¿½Ð¶ï¿½ï¿½Ã»ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
 	if _G.TOOMANYITEMS.G_TMIP_SPAWN_ITEMS_TIPS then
 		if ThePlayer then
 			ThePlayer:DoTaskInTime(0.1, function()
@@ -121,7 +121,7 @@ end
 
 local function RemoveBackpack()
 		local confirmscreen
-		confirmscreen = PopupDialogScreen(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACK, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACK,	{{text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = function() SendCommand(string.format('local player = %s local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end', GetCharacter()))
+		confirmscreen = PopupDialogScreen(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACK, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACKTIP, {{text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = function() SendCommand(string.format('local player = %s local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end', GetCharacter()))
 		TheFrontEnd:PopScreen(confirmscreen) end },	{ text = STRINGS.UI.TRADESCREEN.CANCEL, cb = function()	TheFrontEnd:PopScreen(confirmscreen) end}})
 		TheFrontEnd:PushScreen(confirmscreen)
 end

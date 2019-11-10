@@ -69,6 +69,42 @@ local function GetTeleportList(Teleportfn)
 	return telelist
 end
 
+local function DayAndTimeList()
+	local dayandtimelist = {}
+	local index = 1
+	local daysarray={1, 5, 10, 20}
+	dayandtimelist[index] = {
+		beta = false,
+		pos = "all",
+		name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_NEXT,
+		tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_NEXTTIP,
+		fn = 'TheWorld:PushEvent("ms_nextphase")',
+	}
+	index = index + 1
+	for _, v in pairs(daysarray) do
+		dayandtimelist[index] = {
+			beta = false,
+			pos = "all",
+			name = v.." "..(v == 1 and STRINGS.UI.PLAYERSTATUSSCREEN.AGE_DAY or STRINGS.UI.PLAYERSTATUSSCREEN.AGE_DAYS),
+			tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYTIP.." "..v.." "..(v == 1 and STRINGS.UI.PLAYERSTATUSSCREEN.AGE_DAY or STRINGS.UI.PLAYERSTATUSSCREEN.AGE_DAYS),
+			fn = {'confirm', 'c_skip('..v..')', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRM, string.format(STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRMTIP, v)},
+		}
+		index = index + 1
+	end
+	local timearray = {0.5, 1, 2, 3, 4}
+	for _, n in pairs(timearray) do
+		dayandtimelist[index] = {
+			beta = false,
+			pos = "all",
+			name = n..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_0PRUM,
+			tip = string.format(STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_0PRUMTIP, n*100).."%",
+			fn = {'confirm', 'TheSim:SetTimeScale('..n..') print("Speed is now ", TheSim:GetTimeScale())', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRM, string.format(STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRMTIP, n*100).."% ?"},
+		}
+		index = index + 1
+	end
+	return dayandtimelist
+end
+
 return {
 	{
 		tittle = STRINGS.UI.SERVERLISTINGSCREEN.SEASONFILTER,
@@ -105,79 +141,7 @@ return {
 	},
 	{
 		tittle = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_TEXT,
-		list = {
-			{
-				beta = false,
-				pos = "all",
-				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_NEXT,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_NEXTTIP,
-				fn = 'TheWorld:PushEvent("ms_nextphase")',
-			},
-			{
-				beta = false,
-				pos = "all",
-				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_ODAY,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_ODAYTIP,
-				fn = 'c_skip(1)',
-			},
-			{
-				beta = false,
-				pos = "all",
-				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_FDAYS,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_FDAYSTIP,
-				fn = {'confirm', 'c_skip(5)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRMTIP}
-			},
-			{
-				beta = false,
-				pos = "all",
-				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_TDAYS,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_TDAYSTIP,
-				fn = {'confirm', 'c_skip(10)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRMTIP}
-			},
-			{
-				beta = false,
-				pos = "all",
-				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_20DAYS,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_20DAYSTIP,
-				fn = {'confirm', 'c_skip(20)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRMTIP}
-			},
-
-			{
-				beta = false,
-				pos = "all",
-				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_0P5XRUM,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_0P5XRUMTIP,
-				fn = {'confirm', 'TheSim:SetTimeScale(0.5) print("Speed is now ", TheSim:GetTimeScale())', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRM, string.format(STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRMTIP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_0P5XRUM) }
-			},
-			{
-				beta = false,
-				pos = "all",
-				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_1XRUM,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_1XRUMTIP,
-				fn = {'confirm', 'TheSim:SetTimeScale(1) print("Speed is now ", TheSim:GetTimeScale())', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRMTIP }
-			},
-			{
-				beta = false,
-				pos = "all",
-				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_2XRUM,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_2XRUMTIP,
-				fn = {'confirm', 'TheSim:SetTimeScale(2) print("Speed is now ", TheSim:GetTimeScale())', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRMTIP }
-			},
-			{
-				beta = false,
-				pos = "all",
-				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_3XRUM,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_3XRUMTIP,
-				fn = {'confirm', 'TheSim:SetTimeScale(3) print("Speed is now ", TheSim:GetTimeScale())', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRMTIP }
-			},
-			{
-				beta = false,
-				pos = "all",
-				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_4XRUM,
-				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_4XRUMTIP,
-				fn = {'confirm', 'TheSim:SetTimeScale(4) print("Speed is now ", TheSim:GetTimeScale())', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRM, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SPEEDRUNCONFIRMTIP }
-			},
-		},
+		list = DayAndTimeList(),
 	},
 	{
 		tittle = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SPEED_TEXT,
@@ -522,7 +486,7 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_ONE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_ONETIP,
-				fn =  {'confirm', 'c_rollback(1)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
+				fn =  {'confirm', 'c_rollback(1)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
 
 			},
 			{
@@ -530,35 +494,35 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_TWO,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_TWOTIP,
-				fn =  {'confirm', 'c_rollback(2)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
+				fn =  {'confirm', 'c_rollback(2)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_THREE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_THREETIP,
-				fn =  {'confirm', 'c_rollback(3)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
+				fn =  {'confirm', 'c_rollback(3)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FOUR,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FOURTIP,
-				fn =  {'confirm', 'c_rollback(4)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
+				fn =  {'confirm', 'c_rollback(4)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FIVE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_FIVETIP,
-				fn =  {'confirm', 'c_rollback(5)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
+				fn =  {'confirm', 'c_rollback(5)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_SIX,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_ROLLBACK_SIXTIP,
-				fn =  {'confirm', 'c_rollback(6)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC} 
+				fn =  {'confirm', 'c_rollback(6)', STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.PRETTYNAME, STRINGS.UI.BUILTINCOMMANDS.ROLLBACK.DESC}
 			},
 		},
 	},

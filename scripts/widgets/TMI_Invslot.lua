@@ -168,7 +168,7 @@ function InvSlot:Click(stack_mod)
 			-- Ctrl+ALT+左键传送，要右键就取消下面一行里的注释
 			if TheInput:IsKeyDown(KEY_ALT) and stack_mod then
 				SendCommand(gotoonly(self.item))
-				OperateAnnnounce(STRINGS.NAMES.SUPERGOTOTIP)
+				OperateAnnnounce(STRINGS.NAMES.SUPERGOTOTIP..itemdescription)
 				print ("[TooManyItemsPlus] Teleport to: "..self.item)
 			else
 				local customitems = {}
