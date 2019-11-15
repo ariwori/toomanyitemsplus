@@ -11,8 +11,9 @@ return {
 	"marbletree_2",
 	"marbletree_3",
 	"marbletree_4",
-	"marbleshrub",
+--大理石灌木
 	"marblebean_sapling",
+	"marbleshrub",
 	"marbleshrub_short",
 	"marbleshrub_normal",
 	"marbleshrub_tall",

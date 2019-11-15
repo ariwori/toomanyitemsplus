@@ -134,7 +134,7 @@ function TMI_Menubar:InitSidebar()
 		{
 			show = STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_YULIUA,
 			tip = STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPYULIUA,
-			fn = self:GetSideButtonFn("custom"),
+			fn = self:GetSideButtonFn("rot"),
 		},
 		{
 			show = STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_EVENT,

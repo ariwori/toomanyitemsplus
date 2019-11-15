@@ -8,8 +8,8 @@ return {
 	["boss"] = {},
 	["follower"] = {},
 	["material"] = {},
-	["gift"] {},
-	["ruins"] {},
+	["gift"] = {},
+	["ruins"] = {},
 	["event"] = {},
 	["cooking"] = {},
 	["props"] = {},
@@ -22,4 +22,5 @@ return {
 	["building"] = {},
 	["sculpture"] = {},
 	["natural"] = {},
+	["rot"] = {},
 }

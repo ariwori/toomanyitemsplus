@@ -16,7 +16,7 @@ local function GetCharacter()
 end
 
 local function OperateAnnnounce(message)
-	--�ж��û��Ƿ�������ʾ
+	--判断用户是否开启了提示
 	if _G.TOOMANYITEMS.G_TMIP_SPAWN_ITEMS_TIPS then
 		if ThePlayer then
 			ThePlayer:DoTaskInTime(0.1, function()

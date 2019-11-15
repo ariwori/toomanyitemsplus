@@ -1,6 +1,11 @@
 return {
 --prefab名称转换，以匹配贴图xml中现成可用的图片名称
 	prefablist = {
+--发条雕像
+	["sculpture_bishopbody"] = "sculpture_bishopbody_full",
+	["sculpture_knightbody"] = "sculpture_knightbody_full",
+	["sculpture_rookbody"] = "sculpture_rookbody_full",
+
 --宠物
 		["critter_dragonling"] = "critter_dragonling_builder",
 		["critter_glomling"] = "critter_glomling_builder",
@@ -14,6 +19,10 @@ return {
 		["shadowduelist"] = "shadowduelist_builder",
 		["shadowlumber"] = "shadowlumber_builder",
 		["shadowminer"] = "shadowminer_builder",
+--麦斯威尔的雕像
+		["statuemaxwell"] = "statue",
+--丘比特雕像
+		["statueharp"] = "statue_small",
 --迷你指示牌
 		["minisign"] = "minisign_drawn",
 --圣诞树
@@ -27,7 +36,6 @@ return {
 		["moon_altar_rock_seed"] = "moon_altar_seed_rock",
 		["gravestone"] = "gravestones",
 		["eyeturret"] = "eyeball_turret",
-		["ancient_altar"] = "tab_crafting_table",
 		["mermthrone"] = "merm_king_carpet",
 		
 		["deciduoustree_burnt"] = "tree_leaf_burnt",
@@ -35,6 +43,12 @@ return {
  	},
 --prefab名称赋值，以匹配对应文本字符串。
 	desclist = {
+--雕像
+		["sculpture_bishopbody_full"] = STRINGS.NAMES.SCULPTURE_BISHOPBODY,
+		["sculpture_knightbody_full"] = STRINGS.NAMES.SCULPTURE_KNIGHTBODY,
+		["sculpture_rookbody_full"] = STRINGS.NAMES.SCULPTURE_ROOKBODY,
+		["statue"] = STRINGS.NAMES.STATUEMAXWELL,
+		["statue_small"] = STRINGS.NAMES.STATUEHARP,
 --桦树
 		["tree_leaf_burnt"] = STRINGS.NAMES.DECIDUOUSTREE,
 		["tree_leaf_stump"] = STRINGS.NAMES.DECIDUOUSTREE,
@@ -54,8 +68,6 @@ return {
 		["gravestones"] = STRINGS.NAMES.GRAVESTONE,
 --眼球塔
 		["eyeball_turret"] = STRINGS.NAMES.EYETURRET,
---远古祭坛
-		["tab_crafting_table"] = STRINGS.NAMES.ANCIENT_ALTAR,
 --编织的暗影
 		["stalker_minion1"] = STRINGS.NAMES.STALKER_MINION,
 		["stalker_minion2"] = STRINGS.NAMES.STALKER_MINION,
