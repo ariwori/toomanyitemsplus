@@ -62,6 +62,29 @@ local function SendCommand(fnstr)
 		ExecuteConsoleCommand(fnstr)
 	end
 end
+
+local function UpdateXXD(widget)
+	local val = tonumber(widget:GetText())
+	if type(val) ~= "number" or val > 1 or val < 0 then
+    return
+  end
+  _G.TOOMANYITEMS.DATA.xxd = val
+  if _G.TOOMANYITEMS.DATA_SAVE == 1 then
+    _G.TOOMANYITEMS.SaveNormalData()
+  end
+end
+
+local function UpdateSYD(widget)
+	local val = tonumber(widget:GetText())
+	if type(val) ~= "number" or val > 1 or val < 0 then
+    return
+  end
+  _G.TOOMANYITEMS.DATA.syd = val
+  if _G.TOOMANYITEMS.DATA_SAVE == 1 then
+    _G.TOOMANYITEMS.SaveNormalData()
+  end
+end
+
 local writeable_config = {
 	animbank = "ui_board_5x3",
 	animbuild = "ui_board_5x3",
@@ -70,6 +93,28 @@ local writeable_config = {
 	cancelbtn = { text = STRINGS.UI.TRADESCREEN.CANCEL, cb = nil, control = CONTROL_CANCEL },
 	middlebtn = { text = STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER, cb = NextPlayer, control = CONTROL_MENU_MISC_2 },
 	acceptbtn = { text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = AcceptPlayer, control = CONTROL_ACCEPT },
+
+	--defaulttext = SignGenerator,
+}
+
+local setting_config = {
+	animbank = "ui_board_5x3",
+	animbuild = "ui_board_5x3",
+	menuoffset = Vector3(6, -70, 0),
+
+	cancelbtn = { text = STRINGS.UI.TRADESCREEN.CANCEL, cb = nil, control = CONTROL_CANCEL },
+	acceptbtn = { text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = UpdateXXD, control = CONTROL_ACCEPT },
+
+	--defaulttext = SignGenerator,
+}
+
+local setting_config1 = {
+	animbank = "ui_board_5x3",
+	animbuild = "ui_board_5x3",
+	menuoffset = Vector3(6, -80, 0),
+
+	cancelbtn = { text = STRINGS.UI.TRADESCREEN.CANCEL, cb = nil, control = CONTROL_CANCEL },
+	acceptbtn = { text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = UpdateSYD, control = CONTROL_ACCEPT },
 
 	--defaulttext = SignGenerator,
 }
@@ -85,11 +130,12 @@ local TooManyItems = Class(Widget, function(self)
 		self.root:SetPosition(0,0,0)
 
 		self.shieldpos_x = -345
+		self.shieldpos_y = -20
 		self.shieldsize_x = 350
 		self.shieldsize_y = 480
 		self.shield = self.root:AddChild( Image("images/ui.xml", "black.tex") )
 		self.shield:SetScale(1,1,1)
-		self.shield:SetPosition(self.shieldpos_x,0,0)
+		self.shield:SetPosition(self.shieldpos_x,self.shieldpos_y,0)
 		self.shield:SetSize(self.shieldsize_x, self.shieldsize_y)
 		self.shield:SetTint(1,1,1,0.6)
 
@@ -106,10 +152,18 @@ local TooManyItems = Class(Widget, function(self)
 
 		self:DebugMenu()
 
+		self:SettingMenu()
+
 		if TOOMANYITEMS.DATA.IsDebugMenuShow then
 			self.debugshield:Show()
 		else
 			self.debugshield:Hide()
+		end
+
+		if TOOMANYITEMS.DATA.IsSettingMenuShow then
+			self.settingshield:Show()
+		else
+			self.settingshield:Hide()
 		end
 
 		self.menu = self.shield:AddChild(TMI_menubar(self))
@@ -134,6 +188,19 @@ function TooManyItems:ShowDebugMenu()
 	end
 end
 
+function TooManyItems:ShowSettingMenu()
+	if TOOMANYITEMS.DATA.IsSettingMenuShow then
+		self.settingshield:Hide()
+		TOOMANYITEMS.DATA.IsSettingMenuShow = false
+	else
+		self.settingshield:Show()
+		TOOMANYITEMS.DATA.IsSettingMenuShow = true
+	end
+	if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
+		TOOMANYITEMS.SaveNormalData()
+	end
+end
+
 function TooManyItems:FlushPlayer()
 	if self.writeablescreen then
 		self.writeablescreen:KillAllChildren()
@@ -147,6 +214,34 @@ function TooManyItems:FlushPlayer()
 	end
 
 	self:SetPointer()
+end
+
+function TooManyItems:FlushXXD()
+	if self.writeablescreen then
+		self.writeablescreen:KillAllChildren()
+		self.writeablescreen:Kill()
+		self.writeablescreen = nil
+	end
+	self.writeablescreen = WriteableWidget(setting_config)
+	ThePlayer.HUD:OpenScreenUnderPause(self.writeablescreen)
+	if TheFrontEnd:GetActiveScreen() == self.writeablescreen then
+		self.writeablescreen.edit_text:SetEditing(true)
+	end
+	self:SetXXDPointer()
+end
+
+function TooManyItems:FlushSYD()
+	if self.writeablescreen then
+		self.writeablescreen:KillAllChildren()
+		self.writeablescreen:Kill()
+		self.writeablescreen = nil
+	end
+	self.writeablescreen = WriteableWidget(setting_config1)
+	ThePlayer.HUD:OpenScreenUnderPause(self.writeablescreen)
+	if TheFrontEnd:GetActiveScreen() == self.writeablescreen then
+		self.writeablescreen.edit_text:SetEditing(true)
+	end
+	self:SetSYDPointer()
 end
 
 function TooManyItems:FlushConfirmScreen(fn)
@@ -167,6 +262,22 @@ function TooManyItems:SetPointer()
 	self.pointer:SetPosition(self.left + self.pointersizex * .5, self.shieldsize_y * .5 - self.pointersizey * .5, 0)
 end
 
+function TooManyItems:SetXXDPointer()
+	local mainstr = "食物新鲜度："
+	self.xxdpointer:SetText(mainstr.._G.TOOMANYITEMS.DATA.xxd)
+	self.xxdpointersizex, self.xxdpointersizey = self.xxdpointer.text:GetRegionSize()
+	self.xxdpointer.image:SetSize(self.xxdpointersizex * .85, self.xxdpointersizey)
+	self.xxdpointer:SetPosition(self.settingleft + self.xxdpointersizex * .5, self.shieldsize_y * .5 - self.xxdpointersizey * .5, 0)
+end
+
+function TooManyItems:SetSYDPointer()
+	local mainstr = "工具使用度："
+	self.sydpointer:SetText(mainstr.._G.TOOMANYITEMS.DATA.syd)
+	self.sydpointersizex, self.sydpointersizey = self.sydpointer.text:GetRegionSize()
+	self.sydpointer.image:SetSize(self.sydpointersizex * .85, self.sydpointersizey)
+	self.sydpointer:SetPosition(self.settingleft + self.sydpointersizex * .5, self.shieldsize_y * .5 - self.sydpointersizey * .5 -self.settingline, 0)
+end
+
 function TooManyItems:DebugMenu()
 	--self.debugwidth = 550
 	--self.fontsize = 25
@@ -181,7 +292,7 @@ function TooManyItems:DebugMenu()
 	self.limit = -self.left
 	self.debugshield = self.root:AddChild( Image("images/ui.xml", "black.tex") )
 	self.debugshield:SetScale(1,1,1)
-	self.debugshield:SetPosition(self.shieldpos_x + self.shieldsize_x * 0.5 + self.limit, 0, 0)
+	self.debugshield:SetPosition(self.shieldpos_x + self.shieldsize_x * 0.5 + self.limit, self.shieldpos_y, 0)
 	self.debugshield:SetSize(self.limit * 2, self.shieldsize_y)
 	self.debugshield:SetTint(1,1,1,0.6)
 
@@ -195,15 +306,26 @@ function TooManyItems:DebugMenu()
 
 	self:SetPointer()
 
-	-- local pointerw, pointerh = self.pointer.text:GetRegionSize()
-	-- self.nextplayerbutton = self.debugshield:AddChild(TextButton())
-	-- self.nextplayerbutton:SetFont(self.font)
-	-- self.nextplayerbutton:SetTextSize(self.fontsize)
-	-- self.nextplayerbutton:SetColour(0.9,0.8,0.6,1)
-	-- self.nextplayerbutton:SetText(STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER)
-	-- self.nextplayerbutton:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER_TIP)
-	-- local width, height = self.nextplayerbutton.text:GetRegionSize()
-	-- self.nextplayerbutton:SetPosition(pointerw - self.debugwidth / 2 + width, self.shieldsize_y * 0.5 - height * 0.5 , 0)
+	local pointerw, pointerh = self.pointer.text:GetRegionSize()
+	self.settingbutton = self.debugshield:AddChild(TextButton())
+	self.settingbutton:SetFont(self.font)
+	self.settingbutton:SetTextSize(self.fontsize)
+	self.settingbutton:SetColour(0.9,0.8,0.6,1)
+	self.settingbutton:SetText("Settings")
+	self.settingbutton:SetTooltip("Some Settings")
+	local swidth, sheight = self.settingbutton.text:GetRegionSize()
+	self.settingbutton:SetPosition(pointerw - swidth * 0.5, self.shieldsize_y * 0.5 - sheight * 0.5 , 0)
+	self.settingbutton:SetOnClick(function() self:ShowSettingMenu() end)
+
+	local pointerw, pointerh = self.pointer.text:GetRegionSize()
+	self.helpbutton = self.debugshield:AddChild(TextButton())
+	self.helpbutton:SetFont(self.font)
+	self.helpbutton:SetTextSize(self.fontsize)
+	self.helpbutton:SetColour(0.9,0.8,0.6,1)
+	self.helpbutton:SetText("Help")
+	self.helpbutton:SetTooltip("Some Help")
+	local hwidth, hheight = self.helpbutton.text:GetRegionSize()
+	self.helpbutton:SetPosition(pointerw - swidth - self.spacing - hwidth * 0.5, self.shieldsize_y * 0.5 - hheight * 0.5 , 0)
 	-- self.nextplayerbutton:SetOnClick(function() self:NextPlayer() end)
 
 	self.debugbuttonlist = require "TMI/debug"
@@ -292,6 +414,42 @@ function TooManyItems:DebugMenu()
 	end
 
 	MakeDebugButtonList(self.debugbuttonlist)
+end
+
+function TooManyItems:SettingMenu()
+	self.fontsize = _G.TOOMANYITEMS.G_TMIP_DEBUG_FONT_SIZE
+	self.settingwidth = _G.TOOMANYITEMS.G_TMIP_DEBUG_MENU_SIZE / 2
+	self.font = BODYTEXTFONT
+	self.settingline = 24
+
+	self.settingleft = -self.settingwidth * 0.5
+	self.settinglimit = -self.settingleft
+	self.settingshield = self.root:AddChild( Image("images/ui.xml", "black.tex") )
+	self.settingshield:SetScale(1,1,1)
+	self.settingshield:SetPosition(0, self.shieldpos_y, 0)
+	self.settingshield:SetSize(self.settinglimit * 2, self.shieldsize_y)
+	self.settingshield:SetTint(1,1,1,1)
+
+	self.xxdpointer = self.settingshield:AddChild(TextButton())
+	self.xxdpointer:SetFont(self.font)
+	self.xxdpointer:SetTooltip("点击修改食物新鲜度")
+	self.xxdpointer:SetTextSize(self.fontsize)
+	self.xxdpointer:SetColour(1,1,1,1)
+	self.xxdpointer:SetOverColour(1,1,1,1)
+	self.xxdpointer:SetOnClick(function() self:FlushXXD() end)
+
+	self:SetXXDPointer()
+
+	self.sydpointer = self.settingshield:AddChild(TextButton())
+	self.sydpointer:SetFont(self.font)
+	self.sydpointer:SetTooltip("点击修改工具使用度")
+	self.sydpointer:SetTextSize(self.fontsize)
+	self.sydpointer:SetColour(1,1,1,1)
+	self.sydpointer:SetOverColour(1,1,1,1)
+	self.sydpointer:SetOnClick(function() self:FlushSYD() end)
+
+	self:SetSYDPointer()
+
 end
 
 function TooManyItems:OnControl(control, down)

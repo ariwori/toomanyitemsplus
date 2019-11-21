@@ -76,7 +76,7 @@ function SearchScreen:DoInit()
 	self.root:SetHAnchor(ANCHOR_MIDDLE)
 	self.root:SetVAnchor(ANCHOR_MIDDLE)
 	self.root = self.root:AddChild(Widget(""))
-	self.root:SetPosition(0,0,0)
+	self.root:SetPosition(0,-20,0)
 
 	self.edit_text = self.root:AddChild( TextEdit( NEWFONT, self.config.fontsize, "" ) )
 	self.edit_text:SetPosition(self.config.pos)

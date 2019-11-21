@@ -108,6 +108,9 @@ local function DataInit()
 	if _G.TOOMANYITEMS.DATA == nil then
 		_G.TOOMANYITEMS.DATA = {}
 	end
+	if _G.TOOMANYITEMS.DATA.IsSettingMenuShow == nil then
+		_G.TOOMANYITEMS.DATA.IsSettingMenuShow = false
+	end
 	if _G.TOOMANYITEMS.DATA.IsDebugMenuShow == nil then
 		_G.TOOMANYITEMS.DATA.IsDebugMenuShow = false
 	end
@@ -143,6 +146,14 @@ local function DataInit()
 	_G.TOOMANYITEMS.LIST = _G.require "TMI/prefablist"
 	for _, v in pairs(_G.TOOMANYITEMS.LIST.prefablist) do
 		_G.TOOMANYITEMS.LIST.showimagelist[v] = true
+	end
+
+	if _G.TOOMANYITEMS.DATA.xxd == nil then
+		_G.TOOMANYITEMS.DATA.xxd = 1
+	end
+
+	if _G.TOOMANYITEMS.DATA.syd == nil then
+		_G.TOOMANYITEMS.DATA.syd = 0
 	end
 
 end
