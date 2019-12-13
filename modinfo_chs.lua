@@ -1,4 +1,7 @@
-description = [[
+name = "Too Many Items Plus"
+version = "1.0.6.1"
+description = name .." 当前版本： "..version..
+[[
 
 随意获得需要的物品和使用很多服务器控制命令。
 必须管理员权限才可以使用。

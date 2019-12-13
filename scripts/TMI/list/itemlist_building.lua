@@ -43,6 +43,11 @@ return {
 --保鲜
 	"icebox",
 	"saltbox",
+	"fish_box",
+	"trophyscale_fish",
+--冬季盛宴
+	"table_winters_feast",
+	"wintersfeastoven",
 --气象
 	"winterometer",
 	"rainometer",
@@ -90,6 +95,7 @@ return {
 	"sculptingtable",
 	"madscience_lab",
 	"seafaring_prototyper",
+	"tacklestation",
 	"researchlab4",
 	"researchlab3",
 --祭坛
@@ -111,5 +117,4 @@ return {
 	"ruinsrelic_vase",
 	"ruinsrelic_chair",
 	"ruinsrelic_table",
-
 }

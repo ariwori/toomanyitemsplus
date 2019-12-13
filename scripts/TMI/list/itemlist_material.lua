@@ -53,6 +53,7 @@ return {
 --生物材料 角
 	"horn",
 	"lightninggoathorn",
+	"gnarwail_horn",
 	"deer_antler",
 	"deer_antler1",
 	"deer_antler2",

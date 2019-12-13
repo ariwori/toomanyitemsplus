@@ -99,11 +99,10 @@ function ItemTile:GetAsset(find)
 		self.item = ""
 	end
 	local spiceimage
-	--local newitem = removeadj(self.item) 去掉形容词会导致树的形态名词错乱，无法匹配正确的图片
 	local newitem = self.item
 	local itemimage = newitem .. ".tex"
 	local itematlas = custom_atlas
-	-- print("[TooManyItems] "..self.item)
+	--print("[TooManyItems] "..self.item)
 	-- if find then
 		if STRINGS.CHARACTER_NAMES[newitem] then
 			-- local character_item = "skull_"..newitem
