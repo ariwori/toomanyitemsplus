@@ -28,5 +28,6 @@ return {
 	"spiderqueen",
 	"warg",
 	"claywarg",
+	"gingerbreadwarg",
 	"spat",
 }

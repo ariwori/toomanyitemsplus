@@ -42,6 +42,7 @@ return {
 	"thurible",
 	"houndwhistle",
 	"onemanband",
+	"pig_coin",
 --暴动检测
 	"nightmare_timepiece",
 	"atrium_key",
@@ -72,4 +73,13 @@ return {
 	"chesspiece_moon_sketch",
 	"chesspiece_claywarg_sketch",
 	"chesspiece_clayhound_sketch",
+--渔具图纸
+	"oceanfishingbobber_ball_tacklesketch",
+	"oceanfishingbobber_oval_tacklesketch",
+	"oceanfishingbobber_crow_tacklesketch",
+	"oceanfishingbobber_robin_tacklesketch",
+	"oceanfishingbobber_robin_winter_tacklesketch",
+	"oceanfishingbobber_canary_tacklesketch",
+	"oceanfishingbobber_goose_tacklesketch",
+	"oceanfishingbobber_malbatross_tacklesketch",
 }

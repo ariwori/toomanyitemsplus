@@ -54,7 +54,7 @@ end
 
 local function GetTeleportList(Teleportfn)
 	local telelist = {}
-	for i = 1, 6 do
+	for i = 1, 10 do
 		telelist[i] = {
 			beta = false,
 			pos = "all",

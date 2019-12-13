@@ -1,8 +1,7 @@
 name = "Too Many Items Plus"
-version = "1.0.6.0"
+version = "1.0.6.1"
 description = name .." Version: "..version..
 [[
-
 
 Allows you to spawn any item you want and more powerful features.
 You must be a Admin to use this.

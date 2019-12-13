@@ -13,11 +13,31 @@ return {
 	"drumstick_cooked",
 	"froglegs",
 	"froglegs_cooked",
+--淡水鱼
+	"pondfish",
 	"fish",
 	"fish_cooked",
+	"pondeel",
 	"eel",
 	"eel_cooked",
---蛋类 eggs
+--海鱼 大型
+	"oceanfish_medium_1_inv",
+	"oceanfish_medium_2_inv",
+	"oceanfish_medium_3_inv",
+	"oceanfish_medium_4_inv",
+	"oceanfish_medium_5_inv",
+--海鱼 小型
+	"oceanfish_small_1_inv",
+	"oceanfish_small_2_inv",
+	"oceanfish_small_3_inv",
+	"oceanfish_small_4_inv",
+	"oceanfish_small_5_inv",
+--鱼肉
+	"fishmeat",
+	"fishmeat_cooked",
+	"fishmeat_small",
+	"fishmeat_small_cooked",
+--蛋类
 	"tallbirdegg",
 	"tallbirdegg_cooked",
 	"bird_egg",
@@ -126,22 +146,11 @@ return {
 	"deerclops_eyeball",
 --腐烂物
 	"spoiled_food",
---猪年食品
-	"yotp_food1",
-	"yotp_food2",
-	"yotp_food3",
---伍迪食物雕像
-	"wereitem_beaver",
-	"wereitem_goose",
-	"wereitem_moose",
---调料
-	"spice_sugar",
-	"spice_salt",
-	"spice_chili",
-	"spice_garlic",
+	"spoiled_fish",
+	"spoiled_fish_small",
 --特殊
 	"rock_avocado_fruit",
---种子 seeds
+--种子
 	"asparagus_seeds",
 	"carrot_seeds",
 	"corn_seeds",
@@ -158,4 +167,44 @@ return {
 	"watermelon_seeds",
 	"seeds",
 	"seeds_cooked",
+--调料
+	"spice_sugar",
+	"spice_salt",
+	"spice_chili",
+	"spice_garlic",
+--伍迪食物雕像
+	"wereitem_beaver",
+	"wereitem_goose",
+	"wereitem_moose",
+--猪年食品
+	"yotp_food1",
+	"yotp_food2",
+	"yotp_food3",
+--冬季盛宴零食
+	"winter_food1",
+	"winter_food2",
+	"winter_food3",
+	"winter_food4",
+	"winter_food5",
+	"winter_food6",
+	"winter_food7",
+	"winter_food8",
+	"winter_food9",
+	"wintersfeastfuel",
+	"crumbs",
+--万圣夜糖果
+	"halloweencandy_1",
+	"halloweencandy_2",
+	"halloweencandy_3",
+	"halloweencandy_4",
+	"halloweencandy_5",
+	"halloweencandy_6",
+	"halloweencandy_7",
+	"halloweencandy_8",
+	"halloweencandy_9",
+	"halloweencandy_10",
+	"halloweencandy_11",
+	"halloweencandy_12",
+	"halloweencandy_13",
+	"halloweencandy_14",
 }

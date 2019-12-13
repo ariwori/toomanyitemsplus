@@ -35,6 +35,22 @@ return {
 	"catcoon",
 	"mole",
 	"bat",
+--鱼类
+	"pondfish",
+	"pondeel",
+	"oceanfish_medium_1_inv",
+	"oceanfish_medium_2_inv",
+	"oceanfish_medium_3_inv",
+	"oceanfish_medium_4_inv",
+	"oceanfish_medium_5_inv",
+	"oceanfish_small_1_inv",
+	"oceanfish_small_2_inv",
+	"oceanfish_small_3_inv",
+	"oceanfish_small_4_inv",
+	"oceanfish_small_5_inv",
+--海洋生物
+	"squid",
+	"gnarwail",
 --鸟类
 	"robin",
 	"robin_winter",
