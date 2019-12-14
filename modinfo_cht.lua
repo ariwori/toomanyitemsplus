@@ -122,15 +122,4 @@ configuration_options =
 		},
 		default = 550,
 	},
-	{
-		name = "GOP_TMIP_SPAWN_ITEMS_TIPS",
-		label = "生成物品的提示",
-		hover = "如果你已经知道怎么使用这个mod，可以关闭提示。",
-		options =
-		{
-			{description = "开启提示", data = true},
-			{description = "关闭提示", data = false},
-		},
-		default = true,
-	},
 }

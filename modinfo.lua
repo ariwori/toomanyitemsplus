@@ -1,5 +1,5 @@
 name = "Too Many Items Plus"
-version = "1.0.6.1"
+version = "1.0.6.2"
 description = name .." Version: "..version..
 [[
 
@@ -28,8 +28,8 @@ all_clients_require_mod = false
 client_only_mod = true
 server_filter_tags = { }
 
-icon_atlas = "TooManyItems.xml"
-icon = "TooManyItems.tex"
+icon_atlas = "TooManyItemsPlus.xml"
+icon = "TooManyItemsPlus.tex"
 
 local alpha = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
 local KEY_A = 97
@@ -151,16 +151,5 @@ configuration_options = {
 			{description = "700", data = 700},
 		},
 		default = 550,
-	},
-	{
-		name = "GOP_TMIP_SPAWN_ITEMS_TIPS",
-		label = "Tips for spawn items",
-		hover = "Turn off the tips if you know how to use this mod.",
-		options =
-		{
-			{description = "Open the tips", data = true},
-			{description = "Close the tips", data = false},
-		},
-		default = true,
 	},
 }

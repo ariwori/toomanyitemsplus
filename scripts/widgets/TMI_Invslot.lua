@@ -16,12 +16,11 @@ end
 
 local function OperateAnnnounce(message)
 	--判断用户是否开启了提示
-	if _G.TOOMANYITEMS.G_TMIP_SPAWN_ITEMS_TIPS then
+	if _G.TOOMANYITEMS.DATA.SPAWN_ITEMS_TIPS then
 		if ThePlayer then
 			ThePlayer:DoTaskInTime(0.1, function()
 				if ThePlayer.components.talker then
 					ThePlayer.components.talker:Say("[TMIP]"..message)
-					--ThePlayer.components.talker:Say("[TMIP]".. message.."["..UserToName(TOOMANYITEMS.CHARACTER_USERID).."]" )
 				end
 			end)
 		end
@@ -210,8 +209,8 @@ function InvSlot:Click(stack_mod)
 			OperateAnnnounce(STRINGS.NAMES.SHIFTKEYDOWNTIP..STRINGS.NAMES.GETITEMSMATERIALHTIP..itemdescription..STRINGS.NAMES.GETITEMSMATERIALETIP.." *"..spawnnum)
 			print ("[TooManyItemsPlus] Get material from: "..self.item)
 		else
-			local fnstr = "local player = %s if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() for i = 1, %s or 1 do local inst = DebugSpawn('%s') if inst ~= nil and inst.components then if inst.components.skinner ~= nil and IsRestrictedCharacter(inst.prefab) then inst.components.skinner:SetSkinMode('normal_skin') end if inst.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(inst) end else inst.Transform:SetPosition(x,y,z) if '%s' == 'deciduoustree' then inst:StartMonster(true) end end if inst.components.perishable then inst.components.perishable:SetPercent(%s) end if inst.components.finiteuses then inst.components.finiteuses:SetPercent(%s) end end end end"
-			SendCommand(string.format(fnstr, GetCharacter(), spawnnum, self.item, self.item, _G.TOOMANYITEMS.DATA.xxd, _G.TOOMANYITEMS.DATA.syd))
+			local fnstr = "local player = %s if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() for i = 1, %s or 1 do local inst = DebugSpawn('%s') if inst ~= nil and inst.components then if inst.components.skinner ~= nil and IsRestrictedCharacter(inst.prefab) then inst.components.skinner:SetSkinMode('normal_skin') end if inst.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(inst) end else inst.Transform:SetPosition(x,y,z) if '%s' == 'deciduoustree' then inst:StartMonster(true) end end if inst.components.perishable then inst.components.perishable:SetPercent(%s) end if inst.components.finiteuses then inst.components.finiteuses:SetPercent(%s) end if inst.components.fueled then inst.components.fueled:SetPercent(%s) end if inst.components.temperature then inst.components.temperature:SetTemperature(%s) end end end end"
+			SendCommand(string.format(fnstr, GetCharacter(), spawnnum, self.item, self.item, _G.TOOMANYITEMS.DATA.xxd, _G.TOOMANYITEMS.DATA.syd, _G.TOOMANYITEMS.DATA.fuel,  _G.TOOMANYITEMS.DATA.temperature))
 			TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/click_object")
 			OperateAnnnounce(STRINGS.NAMES.SPAWNITEMSTIP..itemdescription.." *"..spawnnum)
 			print ("[TooManyItemsPlus] SpawnPrefab: "..self.item)

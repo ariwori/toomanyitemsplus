@@ -1,7 +1,4 @@
-name = "Too Many Items Plus"
-version = "1.0.6.1"
-description = name .." 当前版本： "..version..
-[[
+description = [[
 
 随意获得需要的物品和使用很多服务器控制命令。
 必须管理员权限才可以使用。
@@ -15,21 +12,6 @@ description = name .." 当前版本： "..version..
 Codes by C.J.B. | Items and bug fix by GaRAnTuLA. | DST version by Skull. | FIX By TheMightyPikachu & Electroely.
 UI and codes optimization by Tendy. | Classify and some updates by 乐十画.
 ]]
-
-author = "CJB,GaRAnTuLA,Skull,TheMightyPikachu,Electroely,Tendy,乐十画"
-api_version = 10
-priority = -7000
-dont_starve_compatible = false
-reign_of_giants_compatible = false
-shipwrecked_compatible = false
-dst_compatible = true
-version_compatible = "1.0.0"
-all_clients_require_mod = false
-client_only_mod = true
-server_filter_tags = { }
-
-icon_atlas = "TooManyItems.xml"
-icon = "TooManyItems.tex"
 
 local alpha = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
 local KEY_A = 97
@@ -151,16 +133,5 @@ configuration_options = {
 			{description = "700", data = 700},
 		},
 		default = 550,
-	},
-	{
-		name = "GOP_TMIP_SPAWN_ITEMS_TIPS",
-		label = "生成物品的提示",
-		hover = "如果你已经知道怎么使用这个mod，可以关闭提示。",
-		options =
-		{
-			{description = "开启提示", data = true},
-			{description = "关闭提示", data = false},
-		},
-		default = true,
 	},
 }

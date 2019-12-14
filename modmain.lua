@@ -24,7 +24,6 @@ _G.TOOMANYITEMS = {
 	G_TMIP_DEBUG_FONT_SIZE = GetModConfigData("GOP_TMIP_DEBUG_FONT_SIZE"),
 	G_TMIP_DEBUG_MENU_SIZE = GetModConfigData("GOP_TMIP_DEBUG_MENU_SIZE"),
 	G_TMIP_MOD_ROOT = MODROOT,
-	G_TMIP_SPAWN_ITEMS_TIPS = GetModConfigData("GOP_TMIP_SPAWN_ITEMS_TIPS"),
 }
 
 if _G.TOOMANYITEMS.G_TMIP_DATA_SAVE == -1 then
@@ -148,12 +147,29 @@ local function DataInit()
 		_G.TOOMANYITEMS.LIST.showimagelist[v] = true
 	end
 
+	--食物新鲜度
 	if _G.TOOMANYITEMS.DATA.xxd == nil then
 		_G.TOOMANYITEMS.DATA.xxd = 1
 	end
 
+	--工具剩余可使用度
 	if _G.TOOMANYITEMS.DATA.syd == nil then
-		_G.TOOMANYITEMS.DATA.syd = 0
+		_G.TOOMANYITEMS.DATA.syd = 1
+	end
+
+	-- 燃料剩余度
+	if _G.TOOMANYITEMS.DATA.fuel == nil then
+		_G.TOOMANYITEMS.DATA.fuel = 1
+	end
+
+	-- 温度
+	if _G.TOOMANYITEMS.DATA.temperature == nil then
+		_G.TOOMANYITEMS.DATA.temperature = 25
+	end
+
+	--刷物品提示开关
+	if _G.TOOMANYITEMS.DATA.SPAWN_ITEMS_TIPS == nil then
+		_G.TOOMANYITEMS.DATA.SPAWN_ITEMS_TIPS = true
 	end
 
 end
