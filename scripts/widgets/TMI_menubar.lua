@@ -218,7 +218,7 @@ function TMI_Menubar:InitSidebar()
 		--fontsize = 25
 		local fontsize = _G.TOOMANYITEMS.G_TMIP_CATEGORY_FONT_SIZE
 		local left = -self.owner.shieldsize_x * .5
-		local spacing = 3.5
+		local spacing = 2
 		local top = self.owner.shieldsize_y * .5
 		local mytop = self.owner.shieldsize_y * .5
 		-- 固定取一个按钮的宽度
@@ -271,14 +271,14 @@ function TMI_Menubar:ShowSearch()
 end
 
 function TMI_Menubar:InitSearch()
-	self.searchbar_width = self.owner.shieldsize_x - self.sidebar_width * 3
-	self.search_fontsize = 30
+	self.searchbar_width = self.owner.shieldsize_x - 80
+	self.search_fontsize = 26
 
 	self.searchshield = self:AddChild( Image("images/ui.xml", "black.tex") )
 	self.searchshield:SetScale(1,1,1)
-	self.searchshield:SetTint(1,1,1,.2)
+	self.searchshield:SetTint(1,1,1,0.2)
 	self.searchshield:SetSize(self.searchbar_width, self.search_fontsize)
-	self.searchshield:SetPosition(self.sidebar_width * 2 - self.sidebar_width * .5, self.owner.shieldsize_y * .5 - self.search_fontsize * .5, 0)
+	self.searchshield:SetPosition(self.sidebar_width, self.owner.shieldsize_y * .5 - self.search_fontsize * .5, 0)
 
 	self.searchbarbutton = self.searchshield:AddChild(TextButton())
 	self.searchbarbutton:SetFont(NEWFONT)
@@ -289,10 +289,10 @@ function TMI_Menubar:InitSearch()
 	self.searchbarbutton:SetOnClick( function() self:Search(TOOMANYITEMS.DATA.search) end)
 	self.searchbarbutton_width = self.searchbarbutton.text:GetRegionSize()
 	self.searchbarbutton.image:SetSize(self.searchbarbutton_width * .9, self.search_fontsize)
-	self.searchbarbutton_posx = self.searchbar_width * .5 - self.searchbarbutton_width * .5 - 5
+	self.searchbarbutton_posx = self.searchbar_width * .5 - self.searchbarbutton_width * .5
 	self.searchbarbutton:SetPosition(self.searchbarbutton_posx, 0, 0)
 
-	self.searchtext_limitwidth = self.searchbar_width - self.searchbarbutton_width - 20
+	self.searchtext_limitwidth = self.searchbar_width - self.searchbarbutton_width - 15
 	self:InitSearchScreen()
 
 	self.searchhelptip = self.searchshield:AddChild(TextButton())
@@ -303,7 +303,7 @@ function TMI_Menubar:InitSearch()
 	self.searchhelptip:SetOnClick( function() self:SearchKeyWords() end)
 	self.searchhelptip.text:SetRegionSize(self.searchtext_limitwidth, self.search_fontsize)
 	self.searchhelptip.image:SetSize(self.searchtext_limitwidth * .9, self.search_fontsize)
-	self.searchhelptip:SetPosition(self.searchtext_limitwidth * .5 - self.searchbar_width * .5 + 5, 0, 0)
+	self.searchhelptip:SetPosition(self.searchtext_limitwidth * .5 - self.searchbar_width * .5, 0, 0)
 
 	self.searchtext = self.searchshield:AddChild(Text(NEWFONT, self.search_fontsize))
 	self.searchtext:SetColour(0.9,0.8,0.6,1)
@@ -322,7 +322,7 @@ function TMI_Menubar:SearchTipSet()
 			self.searchtext:SetRegionSize( self.searchtext_limitwidth, searchtext_height )
 			self.searchtext:SetPosition(self.searchtext_limitwidth * .5 - self.searchbar_width * .5, 0, 0)
 		else
-			self.searchtext:SetPosition(searchtext_width * .5 - self.searchbar_width * .5 + 5, 0, 0)
+			self.searchtext:SetPosition(searchtext_width * .5 - self.searchbar_width * .5, 0, 0)
 		end
 	else
 		self.searchtext:SetString("")
@@ -408,7 +408,7 @@ function TMI_Menubar:InitSearchScreen()
 		fontsize = self.search_fontsize,
 		size = {self.searchtext_limitwidth, self.search_fontsize},
 		isediting = true,
-		pos = Vector3(self.owner.shieldpos_x - self.owner.shieldsize_x * .5 + self.searchtext_limitwidth * .5 + self.sidebar_width * 3 + 5, self.owner.shieldsize_y * .5 - self.search_fontsize * .5, 0),
+		pos = Vector3(self.owner.shieldpos_x - self.owner.shieldsize_x * .5 + self.searchtext_limitwidth * .5 + self.sidebar_width * 3 -17, self.owner.shieldsize_y * .5 - self.search_fontsize * .5, 0),
 		acceptfn = SearchScreenAccept,
 		closefn = SearchScreenClose,
 		activefn = SearchScreenActive,

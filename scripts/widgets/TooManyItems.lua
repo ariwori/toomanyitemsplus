@@ -99,10 +99,18 @@ local TooManyItems = Class(Widget, function(self)
 
     self:SettingMenu()
 
+    self:TipsMenu()
+
     if TOOMANYITEMS.DATA.IsDebugMenuShow then
         self.debugshield:Show()
     else
         self.debugshield:Hide()
+    end
+
+    if TOOMANYITEMS.DATA.IsTipsMenuShow then
+        self.tipsshield:Show()
+    else
+        self.tipsshield:Hide()
     end
 
     if TOOMANYITEMS.DATA.IsSettingMenuShow then
@@ -127,6 +135,17 @@ function TooManyItems:ShowDebugMenu()
     else
         self.debugshield:Show()
         TOOMANYITEMS.DATA.IsDebugMenuShow = true
+    end
+    if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then TOOMANYITEMS.SaveNormalData() end
+end
+
+function TooManyItems:ShowTipsMenu()
+    if TOOMANYITEMS.DATA.IsTipsMenuShow then
+        self.tipsshield:Hide()
+        TOOMANYITEMS.DATA.IsTipsMenuShow = false
+    else
+        self.tipsshield:Show()
+        TOOMANYITEMS.DATA.IsTipsMenuShow = true
     end
     if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then TOOMANYITEMS.SaveNormalData() end
 end
@@ -279,7 +298,8 @@ function TooManyItems:ChangePrefabTemperature(operate)
     end
     _G.TOOMANYITEMS.DATA.temperature = newfreshness
     if _G.TOOMANYITEMS.DATA_SAVE == 1 then _G.TOOMANYITEMS.SaveNormalData() end
-    self.prefabtemperaturevalue:SetString(_G.TOOMANYITEMS.DATA.temperature .. "°C")
+    self.prefabtemperaturevalue:SetString(
+        _G.TOOMANYITEMS.DATA.temperature .. "°C")
 end
 
 function TooManyItems:DebugMenu()
@@ -321,11 +341,9 @@ function TooManyItems:DebugMenu()
     self.settingbutton:SetTextSize(self.fontsize)
     self.settingbutton:SetColour(0.9, 0.8, 0.6, 1)
     self.settingbutton:SetText(STRINGS.TOO_MANY_ITEMS_UI.SETTINGS_BUTTON)
-    self.settingbutton:SetTooltip(
-        STRINGS.TOO_MANY_ITEMS_UI.SETTINGS_BUTTON_TIP ..
-            STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF)
+    self.settingbutton:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.SETTINGS_BUTTON_TIP1)
     self.swidth, self.sheight = self.settingbutton.text:GetRegionSize()
-    self.settingbutton:SetPosition(self.currentusersizex - self.swidth * 0.5 +
+    self.settingbutton:SetPosition(self.currentusersizex - self.swidth -
                                        self.spacing, self.shieldsize_y * 0.5 -
                                        self.sheight * 0.5, 0)
     self.settingbutton:SetOnClick(function() self:ShowSettingMenu() end)
@@ -335,13 +353,12 @@ function TooManyItems:DebugMenu()
     self.helpbutton:SetTextSize(self.fontsize)
     self.helpbutton:SetColour(0.9, 0.8, 0.6, 1)
     self.helpbutton:SetText(STRINGS.TOO_MANY_ITEMS_UI.TIPS_BUTTON)
-    self.helpbutton:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.TIPS_BUTTON_TIP ..
-                                   STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF)
+    self.helpbutton:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.TIPS_BUTTON_TIP1)
     self.hwidth, self.hheight = self.helpbutton.text:GetRegionSize()
     self.helpbutton:SetPosition(self.currentusersizex - self.swidth -
-                                    self.hwidth * 0.5,
-                                self.shieldsize_y * 0.5 - self.hheight * 0.5, 0)
-    -- self.nextplayerbutton:SetOnClick(function() self:NextPlayer() end)
+                                    self.spacing * 3.3 - self.hwidth,
+                                self.shieldsize_y * 0.5 - self.sheight * 0.5, 0)
+    self.helpbutton:SetOnClick(function() self:ShowTipsMenu() end)
 
     -- 切换玩家按钮
     self.swicthbutton = self.debugshield:AddChild(TextButton())
@@ -352,9 +369,10 @@ function TooManyItems:DebugMenu()
     self.swicthbutton:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER_TIP)
     self.swwidth, self.swheight = self.swicthbutton.text:GetRegionSize()
     self.swicthbutton:SetPosition(self.currentusersizex - self.swidth -
-                                      self.hwidth - self.spacing - self.swwidth *
-                                      0.5, self.shieldsize_y * 0.5 -
-                                      self.swheight * 0.5, 0)
+                                      self.spacing * 3 - self.hwidth -
+                                      self.swwidth,
+                                  self.shieldsize_y * 0.5 - self.sheight * 0.5,
+                                  0)
     self.swicthbutton:SetOnClick(function() self:FlushPlayer() end)
 
     self.debugbuttonlist = require "TMI/debug"
@@ -424,10 +442,10 @@ function TooManyItems:DebugMenu()
                 if lleft + width > self.limit then
                     self.top = self.top - self.nextline
                     button:SetPosition(self.left + width * .5, self.top, 0)
-                    lleft = self.left + width + self.spacing
+                    lleft = self.left + width + self.spacing / 2
                 else
                     button:SetPosition(lleft + width * .5, self.top, 0)
-                    lleft = lleft + width + self.spacing
+                    lleft = lleft + width + self.spacing / 2
                 end
 
             end
@@ -470,9 +488,43 @@ function TooManyItems:ChangeSpawnItemsTips()
     if _G.TOOMANYITEMS.DATA_SAVE == 1 then _G.TOOMANYITEMS.SaveNormalData() end
 end
 
+function TooManyItems:TipsMenu()
+    self.fontsize = _G.TOOMANYITEMS.G_TMIP_DEBUG_FONT_SIZE
+    self.tipswidth = _G.TOOMANYITEMS.G_TMIP_DEBUG_MENU_SIZE
+    self.font = BODYTEXTFONT
+    self.tipslinespace = 10
+
+    self.tipsleft = -self.tipswidth * 0.5
+    self.tipslimit = -self.tipsleft
+    self.tipsshield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
+    self.tipsshield:SetScale(1, 1, 1)
+    self.tipsshield:SetPosition(0, self.shieldpos_y, 0)
+    self.tipsshield:SetSize(self.tipslimit * 2, self.shieldsize_y)
+    self.tipsshield:SetTint(1, 1, 1, 1)
+    self.screenname = self.tipsshield:AddChild(
+                          Text(self.font, self.fontsize * 1.5))
+    self.screenname:SetColour(0, 1, 1, 1)
+    self.screenname:SetString(STRINGS.TOO_MANY_ITEMS_UI.TIPS_BUTTON_TIP)
+    self.screennamex, self.screennamey = self.screenname:GetRegionSize()
+    self.screenname:SetPosition(self.tipsleft + self.screennamex * .5 + 10,
+                                self.shieldsize_y * .5 - self.screennamey * .5,
+                                0)
+    self.closebutton = self.tipsshield:AddChild(TextButton())
+    self.closebutton:SetFont(self.font)
+    self.closebutton:SetText(STRINGS.UI.OPTIONS.CLOSE)
+    self.closebutton:SetTextSize(self.fontsize)
+    self.closebutton:SetColour(0.9, 0.8, 0.6, 1)
+    self.closebuttonx, self.closebuttony = self.closebutton.text:GetRegionSize()
+    self.closebutton:SetPosition(self.tipsleft + self.tipswidth -
+                                     self.closebuttonx * .5 - 5,
+                                 self.shieldsize_y * .5 - self.closebuttony * .5 -
+                                     5, 0)
+    self.closebutton:SetOnClick(function() self:ShowTipsMenu() end)
+end
+
 function TooManyItems:SettingMenu()
     self.fontsize = _G.TOOMANYITEMS.G_TMIP_DEBUG_FONT_SIZE
-    self.settingwidth = _G.TOOMANYITEMS.G_TMIP_DEBUG_MENU_SIZE / 2
+    self.settingwidth = _G.TOOMANYITEMS.G_TMIP_DEBUG_MENU_SIZE / 3 * 2
     self.font = BODYTEXTFONT
     self.settinglinespace = 10
 
@@ -514,8 +566,8 @@ function TooManyItems:SettingMenu()
         self.foodfreshness:GetRegionSize()
     self.foodfreshness:SetPosition(
         self.settingleft + self.foodfreshnessx * .5 + 20,
-        self.shieldsize_y * .5 - self.foodfreshnessy * .5 - self.screennamey -
-            self.settinglinespace, 0)
+        self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 1.5,
+        0)
 
     self.decreasebutton1 = self.settingshield:AddChild(TextButton())
     self.decreasebutton1:SetFont(self.font)
@@ -526,9 +578,8 @@ function TooManyItems:SettingMenu()
         self.decreasebutton1.text:GetRegionSize()
     self.decreasebutton1:SetPosition(
         self.settingleft + self.foodfreshnessx + 20 + self.settinglinespace +
-            self.decreasebutton1x * .5,
-        self.shieldsize_y * .5 - self.foodfreshnessy * .5 - self.screennamey -
-            self.settinglinespace, 0)
+            self.decreasebutton1x * .5, self.shieldsize_y * .5 -
+            self.screennamey - self.settinglinespace * 1.5, 0)
     self.decreasebutton1:SetOnClick(function()
         self:ChangeFoodFreshness("decrease")
     end)
@@ -542,8 +593,8 @@ function TooManyItems:SettingMenu()
     self.foodfreshnessvalue:SetPosition(
         self.settingleft + self.foodfreshnessx + 20 + self.settinglinespace * 3 +
             self.decreasebutton1x + self.foodfreshnessvaluex * 0.5,
-        self.shieldsize_y * .5 - self.foodfreshnessy * .5 - self.screennamey -
-            self.settinglinespace, 0)
+        self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 1.5,
+        0)
 
     self.addbutton1 = self.settingshield:AddChild(TextButton())
     self.addbutton1:SetFont(self.font)
@@ -555,10 +606,9 @@ function TooManyItems:SettingMenu()
                                     self.settinglinespace * 5 +
                                     self.decreasebutton1x +
                                     self.foodfreshnessvaluex + self.addbutton1x *
-                                    0.5,
-                                self.shieldsize_y * .5 - self.foodfreshnessy *
-                                    .5 - self.screennamey -
-                                    self.settinglinespace, 0)
+                                    0.5, self.shieldsize_y * .5 -
+                                    self.screennamey - self.settinglinespace *
+                                    1.5, 0)
     self.addbutton1:SetOnClick(function() self:ChangeFoodFreshness("add") end)
 
     local newfreshness = _G.TOOMANYITEMS.DATA.xxd
@@ -580,9 +630,8 @@ function TooManyItems:SettingMenu()
     self.toolfiniteusesx, self.toolfiniteusesy =
         self.toolfiniteuses:GetRegionSize()
     self.toolfiniteuses:SetPosition(
-        self.settingleft + self.toolfiniteusesx * .5 + 20,
-        self.shieldsize_y * .5 - self.toolfiniteusesy * 1.5 - self.screennamey -
-            self.settinglinespace * 2, 0)
+        self.settingleft + self.toolfiniteusesx * .5 + 20, self.shieldsize_y *
+            .5 - self.screennamey - self.settinglinespace * 4.5, 0)
 
     self.decreasebutton2 = self.settingshield:AddChild(TextButton())
     self.decreasebutton2:SetFont(self.font)
@@ -594,10 +643,8 @@ function TooManyItems:SettingMenu()
     self.decreasebutton2:SetPosition(self.settingleft + self.toolfiniteusesx +
                                          20 + self.settinglinespace +
                                          self.decreasebutton2x * .5,
-                                     self.shieldsize_y * .5 -
-                                         self.toolfiniteusesy * 1.5 -
-                                         self.screennamey -
-                                         self.settinglinespace * 2, 0)
+                                     self.shieldsize_y * .5 - self.screennamey -
+                                         self.settinglinespace * 4.5, 0)
     self.decreasebutton2:SetOnClick(function()
         self:ChangeToolFiniteuses("decrease")
     end)
@@ -611,8 +658,8 @@ function TooManyItems:SettingMenu()
     self.toolfiniteusesvalue:SetPosition(
         self.settingleft + self.toolfiniteusesx + 20 + self.settinglinespace * 3 +
             self.decreasebutton2x + self.toolfiniteusesvaluex * 0.5,
-        self.shieldsize_y * .5 - self.toolfiniteusesy * 1.5 - self.screennamey -
-            self.settinglinespace * 2, 0)
+        self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 4.5,
+        0)
 
     self.addbutton2 = self.settingshield:AddChild(TextButton())
     self.addbutton2:SetFont(self.font)
@@ -624,10 +671,9 @@ function TooManyItems:SettingMenu()
                                     self.settinglinespace * 5 +
                                     self.decreasebutton2x +
                                     self.toolfiniteusesvaluex + self.addbutton2x *
-                                    0.5,
-                                self.shieldsize_y * .5 - self.toolfiniteusesy *
-                                    1.5 - self.screennamey -
-                                    self.settinglinespace * 2, 0)
+                                    0.5, self.shieldsize_y * .5 -
+                                    self.screennamey - self.settinglinespace *
+                                    4.5, 0)
     self.addbutton2:SetOnClick(function() self:ChangeToolFiniteuses("add") end)
 
     local newfreshness = _G.TOOMANYITEMS.DATA.syd
@@ -650,9 +696,8 @@ function TooManyItems:SettingMenu()
     self.spawnitemstipsx, self.spawnitemstipsy =
         self.spawnitemstips:GetRegionSize()
     self.spawnitemstips:SetPosition(
-        self.settingleft + self.spawnitemstipsx * .5 + 20,
-        self.shieldsize_y * .5 - self.spawnitemstipsy * 2.5 - self.screennamey -
-            self.settinglinespace * 3, 0)
+        self.settingleft + self.spawnitemstipsx * .5 + 20, self.shieldsize_y *
+            .5 - self.screennamey - self.settinglinespace * 7.5, 0)
 
     self.onbutton1 = self.settingshield:AddChild(TextButton())
     self.onbutton1:SetFont(self.font)
@@ -662,9 +707,8 @@ function TooManyItems:SettingMenu()
     self.onbutton1x, self.onbutton1y = self.onbutton1.text:GetRegionSize()
     self.onbutton1:SetPosition(self.settingleft + self.spawnitemstipsx + 20 +
                                    self.settinglinespace + self.onbutton1x * .5,
-                               self.shieldsize_y * .5 - self.spawnitemstipsy *
-                                   2.5 - self.screennamey -
-                                   self.settinglinespace * 3, 0)
+                               self.shieldsize_y * .5 - self.screennamey -
+                                   self.settinglinespace * 7.5, 0)
     self.onbutton1:SetOnClick(function() self:ChangeSpawnItemsTips() end)
 
     self.offbutton1 = self.settingshield:AddChild(TextButton())
@@ -675,10 +719,9 @@ function TooManyItems:SettingMenu()
     self.offbutton1x, self.offbutton1y = self.offbutton1.text:GetRegionSize()
     self.offbutton1:SetPosition(self.settingleft + self.spawnitemstipsx + 20 +
                                     self.settinglinespace * 2 + self.onbutton1x +
-                                    self.offbutton1x * 0.5,
-                                self.shieldsize_y * .5 - self.spawnitemstipsy *
-                                    2.5 - self.screennamey -
-                                    self.settinglinespace * 3, 0)
+                                    self.offbutton1x * 0.5, self.shieldsize_y *
+                                    .5 - self.screennamey -
+                                    self.settinglinespace * 7.5, 0)
     self.offbutton1:SetOnClick(function() self:ChangeSpawnItemsTips() end)
 
     local tipsonoroff = _G.TOOMANYITEMS.DATA.SPAWN_ITEMS_TIPS
@@ -698,9 +741,8 @@ function TooManyItems:SettingMenu()
     self.prefabfuel:SetString(STRINGS.TOO_MANY_ITEMS_UI.PREFAB_FUEL)
     self.prefabfuelx, self.prefabfuely = self.prefabfuel:GetRegionSize()
     self.prefabfuel:SetPosition(self.settingleft + self.prefabfuelx * .5 + 20,
-                                self.shieldsize_y * .5 - self.prefabfuely * 3.5 -
-                                    self.screennamey - self.settinglinespace * 4,
-                                0)
+                                self.shieldsize_y * .5 - self.screennamey -
+                                    self.settinglinespace * 10.5, 0)
 
     self.decreasebutton3 = self.settingshield:AddChild(TextButton())
     self.decreasebutton3:SetFont(self.font)
@@ -712,9 +754,8 @@ function TooManyItems:SettingMenu()
     self.decreasebutton3:SetPosition(self.settingleft + self.prefabfuelx + 20 +
                                          self.settinglinespace +
                                          self.decreasebutton3x * .5,
-                                     self.shieldsize_y * .5 - self.prefabfuely *
-                                         3.5 - self.screennamey -
-                                         self.settinglinespace * 4, 0)
+                                     self.shieldsize_y * .5 - self.screennamey -
+                                         self.settinglinespace * 10.5, 0)
     self.decreasebutton3:SetOnClick(function()
         self:ChangePrefabFuel("decrease")
     end)
@@ -729,9 +770,8 @@ function TooManyItems:SettingMenu()
                                          self.settinglinespace * 3 +
                                          self.decreasebutton3x +
                                          self.prefabfuelvaluex * 0.5,
-                                     self.shieldsize_y * .5 - self.prefabfuely *
-                                         3.5 - self.screennamey -
-                                         self.settinglinespace * 4, 0)
+                                     self.shieldsize_y * .5 - self.screennamey -
+                                         self.settinglinespace * 10.5, 0)
 
     self.addbutton3 = self.settingshield:AddChild(TextButton())
     self.addbutton3:SetFont(self.font)
@@ -743,10 +783,9 @@ function TooManyItems:SettingMenu()
                                     self.settinglinespace * 5 +
                                     self.decreasebutton3x +
                                     self.prefabfuelvaluex + self.addbutton3x *
-                                    0.5,
-                                self.shieldsize_y * .5 - self.prefabfuely * 3.5 -
-                                    self.screennamey - self.settinglinespace * 4,
-                                0)
+                                    0.5, self.shieldsize_y * .5 -
+                                    self.screennamey - self.settinglinespace *
+                                    10.5, 0)
     self.addbutton3:SetOnClick(function() self:ChangePrefabFuel("add") end)
 
     local newfreshness = _G.TOOMANYITEMS.DATA.fuel
@@ -770,10 +809,8 @@ function TooManyItems:SettingMenu()
         self.prefabtemperature:GetRegionSize()
     self.prefabtemperature:SetPosition(self.settingleft +
                                            self.prefabtemperaturex * .5 + 20,
-                                       self.shieldsize_y * .5 -
-                                           self.prefabtemperaturey * 4.5 -
-                                           self.screennamey -
-                                           self.settinglinespace * 5, 0)
+                                       self.shieldsize_y * .5 - self.screennamey -
+                                           self.settinglinespace * 13.5, 0)
 
     self.decreasebutton4 = self.settingshield:AddChild(TextButton())
     self.decreasebutton4:SetFont(self.font)
@@ -784,9 +821,8 @@ function TooManyItems:SettingMenu()
         self.decreasebutton4.text:GetRegionSize()
     self.decreasebutton4:SetPosition(
         self.settingleft + self.prefabtemperaturex + 20 + self.settinglinespace +
-            self.decreasebutton4x * .5,
-        self.shieldsize_y * .5 - self.prefabtemperaturey * 4.5 -
-            self.screennamey - self.settinglinespace * 5, 0)
+            self.decreasebutton4x * .5, self.shieldsize_y * .5 -
+            self.screennamey - self.settinglinespace * 13.5, 0)
     self.decreasebutton4:SetOnClick(function()
         self:ChangePrefabTemperature("decrease")
     end)
@@ -801,8 +837,8 @@ function TooManyItems:SettingMenu()
     self.prefabtemperaturevalue:SetPosition(
         self.settingleft + self.prefabtemperaturex + 20 + self.settinglinespace *
             3 + self.decreasebutton4x + self.prefabtemperaturevaluex * 0.5,
-        self.shieldsize_y * .5 - self.prefabtemperaturey * 4.5 -
-            self.screennamey - self.settinglinespace * 5, 0)
+        self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 13.5,
+        0)
 
     self.addbutton4 = self.settingshield:AddChild(TextButton())
     self.addbutton4:SetFont(self.font)
@@ -813,9 +849,8 @@ function TooManyItems:SettingMenu()
     self.addbutton4:SetPosition(
         self.settingleft + self.prefabtemperaturex + 20 + self.settinglinespace *
             5 + self.decreasebutton4x + self.prefabtemperaturevaluex +
-            self.addbutton4x * 0.5,
-        self.shieldsize_y * .5 - self.prefabtemperaturey * 4.5 -
-            self.screennamey - self.settinglinespace * 5, 0)
+            self.addbutton4x * 0.5, self.shieldsize_y * .5 - self.screennamey -
+            self.settinglinespace * 13.5, 0)
     self.addbutton4:SetOnClick(
         function() self:ChangePrefabTemperature("add") end)
 
