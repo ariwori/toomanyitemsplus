@@ -147,17 +147,17 @@ local function DataInit()
 	end
 
 	--食物新鲜度
-	if _G.TOOMANYITEMS.DATA.xxd == nil then
+	if _G.TOOMANYITEMS.DATA.xxd == nil or _G.TOOMANYITEMS.DATA.xxd <=0 then
 		_G.TOOMANYITEMS.DATA.xxd = 1
 	end
 
 	--工具剩余可使用度
-	if _G.TOOMANYITEMS.DATA.syd == nil then
+	if _G.TOOMANYITEMS.DATA.syd == nil or _G.TOOMANYITEMS.DATA.syd <= 0 then
 		_G.TOOMANYITEMS.DATA.syd = 1
 	end
 
 	-- 燃料剩余度
-	if _G.TOOMANYITEMS.DATA.fuel == nil then
+	if _G.TOOMANYITEMS.DATA.fuel == nil or _G.TOOMANYITEMS.DATA.fuel <= 0 then
 		_G.TOOMANYITEMS.DATA.fuel = 1
 	end
 

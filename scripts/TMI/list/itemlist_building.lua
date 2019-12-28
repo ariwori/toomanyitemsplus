@@ -21,6 +21,7 @@ return {
 	"coldfire",
 	"coldfirepit",
 	"nightlight",
+	"firepit_firebird",
 --照明
 	"mushroom_light",
 	"mushroom_light2",

@@ -1,5 +1,13 @@
 local ItemSlot = require "widgets/itemslot"
 
+local function split(str,reps)
+	local resultStrList = {}
+	string.gsub(str,'[^'..reps..']+',function (w)
+			table.insert(resultStrList,w)
+	end)
+	return resultStrList
+end
+
 local function SendCommand(fnstr)
 	local x, _, z = TheSim:ProjectScreenPos(TheSim:GetPosition())
 	local is_valid_time_to_use_remote = TheNet:GetIsClient() and TheNet:GetIsServerAdmin()
@@ -209,8 +217,20 @@ function InvSlot:Click(stack_mod)
 			OperateAnnnounce(STRINGS.NAMES.SHIFTKEYDOWNTIP..STRINGS.NAMES.GETITEMSMATERIALHTIP..itemdescription..STRINGS.NAMES.GETITEMSMATERIALETIP.." *"..spawnnum)
 			print ("[TooManyItemsPlus] Get material from: "..self.item)
 		else
-			local fnstr = "local player = %s if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() for i = 1, %s or 1 do local inst = SpawnPrefab('%s') if inst ~= nil and inst.components then if inst.components.skinner ~= nil and IsRestrictedCharacter(inst.prefab) then inst.components.skinner:SetSkinMode('normal_skin') end if inst.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(inst) end else inst.Transform:SetPosition(x,y,z) if '%s' == 'deciduoustree' then inst:StartMonster(true) end end if not inst.components.health then if inst.components.perishable then inst.components.perishable:SetPercent(%s) end if inst.components.finiteuses then inst.components.finiteuses:SetPercent(%s) end if inst.components.fueled then inst.components.fueled:SetPercent(%s) end if inst.components.temperature then inst.components.temperature:SetTemperature(%s) end end end end end"
-			SendCommand(string.format(fnstr, GetCharacter(), spawnnum, self.item, self.item, _G.TOOMANYITEMS.DATA.xxd, _G.TOOMANYITEMS.DATA.syd, _G.TOOMANYITEMS.DATA.fuel,  _G.TOOMANYITEMS.DATA.temperature))
+			local skinname = self.item
+			local leader = "noleader"
+			if string.find(self.item, "critter_") then
+				skinname = self.item.."_builder"
+				leader = GetCharacter()
+			end
+			local last_skin =	Profile:GetLastUsedSkinForItem(skinname)
+			if last_skin ~= nil and string.find(self.item, "critter_") and skinname ~= last_skin then
+				arr = split(last_skin, "_")
+				last_skin = arr[1].."_"..arr[2]
+			end
+			last_skin = last_skin ~= nil and last_skin or self.item
+			local fnstr = "local player = %s if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() for i = 1, %s or 1 do local inst = SpawnPrefab('%s', '%s', nil, '%s') if inst ~= nil and inst.components then if inst.components.skinner ~= nil and IsRestrictedCharacter(inst.prefab) then inst.components.skinner:SetSkinMode('normal_skin') end if inst.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(inst) end else inst.Transform:SetPosition(x,y,z) if '%s' == 'deciduoustree' then inst:StartMonster(true) end end if not inst.components.health then if inst.components.perishable then inst.components.perishable:SetPercent(%s) end if inst.components.finiteuses then inst.components.finiteuses:SetPercent(%s) end if inst.components.fueled then inst.components.fueled:SetPercent(%s) end if inst.components.temperature then inst.components.temperature:SetTemperature(%s) end if %s ~= 'noleader' and inst.components.follower then inst.components.follower:SetLeader(player) end end end end end"
+			SendCommand(string.format(fnstr, GetCharacter(), spawnnum, self.item, last_skin, TOOMANYITEMS.CHARACTER_USERID, self.item, _G.TOOMANYITEMS.DATA.xxd, _G.TOOMANYITEMS.DATA.syd, _G.TOOMANYITEMS.DATA.fuel,  _G.TOOMANYITEMS.DATA.temperature, leader))
 			TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/click_object")
 			OperateAnnnounce(STRINGS.NAMES.SPAWNITEMSTIP..itemdescription.." *"..spawnnum)
 			print ("[TooManyItemsPlus] SpawnPrefab: "..self.item)
