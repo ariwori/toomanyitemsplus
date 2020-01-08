@@ -90,6 +90,36 @@ function InvSlot:OnControl(control, down)
 
 end
 
+-- function FormatValue(val)
+    -- if type(val) == "string" then
+        -- return string.format("%q", val)
+    -- end
+    -- return tostring(val)
+-- end
+
+-- function FormatTable(t, tabcount)
+    -- tabcount = tabcount or 0
+    -- if tabcount > 5 then
+        -- 防止栈溢出
+        -- return "<table too deep>"..tostring(t)
+    -- end
+    -- local str = ""
+    -- if type(t) == "table" then
+        -- for k, v in pairs(t) do
+            -- local tab = string.rep("\t", tabcount)
+            -- if type(v) == "table" then
+                -- str = str..tab..string.format("[%s] = {", FormatValue(k))..'\n'
+                -- str = str..FormatTable(v, tabcount + 1)..tab..'}\n'
+            -- else
+                -- str = str..tab..string.format("[%s] = %s", FormatValue(k), FormatValue(v))..',\n'
+            -- end
+        -- end
+    -- else
+        -- str = str..tostring(t)..'\n'
+    -- end
+    -- return str
+-- end
+
 function InvSlot:GetDescription()
 	local str = self.item
 
@@ -109,12 +139,17 @@ function InvSlot:GetDescription()
 	end
 
 	if type(str) == "table" then
+	-- print(FormatTable(str))
 		local itemtip = string.upper(self.item)
-		if NAMES_DEFAULTS[itemtip] ~= nil then
-			str = str[NAMES_DEFAULTS[itemtip]]
+		if self.item == "moon_altar" then
+			str = str[itemtip]
 		else
-			local _, v = next(str)
-			str = v
+			if NAMES_DEFAULTS[itemtip] ~= nil then
+				str = str[NAMES_DEFAULTS[itemtip]]
+			else
+				local _, v = next(str)
+				str = v
+			end
 		end
 	end
 
@@ -229,8 +264,101 @@ function InvSlot:Click(stack_mod)
 				last_skin = arr[1].."_"..arr[2]
 			end
 			last_skin = last_skin ~= nil and last_skin or self.item
-			local fnstr = "local player = %s if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() for i = 1, %s or 1 do local inst = SpawnPrefab('%s', '%s', nil, '%s') if inst ~= nil and inst.components then if inst.components.skinner ~= nil and IsRestrictedCharacter(inst.prefab) then inst.components.skinner:SetSkinMode('normal_skin') end if inst.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(inst) end else inst.Transform:SetPosition(x,y,z) if '%s' == 'deciduoustree' then inst:StartMonster(true) end end if not inst.components.health then if inst.components.perishable then inst.components.perishable:SetPercent(%s) end if inst.components.finiteuses then inst.components.finiteuses:SetPercent(%s) end if inst.components.fueled then inst.components.fueled:SetPercent(%s) end if inst.components.temperature then inst.components.temperature:SetTemperature(%s) end if %s ~= 1 and inst.components.follower then inst.components.follower:SetLeader(player) end end end end end"
-			SendCommand(string.format(fnstr, GetCharacter(), spawnnum, self.item, last_skin, TOOMANYITEMS.CHARACTER_USERID, self.item, _G.TOOMANYITEMS.DATA.xxd, _G.TOOMANYITEMS.DATA.syd, _G.TOOMANYITEMS.DATA.fuel,  _G.TOOMANYITEMS.DATA.temperature, leader))
+			local fnstr = [[
+			local player = %s
+			local function onturnon(inst)
+				if inst._stage == 3 then
+					if inst.AnimState:IsCurrentAnimation("proximity_pre") or inst.AnimState:IsCurrentAnimation("proximity_loop") or inst.AnimState:IsCurrentAnimation("place3") then
+						inst.AnimState:PushAnimation("proximity_pre")
+					else
+						inst.AnimState:PlayAnimation("proximity_pre")
+					end
+
+					inst.AnimState:PushAnimation("proximity_loop", true)
+				end
+			end
+			local function onturnoff(inst)
+				if inst._stage == 3 then
+					inst.AnimState:PlayAnimation("proximity_pst")
+					inst.AnimState:PushAnimation("idle3", false)
+				end
+			end
+			if player ~= nil and player.Transform then
+				if '%s' == 'klaus' then
+					local pos = player:GetPosition()
+					local minplayers = math.huge
+					local spawnx, spawnz
+					FindWalkableOffset(pos,
+						math.random() * 2 * PI, 33, 16, true, true,
+						function(pt)
+							local count = #FindPlayersInRangeSq(pt.x, pt.y, pt.z, 625)
+							if count < minplayers then
+								minplayers = count
+								spawnx, spawnz = pt.x, pt.z
+								return count <= 0
+							end
+							return false
+						end)
+					if spawnx == nil then
+						local offset = FindWalkableOffset(pos, math.random() * 2 * PI, 3, 8, false, true)
+						if offset ~= nil then
+							spawnx, spawnz = pos.x + offset.x, pos.z + offset.z
+						end
+					end
+					local klaus = SpawnPrefab("klaus")
+					klaus.Transform:SetPosition(spawnx or pos.x, 0, spawnz or pos.z)
+					klaus:SpawnDeer()
+					klaus.components.knownlocations:RememberLocation("spawnpoint", pos, false)
+					klaus.components.spawnfader:FadeIn()
+				else
+					local x,y,z = player.Transform:GetWorldPosition()
+					for i = 1, %s or 1 do
+						local inst = SpawnPrefab('%s', '%s', nil, '%s')
+						if inst ~= nil and inst.components then
+							if inst.components.skinner ~= nil and IsRestrictedCharacter(inst.prefab) then
+								inst.components.skinner:SetSkinMode('normal_skin')
+							end
+							if inst.components.inventoryitem ~= nil then
+								if player.components and player.components.inventory then
+									player.components.inventory:GiveItem(inst)
+								end
+							else
+								inst.Transform:SetPosition(x,y,z)
+								if '%s' == 'deciduoustree' then
+									inst:StartMonster(true)
+								end
+							end
+							if not inst.components.health then
+								if inst.components.perishable then
+									inst.components.perishable:SetPercent(%s)
+								end
+								if inst.components.finiteuses then
+									inst.components.finiteuses:SetPercent(%s)
+								end
+								if inst.components.fueled then
+									inst.components.fueled:SetPercent(%s)
+								end
+								if inst.components.temperature then
+									inst.components.temperature:SetTemperature(%s)
+								end
+								if %s ~= 1 and inst.components.follower then
+									inst.components.follower:SetLeader(player)
+								end
+								if '%s' == 'moon_altar' then
+									inst._stage =3
+									inst.AnimState:PlayAnimation('idle3')
+									inst:AddComponent('prototyper')
+									inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES.MOON_ALTAR_FULL
+									inst.components.prototyper.onturnon = onturnon
+									inst.components.prototyper.onturnoff = onturnoff
+									inst.components.lootdropper:SetLoot({ 'moon_altar_idol', 'moon_altar_glass', 'moon_altar_seed' })
+								end
+							end
+						end
+					end
+				end
+			end ]]
+			SendCommand(string.format(fnstr, GetCharacter(), self.item, spawnnum, self.item, last_skin, TOOMANYITEMS.CHARACTER_USERID, self.item, _G.TOOMANYITEMS.DATA.xxd, _G.TOOMANYITEMS.DATA.syd, _G.TOOMANYITEMS.DATA.fuel,  _G.TOOMANYITEMS.DATA.temperature, leader, self.item))
 			TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/click_object")
 			OperateAnnnounce(STRINGS.NAMES.SPAWNITEMSTIP..itemdescription.." *"..spawnnum)
 			print ("[TooManyItemsPlus] SpawnPrefab: "..self.item)

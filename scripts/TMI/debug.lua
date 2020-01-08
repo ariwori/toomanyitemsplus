@@ -217,14 +217,14 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_KILL,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_KILLTIP,
-				fn = {'confirm', '%s:PushEvent("death")', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_KILLTIP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_KILLCONFIRMTIP}
+				fn = {'confirm', 'local player = %s player:PushEvent("death") player.deathpkname = "'..STRINGS.TOO_MANY_ITEMS_UI.TMIP_CONSOLE..'"', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_KILLTIP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_KILLCONFIRMTIP}
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTH,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTHTIP,
-				fn = {'confirm', '%s:PushEvent("respawnfromghost")', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTHTIP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTHCONFIRMTIP}
+				fn = {'confirm', 'local player = %s player:PushEvent("respawnfromghost") player.rezsource = "'..STRINGS.TOO_MANY_ITEMS_UI.TMIP_CONSOLE..'"', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTHTIP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTHCONFIRMTIP}
 			},
 			{
 				beta = false,
@@ -271,7 +271,7 @@ return {
 				pos = "all",
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_ENTITY_DELETE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_ENTITY_DELETETIP,
-				fn = 'local player = %s local function InInv(b) local inv = b.components.inventoryitem return inv and inv.owner and true or false end local function CanDelete(inst) if inst and inst ~= TheWorld and not InInv(inst) and inst.Transform then if inst:HasTag("player") then if inst.userid == nil or inst.userid == "" then return true end else return true end end return false end if player and player.Transform then if player.components.burnable then player.components.burnable:Extinguish(true) end local x,y,z = player.Transform:GetWorldPosition() local ents = TheSim:FindEntities(x,y,z, 3) for _, obj in pairs(ents) do if CanDelete(obj) then if obj.components then if obj.components.burnable then obj.components.burnable:Extinguish(true) end if obj.components.firefx then if obj.components.firefx.extinguishsoundtest then obj.components.firefx.extinguishsoundtest = function() return true end end obj.components.firefx:Extinguish() end end if (not (obj.prefab == "minerhatlight" or "lanternlight" or "yellowamuletlight" or "slurperlight" or "redlanternlight" or "lighterfire" or "torchfire" or "torchfire_rag" or "torchfire_spooky" or "torchfire_shadow")) or (obj.entity:GetParent() == nil) then obj:Remove() end end end end',
+				fn = 'local player = %s local function InInv(b) local inv = b.components.inventoryitem return inv and inv.owner and true or false end local function CanDelete(inst) if inst and inst ~= TheWorld and not InInv(inst) and inst.Transform then if inst:HasTag("player") then if inst.userid == nil or inst.userid == "" then return true end else return true end end return false end if player and player.Transform then if player.components.burnable then player.components.burnable:Extinguish(true) end local x,y,z = player.Transform:GetWorldPosition() local ents = TheSim:FindEntities(x,y,z, 3) for _, obj in pairs(ents) do if CanDelete(obj) then if obj.components then if obj.components.burnable then obj.components.burnable:Extinguish(true) end if obj.components.firefx then if obj.components.firefx.extinguishsoundtest then obj.components.firefx.extinguishsoundtest = function() return true end end obj.components.firefx:Extinguish() end end if (not (obj.prefab == "minerhatlight" or "lanternlight" or "yellowamuletlight" or "slurperlight" or "redlanternlight" or "lighterfire" or "torchfire" or "torchfire_rag" or "torchfire_spooky" or "torchfire_shadow")) or (obj.entity:GetParent() == nil) then obj:Remove() print(obj.prefab) end end end end',
 			},
 			{
 				beta = false,

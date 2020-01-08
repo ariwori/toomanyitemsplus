@@ -108,7 +108,7 @@ local function MoosenessSet()
 end
 
 local function GodMode()
-	SendCommand(string.format('local p = %s local me = UserToPlayer("%s") if p and me then local function SetGodeMode() if p.components.health and me.components.talker then local mode = p.components.health.invincible me.components.talker:Say("%s: "..(mode and STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL or STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY)) p.components.health:SetInvincible(not mode) end end if p:HasTag("playerghost") then p:PushEvent("respawnfromghost") p:DoTaskInTime(1, SetGodeMode) else SetGodeMode() end end', GetCharacter(), ThePlayer.userid, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GODMODE))
+	SendCommand(string.format('local p = %s local me = UserToPlayer("%s") if p and me then local function SetGodeMode() if p.components.health and me.components.talker then local mode = p.components.health.invincible me.components.talker:Say("%s: "..(mode and STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL or STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY)) p.components.health:SetInvincible(not mode) end end if p:HasTag("playerghost") then p:PushEvent("respawnfromghost") p.rezsource = "'..STRINGS.TOO_MANY_ITEMS_UI.TMIP_CONSOLE..'" p:DoTaskInTime(1, SetGodeMode) else SetGodeMode() end end', GetCharacter(), ThePlayer.userid, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GODMODE))
 end
 
 local function CreativeMode()
