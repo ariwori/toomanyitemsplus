@@ -431,21 +431,21 @@ return {
 				pos = "all",
 				name = STRINGS.UI.SANDBOXMENU.NONE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.NONE,
-				fn = {'confirm', 'ApplySpecialEvent("none") TheWorld.topology.overrides.specialevent = "none" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.WINTERS_FEAST..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.NONE, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+				fn = {'confirm', 'ApplySpecialEvent("none") TheWorld.topology.overrides.specialevent = "none" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.NONE..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.NONE, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.DEFAULT,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.DEFAULT,
-				fn = {'confirm', 'ApplySpecialEvent("default") TheWorld.topology.overrides.specialevent = "default" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.WINTERS_FEAST..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.DEFAULT, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+				fn = {'confirm', 'ApplySpecialEvent("default") TheWorld.topology.overrides.specialevent = "default" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.DEFAULT..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.DEFAULT, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.HALLOWED_NIGHTS,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.HALLOWED_NIGHTS,
-				fn = {'confirm', 'ApplySpecialEvent("hallowed_nights") TheWorld.topology.overrides.specialevent = "hallowed_nights" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.WINTERS_FEAST..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.HALLOWED_NIGHTS, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+				fn = {'confirm', 'ApplySpecialEvent("hallowed_nights") TheWorld.topology.overrides.specialevent = "hallowed_nights" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.HALLOWED_NIGHTS..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.HALLOWED_NIGHTS, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
 			},
 			{
 				beta = false,
@@ -459,21 +459,28 @@ return {
 				pos = "all",
 				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG,
-				fn = {'confirm', 'ApplySpecialEvent("year_of_the_gobbler") TheWorld.topology.overrides.specialevent = "year_of_the_gobbler" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.WINTERS_FEAST..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+				fn = {'confirm', 'ApplySpecialEvent("year_of_the_gobbler") TheWorld.topology.overrides.specialevent = "year_of_the_gobbler" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV,
-				fn = {'confirm', 'ApplySpecialEvent("year_of_the_varg") TheWorld.topology.overrides.specialevent = "year_of_the_varg" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.WINTERS_FEAST..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+				fn = {'confirm', 'ApplySpecialEvent("year_of_the_varg") TheWorld.topology.overrides.specialevent = "year_of_the_varg" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
 			},
 			{
 				beta = false,
 				pos = "all",
 				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP,
-				fn = {'confirm', 'ApplySpecialEvent("year_of_the_pig") TheWorld.topology.overrides.specialevent = "year_of_the_pig" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.WINTERS_FEAST..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+				fn = {'confirm', 'ApplySpecialEvent("year_of_the_pig") TheWorld.topology.overrides.specialevent = "year_of_the_pig" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTC,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTC,
+				fn = {'confirm', 'ApplySpecialEvent("year_of_the_carrat") TheWorld.topology.overrides.specialevent = "year_of_the_carrat" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTC..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTC, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
 			},
 
 		},

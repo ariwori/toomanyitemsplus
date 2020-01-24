@@ -32,6 +32,15 @@ return {
 	"saddle_race",
 	"saddle_war",
 	"saddlehorn",
+--训练工具
+	"yotc_carrat_scale_item",
+	"yotc_carrat_gym_speed_item",
+	"yotc_carrat_gym_reaction_item",
+	"yotc_carrat_gym_stamina_item",
+	"yotc_carrat_gym_direction_item",
+	"yotc_carrat_race_start_item",
+	"yotc_carrat_race_checkpoint_item",
+	"yotc_carrat_race_finish_item",
 --烹饪工具
 	"portablecookpot_item",
 	"portableblender_item",
@@ -44,6 +53,7 @@ return {
 	"pumpkin_lantern",
 	"redlantern",
 	"lantern",
+	"miniboatlantern",
 	"minerhat",
 	"molehat",
 --降温灭火工具
@@ -91,4 +101,5 @@ return {
 	"bedroll_furry",
 --保温工具
 	"heatrock",
+
 }

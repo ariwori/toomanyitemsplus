@@ -1,17 +1,36 @@
-description = [[
+name = "Too Many Items Plus"
+version = "1.0.6.7"
+description = name .." 当前版本： "..version..
+[[
 
 随意获得需要的物品和使用很多服务器控制命令。
 必须管理员权限才可以使用。
-
 默认 T 键打开菜单。
 鼠标左键默认 1 个物品。
 鼠标右键默认 10 个物品。
-
-你可以自定义一个特殊的物品列表.(通过按住 ctrl 键点击物品来增加删除)
-
-Codes by C.J.B. | Items and bug fix by GaRAnTuLA. | DST version by Skull. | FIX By TheMightyPikachu & Electroely.
-UI and codes optimization by Tendy. | Classify and some updates by 乐十画.
+打开菜单的按钮和生成物品的数量是可修改的.
+你可以自定义一个特殊的物品列表.
+(通过按住 ctrl 键点击物品来增加删除)
+Mod原作者：C.J.B. | 项目和bug修复：GaRAnTuLA. | 联机版本：Skull. | 
+崩溃和搜索功能修复：TheMightyPikachu、Electroely. | 
+界面布局和代码优化、高级功能开发：Tendy. | 
+分类和伍迪变身按钮、小功能更新：乐十画.
 ]]
+
+author = "CJB,GaRAnTuLA,Skull,TheMightyPikachu,Electroely,Tendy,乐十画"
+api_version = 10
+priority = -7000
+dont_starve_compatible = false
+reign_of_giants_compatible = false
+shipwrecked_compatible = false
+dst_compatible = true
+version_compatible = "1.0.0"
+all_clients_require_mod = false
+client_only_mod = true
+server_filter_tags = { }
+
+icon_atlas = "TooManyItemsPlus.xml"
+icon = "TooManyItemsPlus.tex"
 
 local alpha = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
 local KEY_A = 97

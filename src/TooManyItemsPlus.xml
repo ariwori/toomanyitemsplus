@@ -1,1 +1,5 @@
-<Atlas><Texture filename="TooManyItemsPlus.tex" /><Elements><Element name="TooManyItemsPlus.tex" u1="0.00390625" u2="0.99609375" v1="0.00390625" v2="0.99609375" /></Elements></Atlas>
+<Atlas>
+	<Texture filename="TooManyItemsPlus.tex" />
+		<Elements><Element name="TooManyItemsPlus.tex" u1="0" u2="1" v1="0" v2="1" />
+	</Elements>
+</Atlas>
