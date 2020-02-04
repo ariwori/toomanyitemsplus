@@ -10,11 +10,13 @@ local PopupDialogScreen = require "screens/redux/popupdialog"
 local function NextPlayer()
     local cur_index
     for k, v in pairs(AllPlayers) do
-        if v.userid == TOOMANYITEMS.CHARACTER_USERID then
+      -- print(v.name)
+      if v.userid == TOOMANYITEMS.CHARACTER_USERID then
             cur_index = k
             break
         end
     end
+    cur_index = cur_index and cur_index or 1
     if cur_index + 1 <= #AllPlayers then
         cur_index = cur_index + 1
     else
@@ -412,6 +414,7 @@ function TooManyItems:DebugMenu()
                 button:SetColour(0.9, 0.8, 0.6, 1)
 
                 local fn = buttonlist[i].fn
+                local img = buttonlist[i].img
                 if type(fn) == "table" then
                     if fn[1] == "confirm" then
                         button:SetOnClick(
@@ -434,8 +437,13 @@ function TooManyItems:DebugMenu()
 
                 local width, height = button.text:GetRegionSize()
                 if width < self.minwidth then
+                  if img and img == "true" then
+                    button.image = self:AddChild( Image("images/global.xml", "square.tex") )
+	                  button.image:SetTint(0,0,0,.8)
+                  else
                     width = self.minwidth
                     button.text:SetRegionSize(width, height)
+                  end
                 end
                 button.image:SetSize(width * 0.8, height)
 
