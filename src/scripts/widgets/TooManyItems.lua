@@ -528,6 +528,10 @@ function TooManyItems:TipsMenu()
                                  self.shieldsize_y * .5 - self.closebuttony * .5 -
                                      5, 0)
     self.closebutton:SetOnClick(function() self:ShowTipsMenu() end)
+	
+	--使用说明图片
+	
+	
 end
 
 function TooManyItems:SettingMenu()
@@ -564,6 +568,53 @@ function TooManyItems:SettingMenu()
                                  self.shieldsize_y * .5 - self.closebuttony * .5 -
                                      5, 0)
     self.closebutton:SetOnClick(function() self:ShowSettingMenu() end)
+
+    -- 生成物品提示
+    self.spawnitemstips = self.settingshield:AddChild(
+                              Text(self.font, self.fontsize))
+    self.spawnitemstips:SetColour(0.9, 0.8, 0.6, 1)
+    self.spawnitemstips:SetString(STRINGS.TOO_MANY_ITEMS_UI
+                                      .TMIP_SPAWN_ITEMS_TIPS)
+    self.spawnitemstipsx, self.spawnitemstipsy =
+        self.spawnitemstips:GetRegionSize()
+    self.spawnitemstips:SetPosition(
+        self.settingleft + self.spawnitemstipsx * .5 + 20, self.shieldsize_y *
+            .5 - self.screennamey - self.settinglinespace * 7.5, 0)
+
+    self.onbutton1 = self.settingshield:AddChild(TextButton())
+    self.onbutton1:SetFont(self.font)
+    self.onbutton1:SetText(STRINGS.TOO_MANY_ITEMS_UI.TMIP_SPAWN_ITEMS_TIPS_ON)
+    self.onbutton1:SetTextSize(self.fontsize)
+    self.onbutton1:SetColour(0.9, 0.8, 0.6, 1)
+    self.onbutton1x, self.onbutton1y = self.onbutton1.text:GetRegionSize()
+    self.onbutton1:SetPosition(self.settingleft + self.spawnitemstipsx + 20 +
+                                   self.settinglinespace + self.onbutton1x * .5,
+                               self.shieldsize_y * .5 - self.screennamey -
+                                   self.settinglinespace * 7.5, 0)
+    self.onbutton1:SetOnClick(function() self:ChangeSpawnItemsTips() end)
+
+    self.offbutton1 = self.settingshield:AddChild(TextButton())
+    self.offbutton1:SetFont(self.font)
+    self.offbutton1:SetText(STRINGS.TOO_MANY_ITEMS_UI.TMIP_SPAWN_ITEMS_TIPS_OFF)
+    self.offbutton1:SetTextSize(self.fontsize)
+    self.offbutton1:SetColour(0.9, 0.8, 0.6, 1)
+    self.offbutton1x, self.offbutton1y = self.offbutton1.text:GetRegionSize()
+    self.offbutton1:SetPosition(self.settingleft + self.spawnitemstipsx + 20 +
+                                    self.settinglinespace * 2 + self.onbutton1x +
+                                    self.offbutton1x * 0.5, self.shieldsize_y *
+                                    .5 - self.screennamey -
+                                    self.settinglinespace * 7.5, 0)
+    self.offbutton1:SetOnClick(function() self:ChangeSpawnItemsTips() end)
+
+    local tipsonoroff = _G.TOOMANYITEMS.DATA.SPAWN_ITEMS_TIPS
+    if tipsonoroff then
+        self.onbutton1:SetClickable(false)
+        self.offbutton1:SetColour(0.5, 0.5, 0.5, 0.5)
+    else
+        self.onbutton1:SetColour(0.5, 0.5, 0.5, 0.5)
+        self.offbutton1:SetClickable(false)
+    end
+    -- 生成物品提示
 
     -- 食物新鲜度
     self.foodfreshness = self.settingshield:AddChild(
@@ -694,53 +745,6 @@ function TooManyItems:SettingMenu()
         self.addbutton2:SetColour(0.5, 0.5, 0.5, 0.5)
     end
     -- 工具使用度
-
-    -- 生成物品提示
-    self.spawnitemstips = self.settingshield:AddChild(
-                              Text(self.font, self.fontsize))
-    self.spawnitemstips:SetColour(0.9, 0.8, 0.6, 1)
-    self.spawnitemstips:SetString(STRINGS.TOO_MANY_ITEMS_UI
-                                      .TMIP_SPAWN_ITEMS_TIPS)
-    self.spawnitemstipsx, self.spawnitemstipsy =
-        self.spawnitemstips:GetRegionSize()
-    self.spawnitemstips:SetPosition(
-        self.settingleft + self.spawnitemstipsx * .5 + 20, self.shieldsize_y *
-            .5 - self.screennamey - self.settinglinespace * 7.5, 0)
-
-    self.onbutton1 = self.settingshield:AddChild(TextButton())
-    self.onbutton1:SetFont(self.font)
-    self.onbutton1:SetText(STRINGS.TOO_MANY_ITEMS_UI.TMIP_SPAWN_ITEMS_TIPS_ON)
-    self.onbutton1:SetTextSize(self.fontsize)
-    self.onbutton1:SetColour(0.9, 0.8, 0.6, 1)
-    self.onbutton1x, self.onbutton1y = self.onbutton1.text:GetRegionSize()
-    self.onbutton1:SetPosition(self.settingleft + self.spawnitemstipsx + 20 +
-                                   self.settinglinespace + self.onbutton1x * .5,
-                               self.shieldsize_y * .5 - self.screennamey -
-                                   self.settinglinespace * 7.5, 0)
-    self.onbutton1:SetOnClick(function() self:ChangeSpawnItemsTips() end)
-
-    self.offbutton1 = self.settingshield:AddChild(TextButton())
-    self.offbutton1:SetFont(self.font)
-    self.offbutton1:SetText(STRINGS.TOO_MANY_ITEMS_UI.TMIP_SPAWN_ITEMS_TIPS_OFF)
-    self.offbutton1:SetTextSize(self.fontsize)
-    self.offbutton1:SetColour(0.9, 0.8, 0.6, 1)
-    self.offbutton1x, self.offbutton1y = self.offbutton1.text:GetRegionSize()
-    self.offbutton1:SetPosition(self.settingleft + self.spawnitemstipsx + 20 +
-                                    self.settinglinespace * 2 + self.onbutton1x +
-                                    self.offbutton1x * 0.5, self.shieldsize_y *
-                                    .5 - self.screennamey -
-                                    self.settinglinespace * 7.5, 0)
-    self.offbutton1:SetOnClick(function() self:ChangeSpawnItemsTips() end)
-
-    local tipsonoroff = _G.TOOMANYITEMS.DATA.SPAWN_ITEMS_TIPS
-    if tipsonoroff then
-        self.onbutton1:SetClickable(false)
-        self.offbutton1:SetColour(0.5, 0.5, 0.5, 0.5)
-    else
-        self.onbutton1:SetColour(0.5, 0.5, 0.5, 0.5)
-        self.offbutton1:SetClickable(false)
-    end
-    -- 生成物品提示
 
     -- 燃料剩余度
     self.prefabfuel =

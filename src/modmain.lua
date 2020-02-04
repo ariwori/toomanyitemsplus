@@ -83,19 +83,19 @@ local support_languages = {
 
 local function LoadTranslation()
 	-- anyway ... load default language.
-	modimport("Stringslocalization.lua")
+	modimport("lanuage/Stringslocalization.lua")
 	local steamlang = _G.TheNet:GetLanguageCode() or nil
 	if steamlang and steam_support_languages[steamlang] then
-		print("[TooManyItems] Get your language from steam!")
-		modimport("Stringslocalization_"..steam_support_languages[steamlang]..".lua")
+		print("[TooManyItemsPlus] Get your language from steam!")
+		modimport("lanuage/Stringslocalization_"..steam_support_languages[steamlang]..".lua")
 	else
 		local lang = _G.LanguageTranslator.defaultlang or nil
 		if lang ~= nil and support_languages[lang] ~= nil then
 			if support_languages[lang] ~= true then
 				lang = support_languages[lang]
 			end
-			print("[TooManyItems] Get your language from language mod!")
-			modimport("Stringslocalization_"..lang..".lua")
+			print("[TooManyItemsPlus] Get your language from language mod!")
+			modimport("lanuage/Stringslocalization_"..lang..".lua")
 		end
 	end
 end
@@ -189,7 +189,7 @@ local function AddTMIMenu(self)
 	if controls and controls.containerroot then
 		controls.TMI = controls.containerroot:AddChild(TMI())
 	else
-		print("[TooManyItems] AddClassPostConstruct errors!")
+		print("[TooManyItemsPlus]] AddClassPostConstruct errors!")
 		return
 	end
 	controls.TMI.IsTooManyItemsMenuShow = false
@@ -209,7 +209,7 @@ local function ShowTMIMenu()
 				controls.TMI.IsTooManyItemsMenuShow = true
 			end
 		else
-			print("[TooManyItems] Menu can not show!")
+			print("[TooManyItemsPlus]] Menu can not show!")
 			return
 		end
 	end

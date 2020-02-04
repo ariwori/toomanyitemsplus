@@ -135,6 +135,9 @@ return {
 	"lucky_goldnugget",
 	"pig_token",
 	"redpouch_yotp",
+--种子礼包
+	"yotc_seedpacket",
+	"yotc_seedpacket_rare",
 --包裹
 	"wetpouch",
 	"gift",

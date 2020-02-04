@@ -26,6 +26,8 @@ return {
 	"oceanfish_medium_3_inv",
 	"oceanfish_medium_4_inv",
 	"oceanfish_medium_5_inv",
+	"oceanfish_medium_6_inv",
+	"oceanfish_medium_7_inv",
 --海鱼 小型
 	"oceanfish_small_1_inv",
 	"oceanfish_small_2_inv",

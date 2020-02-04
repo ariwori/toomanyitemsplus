@@ -21,7 +21,6 @@ return {
 	"coldfire",
 	"coldfirepit",
 	"nightlight",
-	"firepit_firebird",
 --照明
 	"mushroom_light",
 	"mushroom_light2",
@@ -106,6 +105,16 @@ return {
 	"perdshrine",
 	"wargshrine",
 	"pigshrine",
+	"yotc_carratshrine",
+--萝卜鼠
+	"yotc_carrat_scale",
+	"yotc_carrat_gym_speed",
+	"yotc_carrat_gym_reaction",
+	"yotc_carrat_gym_stamina",
+	"yotc_carrat_gym_direction",
+	"yotc_carrat_race_start",
+	"yotc_carrat_race_checkpoint",
+	"yotc_carrat_race_finish",
 --装饰
 	"endtable",
 	"succulent_potted",

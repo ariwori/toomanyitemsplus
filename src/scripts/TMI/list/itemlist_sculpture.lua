@@ -74,6 +74,9 @@ return {
 	"chesspiece_moon_marble",
 	"chesspiece_moon_stone",
 	"chesspiece_moon_moonglass",
+	"chesspiece_carrat_marble",
+	"chesspiece_carrat_stone",
+	"chesspiece_carrat_moonglass",
 	"chesspiece_hornucopia_marble",
 	"chesspiece_hornucopia_stone",
 	"chesspiece_hornucopia_moonglass",
@@ -98,7 +101,9 @@ return {
 	"chesspiece_anchor",
 	"chesspiece_butterfly",
 	"chesspiece_moon",
+	"chesspiece_carrat",
 	"sculpture_bishop",
 	"sculpture_knight",
 	"sculpture_rook",
+
 }
