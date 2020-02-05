@@ -176,7 +176,7 @@ function InvSlot:GetDescription()
 	elseif self.item == "deciduoustree" then
 		str = STRINGS.NAMES[string.upper(strarr[1])]..STRINGS.NAMES.MONSTER
   -- 刷新点
-	elseif string.find(self.item, "_spawner") and #strarr == 2 and STRINGS.NAMES[string.upper(strarr[1])] then
+	elseif string.find(self.item, "_spawner") and #strarr <= 3 and STRINGS.NAMES[string.upper(strarr[1])] then
 		str =STRINGS.NAMES[string.upper(strarr[1])]..STRINGS.NAMES.SPAWNER
 
   -- 雕像、雕像草图

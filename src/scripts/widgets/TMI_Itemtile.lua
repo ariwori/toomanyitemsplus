@@ -78,9 +78,10 @@ function ItemTile:TrySetImage()
 	local atlas, image, spiceimage = self:GetAsset(true)
 	if atlas and image then
 		self.image = self:AddChild(Image(atlas, image))
-		-- 调料都在base_atlas_1
+    -- 调料都在base_atlas_1,官方又把调料移到了2，搞屁啊
+    -- print(spiceimage)
 		if spiceimage then
-			self.spiceimage = self:AddChild(Image(base_atlas_1, spiceimage))
+			self.spiceimage = self:AddChild(Image(base_atlas_2, spiceimage))
 		end
 		local w,h = self.image:GetSize()
 		if math.max(w,h) < 50 then
@@ -273,7 +274,7 @@ function ItemTile:DescriptionInit()
 	elseif self.item == "deciduoustree" then
 		str =STRINGS.NAMES[string.upper(strarr[1])]..STRINGS.NAMES.MONSTER
   -- 刷新点
-	elseif string.find(self.item, "_spawner") and #strarr == 2 and STRINGS.NAMES[string.upper(strarr[1])] then
+	elseif string.find(self.item, "_spawner") and #strarr <= 3 and STRINGS.NAMES[string.upper(strarr[1])] then
 		str =STRINGS.NAMES[string.upper(strarr[1])]..STRINGS.NAMES.SPAWNER
 
   -- 雕像、雕像草图

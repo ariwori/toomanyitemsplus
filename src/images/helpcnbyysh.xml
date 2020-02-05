@@ -1,6 +1,1 @@
-<Atlas>
-	<Texture filename="helpcnbyysh.tex"/>
-	<Elements>
-		<Element name="helpcnbyysh.tex" u1="0" u2="1" v1="0" v2="1"/>
-	</Elements>
-</Atlas>
+<Atlas><Texture filename="helpcnbyysh.tex" /><Elements><Element name="helpcnbyysh.tex" u1="0.00048828125" u2="0.73193359375" v1="0.34619140625" v2="0.99951171875" /></Elements></Atlas>

@@ -4,7 +4,9 @@ if _G.TheNet and ( ( _G.TheNet:GetIsServer() and _G.TheNet:GetServerIsDedicated(
 Assets =
 {
 	Asset("ATLAS", "images/customicobyysh.xml"),
-	Asset("IMAGE", "images/customicobyysh.tex"),
+  Asset("IMAGE", "images/customicobyysh.tex"),
+  Asset("ATLAS", "images/helpcnbyysh.xml"),
+  Asset("IMAGE", "images/helpcnbyysh.tex")
 }
 
 _G.TOOMANYITEMS = {
@@ -13,7 +15,8 @@ _G.TOOMANYITEMS = {
 	CHARACTER_USERID = "",
 	DATA = {},
 	TELEPORT_DATA = {},
-	LIST = {},
+  LIST = {},
+  UI_LANGUAGE = "en",
 
 	G_TMIP_TOGGLE_KEY = GetModConfigData("GOP_TMIP_TOGGLE_KEY"),
 	G_TMIP_L_CLICK_NUM = GetModConfigData("GOP_TMIP_L_CLICK_NUM"),
@@ -83,11 +86,14 @@ local support_languages = {
 
 local function LoadTranslation()
 	-- anyway ... load default language.
-	modimport("lanuage/Stringslocalization.lua")
+	modimport("language/Stringslocalization.lua")
 	local steamlang = _G.TheNet:GetLanguageCode() or nil
 	if steamlang and steam_support_languages[steamlang] then
 		print("[TooManyItemsPlus] Get your language from steam!")
-		modimport("lanuage/Stringslocalization_"..steam_support_languages[steamlang]..".lua")
+    modimport("language/Stringslocalization_"..steam_support_languages[steamlang]..".lua")
+    if steamlang == "schinese" or steamlang == "tchinese" then
+      _G.TOOMANYITEMS.UI_LANGUAGE = "cn"
+    end
 	else
 		local lang = _G.LanguageTranslator.defaultlang or nil
 		if lang ~= nil and support_languages[lang] ~= nil then
@@ -95,7 +101,10 @@ local function LoadTranslation()
 				lang = support_languages[lang]
 			end
 			print("[TooManyItemsPlus] Get your language from language mod!")
-			modimport("lanuage/Stringslocalization_"..lang..".lua")
+      modimport("language/Stringslocalization_"..lang..".lua")
+      if lang == "chs" or lang == "cht" then
+        _G.TOOMANYITEMS.UI_LANGUAGE = "cn"
+      end
 		end
 	end
 end
@@ -171,6 +180,10 @@ local function DataInit()
 		_G.TOOMANYITEMS.DATA.SPAWN_ITEMS_TIPS = true
 	end
 
+  --确认弹窗开关
+	if _G.TOOMANYITEMS.DATA.SHOW_CONFIRM_SCREEN == nil then
+		_G.TOOMANYITEMS.DATA.SHOW_CONFIRM_SCREEN = true
+	end
 end
 
 local function IsHUDScreen()
