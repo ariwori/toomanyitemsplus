@@ -91,7 +91,7 @@ local function DayAndTimeList()
 		dayandtimelist[index] = {
 			beta = false,
 			pos = "all",
-			name = v.." "..(v == 1 and STRINGS.UI.PLAYERSTATUSSCREEN.AGE_DAY or STRINGS.UI.PLAYERSTATUSSCREEN.AGE_DAYS),
+			name = v..(v == 1 and STRINGS.UI.PLAYERSTATUSSCREEN.AGE_DAY or STRINGS.UI.PLAYERSTATUSSCREEN.AGE_DAYS),
 			tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYTIP.." "..v.." "..(v == 1 and STRINGS.UI.PLAYERSTATUSSCREEN.AGE_DAY or STRINGS.UI.PLAYERSTATUSSCREEN.AGE_DAYS),
 			fn = {'confirm', 'c_skip('..v..')', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRM, string.format(STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TIME_SKIPDAYSCONFIRMTIP, v)},
 		}
@@ -463,28 +463,28 @@ return {
 			{
 				beta = false,
 				pos = "all",
-				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG,
+				name = _G.TOOMANYITEMS.UI_LANGUAGE == "cn" and STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG or "YOTG",
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG,
 				fn = {'confirm', 'ApplySpecialEvent("year_of_the_gobbler") TheWorld.topology.overrides.specialevent = "year_of_the_gobbler" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTG, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
 			},
 			{
 				beta = false,
 				pos = "all",
-				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV,
+				name = _G.TOOMANYITEMS.UI_LANGUAGE == "cn" and STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV or "YOTV",
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV,
 				fn = {'confirm', 'ApplySpecialEvent("year_of_the_varg") TheWorld.topology.overrides.specialevent = "year_of_the_varg" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTV, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
 			},
 			{
 				beta = false,
 				pos = "all",
-				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP,
+				name = _G.TOOMANYITEMS.UI_LANGUAGE == "cn" and STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP or "YOTP",
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP,
 				fn = {'confirm', 'ApplySpecialEvent("year_of_the_pig") TheWorld.topology.overrides.specialevent = "year_of_the_pig" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTP, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
 			},
 			{
 				beta = false,
 				pos = "all",
-				name = STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTC,
+				name = _G.TOOMANYITEMS.UI_LANGUAGE == "cn" and STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTC or "YOTC",
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTC,
 				fn = {'confirm', 'ApplySpecialEvent("year_of_the_carrat") TheWorld.topology.overrides.specialevent = "year_of_the_carrat" c_save() c_announce("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTC..'") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)', STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT..STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTC, STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP }
 			},

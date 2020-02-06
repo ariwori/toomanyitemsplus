@@ -15,7 +15,7 @@ local TMI_Inventory = Class(Widget, function(self, fn)
 		self.buildfn = fn
 		self.size = 76
 		self:SetScale(self.base_scale)
-		self:SetPosition(-80, 185, 0)
+		self:SetPosition(-85, 185, 0)
 
 		self.listcontrol = ItemListControl()
 		self.slots = self:AddChild(Widget("SLOTS"))

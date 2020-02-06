@@ -6,7 +6,9 @@ Assets =
 	Asset("ATLAS", "images/customicobyysh.xml"),
   Asset("IMAGE", "images/customicobyysh.tex"),
   Asset("ATLAS", "images/helpcnbyysh.xml"),
-  Asset("IMAGE", "images/helpcnbyysh.tex")
+	Asset("IMAGE", "images/helpcnbyysh.tex"),
+	Asset("ATLAS", "images/helpenbyysh.xml"),
+  Asset("IMAGE", "images/helpenbyysh.tex")
 }
 
 _G.TOOMANYITEMS = {

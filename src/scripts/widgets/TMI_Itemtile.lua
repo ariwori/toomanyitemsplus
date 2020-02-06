@@ -20,7 +20,7 @@ local function split(str,reps)
 	return resultStrList
 end
 
--- 调料食物
+-- 移除调料后缀
 local function removespice(str)
 	local newstr = str
 	local strarr = split(str, "_")
@@ -28,6 +28,24 @@ local function removespice(str)
 		table.remove(strarr, #strarr)
 		table.remove(strarr, #strarr)
 
+		newstr=""
+		for k,v in ipairs(strarr) do
+			if k ~= #strarr then
+				newstr = newstr..strarr[k].."_"
+			else
+				newstr = newstr..strarr[k]
+			end
+		end
+	end
+	return newstr
+end
+
+-- 移除最后一个
+local function removelast(str)
+	local newstr = str
+	local strarr = split(str, "_")
+	if strarr ~= nil then
+		table.remove(strarr, #strarr)
 		newstr=""
 		for k,v in ipairs(strarr) do
 			if k ~= #strarr then
@@ -251,7 +269,7 @@ function ItemTile:DescriptionInit()
 		end
 	end
 
-	local strarr = split(self.item, "_")
+	local strarr = self.item and split(self.item, "_") or {}
 	-- 调料食物
 	if string.find(self.item, "_spice_") then
 		local str1 = "Unknown"
@@ -276,7 +294,13 @@ function ItemTile:DescriptionInit()
   -- 刷新点
 	elseif string.find(self.item, "_spawner") and #strarr <= 3 and STRINGS.NAMES[string.upper(strarr[1])] then
 		str =STRINGS.NAMES[string.upper(strarr[1])]..STRINGS.NAMES.SPAWNER
-
+	-- 纸条
+	elseif string.find(self.item, "_tacklesketch") then
+		local itemtip = string.upper(removelast(self.item))
+		print(itemtip)
+		if STRINGS.NAMES[itemtip] ~= nil and STRINGS.NAMES[itemtip] ~= "" then
+			str = subfmt(STRINGS.NAMES[string.upper("tacklesketch")], { item = STRINGS.NAMES[itemtip] })
+		end
   -- 雕像、雕像草图
 	elseif string.find(self.item, "deer_") then
 		str = STRINGS.NAMES["DEER_GEMMED"]

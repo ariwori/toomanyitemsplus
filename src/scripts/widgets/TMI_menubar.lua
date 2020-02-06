@@ -42,9 +42,12 @@ end
 
 function TMI_Menubar:InitMenu()
 	local fontsize = 36
-	local spacing = 39
+	if _G.TOOMANYITEMS.UI_LANGUAGE == "en" then
+		fontsize = fontsize * 0.85
+	end
+	local spacing = 37
 	local left = 20 - self.owner.shieldsize_x * .5
-	local right = self.owner.shieldsize_x * .5 - 20
+	local right = self.owner.shieldsize_x * .5
 	local mid = self.sidebar_width * .5
 	local pos = {
 		left,
@@ -217,12 +220,16 @@ function TMI_Menubar:InitSidebar()
 	local function MakeSidebar(buttonlist)
 		--fontsize = 25
 		local fontsize = _G.TOOMANYITEMS.G_TMIP_CATEGORY_FONT_SIZE
+		if _G.TOOMANYITEMS.UI_LANGUAGE == "en" then
+			fontsize = fontsize * 0.8
+		end
 		local left = -self.owner.shieldsize_x * .5
-		local spacing = 2
+		local spacing = 1
 		local top = self.owner.shieldsize_y * .5
 		local mytop = self.owner.shieldsize_y * .5
 		-- 固定取一个按钮的宽度
 		local textwidth = 1
+		local textheight = 1
 		for i = 1, #buttonlist do
 			local button = self:AddChild(TextButton())
 			button:SetFont(NEWFONT)
@@ -237,14 +244,18 @@ function TMI_Menubar:InitSidebar()
 			if width > self.sidebar_width then
 				self.sidebar_width = width
 			end
-			if i == 1 then textwidth = width end
+			if i == 1 then
+				textwidth = width
+				textheight = height
+				spacing = (self.owner.shieldsize_y - 80 - 14*textheight) / 14
+			end
 			local maxlinesize = math.floor(#buttonlist / 2 + 0.5)
 			if i <= maxlinesize then
-				button:SetPosition(left + spacing + textwidth * .5, top - height * .5, 0)
-				top = top - height - spacing
+				button:SetPosition(left + textwidth * .5, top - textheight * .5, 0)
+				top = top - textheight - spacing
 			else
-				button:SetPosition(left + spacing * 2 + textwidth * 1.5, mytop - height * .5, 0)
-				mytop = mytop - height - spacing
+				button:SetPosition(left + spacing + textwidth * 1.5, mytop - textheight * .5, 0)
+				mytop = mytop - textheight - spacing
 			end
 		end
 	end
@@ -271,14 +282,14 @@ function TMI_Menubar:ShowSearch()
 end
 
 function TMI_Menubar:InitSearch()
-	self.searchbar_width = self.owner.shieldsize_x - 80
+	self.searchbar_width = self.owner.shieldsize_x - 75
 	self.search_fontsize = 26
 
 	self.searchshield = self:AddChild( Image("images/ui.xml", "black.tex") )
 	self.searchshield:SetScale(1,1,1)
 	self.searchshield:SetTint(1,1,1,0.2)
 	self.searchshield:SetSize(self.searchbar_width, self.search_fontsize)
-	self.searchshield:SetPosition(self.sidebar_width, self.owner.shieldsize_y * .5 - self.search_fontsize * .5, 0)
+	self.searchshield:SetPosition(self.sidebar_width+5, self.owner.shieldsize_y * .5 - self.search_fontsize * .5, 0)
 
 	self.searchbarbutton = self.searchshield:AddChild(TextButton())
 	self.searchbarbutton:SetFont(NEWFONT)
@@ -292,7 +303,7 @@ function TMI_Menubar:InitSearch()
 	self.searchbarbutton_posx = self.searchbar_width * .5 - self.searchbarbutton_width * .5
 	self.searchbarbutton:SetPosition(self.searchbarbutton_posx, 0, 0)
 
-	self.searchtext_limitwidth = self.searchbar_width - self.searchbarbutton_width - 15
+	self.searchtext_limitwidth = self.searchbar_width - self.searchbarbutton_width
 	self:InitSearchScreen()
 
 	self.searchhelptip = self.searchshield:AddChild(TextButton())

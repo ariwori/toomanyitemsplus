@@ -76,8 +76,11 @@ function SearchScreen:DoInit()
 	self.root:SetHAnchor(ANCHOR_MIDDLE)
 	self.root:SetVAnchor(ANCHOR_MIDDLE)
 	self.root = self.root:AddChild(Widget(""))
-	self.root:SetPosition(0,-20,0)
-
+	if _G.TOOMANYITEMS.UI_LANGUAGE == "cn" then
+		self.root:SetPosition(8,-30,0)
+	else
+		self.root:SetPosition(0,-30,0)
+	end
 	self.edit_text = self.root:AddChild( TextEdit( NEWFONT, self.config.fontsize, "" ) )
 	self.edit_text:SetPosition(self.config.pos)
 	self.edit_text:SetRegionSize( self.config.size[1], self.config.size[2] )

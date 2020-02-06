@@ -71,9 +71,9 @@ local TooManyItems =
     self.root:SetScaleMode(SCALEMODE_PROPORTIONAL)
     self.root:SetPosition(0, 0, 0)
 
-    self.shieldpos_x = -345
-    self.shieldpos_y = -20
-    self.shieldsize_x = 350
+    self.shieldpos_x = -335
+    self.shieldpos_y = -30
+    self.shieldsize_x = 338
     self.shieldsize_y = 480
     self.shield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
     self.shield:SetScale(1, 1, 1)
@@ -370,7 +370,7 @@ function TooManyItems:DebugMenu()
   self.settingbutton:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.SETTINGS_BUTTON_TIP1)
   self.swidth, self.sheight = self.settingbutton.text:GetRegionSize()
   self.settingbutton:SetPosition(
-    self.currentusersizex - self.swidth - self.spacing,
+    self.left + self.debugwidth - self.swidth * 0.5 - self.spacing,
     self.shieldsize_y * 0.5 - self.sheight * 0.5,
     0
   )
@@ -388,7 +388,7 @@ function TooManyItems:DebugMenu()
   self.helpbutton:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.TIPS_BUTTON_TIP1)
   self.hwidth, self.hheight = self.helpbutton.text:GetRegionSize()
   self.helpbutton:SetPosition(
-    self.currentusersizex - self.swidth - self.spacing * 3.3 - self.hwidth,
+    self.left + self.debugwidth - self.swidth - self.spacing * 2 - self.hwidth * 0.5,
     self.shieldsize_y * 0.5 - self.sheight * 0.5,
     0
   )
@@ -407,7 +407,7 @@ function TooManyItems:DebugMenu()
   self.swicthbutton:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER_TIP)
   self.swwidth, self.swheight = self.swicthbutton.text:GetRegionSize()
   self.swicthbutton:SetPosition(
-    self.currentusersizex - self.swidth - self.spacing * 3 - self.hwidth - self.swwidth,
+    self.left + self.debugwidth - self.swidth - self.spacing * 3 - self.hwidth - self.swwidth * 0.5,
     self.shieldsize_y * 0.5 - self.sheight * 0.5,
     0
   )
@@ -564,7 +564,7 @@ function TooManyItems:TipsMenu()
   self.tipslimit = -self.tipsleft
   self.tipsshield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
   self.tipsshield:SetScale(1, 1, 1)
-  self.tipsshield:SetPosition(0, self.shieldpos_y, 0)
+  self.tipsshield:SetPosition(0, self.shieldpos_y + 15, 0)
   self.tipsshield:SetSize(self.tipslimit * 2, self.shieldsize_y)
   self.tipsshield:SetTint(1, 1, 1, 1)
   self.screenname = self.tipsshield:AddChild(Text(self.font, self.fontsize * 1.5))
@@ -576,16 +576,16 @@ function TooManyItems:TipsMenu()
     self.shieldsize_y * .5 - self.screennamey * .5,
     0
   )
-  -- 用说明图片
+  -- 说明图片
   if _G.TOOMANYITEMS.UI_LANGUAGE == "cn" then
     self.desimg = self.tipsshield:AddChild(Image("images/helpcnbyysh.xml", "helpcnbyysh.tex"))
   else
     self.desimg = self.tipsshield:AddChild(Image("images/helpenbyysh.xml", "helpenbyysh.tex"))
   end
-  self.desimg:SetPosition(0, self.shieldpos_y, 0)
-  self.desimg:SetScale(1, 0.92, 1)
+  self.desimg:SetPosition(0, self.shieldpos_y-5, 0)
+  self.desimg:SetScale(1, 1, 1)
   self.desimg:SetSize(self.tipslimit * 2, self.shieldsize_y)
-  -- 用说明图片
+  -- 说明图片
 
   self.closebutton = self.tipsshield:AddChild(TextButton())
   self.closebutton:SetFont(self.font)
