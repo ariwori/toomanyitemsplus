@@ -73,6 +73,7 @@ return {
 	"chesspiece_moon_sketch",
 	"chesspiece_claywarg_sketch",
 	"chesspiece_clayhound_sketch",
+	"chesspiece_carrat_sketch",
 --渔具图纸
 	"oceanfishingbobber_ball_tacklesketch",
 	"oceanfishingbobber_oval_tacklesketch",

@@ -564,7 +564,7 @@ function TooManyItems:TipsMenu()
   self.tipslimit = -self.tipsleft
   self.tipsshield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
   self.tipsshield:SetScale(1, 1, 1)
-  self.tipsshield:SetPosition(0, self.shieldpos_y + 15, 0)
+  self.tipsshield:SetPosition(self.shieldpos_x + 419, self.shieldpos_y , 0)
   self.tipsshield:SetSize(self.tipslimit * 2, self.shieldsize_y)
   self.tipsshield:SetTint(1, 1, 1, 1)
   self.screenname = self.tipsshield:AddChild(Text(self.font, self.fontsize * 1.5))
@@ -582,7 +582,7 @@ function TooManyItems:TipsMenu()
   else
     self.desimg = self.tipsshield:AddChild(Image("images/helpenbyysh.xml", "helpenbyysh.tex"))
   end
-  self.desimg:SetPosition(0, self.shieldpos_y-5, 0)
+  self.desimg:SetPosition(0, self.shieldpos_y - 5, 0)
   self.desimg:SetScale(1, 1, 1)
   self.desimg:SetSize(self.tipslimit * 2, self.shieldsize_y)
   -- 说明图片

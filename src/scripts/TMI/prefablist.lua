@@ -41,7 +41,7 @@ return {
 		["gravestone"] = "gravestones",
 		["eyeturret"] = "eyeball_turret",
 		["mermthrone"] = "merm_king_carpet",
-
+		
 		["deciduoustree_burnt"] = "tree_leaf_burnt",
 		["deciduoustree_stump"] = "tree_leaf_stump",
  	},
