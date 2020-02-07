@@ -28,7 +28,7 @@ local function gotoswitch(prefabtable)
       tablestr = tablestr..'"'..v..'"}'
     end
   end
-	return 'local pbtable = '..tablestr..' math.randomseed(tostring(os.time()):reverse():sub(1, 6)) local num = math.random(1, #pbtable) local player = %s if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target = c_findnext(pbtable[num]) if target == nil then player.components.talker:Say("No target!") end tmi_goto(target) end'
+	return 'local pbtable = '..tablestr..' local player = %s if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target for k,v in pairs(pbtable) do target = c_findnext(v) if target ~= nil then break end end if target == nil then player.components.talker:Say("No target!") end tmi_goto(target) end'
 end
 
 local world_id = TheWorld.meta.session_identifier or "world"

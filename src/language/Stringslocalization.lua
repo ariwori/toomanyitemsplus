@@ -1,7 +1,8 @@
 STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER_TIP = "Swicth to next player!"
 STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER = "Swicth"
 
-STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACKTIP = "Are you sure empty the player's backpack?  This operation is irreversible."
+STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACKTIP =
+  "Are you sure empty the player's backpack?  This operation is irreversible."
 
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_STOPVOTE = "Stop vote"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_STOPVOTETIP = "Stop vote"
@@ -121,7 +122,8 @@ STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTHTIP = "Rebirth Player you chose
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_REBIRTHCONFIRMTIP = "Are you sure want to rebirth the player?"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_DESPAWN = "Despawn"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_DESPAWNTIP = "Despawn Player you chose"
-STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_DESPAWNCONFIRMTIP = "Are you sure want the player to reselect the character? This operation is irreversible.\nThis will clear all the player's data."
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_DESPAWNCONFIRMTIP =
+  "Are you sure want the player to reselect the character? This operation is irreversible.\nThis will clear all the player's data."
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_GATHER = "Gather"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_GATHERTIP = "Gather All Players to Player you chose!"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_GATHERCONFIRMTIP = "are you sure gather all players?It may not be polite."
@@ -131,10 +133,12 @@ STRINGS.TOO_MANY_ITEMS_UI.DEBUG_CHARACTER_UNLOCKTECHTIP = "Unlock Player you cho
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_TEXT = "Server:"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESET = "Reset"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP = "Restart world!"
-STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETCONFIRM = "Are you sure you want to reload the game? You will lose all unsaved progress."
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETCONFIRM =
+  "Are you sure you want to reload the game? You will lose all unsaved progress."
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATE = "Regenerate"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATETIP = "Regenerates New Worlds!"
-STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATECONFIRM = "Are you sure you want to regenerate world? This is an irreversible operation,Please pay attention to the backup your sever files."
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_REGENERATECONFIRM =
+  "Are you sure you want to regenerate world? This is an irreversible operation,Please pay attention to the backup your sever files."
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_SAVE = "Save"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_SAVETIP = "Save the World"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_SHUTDOWN = "Shutdown"
@@ -142,7 +146,8 @@ STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_SHUTDOWNTIP = "Shutdown the Server(Work i
 
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXT = "Event:"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT = "Change the server event to:"
-STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP = "Are you sure want to change the event?\nThe server will be restart after saving."
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP =
+  "Are you sure want to change the event?\nThe server will be restart after saving."
 
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TEXT = "Map:"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_SHOW = "Show"
@@ -254,7 +259,7 @@ STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_BASE = "[Ba]"
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPBASE = "Walls and turfs for base"
 
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_PLANT = "[Pl]"
-STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPPLANT= "Plant"
+STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPPLANT = "Plant"
 
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_ORE = "[Or]"
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPORE = "minable ores"
@@ -279,7 +284,7 @@ STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPOTHER = "Other,carefully use"
 
 STRINGS.TOO_MANY_ITEMS_UI.SEARCHBAR_TEXT = "Search Items Here!"
 STRINGS.TOO_MANY_ITEMS_UI.SEARCHBAR_TIP = "Click to Type!"
-STRINGS.TOO_MANY_ITEMS_UI.SEARCH_TEXT= "Search"
+STRINGS.TOO_MANY_ITEMS_UI.SEARCH_TEXT = "Search"
 STRINGS.TOO_MANY_ITEMS_UI.SEARCH_TIP = "Click to Search!"
 
 --自定义名称
@@ -328,3 +333,11 @@ STRINGS.TOO_MANY_ITEMS_UI.PREFAB_FUEL = "Prefab fuel: "
 STRINGS.TOO_MANY_ITEMS_UI.PREFAB_TEMPERATURE = "Prefab Temperature: "
 
 STRINGS.TOO_MANY_ITEMS_UI.TMIP_CONSOLE = "TMIP Console"
+
+STRINGS.TOO_MANY_ITEMS_UI.ADVANCED_DELETE = "Advanced delete function: "
+STRINGS.TOO_MANY_ITEMS_UI.TMIP_ADVANCED_DELETE_ON = "ON"
+STRINGS.TOO_MANY_ITEMS_UI.TMIP_ADVANCED_DELETE_OFF = "OFF"
+
+STRINGS.TOO_MANY_ITEMS_UI.ADVANCED_DELETE_TIP = "Press Ctrl + ALT and left click item in menu slot to delete !"
+
+STRINGS.TOO_MANY_ITEMS_UI.ADVANCED_DELETE_RADIUS = "Advanced delete radius: "

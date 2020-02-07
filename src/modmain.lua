@@ -186,6 +186,14 @@ local function DataInit()
 	if _G.TOOMANYITEMS.DATA.SHOW_CONFIRM_SCREEN == nil then
 		_G.TOOMANYITEMS.DATA.SHOW_CONFIRM_SCREEN = true
 	end
+	--高级删除开关
+	if _G.TOOMANYITEMS.DATA.ADVANCE_DELETE == nil then
+		_G.TOOMANYITEMS.DATA.ADVANCE_DELETE = false
+	end
+	-- 删除搜索半径
+	if _G.TOOMANYITEMS.DATA.deleteradius == nil then
+		_G.TOOMANYITEMS.DATA.deleteradius = 10
+	end
 end
 
 local function IsHUDScreen()

@@ -210,6 +210,36 @@ function TooManyItems:FlushConfirmScreen(fn)
   end
 end
 
+function TooManyItems:ChangeDeleteRadius(operate)
+  local newfreshness = 0
+  if operate == "add" then
+    newfreshness = _G.TOOMANYITEMS.DATA.deleteradius + 5
+  else
+    newfreshness = _G.TOOMANYITEMS.DATA.deleteradius - 5
+  end
+  if newfreshness <= 3 then
+    newfreshness = 3
+    self.decreasebutton5:SetClickable(false)
+    self.decreasebutton5:SetColour(0.5, 0.5, 0.5, 0.5)
+  else
+    self.decreasebutton5:SetClickable(true)
+    self.decreasebutton5:SetColour(0.9, 0.8, 0.6, 1)
+  end
+  if newfreshness > 999 then
+    newfreshness = 999
+    self.addbutton5:SetClickable(false)
+    self.addbutton5:SetColour(0.5, 0.5, 0.5, 0.5)
+  else
+    self.addbutton5:SetClickable(true)
+    self.addbutton5:SetColour(0.9, 0.8, 0.6, 1)
+  end
+  _G.TOOMANYITEMS.DATA.deleteradius = newfreshness
+  if _G.TOOMANYITEMS.DATA_SAVE == 1 then
+    _G.TOOMANYITEMS.SaveNormalData()
+  end
+  self.deleteradiusvalue:SetString(_G.TOOMANYITEMS.DATA.deleteradius)
+end
+
 function TooManyItems:ChangeFoodFreshness(operate)
   local newfreshness = 0
   if operate == "add" then
@@ -515,6 +545,26 @@ function TooManyItems:DebugMenu()
   MakeDebugButtonList(self.debugbuttonlist)
 end
 
+function TooManyItems:ChangeDeleteFunction()
+  local tipsonoroff = _G.TOOMANYITEMS.DATA.ADVANCE_DELETE
+  if tipsonoroff then
+    self.onbutton3:SetClickable(true)
+    self.onbutton3:SetColour(0.5, 0.5, 0.5, 0.5)
+    self.offbutton3:SetClickable(false)
+    self.offbutton3:SetColour(0.9, 0.8, 0.6, 1)
+    _G.TOOMANYITEMS.DATA.ADVANCE_DELETE = false
+  else
+    self.onbutton3:SetClickable(false)
+    self.onbutton3:SetColour(0.9, 0.8, 0.6, 1)
+    self.offbutton3:SetClickable(true)
+    self.offbutton3:SetColour(0.5, 0.5, 0.5, 0.5)
+    _G.TOOMANYITEMS.DATA.ADVANCE_DELETE = true
+  end
+  if _G.TOOMANYITEMS.DATA_SAVE == 1 then
+    _G.TOOMANYITEMS.SaveNormalData()
+  end
+end
+
 function TooManyItems:ChangeSpawnItemsTips()
   local tipsonoroff = _G.TOOMANYITEMS.DATA.SPAWN_ITEMS_TIPS
   if tipsonoroff then
@@ -582,7 +632,7 @@ function TooManyItems:TipsMenu()
   else
     self.desimg = self.tipsshield:AddChild(Image("images/helpenbyysh.xml", "helpenbyysh.tex"))
   end
-  self.desimg:SetPosition(0, self.shieldpos_y-5, 0)
+  self.desimg:SetPosition(0, self.shieldpos_y - 5, 0)
   self.desimg:SetScale(1, 1, 1)
   self.desimg:SetSize(self.tipslimit * 2, self.shieldsize_y)
   -- 说明图片
@@ -603,7 +653,6 @@ function TooManyItems:TipsMenu()
       self:ShowTipsMenu()
     end
   )
-
 end
 
 function TooManyItems:SettingMenu()
@@ -701,6 +750,132 @@ function TooManyItems:SettingMenu()
     self.offbutton1:SetClickable(false)
   end
   -- 生成物品提示
+
+  -- 高级删除开关
+  self.deletefunction = self.settingshield:AddChild(Text(self.font, self.fontsize))
+  self.deletefunction:SetColour(0.9, 0.8, 0.6, 1)
+  self.deletefunction:SetString(STRINGS.TOO_MANY_ITEMS_UI.ADVANCED_DELETE)
+  self.deletefunctionx, self.deletefunctiony = self.deletefunction:GetRegionSize()
+  self.deletefunction:SetPosition(
+    self.settingleft + self.deletefunctionx * .5 + 20,
+    self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 19.5,
+    0
+  )
+
+  self.onbutton3 = self.settingshield:AddChild(TextButton())
+  self.onbutton3:SetFont(self.font)
+  self.onbutton3:SetText(STRINGS.TOO_MANY_ITEMS_UI.TMIP_ADVANCED_DELETE_ON)
+  self.onbutton3:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.ADVANCED_DELETE_TIP)
+  self.onbutton3:SetTextSize(self.fontsize)
+  self.onbutton3:SetColour(0.9, 0.8, 0.6, 1)
+  self.onbutton3x, self.onbutton3y = self.onbutton3.text:GetRegionSize()
+  self.onbutton3:SetPosition(
+    self.settingleft + self.deletefunctionx + 20 + self.settinglinespace + self.onbutton3x * .5,
+    self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 19.5,
+    0
+  )
+  self.onbutton3:SetOnClick(
+    function()
+      self:ChangeDeleteFunction()
+    end
+  )
+
+  self.offbutton3 = self.settingshield:AddChild(TextButton())
+  self.offbutton3:SetFont(self.font)
+  self.offbutton3:SetText(STRINGS.TOO_MANY_ITEMS_UI.TMIP_ADVANCED_DELETE_OFF)
+  self.offbutton3:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.ADVANCED_DELETE_TIP)
+  self.offbutton3:SetTextSize(self.fontsize)
+  self.offbutton3:SetColour(0.9, 0.8, 0.6, 1)
+  self.offbutton3x, self.offbutton3y = self.offbutton3.text:GetRegionSize()
+  self.offbutton3:SetPosition(
+    self.settingleft + self.deletefunctionx + 20 + self.settinglinespace * 2 + self.onbutton3x + self.offbutton3x * 0.5,
+    self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 19.5,
+    0
+  )
+  self.offbutton3:SetOnClick(
+    function()
+      self:ChangeDeleteFunction()
+    end
+  )
+
+  local tipsonoroff = _G.TOOMANYITEMS.DATA.ADVANCE_DELETE
+  if tipsonoroff then
+    self.onbutton3:SetClickable(false)
+    self.offbutton3:SetColour(0.5, 0.5, 0.5, 0.5)
+  else
+    self.onbutton3:SetColour(0.5, 0.5, 0.5, 0.5)
+    self.offbutton3:SetClickable(false)
+  end
+  -- 高级删除开关
+
+  -- 高级删除搜索半径
+  self.deleteradius = self.settingshield:AddChild(Text(self.font, self.fontsize))
+  self.deleteradius:SetColour(0.9, 0.8, 0.6, 1)
+  self.deleteradius:SetString(STRINGS.TOO_MANY_ITEMS_UI.ADVANCED_DELETE_RADIUS)
+  self.deleteradiusx, self.deleteradiusy = self.deleteradius:GetRegionSize()
+  self.deleteradius:SetPosition(
+    self.settingleft + self.deleteradiusx * .5 + 20,
+    self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 22.5,
+    0
+  )
+
+  self.decreasebutton5 = self.settingshield:AddChild(TextButton())
+  self.decreasebutton5:SetFont(self.font)
+  self.decreasebutton5:SetText("<")
+  self.decreasebutton5:SetTextSize(self.fontsize * 2)
+  self.decreasebutton5:SetColour(0.9, 0.8, 0.6, 1)
+  self.decreasebutton5x, self.decreasebutton5y = self.decreasebutton5.text:GetRegionSize()
+  self.decreasebutton5:SetPosition(
+    self.settingleft + self.deleteradiusx + 20 + self.settinglinespace + self.decreasebutton5x * .5,
+    self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 22.5,
+    0
+  )
+  self.decreasebutton5:SetOnClick(
+    function()
+      self:ChangeDeleteRadius("decrease")
+    end
+  )
+
+  self.deleteradiusvalue = self.settingshield:AddChild(Text(self.font, self.fontsize))
+  self.deleteradiusvalue:SetColour(1, 1, 1, 1)
+  self.deleteradiusvalue:SetString(_G.TOOMANYITEMS.DATA.deleteradius)
+  self.deleteradiusvaluex, self.deleteradiusvaluey = self.deleteradiusvalue:GetRegionSize()
+  self.deleteradiusvalue:SetPosition(
+    self.settingleft + self.deleteradiusx + 20 + self.settinglinespace * 3 + self.decreasebutton5x +
+      self.deleteradiusvaluex * 0.5,
+    self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 22.5,
+    0
+  )
+
+  self.addbutton5 = self.settingshield:AddChild(TextButton())
+  self.addbutton5:SetFont(self.font)
+  self.addbutton5:SetText(">")
+  self.addbutton5:SetTextSize(self.fontsize * 2)
+  self.addbutton5:SetColour(0.9, 0.8, 0.6, 1)
+  self.addbutton5x, self.addbutton5y = self.addbutton5.text:GetRegionSize()
+  self.addbutton5:SetPosition(
+    self.settingleft + self.deleteradiusx + 20 + self.settinglinespace * 5 + self.decreasebutton5x +
+      self.deleteradiusvaluex +
+      self.addbutton5x * 0.5,
+    self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 22.5,
+    0
+  )
+  self.addbutton5:SetOnClick(
+    function()
+      self:ChangeDeleteRadius("add")
+    end
+  )
+
+  local newfreshness = _G.TOOMANYITEMS.DATA.deleteradius
+  if newfreshness <= 0.09 then
+    self.decreasebutton5:SetClickable(false)
+    self.decreasebutton5:SetColour(0.5, 0.5, 0.5, 0.5)
+  end
+  if newfreshness >= 1 then
+    self.addbutton5:SetClickable(false)
+    self.addbutton5:SetColour(0.5, 0.5, 0.5, 0.5)
+  end
+  -- 高级删除搜索半径
 
   -- 确认弹窗
   self.showconfirmscreen = self.settingshield:AddChild(Text(self.font, self.fontsize))
