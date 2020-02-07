@@ -249,15 +249,11 @@ function InvSlot:Click(stack_mod)
 					SendCommand(gotoonly(self.item))
 					OperateAnnnounce(STRINGS.NAMES.SUPERGOTOTIP .. itemdescription)
 				else
-					local fnstr = 'local a=%s;local function b(c)local d=c.components.inventoryitem;return d and d.owner and true or false end;local function e(f)if f and f~=TheWorld and not b(f)and f.Transform then if f:HasTag("player")then if f.userid==nil or f.userid==""then return true end else return true end end;return false end;if a and a.Transform then if a.components.burnable then a.components.burnable:Extinguish(true)end;local g,h,i=a.Transform:GetWorldPosition()local j=TheSim:FindEntities(g,h,i,%s)for k,l in pairs(j)do if e(l)then if l.components then if l.components.burnable then l.components.burnable:Extinguish(true)end;if l.components.firefx then if l.components.firefx.extinguishsoundtest then l.components.firefx.extinguishsoundtest=function()return true end end;l.components.firefx:Extinguish()end end;if not(l.prefab=="minerhatlight"or"lanternlight"or"yellowamuletlight"or"slurperlight"or"redlanternlight"or"lighterfire"or"torchfire"or"torchfire_rag"or"torchfire_spooky"or"torchfire_shadow")or l.entity:GetParent()==nil then if l.prefab=="%s"then l:Remove()end end end end end'
-					SendCommand(
-				string.format(
-					fnstr,
-					GetCharacter(),
-					_G.TOOMANYITEMS.DATA.deleteradius,
-					self.item
-				)
-			)
+					if _G.TOOMANYITEMS.DATA.ADVANCE_DELETE then
+						local fnstr =
+							'local a=%s;local function b(c)local d=c.components.inventoryitem;return d and d.owner and true or false end;local function e(f)if f and f~=TheWorld and not b(f)and f.Transform then if f:HasTag("player")then if f.userid==nil or f.userid==""then return true end else return true end end;return false end;if a and a.Transform then if a.components.burnable then a.components.burnable:Extinguish(true)end;local g,h,i=a.Transform:GetWorldPosition()local j=TheSim:FindEntities(g,h,i,%s)for k,l in pairs(j)do if e(l)then if l.components then if l.components.burnable then l.components.burnable:Extinguish(true)end;if l.components.firefx then if l.components.firefx.extinguishsoundtest then l.components.firefx.extinguishsoundtest=function()return true end end;l.components.firefx:Extinguish()end end;if not(l.prefab=="minerhatlight"or"lanternlight"or"yellowamuletlight"or"slurperlight"or"redlanternlight"or"lighterfire"or"torchfire"or"torchfire_rag"or"torchfire_spooky"or"torchfire_shadow")or l.entity:GetParent()==nil then if l.prefab=="%s"then l:Remove()end end end end end'
+						SendCommand(string.format(fnstr, GetCharacter(), _G.TOOMANYITEMS.DATA.deleteradius, self.item))
+					end
 				end
 			else
 				local customitems = {}

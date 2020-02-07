@@ -614,7 +614,7 @@ function TooManyItems:TipsMenu()
   self.tipslimit = -self.tipsleft
   self.tipsshield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
   self.tipsshield:SetScale(1, 1, 1)
-  self.tipsshield:SetPosition(self.shieldpos_x + 419, self.shieldpos_y , 0)
+  self.tipsshield:SetPosition(self.shieldpos_x + self.shieldsize_x + 105, self.shieldpos_y, 0)
   self.tipsshield:SetSize(self.tipslimit * 2, self.shieldsize_y)
   self.tipsshield:SetTint(1, 1, 1, 1)
   self.screenname = self.tipsshield:AddChild(Text(self.font, self.fontsize * 1.5))
@@ -629,6 +629,23 @@ function TooManyItems:TipsMenu()
   -- 说明图片
   if _G.TOOMANYITEMS.UI_LANGUAGE == "cn" then
     self.desimg = self.tipsshield:AddChild(Image("images/helpcnbyysh.xml", "helpcnbyysh.tex"))
+
+    self.morebutton = self.tipsshield:AddChild(TextButton())
+    self.morebutton:SetFont(self.font)
+    self.morebutton:SetText("更多说明")
+    self.morebutton:SetTextSize(self.fontsize)
+    self.morebutton:SetColour(0.9, 0.8, 0.6, 1)
+    self.morebuttonx, self.morebuttony = self.closebutton.text:GetRegionSize()
+    self.morebutton:SetPosition(
+      self.tipsleft + self.tipswidth * 0.5,
+      self.shieldsize_y * .5 - self.morebuttony * .5 - 5,
+      0
+    )
+    self.morebutton:SetOnClick(
+      function()
+        VisitURL("https://wqlin.com/archives/230.html", false)
+      end
+    )
   else
     self.desimg = self.tipsshield:AddChild(Image("images/helpenbyysh.xml", "helpenbyysh.tex"))
   end
@@ -867,11 +884,11 @@ function TooManyItems:SettingMenu()
   )
 
   local newfreshness = _G.TOOMANYITEMS.DATA.deleteradius
-  if newfreshness <= 0.09 then
+  if newfreshness <= 3 then
     self.decreasebutton5:SetClickable(false)
     self.decreasebutton5:SetColour(0.5, 0.5, 0.5, 0.5)
   end
-  if newfreshness >= 1 then
+  if newfreshness >= 999 then
     self.addbutton5:SetClickable(false)
     self.addbutton5:SetColour(0.5, 0.5, 0.5, 0.5)
   end
