@@ -614,7 +614,7 @@ function TooManyItems:TipsMenu()
   self.tipslimit = -self.tipsleft
   self.tipsshield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
   self.tipsshield:SetScale(1, 1, 1)
-  self.tipsshield:SetPosition(0, self.shieldpos_y + 15, 0)
+  self.tipsshield:SetPosition(self.shieldpos_x + 419, self.shieldpos_y , 0)
   self.tipsshield:SetSize(self.tipslimit * 2, self.shieldsize_y)
   self.tipsshield:SetTint(1, 1, 1, 1)
   self.screenname = self.tipsshield:AddChild(Text(self.font, self.fontsize * 1.5))

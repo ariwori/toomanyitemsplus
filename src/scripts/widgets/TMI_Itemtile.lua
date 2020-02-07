@@ -214,16 +214,32 @@ function ItemTile:GetAsset(find)
 				else
 					itematlas = base_atlas_2
 				end
+				spiceimage = "spice_" .. strarr[#strarr] .. "_over.tex"
+			elseif string.find(newitem, "chesspiece_") and string.find(newitem, "_marble") then
+				-- 大理石雕塑
+				local strarr = split(newitem, "_")
+				itemimage = strarr[1] .. "_" .. strarr[2] .. ".tex"
+				if _G.TheSim:AtlasContains(base_atlas, itemimage) then
+					itematlas = base_atlas
+				elseif _G.TheSim:AtlasContains(base_atlas_1, itemimage) then
+					itematlas = base_atlas_1
+				else
+					itematlas = base_atlas_2
+				end
 			elseif newitem == "deer_antler" then
-				-- 福袋
+				-- 不知道为啥多了一个鹿角
 				itemimage = "deer_antler1.tex"
 				itematlas = base_atlas
 			elseif newitem == "redpouch_yotp" then
-				-- 石果
+				-- 猪年福袋
 				itemimage = "redpouch_yotp_large.tex"
 				itematlas = base_atlas
+			elseif newitem == "redpouch_yotc" then
+				-- 鼠年福袋
+				itemimage = "redpouch_yotc_large.tex"
+				itematlas = base_atlas_1
 			elseif newitem == "rock_avocado_fruit" then
-				-- 礼物包裹
+				-- 石果
 				itemimage = "rock_avocado_fruit_rockhard.tex"
 				itematlas = base_atlas_1
 			elseif newitem == "gift" then
@@ -231,6 +247,7 @@ function ItemTile:GetAsset(find)
 				itemimage = "gift_large1.tex"
 				itematlas = base_atlas_1
 			elseif newitem == "bundle" then
+				-- 礼物包裹
 				itemimage = "bundle_large.tex"
 				itematlas = base_atlas_1
 			else

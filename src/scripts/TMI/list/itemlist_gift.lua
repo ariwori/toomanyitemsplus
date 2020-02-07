@@ -1,4 +1,17 @@
 return {
+--种子礼包
+	"yotc_seedpacket",
+	"yotc_seedpacket_rare",
+--新年物品
+	"redpouch",
+	"redpouch_yotc",	
+	"redpouch_yotp",
+	"lucky_goldnugget",
+	"pig_token",
+--包裹
+	"wetpouch",
+	"gift",
+	"bundle",
 --冬季盛宴零食
 	"winter_food1",
 	"winter_food2",
@@ -130,16 +143,4 @@ return {
 	"trinket_44",
 	"trinket_45",
 	"trinket_46",
---新年物品
-	"redpouch",
-	"lucky_goldnugget",
-	"pig_token",
-	"redpouch_yotp",
---种子礼包
-	"yotc_seedpacket",
-	"yotc_seedpacket_rare",
---包裹
-	"wetpouch",
-	"gift",
-	"bundle",
 }
