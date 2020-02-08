@@ -17,6 +17,8 @@ local function NextPlayer()
   end
   if cur_index + 1 <= #AllPlayers then
     cur_index = cur_index + 1
+  else
+    cur_index = 1
   end
   local nextplayername = AllPlayers[cur_index]:GetDisplayName()
   local playerid = UserToClientID(nextplayername)
