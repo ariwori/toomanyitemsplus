@@ -7,48 +7,7 @@ local TMI_menubar = require "widgets/TMI_menubar"
 
 local PopupDialogScreen = require "screens/redux/popupdialog"
 
-local function NextPlayer()
-  local cur_index = 1
-  for k, v in pairs(AllPlayers) do
-    if v.userid == TOOMANYITEMS.CHARACTER_USERID then
-      cur_index = k
-      break
-    end
-  end
-  if cur_index + 1 <= #AllPlayers then
-    cur_index = cur_index + 1
-  else
-    cur_index = 1
-  end
-  local nextplayername = AllPlayers[cur_index]:GetDisplayName()
-  local playerid = UserToClientID(nextplayername)
-  if playerid then
-    TOOMANYITEMS.CHARACTER_USERID = playerid
-  else
-    TOOMANYITEMS.CHARACTER_USERID = ThePlayer.userid
-  end
-  return nextplayername
-end
-
-local function PlayerOnCurrentShard(userid)
-  for k, v in pairs(AllPlayers) do
-    if v.userid == userid then
-      return true
-    end
-  end
-  return false
-end
-
-local function GetCharacterName()
-  if not PlayerOnCurrentShard(TOOMANYITEMS.CHARACTER_USERID) then
-    TOOMANYITEMS.CHARACTER_USERID = ThePlayer.userid
-  end
-  return UserToName(TOOMANYITEMS.CHARACTER_USERID)
-end
-
-local function GetCharacter()
-  return "UserToPlayer('" .. TOOMANYITEMS.CHARACTER_USERID .. "')"
-end
+local WriteableWidget = require "screens/TMI_writeablewidget"
 
 local function SendCommand(fnstr)
   local x, _, z = TheSim:ProjectScreenPos(TheSim:GetPosition())
@@ -60,12 +19,84 @@ local function SendCommand(fnstr)
   end
 end
 
+local function AcceptPlayer(widget)
+  local value = widget:GetText()
+  local playerid = UserToClientID(value)
+  local playerprefab
+  local playerlist = TheNet:GetClientTable() or {}
+  if type(tonumber(value)) == "number" and tonumber(value) <= #playerlist then
+    local playername = playerlist[tonumber(value)].name
+    if TheNet:GetServerIsClientHosted() then
+      playerid = playerlist[tonumber(value)].userid
+      playerprefab = playerlist[tonumber(value)].prefab
+    else
+      playerid = playerlist[tonumber(value) + 1].userid
+      playerprefab = playerlist[tonumber(value) + 1].prefab
+    end
+  end
+  if playerid then
+    TOOMANYITEMS.CHARACTER_USERID = playerid
+  else
+    ThePlayer.components.talker:Say("Ivalid input!")
+    TOOMANYITEMS.CHARACTER_USERID = ThePlayer.userid
+  end
+  if playerprefab then
+    TOOMANYITEMS.CHARACTER_PREFAB = playerprefab
+  else
+    TOOMANYITEMS.CHARACTER_PREFAB = ThePlayer.prefab
+  end
+end
+
+local function AcceptValue(widget)
+  local value = tonumber(widget:GetText())
+  if value and value >= 3 and value <= 999 then
+    _G.TOOMANYITEMS.DATA.deleteradius = value
+  else
+    ThePlayer.components.talker:Say("Ivalid input!")
+  end
+end
+
+local writeable_config = {
+  animbank = "ui_board_5x3",
+  animbuild = "ui_board_5x3",
+  menuoffset = Vector3(6, -70, 0),
+  cancelbtn = {text = STRINGS.UI.TRADESCREEN.CANCEL, cb = nil, control = CONTROL_CANCEL},
+  acceptbtn = {text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = AcceptPlayer, control = CONTROL_ACCEPT}
+  --defaulttext = SignGenerator,
+}
+
+local writeable_config1 = {
+  animbank = "ui_board_5x3",
+  animbuild = "ui_board_5x3",
+  menuoffset = Vector3(6, -70, 0),
+  cancelbtn = {text = STRINGS.UI.TRADESCREEN.CANCEL, cb = nil, control = CONTROL_CANCEL},
+  acceptbtn = {text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = AcceptValue, control = CONTROL_ACCEPT}
+  --defaulttext = SignGenerator,
+}
+
+local function GetCharacterName()
+  return UserToName(TOOMANYITEMS.CHARACTER_USERID)
+end
+
+local function GetCharacterPrefab()
+  local p
+  if TOOMANYITEMS.CHARACTER_PREFAB ~= "" and TOOMANYITEMS.CHARACTER_PREFAB ~= nil then
+    p = STRINGS.NAMES[string.upper(TOOMANYITEMS.CHARACTER_PREFAB)]
+  end
+  if p then return p else return "nil" end
+end
+
+local function GetCharacter()
+  return "UserToPlayer('" .. TOOMANYITEMS.CHARACTER_USERID .. "')"
+end
+
 local TooManyItems =
   Class(
   Widget,
   function(self)
     Widget._ctor(self, "TooManyItems")
     TOOMANYITEMS.CHARACTER_USERID = ThePlayer.userid
+    TOOMANYITEMS.CHARACTER_PREFAB = ThePlayer.prefab
 
     self.root = self:AddChild(Widget("ROOT"))
     self.root:SetVAnchor(ANCHOR_MIDDLE)
@@ -173,14 +204,96 @@ function TooManyItems:ShowSettingMenu()
   end
 end
 
-function TooManyItems:FlushPlayer()
-  local playername = NextPlayer()
+function TooManyItems:FlushPlayer(operate)
+  if operate == "next" then
+    local cur_index = 1
+    local playerlist = TheNet:GetClientTable() or {}
+    for k, v in pairs(playerlist) do
+      if v.userid == TOOMANYITEMS.CHARACTER_USERID then
+        local playername = playerlist[k].name
+        if k == 1 and not TheNet:GetServerIsClientHosted() then
+          cur_index = k + 1
+        else
+          cur_index = k
+        end
+        break
+      end
+    end
+    if cur_index + 1 <= #playerlist then
+      cur_index = cur_index + 1
+    else
+      local playername = playerlist[1].name
+      if not TheNet:GetServerIsClientHosted() then
+        cur_index = 2
+      else
+        cur_index = 1
+      end
+    end
+    local nextplayername = playerlist[cur_index].name
+    local nextplayerprefab = playerlist[cur_index].prefab
+    -- print(cur_index..nextplayername..nextplayerprefab)
+    local playerid = UserToClientID(nextplayername)
+    if playerid then
+      TOOMANYITEMS.CHARACTER_USERID = playerid
+    else
+      TOOMANYITEMS.CHARACTER_USERID = ThePlayer.userid
+    end
+    if nextplayerprefab then
+      TOOMANYITEMS.CHARACTER_PREFAB = nextplayerprefab
+    else
+      TOOMANYITEMS.CHARACTER_PREFAB = ThePlayer.prefab
+    end
+  else
+    if self.writeablescreen then
+      self.writeablescreen:KillAllChildren()
+      self.writeablescreen:Kill()
+      self.writeablescreen = nil
+    end
+    self.writeablescreen = WriteableWidget(writeable_config)
+    ThePlayer.HUD:OpenScreenUnderPause(self.writeablescreen)
+    if TheFrontEnd:GetActiveScreen() == self.writeablescreen then
+      self.writeablescreen.edit_text:SetEditing(true)
+    end
+  end
+  self:SetPointer()
+end
+
+function TooManyItems:SetPointer()
   local mainstr = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_POINTER
   local prefix = ""
   if TOOMANYITEMS.CHARACTER_USERID == ThePlayer.userid then
     prefix = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_POINTER_SELF
   end
-  self.currentuser:SetString(string.format(prefix .. mainstr, playername, TOOMANYITEMS.CHARACTER_USERID))
+  self.pointer:SetText(string.format(prefix .. mainstr, GetCharacterName(), GetCharacterPrefab(), TOOMANYITEMS.CHARACTER_USERID))
+  self.pointersizex, self.pointersizey = self.pointer.text:GetRegionSize()
+  self.pointer.image:SetSize(self.pointersizex * .85, self.pointersizey)
+  self.pointer:SetPosition(self.left + self.pointersizex * .5, self.shieldsize_y * .5 - self.pointersizey * .5, 0)
+end
+
+function TooManyItems:FlushDeleteRadius()
+  if self.writeablescreen1 then
+    self.writeablescreen1:KillAllChildren()
+    self.writeablescreen1:Kill()
+    self.writeablescreen1 = nil
+  end
+  self.writeablescreen1 = WriteableWidget(writeable_config1)
+  ThePlayer.HUD:OpenScreenUnderPause(self.writeablescreen1)
+  if TheFrontEnd:GetActiveScreen() == self.writeablescreen1 then
+    self.writeablescreen1.edit_text:SetEditing(true)
+  end
+  self:SetDeleteRadiusPointer()
+end
+
+function TooManyItems:SetDeleteRadiusPointer()
+  self.deleteradiuspointer:SetText(_G.TOOMANYITEMS.DATA.deleteradius)
+  self.deleteradiuspointersizex, self.deleteradiuspointersizey = self.deleteradiuspointer.text:GetRegionSize()
+  self.deleteradiuspointer.image:SetSize(self.deleteradiuspointersizex * .85, self.deleteradiuspointersizey)
+  self.deleteradiuspointer:SetPosition(
+    self.settingleft + self.deleteradiusx + 20 + self.settinglinespace * 3 + self.decreasebutton5x +
+    self.deleteradiuspointersizex * 0.5,
+    self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 22.5,
+    0
+  )
 end
 
 function TooManyItems:FlushConfirmScreen(fn)
@@ -239,7 +352,7 @@ function TooManyItems:ChangeDeleteRadius(operate)
   if _G.TOOMANYITEMS.DATA_SAVE == 1 then
     _G.TOOMANYITEMS.SaveNormalData()
   end
-  self.deleteradiusvalue:SetString(_G.TOOMANYITEMS.DATA.deleteradius)
+  self.deleteradiuspointer:SetText(_G.TOOMANYITEMS.DATA.deleteradius)
 end
 
 function TooManyItems:ChangeFoodFreshness(operate)
@@ -379,20 +492,19 @@ function TooManyItems:DebugMenu()
   self.debugshield:SetTint(1, 1, 1, 0.6)
 
   -- 当前起作用的玩家信息
-  self.currentuser = self.debugshield:AddChild(Text(self.font, self.fontsize))
-  self.currentuser:SetColour(0, 1, 1, 1)
-  local mainstr = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_POINTER
-  local prefix = ""
-  if TOOMANYITEMS.CHARACTER_USERID == ThePlayer.userid then
-    prefix = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_POINTER_SELF
-  end
-  self.currentuser:SetString(string.format(prefix .. mainstr, GetCharacterName(), TOOMANYITEMS.CHARACTER_USERID))
-  self.currentusersizex, self.currentusersizey = self.currentuser:GetRegionSize()
-  self.currentuser:SetPosition(
-    self.left + self.currentusersizex * .5,
-    self.shieldsize_y * .5 - self.currentusersizey * .5,
-    0
+  self.pointer = self.debugshield:AddChild(TextButton())
+  self.pointer:SetFont(self.font)
+  self.pointer:SetTooltip(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_POINTERTIP)
+  self.pointer:SetTextSize(self.fontsize)
+  self.pointer:SetColour(0, 1, 1, 1)
+  self.pointer:SetOverColour(0.4, 1, 1, 1)
+  self.pointer:SetOnClick(
+    function()
+      self:FlushPlayer()
+    end
   )
+  self:SetPointer()
+  -- 当前起作用的玩家信息
 
   self.settingbutton = self.debugshield:AddChild(TextButton())
   self.settingbutton:SetFont(self.font)
@@ -445,12 +557,12 @@ function TooManyItems:DebugMenu()
   )
   self.swicthbutton:SetOnClick(
     function()
-      self:FlushPlayer()
+      self:FlushPlayer("next")
     end
   )
 
   self.debugbuttonlist = require "TMI/debug"
-  self.top = self.shieldsize_y * .5 - self.currentusersizey - self.spacing
+  self.top = self.shieldsize_y * .5 - self.pointersizey - self.spacing
 
   local function IsShowBeta(beta)
     if beta and BRANCH == "release" then
@@ -855,16 +967,18 @@ function TooManyItems:SettingMenu()
     end
   )
 
-  self.deleteradiusvalue = self.settingshield:AddChild(Text(self.font, self.fontsize))
-  self.deleteradiusvalue:SetColour(1, 1, 1, 1)
-  self.deleteradiusvalue:SetString(_G.TOOMANYITEMS.DATA.deleteradius)
-  self.deleteradiusvaluex, self.deleteradiusvaluey = self.deleteradiusvalue:GetRegionSize()
-  self.deleteradiusvalue:SetPosition(
-    self.settingleft + self.deleteradiusx + 20 + self.settinglinespace * 3 + self.decreasebutton5x +
-      self.deleteradiusvaluex * 0.5,
-    self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 22.5,
-    0
+  self.deleteradiuspointer = self.settingshield:AddChild(TextButton())
+  self.deleteradiuspointer:SetFont(self.font)
+  self.deleteradiuspointer:SetTooltip("Click to edit: 3~999")
+  self.deleteradiuspointer:SetTextSize(self.fontsize)
+  self.deleteradiuspointer:SetColour(0, 1, 1, 1)
+  self.deleteradiuspointer:SetOverColour(0.4, 1, 1, 1)
+  self.deleteradiuspointer:SetOnClick(
+    function()
+      self:FlushDeleteRadius()
+    end
   )
+  self:SetDeleteRadiusPointer()
 
   self.addbutton5 = self.settingshield:AddChild(TextButton())
   self.addbutton5:SetFont(self.font)
@@ -874,7 +988,7 @@ function TooManyItems:SettingMenu()
   self.addbutton5x, self.addbutton5y = self.addbutton5.text:GetRegionSize()
   self.addbutton5:SetPosition(
     self.settingleft + self.deleteradiusx + 20 + self.settinglinespace * 5 + self.decreasebutton5x +
-      self.deleteradiusvaluex +
+      self.deleteradiuspointersizex +
       self.addbutton5x * 0.5,
     self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 22.5,
     0

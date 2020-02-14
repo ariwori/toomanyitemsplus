@@ -31,99 +31,103 @@ end
 
 local function HealthSet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
-		SendCommand(string.format('local player = %s local v = player.components.health if player and not player:HasTag("playerghost") and v then v:SetPercent(0.05) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.health if player and not player:HasTag("playerghost") and v then v:SetPercent(0.05) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH_1)
 	else
-		SendCommand(string.format('local player = %s local v = player.components.health if player and not player:HasTag("playerghost") and v then v:SetPercent(1) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.health if player and not player:HasTag("playerghost") and v then v:SetPercent(1) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH)
 	end
 end
 
 local function SanitySet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
-		SendCommand(string.format('local player = %s local v = player.components.sanity if player and not player:HasTag("playerghost") and v then v:SetPercent(0) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.sanity if player and not player:HasTag("playerghost") and v then v:SetPercent(0) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SANITY_1)
 	else
-		SendCommand(string.format('local player = %s local v = player.components.sanity if player and not player:HasTag("playerghost") and v then v:SetPercent(1) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.sanity if player and not player:HasTag("playerghost") and v then v:SetPercent(1) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SANITY)
 	end
 end
 
 local function HungerSet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
-		SendCommand(string.format('local player = %s local v = player.components.hunger if player and not player:HasTag("playerghost") and v then v:SetPercent(0) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.hunger if player and not player:HasTag("playerghost") and v then v:SetPercent(0) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HUNGER_1)
 	else
-		SendCommand(string.format('local player = %s local v = player.components.hunger if player and not player:HasTag("playerghost") and v then v:SetPercent(1) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.hunger if player and not player:HasTag("playerghost") and v then v:SetPercent(1) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HUNGER)
 	end
 end
 
 local function MoistureSet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
-		SendCommand(string.format('local player = %s local v = player.components.moisture if player and not player:HasTag("playerghost") and v then v:SetPercent(1) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.moisture if player and not player:HasTag("playerghost") and v then v:SetPercent(1) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WET_1)
 	else
-		SendCommand(string.format('local player = %s local v = player.components.moisture if player and not player:HasTag("playerghost") and v then v:SetPercent(0) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.moisture if player and not player:HasTag("playerghost") and v then v:SetPercent(0) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WET)
 	end
 end
 
 local function TemperatureSet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
-		SendCommand(string.format('local player = %s local v = player.components.temperature if player and not player:HasTag("playerghost") and v and TheWorld and TheWorld.state.temperature then v:SetTemperature(TheWorld.state.temperature) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.temperature if player and not player:HasTag("playerghost") and v and TheWorld and TheWorld.state.temperature then v:SetTemperature(TheWorld.state.temperature) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_TEMPERATURE_1)
 	else
-		SendCommand(string.format('local player = %s local v = player.components.temperature if player and not player:HasTag("playerghost") and v then v:SetTemperature(25) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.temperature if player and not player:HasTag("playerghost") and v then v:SetTemperature(25) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_TEMPERATURE)
 	end
 end
 
 local function BeavernessSet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
-		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(0) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(0) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
 	else
-		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(1) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(1) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_BEAVER_WEREMETER)
 	end
 end
 local function GoosenessSet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
-		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(0) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(0) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
 	else
-		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(1) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(1) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GOOSE_WEREMETER)
 	end
 end
 local function MoosenessSet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
-		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(0) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(0) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
 	else
-		SendCommand(string.format('local player = %s local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(1) end', GetCharacter()))
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(1) end', GetCharacter()))
 		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_MOOSE_WEREMETER)
 	end
 end
 
 local function GodMode()
-	SendCommand(string.format('local p = %s local me = UserToPlayer("%s") if p and me then local function SetGodeMode() if p.components.health and me.components.talker then local mode = p.components.health.invincible me.components.talker:Say("%s: "..(mode and STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL or STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY)) p.components.health:SetInvincible(not mode) end end if p:HasTag("playerghost") then p:PushEvent("respawnfromghost") p.rezsource = "'..STRINGS.TOO_MANY_ITEMS_UI.TMIP_CONSOLE..'" p:DoTaskInTime(1, SetGodeMode) else SetGodeMode() end end', GetCharacter(), ThePlayer.userid, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GODMODE))
+	SendCommand(string.format('local p = %s if p == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local me = UserToPlayer("%s") if p and me then local function SetGodeMode() if p.components.health and me.components.talker then local mode = p.components.health.invincible me.components.talker:Say("%s: "..(mode and STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL or STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY)) p.components.health:SetInvincible(not mode) end end if p:HasTag("playerghost") then p:PushEvent("respawnfromghost") p.rezsource = "'..STRINGS.TOO_MANY_ITEMS_UI.TMIP_CONSOLE..'" p:DoTaskInTime(1, SetGodeMode) else SetGodeMode() end end', GetCharacter(), ThePlayer.userid, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GODMODE))
 end
 
 local function CreativeMode()
-	SendCommand(string.format('local p = %s local me = UserToPlayer("%s") local builder = p.components.builder if builder and me and me.components.talker then me.components.talker:Say("%s: "..(builder.freebuildmode and STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL or STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY)) builder:GiveAllRecipes() end', GetCharacter(), ThePlayer.userid, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_CREATIVEMODE))
+	SendCommand(string.format('local p = %s if p == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end local me = UserToPlayer("%s") local builder = p.components.builder if builder and me and me.components.talker then me.components.talker:Say("%s: "..(builder.freebuildmode and STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL or STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY)) builder:GiveAllRecipes() end', GetCharacter(), ThePlayer.userid, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_CREATIVEMODE))
 end
 
 local function OneHitKillMode()
-	SendCommand(string.format('local combat_ = %s.components.combat or nil local me = UserToPlayer("%s") if me and me.components.talker and combat_ and combat_.CalcDamage then if combat_.OldCalcDamage then me.components.talker:Say("%s: "..STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL) combat_.CalcDamage = combat_.OldCalcDamage combat_.OldCalcDamage = nil else me.components.talker:Say("%s: "..STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY) combat_.OldCalcDamage = combat_.CalcDamage combat_.CalcDamage = function(...) return 9999999999*9 end end end', GetCharacter(), ThePlayer.userid, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONEHITKILLMODE, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONEHITKILLMODE))
+	SendCommand(string.format('local p = %s if p == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end local combat_ = p.components.combat or nil local me = UserToPlayer("%s") if me and me.components.talker and combat_ and combat_.CalcDamage then if combat_.OldCalcDamage then me.components.talker:Say("%s: "..STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL) combat_.CalcDamage = combat_.OldCalcDamage combat_.OldCalcDamage = nil else me.components.talker:Say("%s: "..STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY) combat_.OldCalcDamage = combat_.CalcDamage combat_.CalcDamage = function(...) return 9999999999*9 end end end', GetCharacter(), ThePlayer.userid, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONEHITKILLMODE, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONEHITKILLMODE))
 end
 
 local function RemoveBackpack()
+	if _G.TOOMANYITEMS.DATA.SHOW_CONFIRM_SCREEN then
 		local confirmscreen
-		confirmscreen = PopupDialogScreen(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACK, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACKTIP, {{text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = function() SendCommand(string.format('local player = %s local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end', GetCharacter()))
+		confirmscreen = PopupDialogScreen(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACK, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACKTIP, {{text = STRINGS.UI.TRADESCREEN.ACCEPT, cb = function() SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end', GetCharacter()))
 		TheFrontEnd:PopScreen(confirmscreen) end },	{ text = STRINGS.UI.TRADESCREEN.CANCEL, cb = function()	TheFrontEnd:PopScreen(confirmscreen) end}})
 		TheFrontEnd:PushScreen(confirmscreen)
+	else
+		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end', GetCharacter()))
+	end
 end
 
 local Menu = Class(function(self, owner, pos)

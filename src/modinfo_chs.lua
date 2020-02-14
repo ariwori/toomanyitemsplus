@@ -1,5 +1,5 @@
 name = "Too Many Items Plus"
-version = "1.0.6.9"
+version = "1.0.7.2"
 description = name .." 当前版本： "..version..
 [[
 
@@ -11,9 +11,9 @@ description = name .." 当前版本： "..version..
 打开菜单的按钮和生成物品的数量是可修改的.
 你可以自定义一个特殊的物品列表.
 (通过按住 ctrl 键点击物品来增加删除)
-Mod原作者：C.J.B. | 项目和bug修复：GaRAnTuLA. | 联机版本：Skull. | 
-崩溃和搜索功能修复：TheMightyPikachu、Electroely. | 
-界面布局和代码优化、高级功能开发：Tendy. | 
+Mod原作者：C.J.B. | 项目和bug修复：GaRAnTuLA. | 联机版本：Skull. |
+崩溃和搜索功能修复：TheMightyPikachu、Electroely. |
+界面布局和代码优化、高级功能开发：Tendy. |
 分类和伍迪变身按钮、小功能更新：乐十画.
 ]]
 

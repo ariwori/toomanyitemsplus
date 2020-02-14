@@ -81,7 +81,7 @@ end
 local function gotoonly(name)
 	name = name or ""
 	return string.format(
-		'local player = %s if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target = c_findnext("' ..
+		'local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target = c_findnext("' ..
 			name .. '") if target ~= nil then tmi_goto(target) end end',
 		GetCharacter()
 	)
@@ -251,7 +251,7 @@ function InvSlot:Click(stack_mod)
 				else
 					if _G.TOOMANYITEMS.DATA.ADVANCE_DELETE then
 						local fnstr =
-							'local a=%s;local function b(c)local d=c.components.inventoryitem;return d and d.owner and true or false end;local function e(f)if f and f~=TheWorld and not b(f)and f.Transform then if f:HasTag("player")then if f.userid==nil or f.userid==""then return true end else return true end end;return false end;if a and a.Transform then if a.components.burnable then a.components.burnable:Extinguish(true)end;local g,h,i=a.Transform:GetWorldPosition()local j=TheSim:FindEntities(g,h,i,%s)for k,l in pairs(j)do if e(l)then if l.components then if l.components.burnable then l.components.burnable:Extinguish(true)end;if l.components.firefx then if l.components.firefx.extinguishsoundtest then l.components.firefx.extinguishsoundtest=function()return true end end;l.components.firefx:Extinguish()end end;if not(l.prefab=="minerhatlight"or"lanternlight"or"yellowamuletlight"or"slurperlight"or"redlanternlight"or"lighterfire"or"torchfire"or"torchfire_rag"or"torchfire_spooky"or"torchfire_shadow")or l.entity:GetParent()==nil then if l.prefab=="%s"then l:Remove()end end end end end'
+							'local a=%s if a == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end local function b(c)local d=c.components.inventoryitem;return d and d.owner and true or false end;local function e(f)if f and f~=TheWorld and not b(f)and f.Transform then if f:HasTag("player")then if f.userid==nil or f.userid==""then return true end else return true end end;return false end;if a and a.Transform then if a.components.burnable then a.components.burnable:Extinguish(true)end;local g,h,i=a.Transform:GetWorldPosition()local j=TheSim:FindEntities(g,h,i,%s)for k,l in pairs(j)do if e(l)then if l.components then if l.components.burnable then l.components.burnable:Extinguish(true)end;if l.components.firefx then if l.components.firefx.extinguishsoundtest then l.components.firefx.extinguishsoundtest=function()return true end end;l.components.firefx:Extinguish()end end;if not(l.prefab=="minerhatlight"or"lanternlight"or"yellowamuletlight"or"slurperlight"or"redlanternlight"or"lighterfire"or"torchfire"or"torchfire_rag"or"torchfire_spooky"or"torchfire_shadow")or l.entity:GetParent()==nil then if l.prefab=="%s"then l:Remove()end end end end end'
 						SendCommand(string.format(fnstr, GetCharacter(), _G.TOOMANYITEMS.DATA.deleteradius, self.item))
 					end
 				end
@@ -290,8 +290,7 @@ function InvSlot:Click(stack_mod)
 			end
 		elseif TheInput:IsKeyDown(KEY_SHIFT) then
 			-- print ("[TooManyItemsPlus] Get material from: "..self.item)
-			local fnstr =
-				'local player = %s local function tmi_give(item) if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() if item ~= nil and item.components then if item.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(item) end else item.Transform:SetPosition(x,y,z) end end end end local function tmi_mat(name) local recipe = AllRecipes[name] if recipe then for _, iv in pairs(recipe.ingredients) do for i = 1, iv.amount do local item = SpawnPrefab(iv.type) tmi_give(item) end end end end for i = 1, %s or 1 do tmi_mat("%s") end'
+			local fnstr = 'local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local function tmi_give(item) if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() if item ~= nil and item.components then if item.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(item) end else item.Transform:SetPosition(x,y,z) end end end end local function tmi_mat(name) local recipe = AllRecipes[name] if recipe then for _, iv in pairs(recipe.ingredients) do for i = 1, iv.amount do local item = SpawnPrefab(iv.type) tmi_give(item) end end end end for i = 1, %s or 1 do tmi_mat("%s") end'
 			SendCommand(string.format(fnstr, GetCharacter(), spawnnum, self.item))
 			TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/click_object")
 			OperateAnnnounce(
@@ -312,101 +311,7 @@ function InvSlot:Click(stack_mod)
 				last_skin = arr[1] .. "_" .. arr[2]
 			end
 			last_skin = last_skin ~= nil and last_skin or self.item
-			local fnstr =
-				[[
-			local player = %s
-			local function onturnon(inst)
-				if inst._stage == 3 then
-					if inst.AnimState:IsCurrentAnimation("proximity_pre") or inst.AnimState:IsCurrentAnimation("proximity_loop") or inst.AnimState:IsCurrentAnimation("place3") then
-						inst.AnimState:PushAnimation("proximity_pre")
-					else
-						inst.AnimState:PlayAnimation("proximity_pre")
-					end
-
-					inst.AnimState:PushAnimation("proximity_loop", true)
-				end
-			end
-			local function onturnoff(inst)
-				if inst._stage == 3 then
-					inst.AnimState:PlayAnimation("proximity_pst")
-					inst.AnimState:PushAnimation("idle3", false)
-				end
-			end
-			if player ~= nil and player.Transform then
-				if '%s' == 'klaus' then
-					local pos = player:GetPosition()
-					local minplayers = math.huge
-					local spawnx, spawnz
-					FindWalkableOffset(pos,
-						math.random() * 2 * PI, 33, 16, true, true,
-						function(pt)
-							local count = #FindPlayersInRangeSq(pt.x, pt.y, pt.z, 625)
-							if count < minplayers then
-								minplayers = count
-								spawnx, spawnz = pt.x, pt.z
-								return count <= 0
-							end
-							return false
-						end)
-					if spawnx == nil then
-						local offset = FindWalkableOffset(pos, math.random() * 2 * PI, 3, 8, false, true)
-						if offset ~= nil then
-							spawnx, spawnz = pos.x + offset.x, pos.z + offset.z
-						end
-					end
-					local klaus = SpawnPrefab("klaus")
-					klaus.Transform:SetPosition(spawnx or pos.x, 0, spawnz or pos.z)
-					klaus:SpawnDeer()
-					klaus.components.knownlocations:RememberLocation("spawnpoint", pos, false)
-					klaus.components.spawnfader:FadeIn()
-				else
-					local x,y,z = player.Transform:GetWorldPosition()
-					for i = 1, %s or 1 do
-						local inst = SpawnPrefab('%s', '%s', nil, '%s')
-						if inst ~= nil and inst.components then
-							if inst.components.skinner ~= nil and IsRestrictedCharacter(inst.prefab) then
-								inst.components.skinner:SetSkinMode('normal_skin')
-							end
-							if inst.components.inventoryitem ~= nil then
-								if player.components and player.components.inventory then
-									player.components.inventory:GiveItem(inst)
-								end
-							else
-								inst.Transform:SetPosition(x,y,z)
-								if '%s' == 'deciduoustree' then
-									inst:StartMonster(true)
-								end
-							end
-							if not inst.components.health then
-								if inst.components.perishable then
-									inst.components.perishable:SetPercent(%s)
-								end
-								if inst.components.finiteuses then
-									inst.components.finiteuses:SetPercent(%s)
-								end
-								if inst.components.fueled then
-									inst.components.fueled:SetPercent(%s)
-								end
-								if inst.components.temperature then
-									inst.components.temperature:SetTemperature(%s)
-								end
-								if %s ~= 1 and inst.components.follower then
-									inst.components.follower:SetLeader(player)
-								end
-								if '%s' == 'moon_altar' then
-									inst._stage =3
-									inst.AnimState:PlayAnimation('idle3')
-									inst:AddComponent('prototyper')
-									inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES.MOON_ALTAR_FULL
-									inst.components.prototyper.onturnon = onturnon
-									inst.components.prototyper.onturnoff = onturnoff
-									inst.components.lootdropper:SetLoot({ 'moon_altar_idol', 'moon_altar_glass', 'moon_altar_seed' })
-								end
-							end
-						end
-					end
-				end
-			end ]]
+			local fnstr = 'local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end local function onturnon(inst) if inst._stage == 3 then if inst.AnimState:IsCurrentAnimation("proximity_pre") or inst.AnimState:IsCurrentAnimation("proximity_loop") or inst.AnimState:IsCurrentAnimation("place3") then inst.AnimState:PushAnimation("proximity_pre") else inst.AnimState:PlayAnimation("proximity_pre") end inst.AnimState:PushAnimation("proximity_loop", true) end end local function onturnoff(inst) if inst._stage == 3 then inst.AnimState:PlayAnimation("proximity_pst") inst.AnimState:PushAnimation("idle3", false) end end if player ~= nil and player.Transform then	if "%s" == "klaus" then	local pos = player:GetPosition() local minplayers = math.huge local spawnx, spawnz FindWalkableOffset(pos,	math.random() * 2 * PI, 33, 16, true, true, function(pt) local count = #FindPlayersInRangeSq(pt.x, pt.y, pt.z, 625) if count < minplayers then minplayers = count spawnx, spawnz = pt.x, pt.z return count <= 0 end return false end) if spawnx == nil then local offset = FindWalkableOffset(pos, math.random() * 2 * PI, 3, 8, false, true) if offset ~= nil then spawnx, spawnz = pos.x + offset.x, pos.z + offset.z end end local klaus = SpawnPrefab("klaus") klaus.Transform:SetPosition(spawnx or pos.x, 0, spawnz or pos.z) klaus:SpawnDeer() klaus.components.knownlocations:RememberLocation("spawnpoint", pos, false) klaus.components.spawnfader:FadeIn() else local x,y,z = player.Transform:GetWorldPosition() for i = 1, %s or 1 do local inst = SpawnPrefab("%s", "%s", nil, "%s") if inst ~= nil and inst.components then	if inst.components.skinner ~= nil and IsRestrictedCharacter(inst.prefab) then inst.components.skinner:SetSkinMode("normal_skin") end if inst.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(inst) end	else inst.Transform:SetPosition(x,y,z) if "%s" == "deciduoustree" then inst:StartMonster(true) end end if not inst.components.health then if inst.components.perishable then inst.components.perishable:SetPercent(%s)	end	if inst.components.finiteuses then inst.components.finiteuses:SetPercent(%s) end if inst.components.fueled then inst.components.fueled:SetPercent(%s) end if inst.components.temperature then	inst.components.temperature:SetTemperature(%s) end if %s ~= 1 and inst.components.follower then inst.components.follower:SetLeader(player) end if "%s" == "moon_altar" then inst._stage =3 inst.AnimState:PlayAnimation("idle3")	inst:AddComponent("prototyper") inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES.MOON_ALTAR_FULL inst.components.prototyper.onturnon = onturnon inst.components.prototyper.onturnoff = onturnoff inst.components.lootdropper:SetLoot({ "moon_altar_idol", "moon_altar_glass", "moon_altar_seed" }) end	end	end end	end	end'
 			SendCommand(
 				string.format(
 					fnstr,
