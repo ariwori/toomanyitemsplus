@@ -240,12 +240,12 @@ end
 function InvSlot:Click(stack_mod)
 	if self.item then
 		local itemdescription = self:GetDescription()
-		local spawnnum = stack_mod and TOOMANYITEMS.G_TMIP_R_CLICK_NUM or TOOMANYITEMS.G_TMIP_L_CLICK_NUM
+		local spawnnum = stack_mod and TOOMANYITEMS.DATA.G_TMIP_R_CLICK_NUM or TOOMANYITEMS.DATA.G_TMIP_L_CLICK_NUM
 		if TheInput:IsKeyDown(KEY_CTRL) then
 			-- Ctrl+ALT+左键传送，要右键就取消下面一行里的注释
 			if TheInput:IsKeyDown(KEY_ALT) then
 				if stack_mod then
-					-- print ("[TooManyItemsPlus] Teleport to: "..self.item)
+					print ("[TooManyItemsPlus] Teleport to: "..self.item)
 					SendCommand(gotoonly(self.item))
 					OperateAnnnounce(STRINGS.NAMES.SUPERGOTOTIP .. itemdescription)
 				else
@@ -258,7 +258,7 @@ function InvSlot:Click(stack_mod)
 			else
 				local customitems = {}
 				if table.contains(TOOMANYITEMS.DATA.customitems, self.item) then
-					-- print ("[TooManyItemsPlus] Remove Items: "..self.item)
+					print ("[TooManyItemsPlus] Remove Items: "..self.item)
 					for i = 1, #TOOMANYITEMS.DATA.customitems do
 						if TOOMANYITEMS.DATA.customitems[i] ~= self.item then
 							table.insert(customitems, TOOMANYITEMS.DATA.customitems[i])
@@ -268,7 +268,7 @@ function InvSlot:Click(stack_mod)
 					-- Ctrl按下，调整自定义物品
 					OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP .. itemdescription .. STRINGS.NAMES.REMOVEEDITEMSTIP)
 				else
-					-- print ("[TooManyItemsPlus] Add Items: "..self.item)
+					print ("[TooManyItemsPlus] Add Items: "..self.item)
 					table.insert(customitems, self.item)
 					for i = 1, #TOOMANYITEMS.DATA.customitems do
 						table.insert(customitems, TOOMANYITEMS.DATA.customitems[i])
@@ -289,7 +289,7 @@ function InvSlot:Click(stack_mod)
 				end
 			end
 		elseif TheInput:IsKeyDown(KEY_SHIFT) then
-			-- print ("[TooManyItemsPlus] Get material from: "..self.item)
+			print ("[TooManyItemsPlus] Get material from: "..self.item)
 			local fnstr = 'local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local function tmi_give(item) if player ~= nil and player.Transform then local x,y,z = player.Transform:GetWorldPosition() if item ~= nil and item.components then if item.components.inventoryitem ~= nil then if player.components and player.components.inventory then player.components.inventory:GiveItem(item) end else item.Transform:SetPosition(x,y,z) end end end end local function tmi_mat(name) local recipe = AllRecipes[name] if recipe then for _, iv in pairs(recipe.ingredients) do for i = 1, iv.amount do local item = SpawnPrefab(iv.type) tmi_give(item) end end end end for i = 1, %s or 1 do tmi_mat("%s") end'
 			SendCommand(string.format(fnstr, GetCharacter(), spawnnum, self.item))
 			TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/click_object")
@@ -298,7 +298,7 @@ function InvSlot:Click(stack_mod)
 					STRINGS.NAMES.GETITEMSMATERIALHTIP .. itemdescription .. STRINGS.NAMES.GETITEMSMATERIALETIP .. " *" .. spawnnum
 			)
 		else
-			-- print ("[TooManyItemsPlus] SpawnPrefab: "..self.item)
+			print ("[TooManyItemsPlus] SpawnPrefab: "..self.item)
 			local skinname = self.item
 			local leader = 1
 			if string.find(self.item, "critter_") then

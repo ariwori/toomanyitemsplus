@@ -24,7 +24,7 @@ local function AcceptPlayer(widget)
   local playerid = UserToClientID(value)
   local playerprefab
   local playerlist = TheNet:GetClientTable() or {}
-  if type(tonumber(value)) == "number" and tonumber(value) <= #playerlist then
+  if type(tonumber(value)) == "number" and 0 < tonumber(value) <= #playerlist then
     local playername = playerlist[tonumber(value)].name
     if TheNet:GetServerIsClientHosted() then
       playerid = playerlist[tonumber(value)].userid
@@ -83,7 +83,11 @@ local function GetCharacterPrefab()
   if TOOMANYITEMS.CHARACTER_PREFAB ~= "" and TOOMANYITEMS.CHARACTER_PREFAB ~= nil then
     p = STRINGS.NAMES[string.upper(TOOMANYITEMS.CHARACTER_PREFAB)]
   end
-  if p then return p else return "nil" end
+  if p then
+    return p
+  else
+    return "nil"
+  end
 end
 
 local function GetCharacter()
@@ -264,7 +268,9 @@ function TooManyItems:SetPointer()
   if TOOMANYITEMS.CHARACTER_USERID == ThePlayer.userid then
     prefix = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_POINTER_SELF
   end
-  self.pointer:SetText(string.format(prefix .. mainstr, GetCharacterName(), GetCharacterPrefab(), TOOMANYITEMS.CHARACTER_USERID))
+  self.pointer:SetText(
+    string.format(prefix .. mainstr, GetCharacterName(), GetCharacterPrefab(), TOOMANYITEMS.CHARACTER_USERID)
+  )
   self.pointersizex, self.pointersizey = self.pointer.text:GetRegionSize()
   self.pointer.image:SetSize(self.pointersizex * .85, self.pointersizey)
   self.pointer:SetPosition(self.left + self.pointersizex * .5, self.shieldsize_y * .5 - self.pointersizey * .5, 0)
@@ -290,7 +296,7 @@ function TooManyItems:SetDeleteRadiusPointer()
   self.deleteradiuspointer.image:SetSize(self.deleteradiuspointersizex * .85, self.deleteradiuspointersizey)
   self.deleteradiuspointer:SetPosition(
     self.settingleft + self.deleteradiusx + 20 + self.settinglinespace * 3 + self.decreasebutton5x +
-    self.deleteradiuspointersizex * 0.5,
+      self.deleteradiuspointersizex * 0.5,
     self.shieldsize_y * .5 - self.screennamey - self.settinglinespace * 22.5,
     0
   )

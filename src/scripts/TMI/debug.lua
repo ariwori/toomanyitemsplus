@@ -58,6 +58,14 @@ local function SaveTeleportData(slot_num)
 	end
 end
 
+local function TeleportFnc(slot_num)
+	if TheInput:IsKeyDown(KEY_CTRL) then
+		SaveTeleportData(slot_num)
+	else
+		LoadTeleportData(slot_num)
+	end
+end
+
 local function GetTeleportList(Teleportfn)
 	local telelist = {}
 	for i = 1, 10 do
@@ -278,6 +286,13 @@ return {
 				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_ENTITY_DELETE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_ENTITY_DELETETIP,
 				fn = 'local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local function InInv(b) local inv = b.components.inventoryitem return inv and inv.owner and true or false end local function CanDelete(inst) if inst and inst ~= TheWorld and not InInv(inst) and inst.Transform then if inst:HasTag("player") then if inst.userid == nil or inst.userid == "" then return true end else return true end end return false end if player and player.Transform then if player.components.burnable then player.components.burnable:Extinguish(true) end local x,y,z = player.Transform:GetWorldPosition() local ents = TheSim:FindEntities(x,y,z, 3) for _, obj in pairs(ents) do if CanDelete(obj) then if obj.components then if obj.components.burnable then obj.components.burnable:Extinguish(true) end if obj.components.firefx then if obj.components.firefx.extinguishsoundtest then obj.components.firefx.extinguishsoundtest = function() return true end end obj.components.firefx:Extinguish() end end if (not (obj.prefab == "minerhatlight" or "lanternlight" or "yellowamuletlight" or "slurperlight" or "redlanternlight" or "lighterfire" or "torchfire" or "torchfire_rag" or "torchfire_spooky" or "torchfire_shadow")) or (obj.entity:GetParent() == nil) then obj:Remove() print(obj.prefab) end end end end',
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_ENTITY_EXTINGUISH,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_ENTITY_EXTINGUISHTIP,
+				fn = 'local a=%s;if a==nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'")end;local function b(c)local d=c.components.inventoryitem;return d and d.owner and true or false end;local function e(f)if f and f~=TheWorld and not b(f)and f.Transform then if f:HasTag("player")then if f.userid==nil or f.userid==""then return true end else if f.prefab and f.prefab~="campfire"and f.prefab~="firepit"and f.prefab~="coldfire"and f.prefab~="coldfirepit"and f.prefab~="nightlight"then return true end end end;return false end;if a and a.Transform then if a.components.burnable then a.components.burnable:Extinguish(true)end;local g,h,i=a.Transform:GetWorldPosition()local j=TheSim:FindEntities(g,h,i,30)for k,l in pairs(j)do if e(l)then if l.components then if l.components.burnable then l.components.burnable:Extinguish(true)end;if l.components.firefx then if l.components.firefx.extinguishsoundtest then l.components.firefx.extinguishsoundtest=function()return true end end;l.components.firefx:Extinguish()end end end end end',
 			},
 			{
 				beta = false,
@@ -541,12 +556,13 @@ return {
 	},
 	{
 		tittle = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TELEPORT_SAVE_TEXT,
-		list = GetTeleportList(SaveTeleportData)
+		-- list = GetTeleportList(SaveTeleportData)
+		list = GetTeleportList(TeleportFnc)
 	},
-	{
-		tittle = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TELEPORT_LOAD_TEXT,
-		list = GetTeleportList(LoadTeleportData)
-	},
+	-- {
+	-- 	tittle = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TELEPORT_LOAD_TEXT,
+	-- 	list = GetTeleportList(LoadTeleportData)
+	-- },
 	{
 		tittle = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TEXT,
 		list = {
