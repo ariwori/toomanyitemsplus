@@ -1,5 +1,5 @@
 name = "Too Many Items Plus"
-version = "1.0.7.4"
+version = "1.0.8.1"
 description = name .." 当前版本： "..version..
 [[
 
@@ -15,6 +15,7 @@ Mod原作者：C.J.B. | 項目和bug修復：GaRAnTuLA. | 聯機版本：Skull. 
 崩潰和搜索功能修復：TheMightyPikachu、Electroely. |
 界面布局和代碼優化、高級功能開發：Tendy. |
 分類和伍迪變身按鈕、小功能更新：乐十画.
+分類和美工、小功能更新：乐十画.
 ]]
 
 author = "CJB,GaRAnTuLA,Skull,TheMightyPikachu,Electroely,Tendy,乐十画"

@@ -8,14 +8,14 @@ if
 end
 
 Assets = {
+	Asset("ATLAS", "TooManyItemsPlus.xml"),
+	Asset("IMAGE", "TooManyItemsPlus.tex"),
 	Asset("ATLAS", "images/customicobyysh.xml"),
 	Asset("IMAGE", "images/customicobyysh.tex"),
 	Asset("ATLAS", "images/helpcnbyysh.xml"),
 	Asset("IMAGE", "images/helpcnbyysh.tex"),
 	Asset("ATLAS", "images/helpenbyysh.xml"),
-	Asset("IMAGE", "images/helpenbyysh.tex"),
-	Asset("ATLAS", "TooManyItemsPlus.xml"),
-	Asset("IMAGE", "TooManyItemsPlus.tex")
+	Asset("IMAGE", "images/helpenbyysh.tex")
 }
 
 _G.TOOMANYITEMS = {
@@ -292,58 +292,58 @@ end
 
 _G.TheInput:AddKeyUpHandler(_G.TOOMANYITEMS.G_TMIP_TOGGLE_KEY, ShowTMIMenu)
 
-local ImageButton = _G.require "widgets/imagebutton"
-AddClassPostConstruct(
-	"screens/playerstatusscreen",
-	function(inst)
-		local old_DoInit = inst.DoInit
-		function inst:DoInit(ClientObjs)
-			old_DoInit(self, ClientObjs)
-			if self.player_widgets ~= nil then
-				for i, playerListing in ipairs(self.player_widgets) do
-					playerListing.tmip =
-						playerListing:AddChild(
-						ImageButton(
-							"TooManyItemsPlus.xml",
-							"TooManyItemsPlus.tex",
-							"TooManyItemsPlus.tex",
-							"TooManyItemsPlus.tex",
-							"TooManyItemsPlus.tex",
-							nil,
-							{1, 1},
-							{0, 0}
-						)
-					)
-					playerListing.tmip:SetPosition(220, 3, 0)
-					playerListing.tmip:SetNormalScale(0.3)
-					playerListing.tmip:SetFocusScale(0.3 * 1.1)
-					playerListing.tmip:SetFocusSound("dontstarve/HUD/click_mouseover")
-					playerListing.tmip:SetHoverText(
-						STRINGS.UI.TMIP_TAB_BUTTON_TIP,
-						{font = NEWFONT_OUTLINE, offset_x = 0, offset_y = 30, colour = {1, 1, 1, 1}}
-					)
+-- local ImageButton = _G.require "widgets/imagebutton"
+-- AddClassPostConstruct(
+-- 	"screens/playerstatusscreen",
+-- 	function(inst)
+-- 		local old_DoInit = inst.DoInit
+-- 		function inst:DoInit(ClientObjs)
+-- 			old_DoInit(self, ClientObjs)
+-- 			if self.player_widgets ~= nil then
+-- 				for i, playerListing in ipairs(self.player_widgets) do
+-- 					playerListing.tmip =
+-- 						playerListing:AddChild(
+-- 						ImageButton(
+-- 							"TooManyItemsPlus.xml",
+-- 							"TooManyItemsPlus.tex",
+-- 							"TooManyItemsPlus.tex",
+-- 							"TooManyItemsPlus.tex",
+-- 							"TooManyItemsPlus.tex",
+-- 							nil,
+-- 							{1, 1},
+-- 							{0, 0}
+-- 						)
+-- 					)
+-- 					playerListing.tmip:SetPosition(220, 3, 0)
+-- 					playerListing.tmip:SetNormalScale(0.3)
+-- 					playerListing.tmip:SetFocusScale(0.3 * 1.1)
+-- 					playerListing.tmip:SetFocusSound("dontstarve/HUD/click_mouseover")
+-- 					playerListing.tmip:SetHoverText(
+-- 						STRINGS.UI.TMIP_TAB_BUTTON_TIP,
+-- 						{font = NEWFONT_OUTLINE, offset_x = 0, offset_y = 30, colour = {1, 1, 1, 1}}
+-- 					)
 
-					playerListing.tmip:SetOnClick(
-						function()
-							if playerListing.userid ~= nil then
-								_G.TOOMANYITEMS.CHARACTER_USERID = playerListing.userid
-								local playerlist = _G.TheNet:GetClientTable() or {}
-								for k, v in pairs(playerlist) do
-									if v.userid == _G.TOOMANYITEMS.CHARACTER_USERID then
-										if k == 1 and not _G.TheNet:GetServerIsClientHosted() then
-											_G.TOOMANYITEMS.CHARACTER_PREFAB = _G.ThePlayer.prefab
-											_G.TOOMANYITEMS.CHARACTER_USERID = _G.ThePlayer.userid
-										else
-											_G.TOOMANYITEMS.CHARACTER_PREFAB = playerlist[k].prefab
-										end
-										break
-									end
-								end
-							end
-						end
-					)
-				end
-			end
-		end
-	end
-)
+-- 					playerListing.tmip:SetOnClick(
+-- 						function()
+-- 							if playerListing.userid ~= nil then
+-- 								_G.TOOMANYITEMS.CHARACTER_USERID = playerListing.userid
+-- 								local playerlist = _G.TheNet:GetClientTable() or {}
+-- 								for k, v in pairs(playerlist) do
+-- 									if v.userid == _G.TOOMANYITEMS.CHARACTER_USERID then
+-- 										if k == 1 and not _G.TheNet:GetServerIsClientHosted() then
+-- 											_G.TOOMANYITEMS.CHARACTER_PREFAB = _G.ThePlayer.prefab
+-- 											_G.TOOMANYITEMS.CHARACTER_USERID = _G.ThePlayer.userid
+-- 										else
+-- 											_G.TOOMANYITEMS.CHARACTER_PREFAB = playerlist[k].prefab
+-- 										end
+-- 										break
+-- 									end
+-- 								end
+-- 							end
+-- 						end
+-- 					)
+-- 				end
+-- 			end
+-- 		end
+-- 	end
+-- )

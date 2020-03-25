@@ -142,6 +142,15 @@ local Menu = Class(function(self, owner, pos)
     local function ShowDebugMenu()
       self.owner.owner:ShowDebugMenu()
     end
+
+    local function ShowWoodieMenu()
+      self.owner.owner:ShowWoodieMenu()
+		end
+
+		local function ShowWendyMenu()
+      self.owner.owner:ShowWendyMenu()
+    end
+
 		self.menu = {
 			["hunger"] = {
 				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HUNGER,
@@ -208,25 +217,33 @@ local Menu = Class(function(self, owner, pos)
 			},
 			["beaverness"] = {
 				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_BEAVER_WEREMETER,
-				fn = BeavernessSet,
+        -- fn = BeavernessSet,
+        fn = ShowWoodieMenu,
 				atlas = "images/customicobyysh.xml",
 				image = "tmipbutton_woodbeavermode.tex",
 				pos = {pos[1], pos_y2},
 			},
-			["beaverness2"] = {
-				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GOOSE_WEREMETER,
-				fn = GoosenessSet,
+			["abigail1"] = {
+				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV1,
+				fn = ShowWendyMenu,
 				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_woodgoosemode.tex",
+				image = "tmipbutton_abigaillv1.tex",
 				pos = {pos[2], pos_y2},
 			},
-			["beaverness1"] = {
-				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_MOOSE_WEREMETER,
-				fn = MoosenessSet,
-				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_woodmoosemode.tex",
-				pos = {pos[3], pos_y2},
-			},
+			-- ["beaverness2"] = {
+			-- 	tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GOOSE_WEREMETER,
+			-- 	fn = GoosenessSet,
+			-- 	atlas = "images/customicobyysh.xml",
+			-- 	image = "tmipbutton_woodgoosemode.tex",
+			-- 	pos = {pos[2], pos_y2},
+			-- },
+			-- ["beaverness1"] = {
+			-- 	tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_MOOSE_WEREMETER,
+			-- 	fn = MoosenessSet,
+			-- 	atlas = "images/customicobyysh.xml",
+			-- 	image = "tmipbutton_woodmoosemode.tex",
+			-- 	pos = {pos[3], pos_y2},
+			-- },
 			["temperature"] = {
 				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_TEMPERATURE,
 				fn = TemperatureSet,

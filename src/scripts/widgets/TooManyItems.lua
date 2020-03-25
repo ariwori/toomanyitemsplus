@@ -2,12 +2,30 @@ local Image = require "widgets/image"
 local Text = require "widgets/text"
 local TextButton = require "widgets/textbutton"
 local Widget = require "widgets/widget"
+local ImageButton = _G.require "widgets/imagebutton"
 
 local TMI_menubar = require "widgets/TMI_menubar"
 
 local PopupDialogScreen = require "screens/redux/popupdialog"
 
 local WriteableWidget = require "screens/TMI_writeablewidget"
+
+local function OperateAnnnounce(message)
+  --判断用户是否开启了提示
+  if _G.TOOMANYITEMS.G_TMIP_SPAWN_ITEMS_TIPS then
+    if ThePlayer then
+      ThePlayer:DoTaskInTime(
+        0.1,
+        function()
+          if ThePlayer.components.talker then
+            --ThePlayer.components.talker:Say("[TMIP]("..UserToName(TOOMANYITEMS.CHARACTER_USERID)..") " .. message)
+            ThePlayer.components.talker:Say("[TMIP]" .. message)
+          end
+        end
+      )
+    end
+  end
+end
 
 local function SendCommand(fnstr)
   local x, _, z = TheSim:ProjectScreenPos(TheSim:GetPosition())
@@ -17,6 +35,23 @@ local function SendCommand(fnstr)
   else
     ExecuteConsoleCommand(fnstr)
   end
+end
+
+local function MakeMainButton(parent, buttons, name, tip, fn, atlas, image, pos)
+  if type(image) == "string" then
+    buttons[name] = parent:AddChild(ImageButton(atlas, image, image, image))
+  elseif type(image) == "table" then
+    buttons[name] = parent:AddChild(ImageButton(atlas, image[1], image[2], image[3]))
+  else
+    return
+  end
+  buttons[name]:SetTooltip(tip)
+  buttons[name]:SetOnClick(fn)
+  buttons[name]:SetPosition(pos[1], pos[2], 0)
+  local w, h = buttons[name].image:GetSize()
+  local scale = math.min(35 / w, 35 / h)
+  buttons[name]:SetNormalScale(scale)
+  buttons[name]:SetFocusScale(scale * 1.1)
 end
 
 local function AcceptPlayer(widget)
@@ -93,6 +128,139 @@ end
 local function GetCharacter()
   return "UserToPlayer('" .. TOOMANYITEMS.CHARACTER_USERID .. "')"
 end
+local function AbigailI()
+  SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(1) end', GetCharacter()))
+  OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV1)
+end
+local function AbigailII()
+  SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(2) end', GetCharacter()))
+  OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV2)
+end
+local function AbigailIII()
+  SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(3) end', GetCharacter()))
+  OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV3)
+end
+local function BeavernessSet()
+  if TheInput:IsKeyDown(KEY_CTRL) then
+    SendCommand(
+      string.format(
+        'local player = %s if player == nil then UserToPlayer("' ..
+          _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
+            '").components.talker:Say("' ..
+              STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
+                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(0) end',
+        GetCharacter()
+      )
+    )
+    OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
+  else
+    SendCommand(
+      string.format(
+        'local player = %s if player == nil then UserToPlayer("' ..
+          _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
+            '").components.talker:Say("' ..
+              STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
+                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(1) end',
+        GetCharacter()
+      )
+    )
+    OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_BEAVER_WEREMETER)
+  end
+end
+local function GoosenessSet()
+  if TheInput:IsKeyDown(KEY_CTRL) then
+    SendCommand(
+      string.format(
+        'local player = %s if player == nil then UserToPlayer("' ..
+          _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
+            '").components.talker:Say("' ..
+              STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
+                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(0) end',
+        GetCharacter()
+      )
+    )
+    OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
+  else
+    SendCommand(
+      string.format(
+        'local player = %s if player == nil then UserToPlayer("' ..
+          _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
+            '").components.talker:Say("' ..
+              STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
+                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(1) end',
+        GetCharacter()
+      )
+    )
+    OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GOOSE_WEREMETER)
+  end
+end
+local function MoosenessSet()
+  if TheInput:IsKeyDown(KEY_CTRL) then
+    SendCommand(
+      string.format(
+        'local player = %s if player == nil then UserToPlayer("' ..
+          _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
+            '").components.talker:Say("' ..
+              STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
+                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(0) end',
+        GetCharacter()
+      )
+    )
+    OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
+  else
+    SendCommand(
+      string.format(
+        'local player = %s if player == nil then UserToPlayer("' ..
+          _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
+            '").components.talker:Say("' ..
+              STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
+                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(1) end',
+        GetCharacter()
+      )
+    )
+    OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_MOOSE_WEREMETER)
+  end
+end
+
+local function AbigailI()
+  SendCommand(
+    string.format(
+      'local player = %s if player == nil then UserToPlayer("' ..
+        _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
+          '").components.talker:Say("' ..
+            STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
+              '") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(1) end',
+      GetCharacter()
+    )
+  )
+  OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV1)
+end
+local function AbigailII()
+  SendCommand(
+    string.format(
+      'local player = %s if player == nil then UserToPlayer("' ..
+        _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
+          '").components.talker:Say("' ..
+            STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
+              '") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(2) end',
+      GetCharacter()
+    )
+  )
+  OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV2)
+end
+local function AbigailIII()
+  SendCommand(
+    string.format(
+      'local player = %s if player == nil then UserToPlayer("' ..
+        _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
+          '").components.talker:Say("' ..
+            STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
+              '") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(3) end',
+      GetCharacter()
+    )
+  )
+  OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV3)
+end
 
 local TooManyItems =
   Class(
@@ -142,6 +310,14 @@ local TooManyItems =
 
     self:TipsMenu()
 
+    self:WoodieMenu()
+    self.woodieshield.flag = false
+    self.woodieshield:Hide()
+
+    self:WendyMenu()
+    self.wendyshield.flag = false
+    self.wendyshield:Hide()
+
     if TOOMANYITEMS.DATA.IsDebugMenuShow then
       self.debugshield:Show()
     else
@@ -167,6 +343,30 @@ local TooManyItems =
 function TooManyItems:Close()
   self:Hide()
   self.IsTooManyItemsMenuShow = false
+end
+
+function TooManyItems:ShowWoodieMenu()
+  self.wendyshield:Hide()
+  self.wendyshield.flag = false
+  if self.woodieshield.flag then
+    self.woodieshield:Hide()
+    self.woodieshield.flag = false
+  else
+    self.woodieshield:Show()
+    self.woodieshield.flag = true
+  end
+end
+
+function TooManyItems:ShowWendyMenu()
+  self.woodieshield:Hide()
+  self.woodieshield.flag = false
+  if self.wendyshield.flag then
+    self.wendyshield:Hide()
+    self.wendyshield.flag = false
+  else
+    self.wendyshield:Show()
+    self.wendyshield.flag = true
+  end
 end
 
 function TooManyItems:ShowDebugMenu()
@@ -479,6 +679,85 @@ function TooManyItems:ChangePrefabTemperature(operate)
     _G.TOOMANYITEMS.SaveNormalData()
   end
   self.prefabtemperaturevalue:SetString(_G.TOOMANYITEMS.DATA.temperature .. "°C")
+end
+
+function TooManyItems:WoodieMenu()
+  self.woodieshield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
+  self.woodieshield:SetScale(1, 1, 1)
+  self.woodieshield:SetPosition(
+    self.shieldpos_x - self.shieldsize_x * 0.5 - 20,
+    self.shieldpos_y - self.shieldsize_y * 0.5 + 60,
+    0
+  )
+  self.woodieshield:SetSize(40, 120)
+  self.woodieshield:SetTint(1, 1, 1, 0.6)
+  self.woodiebuttons = {}
+  self.woodiebuttonlist = {
+    ["beaverness"] = {
+      tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_BEAVER_WEREMETER,
+      fn = BeavernessSet,
+      -- fn = ShowWoodieMenu,
+      atlas = "images/customicobyysh.xml",
+      image = "tmipbutton_woodbeavermode.tex",
+      pos = {0, -40}
+    },
+    ["gosseness"] = {
+      tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GOOSE_WEREMETER,
+      fn = GoosenessSet,
+      atlas = "images/customicobyysh.xml",
+      image = "tmipbutton_woodgoosemode.tex",
+      pos = {0, 0}
+    },
+    ["mooseness"] = {
+      tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_MOOSE_WEREMETER,
+      fn = MoosenessSet,
+      atlas = "images/customicobyysh.xml",
+      image = "tmipbutton_woodmoosemode.tex",
+      pos = {0, 40}
+    }
+  }
+  for k, v in pairs(self.woodiebuttonlist) do
+    MakeMainButton(self.woodieshield, self.woodiebuttons, k, v.tip, v.fn, v.atlas, v.image, v.pos)
+  end
+end
+
+function TooManyItems:WendyMenu()
+  self.wendyshield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
+  self.wendyshield:SetScale(1, 1, 1)
+  self.wendyshield:SetPosition(
+    self.shieldpos_x - self.shieldsize_x * 0.5 - 20,
+    self.shieldpos_y - self.shieldsize_y * 0.5 + 60,
+    0
+  )
+  self.wendyshield:SetSize(40, 120)
+  self.wendyshield:SetTint(1, 1, 1, 0.6)
+  self.wendybuttons = {}
+  self.wendybuttonlist = {
+    ["abigail1"] = {
+      tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV1,
+      fn = AbigailI,
+      atlas = "images/customicobyysh.xml",
+      image = "tmipbutton_abigaillv1.tex",
+      pos = {0, -40},
+    },
+    ["abigail2"] = {
+      tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV2,
+      fn = AbigailII,
+      atlas = "images/customicobyysh.xml",
+      image = "tmipbutton_abigaillv2.tex",
+      pos = {0, 0},
+    },
+    ["abigail3"] = {
+      tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV3,
+      fn = AbigailIII,
+      atlas = "images/customicobyysh.xml",
+      image = "tmipbutton_abigaillv3.tex",
+      pos = {0, 40},
+    },
+  }
+  for k, v in pairs(self.wendybuttonlist) do
+    MakeMainButton(self.wendyshield, self.wendybuttons, k, v.tip, v.fn, v.atlas, v.image, v.pos)
+  end
 end
 
 function TooManyItems:DebugMenu()
@@ -802,7 +1081,7 @@ function TooManyItems:SettingMenu()
   self.settinglimit = -self.settingleft
   self.settingshield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
   self.settingshield:SetScale(1, 1, 1)
-  self.settingshield:SetPosition(0, self.shieldpos_y, 0)
+  self.settingshield:SetPosition(15, self.shieldpos_y, 0)
   self.settingshield:SetSize(self.settinglimit * 2, self.shieldsize_y)
   self.settingshield:SetTint(1, 1, 1, 1)
 

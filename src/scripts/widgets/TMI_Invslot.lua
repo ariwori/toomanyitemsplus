@@ -11,21 +11,18 @@ local function SendCommand(fnstr)
 end
 
 local function GetCharacter()
-	return "UserToPlayer('" .. TOOMANYITEMS.CHARACTER_USERID .. "')"
+	return "UserToPlayer('" .. _G.TOOMANYITEMS.CHARACTER_USERID .. "')"
 end
 
 local function OperateAnnnounce(message)
 	--判断用户是否开启了提示
 	if _G.TOOMANYITEMS.DATA.SPAWN_ITEMS_TIPS then
 		if ThePlayer then
-			ThePlayer:DoTaskInTime(
-				0.1,
-				function()
-					if ThePlayer.components.talker then
-						ThePlayer.components.talker:Say("[TMIP]" .. message)
-					end
+			ThePlayer:DoTaskInTime(0.1, function()
+				if ThePlayer.components.talker then
+					ThePlayer.components.talker:Say("[TMIP]" .. message)
 				end
-			)
+			end)
 		end
 	end
 end
@@ -153,12 +150,12 @@ function InvSlot:GetDescription()
 		end
 	end
 
-	if TOOMANYITEMS.LIST.desclist[self.item] then
-		str = TOOMANYITEMS.LIST.desclist[self.item]
+	if _G.TOOMANYITEMS.LIST.desclist[self.item] then
+		str = _G.TOOMANYITEMS.LIST.desclist[self.item]
 	end
 
-	if TOOMANYITEMS.LIST.desclist[self.oitem] then
-		str = TOOMANYITEMS.LIST.desclist[self.oitem]
+	if _G.TOOMANYITEMS.LIST.desclist[self.oitem] then
+		str = _G.TOOMANYITEMS.LIST.desclist[self.oitem]
 	end
 
 	if type(str) == "table" then
@@ -240,7 +237,7 @@ end
 function InvSlot:Click(stack_mod)
 	if self.item then
 		local itemdescription = self:GetDescription()
-		local spawnnum = stack_mod and TOOMANYITEMS.DATA.G_TMIP_R_CLICK_NUM or TOOMANYITEMS.DATA.G_TMIP_L_CLICK_NUM
+		local spawnnum = stack_mod and _G.TOOMANYITEMS.G_TMIP_R_CLICK_NUM or _G.TOOMANYITEMS.G_TMIP_L_CLICK_NUM
 		if TheInput:IsKeyDown(KEY_CTRL) then
 			-- Ctrl+ALT+左键传送，要右键就取消下面一行里的注释
 			if TheInput:IsKeyDown(KEY_ALT) then
@@ -257,11 +254,11 @@ function InvSlot:Click(stack_mod)
 				end
 			else
 				local customitems = {}
-				if table.contains(TOOMANYITEMS.DATA.customitems, self.item) then
+				if table.contains(_G.TOOMANYITEMS.DATA.customitems, self.item) then
 					print ("[TooManyItemsPlus] Remove Items: "..self.item)
-					for i = 1, #TOOMANYITEMS.DATA.customitems do
-						if TOOMANYITEMS.DATA.customitems[i] ~= self.item then
-							table.insert(customitems, TOOMANYITEMS.DATA.customitems[i])
+					for i = 1, #_G.TOOMANYITEMS.DATA.customitems do
+						if _G.TOOMANYITEMS.DATA.customitems[i] ~= self.item then
+							table.insert(customitems, _G.TOOMANYITEMS.DATA.customitems[i])
 						end
 					end
 					TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/research_unlock")
@@ -270,22 +267,22 @@ function InvSlot:Click(stack_mod)
 				else
 					print ("[TooManyItemsPlus] Add Items: "..self.item)
 					table.insert(customitems, self.item)
-					for i = 1, #TOOMANYITEMS.DATA.customitems do
-						table.insert(customitems, TOOMANYITEMS.DATA.customitems[i])
+					for i = 1, #_G.TOOMANYITEMS.DATA.customitems do
+						table.insert(customitems, _G.TOOMANYITEMS.DATA.customitems[i])
 					end
 					TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/research_available")
 					OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP .. itemdescription .. STRINGS.NAMES.ADDEDITEMSTIP)
 				end
-				TOOMANYITEMS.DATA.customitems = customitems
-				if TOOMANYITEMS.DATA.listinuse == "custom" then
-					if TOOMANYITEMS.DATA.issearch then
+				_G.TOOMANYITEMS.DATA.customitems = customitems
+				if _G.TOOMANYITEMS.DATA.listinuse == "custom" then
+					if _G.TOOMANYITEMS.DATA.issearch then
 						self.owner:Search()
 					else
 						self.owner:TryBuild()
 					end
 				end
-				if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
-					TOOMANYITEMS.SaveNormalData()
+				if _G.TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
+					_G.TOOMANYITEMS.SaveNormalData()
 				end
 			end
 		elseif TheInput:IsKeyDown(KEY_SHIFT) then
@@ -320,7 +317,7 @@ function InvSlot:Click(stack_mod)
 					spawnnum,
 					self.item,
 					last_skin,
-					TOOMANYITEMS.CHARACTER_USERID,
+					_G.TOOMANYITEMS.CHARACTER_USERID,
 					self.item,
 					_G.TOOMANYITEMS.DATA.xxd,
 					_G.TOOMANYITEMS.DATA.syd,

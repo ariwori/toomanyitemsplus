@@ -1,5 +1,5 @@
 name = "Too Many Items Plus"
-version = "1.0.7.4"
+version = "1.0.8.1"
 description = name .." Version: "..version..
 [[
 
@@ -12,7 +12,7 @@ Toggle Button and spawn num are Configurable.
 You can customize a special item list.
 (Add or Delete a item by hold down the ctrl key and click.)
 Codes by C.J.B. | Items and bug fix by GaRAnTuLA. | DST version by Skull. | FIX By TheMightyPikachu & Electroely.
-UI and codes optimization by Tendy. | Classify and some updates by 乐十画.
+UI and codes optimization by Tendy. | Classify,art design and some updates by 乐十画.
 ]]
 
 author = "CJB,GaRAnTuLA,Skull,TheMightyPikachu,Electroely,Tendy,乐十画"
