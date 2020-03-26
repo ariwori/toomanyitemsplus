@@ -38,18 +38,12 @@ local function SendCommand(fnstr)
 end
 
 local function MakeMainButton(parent, buttons, name, tip, fn, atlas, image, pos)
-  if type(image) == "string" then
-    buttons[name] = parent:AddChild(ImageButton(atlas, image, image, image))
-  elseif type(image) == "table" then
-    buttons[name] = parent:AddChild(ImageButton(atlas, image[1], image[2], image[3]))
-  else
-    return
-  end
+  buttons[name] = parent:AddChild(ImageButton(atlas, image, image, image))
   buttons[name]:SetTooltip(tip)
   buttons[name]:SetOnClick(fn)
   buttons[name]:SetPosition(pos[1], pos[2], 0)
   local w, h = buttons[name].image:GetSize()
-  local scale = math.min(40 / w, 40 / h)
+  local scale = math.min(35 / w, 35 / h)
   buttons[name]:SetNormalScale(scale)
   buttons[name]:SetFocusScale(scale * 1.1)
 end
@@ -59,14 +53,15 @@ local function AcceptPlayer(widget)
   local playerid = UserToClientID(value)
   local playerprefab
   local playerlist = TheNet:GetClientTable() or {}
-  if type(tonumber(value)) == "number" and 0 < tonumber(value) <= #playerlist then
-    local playername = playerlist[tonumber(value)].name
+  local index = tonumber(value)
+  if index ~= nil and 0 < index and index <= #playerlist then
+    local playername = playerlist[index].name
     if TheNet:GetServerIsClientHosted() then
-      playerid = playerlist[tonumber(value)].userid
-      playerprefab = playerlist[tonumber(value)].prefab
+      playerid = playerlist[index].userid
+      playerprefab = playerlist[index].prefab
     else
-      playerid = playerlist[tonumber(value) + 1].userid
-      playerprefab = playerlist[tonumber(value) + 1].prefab
+      playerid = playerlist[index + 1].userid
+      playerprefab = playerlist[index + 1].prefab
     end
   end
   if playerid then
