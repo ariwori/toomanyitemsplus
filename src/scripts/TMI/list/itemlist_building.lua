@@ -82,6 +82,8 @@ return {
 	"winona_battery_low",
 	"winona_catapult",
 	"winona_spotlight",
+--温蒂
+	"sisturn",
 --航海
 	"boat",
 	"steeringwheel",

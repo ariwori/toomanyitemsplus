@@ -12,7 +12,7 @@ local WriteableWidget = require "screens/TMI_writeablewidget"
 
 local function OperateAnnnounce(message)
   --判断用户是否开启了提示
-  if _G.TOOMANYITEMS.G_TMIP_SPAWN_ITEMS_TIPS then
+  if _G.TOOMANYITEMS.DATA.SPAWN_ITEMS_TIPS then
     if ThePlayer then
       ThePlayer:DoTaskInTime(
         0.1,
@@ -49,7 +49,7 @@ local function MakeMainButton(parent, buttons, name, tip, fn, atlas, image, pos)
   buttons[name]:SetOnClick(fn)
   buttons[name]:SetPosition(pos[1], pos[2], 0)
   local w, h = buttons[name].image:GetSize()
-  local scale = math.min(35 / w, 35 / h)
+  local scale = math.min(40 / w, 40 / h)
   buttons[name]:SetNormalScale(scale)
   buttons[name]:SetFocusScale(scale * 1.1)
 end
@@ -275,10 +275,13 @@ local TooManyItems =
     self.root:SetHAnchor(ANCHOR_MIDDLE)
     self.root:SetScaleMode(SCALEMODE_PROPORTIONAL)
     self.root:SetPosition(0, 0, 0)
-
-    self.shieldpos_x = -335
-    self.shieldpos_y = -30
-    self.shieldsize_x = 338
+    --默认-335 self.shieldpos_x = -335
+    self.shieldpos_x = -360
+	--默认-30  self.shieldpos_y = -30
+    self.shieldpos_y = 0
+	--默认338 self.shieldsize_x = 338
+    self.shieldsize_x = 388
+	--默认480 self.shieldsize_y = 480
     self.shieldsize_y = 480
     self.shield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
     self.shield:SetScale(1, 1, 1)
@@ -357,7 +360,7 @@ function TooManyItems:ShowWoodieMenu()
   end
 end
 
-function TooManyItems:ShowWendyMenu()
+function TooManyItems:ShowAbigailMenu()
   self.woodieshield:Hide()
   self.woodieshield.flag = false
   if self.wendyshield.flag then
@@ -698,21 +701,21 @@ function TooManyItems:WoodieMenu()
       fn = BeavernessSet,
       -- fn = ShowWoodieMenu,
       atlas = "images/customicobyysh.xml",
-      image = "tmipbutton_woodbeavermode.tex",
+      image = "tmipbutton_woodiebeavermode.tex",
       pos = {0, -40}
     },
     ["gosseness"] = {
       tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GOOSE_WEREMETER,
       fn = GoosenessSet,
       atlas = "images/customicobyysh.xml",
-      image = "tmipbutton_woodgoosemode.tex",
+      image = "tmipbutton_woodiegoosemode.tex",
       pos = {0, 0}
     },
     ["mooseness"] = {
       tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_MOOSE_WEREMETER,
       fn = MoosenessSet,
       atlas = "images/customicobyysh.xml",
-      image = "tmipbutton_woodmoosemode.tex",
+      image = "tmipbutton_woodiemoosemode.tex",
       pos = {0, 40}
     }
   }
@@ -1004,8 +1007,11 @@ function TooManyItems:ChangeShowConfirmScreen()
   end
 end
 function TooManyItems:TipsMenu()
-  self.fontsize = _G.TOOMANYITEMS.G_TMIP_DEBUG_FONT_SIZE
-  self.tipswidth = _G.TOOMANYITEMS.G_TMIP_DEBUG_MENU_SIZE
+  --帮助窗口像素 750*690
+  --self.fontsize = _G.TOOMANYITEMS.G_TMIP_DEBUG_FONT_SIZE
+  self.fontsize = 25
+  --self.tipswidth = _G.TOOMANYITEMS.G_TMIP_DEBUG_MENU_SIZE
+  self.tipswidth = 500
   self.font = BODYTEXTFONT
   self.tipslinespace = 10
 
@@ -1013,7 +1019,7 @@ function TooManyItems:TipsMenu()
   self.tipslimit = -self.tipsleft
   self.tipsshield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
   self.tipsshield:SetScale(1, 1, 1)
-  self.tipsshield:SetPosition(self.shieldpos_x + self.shieldsize_x + 105, self.shieldpos_y, 0)
+  self.tipsshield:SetPosition(self.shieldpos_x + 419, self.shieldpos_y , 0)
   self.tipsshield:SetSize(self.tipslimit * 2, self.shieldsize_y)
   self.tipsshield:SetTint(1, 1, 1, 1)
   self.screenname = self.tipsshield:AddChild(Text(self.font, self.fontsize * 1.5))
@@ -1031,7 +1037,7 @@ function TooManyItems:TipsMenu()
 
     self.morebutton = self.tipsshield:AddChild(TextButton())
     self.morebutton:SetFont(self.font)
-    self.morebutton:SetText("更多说明")
+    self.morebutton:SetText(STRINGS.TOO_MANY_ITEMS_UI.HELP_AND_INSTRUCTIONS)
     self.morebutton:SetTextSize(self.fontsize)
     self.morebutton:SetColour(0.9, 0.8, 0.6, 1)
     self.morebuttonx, self.morebuttony = self.closebutton.text:GetRegionSize()
@@ -1048,7 +1054,7 @@ function TooManyItems:TipsMenu()
   else
     self.desimg = self.tipsshield:AddChild(Image("images/helpenbyysh.xml", "helpenbyysh.tex"))
   end
-  self.desimg:SetPosition(0, self.shieldpos_y - 5, 0)
+  self.desimg:SetPosition(0, self.shieldpos_y - 35, 0)
   self.desimg:SetScale(1, 1, 1)
   self.desimg:SetSize(self.tipslimit * 2, self.shieldsize_y)
   -- 说明图片
@@ -1081,7 +1087,7 @@ function TooManyItems:SettingMenu()
   self.settinglimit = -self.settingleft
   self.settingshield = self.root:AddChild(Image("images/ui.xml", "black.tex"))
   self.settingshield:SetScale(1, 1, 1)
-  self.settingshield:SetPosition(15, self.shieldpos_y, 0)
+  self.settingshield:SetPosition(30, self.shieldpos_y, 0)
   self.settingshield:SetSize(self.settinglimit * 2, self.shieldsize_y)
   self.settingshield:SetTint(1, 1, 1, 1)
 

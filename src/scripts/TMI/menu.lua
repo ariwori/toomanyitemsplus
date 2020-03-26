@@ -17,7 +17,7 @@ end
 
 local function OperateAnnnounce(message)
 	--判断用户是否开启了提示
-	if _G.TOOMANYITEMS.G_TMIP_SPAWN_ITEMS_TIPS then
+	if _G.TOOMANYITEMS.DATA.SPAWN_ITEMS_TIPS then
 		if ThePlayer then
 			ThePlayer:DoTaskInTime(0.1, function()
 				if ThePlayer.components.talker then
@@ -29,6 +29,15 @@ local function OperateAnnnounce(message)
 	end
 end
 
+local function HealthLock()
+	if TheInput:IsKeyDown(KEY_CTRL) then
+	SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.health if player and not player:HasTag("playerghost") and v then SuUsed("c_minhealth", true) v:SetMinHealth(0) v:SetPercent(1) end', GetCharacter(), ThePlayer.userid, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH_LOCK))
+	OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTHUNLOCK)
+	else
+	SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.health if player and not player:HasTag("playerghost") and v then SuUsed("c_minhealth", true) v:SetMinHealth(1) v:SetPercent(0.1) end', GetCharacter(), ThePlayer.userid, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH_LOCK))
+	OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTHLOCK)
+	end
+end
 local function HealthSet()
 	if TheInput:IsKeyDown(KEY_CTRL) then
 		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.health if player and not player:HasTag("playerghost") and v then v:SetPercent(0.05) end', GetCharacter()))
@@ -79,34 +88,6 @@ local function TemperatureSet()
 	end
 end
 
-local function BeavernessSet()
-	if TheInput:IsKeyDown(KEY_CTRL) then
-		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(0) end', GetCharacter()))
-		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
-	else
-		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(1) end', GetCharacter()))
-		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_BEAVER_WEREMETER)
-	end
-end
-local function GoosenessSet()
-	if TheInput:IsKeyDown(KEY_CTRL) then
-		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(0) end', GetCharacter()))
-		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
-	else
-		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(1) end', GetCharacter()))
-		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GOOSE_WEREMETER)
-	end
-end
-local function MoosenessSet()
-	if TheInput:IsKeyDown(KEY_CTRL) then
-		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(0) end', GetCharacter()))
-		OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
-	else
-		SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(1) end', GetCharacter()))
-		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_MOOSE_WEREMETER)
-	end
-end
-
 local function GodMode()
 	SendCommand(string.format('local p = %s if p == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local me = UserToPlayer("%s") if p and me then local function SetGodeMode() if p.components.health and me.components.talker then local mode = p.components.health.invincible me.components.talker:Say("%s: "..(mode and STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL or STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY)) p.components.health:SetInvincible(not mode) end end if p:HasTag("playerghost") then p:PushEvent("respawnfromghost") p.rezsource = "'..STRINGS.TOO_MANY_ITEMS_UI.TMIP_CONSOLE..'" p:DoTaskInTime(1, SetGodeMode) else SetGodeMode() end end', GetCharacter(), ThePlayer.userid, STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GODMODE))
 end
@@ -133,38 +114,31 @@ end
 local Menu = Class(function(self, owner, pos)
     self.owner = owner
     self.shield = self.owner.owner.shield
-		local pos_y1 = -178
-		local pos_y2 = -218
-
+		local pos_y1 = -180
+		local pos_y2 = -220
     local function Close()
-      self.owner.owner:Close()
+		self.owner.owner:Close()
     end
     local function ShowDebugMenu()
-      self.owner.owner:ShowDebugMenu()
+		self.owner.owner:ShowDebugMenu()
     end
 
     local function ShowWoodieMenu()
-      self.owner.owner:ShowWoodieMenu()
-		end
+		self.owner.owner:ShowWoodieMenu()
+	end
 
-		local function ShowWendyMenu()
-      self.owner.owner:ShowWendyMenu()
+	local function ShowAbigailMenu()
+		self.owner.owner:ShowAbigailMenu()
     end
 
 		self.menu = {
+			--第一行
 			["hunger"] = {
 				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HUNGER,
 				fn = HungerSet,
 				atlas = "images/customicobyysh.xml",
 				image = "tmipbutton_hunger.tex",
 				pos = {pos[1], pos_y1},
-			},
-			["health"] = {
-				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH,
-				fn = HealthSet,
-				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_health.tex",
-				pos = {pos[3], pos_y1},
 			},
 			["sanity"] = {
 				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SANITY,
@@ -173,104 +147,104 @@ local Menu = Class(function(self, owner, pos)
 				image = "tmipbutton_sanity.tex",
 				pos = {pos[2], pos_y1},
 			},
+			["health"] = {
+				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH,
+				fn = HealthSet,
+				atlas = "images/customicobyysh.xml",
+				image = "tmipbutton_health.tex",
+				pos = {pos[3], pos_y1},
+			},
+			["lockhealth"] = {
+				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTHLOCK,
+				fn = HealthLock,
+				atlas = "images/customicobyysh.xml",
+				image = "tmipbutton_health_lock.tex",
+				pos = {pos[4], pos_y1},
+			},
 			["moisture"] = {
 				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WET,
 				fn = MoistureSet,
 				atlas = "images/customicobyysh.xml",
 				image = "tmipbutton_wet.tex",
-				pos = {pos[4], pos_y1},
-			},
-			["godmode"] = {
-				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GODMODE..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
-				fn = GodMode,
-				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_godmode.tex",
 				pos = {pos[5], pos_y1},
 			},
-			["creativemode"] = {
-				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_CREATIVEMODE..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
-				fn = CreativeMode,
-				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_creativemode.tex",
-				pos = {pos[6], pos_y1},
-			},
-			["onehitkillmode"] = {
-				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONEHITKILLMODE..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
-				fn = OneHitKillMode,
-				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_onehitkillmode.tex",
-				pos = {pos[7], pos_y1},
-			},
-			["prevbutton"] = {
-				tip = STRINGS.UI.HELP.PREVPAGE,
-				fn = function() self.owner.inventory:Scroll(-1) end,
-				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_left.tex",
-				pos = {pos[8], pos_y1},
-			},
-			["nextbutton"] = {
-				tip = STRINGS.UI.HELP.NEXTPAGE,
-				fn = function() self.owner.inventory:Scroll(1) end,
-				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_right.tex",
-				pos = {pos[9], pos_y1},
-			},
-			["beaverness"] = {
-				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_BEAVER_WEREMETER,
-        -- fn = BeavernessSet,
-        fn = ShowWoodieMenu,
-				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_woodbeavermode.tex",
-				pos = {pos[1], pos_y2},
-			},
-			["abigail1"] = {
-				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV1,
-				fn = ShowWendyMenu,
-				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_abigaillv1.tex",
-				pos = {pos[2], pos_y2},
-			},
-			-- ["beaverness2"] = {
-			-- 	tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GOOSE_WEREMETER,
-			-- 	fn = GoosenessSet,
-			-- 	atlas = "images/customicobyysh.xml",
-			-- 	image = "tmipbutton_woodgoosemode.tex",
-			-- 	pos = {pos[2], pos_y2},
-			-- },
-			-- ["beaverness1"] = {
-			-- 	tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_MOOSE_WEREMETER,
-			-- 	fn = MoosenessSet,
-			-- 	atlas = "images/customicobyysh.xml",
-			-- 	image = "tmipbutton_woodmoosemode.tex",
-			-- 	pos = {pos[3], pos_y2},
-			-- },
 			["temperature"] = {
 				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_TEMPERATURE,
 				fn = TemperatureSet,
 				atlas = "images/customicobyysh.xml",
 				image = "tmipbutton_temperature.tex",
-				pos = {pos[4], pos_y2},
-			},
-			["remove"] = {
-				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACK,
-				fn = RemoveBackpack,
-				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_empbackpack.tex",
-				pos = {pos[5], pos_y2},
-			},
-			["debug"] = {
-				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_DEBUGMENU..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
-				fn = ShowDebugMenu,
-				atlas = "images/customicobyysh.xml",
-				image = "tmipbutton_debugmod.tex",
-				pos = {pos[6], pos_y2},
+				pos = {pos[6], pos_y1},
 			},
 			["cancel"] = {
 				tip = STRINGS.UI.OPTIONS.CLOSE,
 				fn = Close,
 				atlas = "images/customicobyysh.xml",
 				image = "tmipbutton_close.tex",
+				pos = {pos[8], pos_y1},
+			},
+			["prevbutton"] = {
+				tip = STRINGS.UI.HELP.PREVPAGE,
+				fn = function() self.owner.inventory:Scroll(-1) end,
+				atlas = "images/customicobyysh.xml",
+				image = "tmipbutton_left.tex",
+				pos = {pos[9], pos_y1},
+			},
+			["nextbutton"] = {
+				tip = STRINGS.UI.HELP.NEXTPAGE,
+				fn = function() self.owner.inventory:Scroll(1) end,
+				atlas = "images/customicobyysh.xml",
+				image = "tmipbutton_right.tex",
+				pos = {pos[10], pos_y1},
+			},
+			--第二行
+			["woodiemenu"] = {
+				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SUBMENU_WOODIEMENU,
+				fn = ShowWoodieMenu,
+				atlas = "images/customicobyysh.xml",
+				image = "tmipbutton_woodie.tex",
+				pos = {pos[1], pos_y2},
+			},
+			["abigailmenu"] = {
+				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SUBMENU_ABIGAIL,
+				fn = ShowAbigailMenu,
+				atlas = "images/customicobyysh.xml",
+				image = "tmipbutton_abigail.tex",
+				pos = {pos[2], pos_y2},
+			},
+			["creativemode"] = {
+				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_CREATIVEMODE..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
+				fn = CreativeMode,
+				atlas = "images/customicobyysh.xml",
+				image = "tmipbutton_creativemode.tex",
+				pos = {pos[4], pos_y2},
+			},
+			["godmode"] = {
+				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GODMODE..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
+				fn = GodMode,
+				atlas = "images/customicobyysh.xml",
+				image = "tmipbutton_godmode.tex",
+				pos = {pos[5], pos_y2},
+			},
+			["onehitkillmode"] = {
+				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONEHITKILLMODE..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
+				fn = OneHitKillMode,
+				atlas = "images/customicobyysh.xml",
+				image = "tmipbutton_onehitkillmode.tex",
+				pos = {pos[6], pos_y2},
+			},
+			["remove"] = {
+				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACK,
+				fn = RemoveBackpack,
+				atlas = "images/customicobyysh.xml",
+				image = "tmipbutton_empbackpack.tex",
 				pos = {pos[7], pos_y2},
+			},
+			["debug"] = {
+				tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_DEBUGMENU..STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
+				fn = ShowDebugMenu,
+				atlas = "images/customicobyysh.xml",
+				image = "tmipbutton_debugmod.tex",
+				pos = {pos[8], pos_y2},
 			},
 
 		}
@@ -294,7 +268,7 @@ function Menu:MainButton()
 			self.mainbuttons[name]:SetOnClick(fn)
 			self.mainbuttons[name]:SetPosition(pos[1], pos[2], 0)
 			local w, h = self.mainbuttons[name].image:GetSize()
-			local scale = math.min(35 / w, 35 / h)
+			local scale = math.min(40 / w, 40 / h)
 			self.mainbuttons[name]:SetNormalScale(scale)
 			self.mainbuttons[name]:SetFocusScale(scale * 1.1)
 		end

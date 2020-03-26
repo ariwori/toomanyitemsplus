@@ -59,6 +59,7 @@ function TMI_Menubar:InitMenu()
 		left + spacing * 6,
 		left + spacing * 7,
 		left + spacing * 8,
+		left + spacing * 9,
 	}
 
 	self.TMI_Menu = TMI_Menu(self, pos)
@@ -67,7 +68,7 @@ function TMI_Menubar:InitMenu()
 	self.pagetext:SetString("1 / 2")
 	-- self.pagetext:SetTooltip("Current Page/Max Pages")
 	self.pagetext:SetColour(1,1,1,0.6)
-	self.pagetext:SetPosition(mid + 125, -218, 0)
+	self.pagetext:SetPosition(mid + 135, -220, 0)
 end
 
 function TMI_Menubar:InitSidebar()
@@ -289,7 +290,7 @@ function TMI_Menubar:InitSearch()
 	self.searchshield:SetScale(1,1,1)
 	self.searchshield:SetTint(1,1,1,0.2)
 	self.searchshield:SetSize(self.searchbar_width, self.search_fontsize)
-	self.searchshield:SetPosition(self.sidebar_width+5, self.owner.shieldsize_y * .5 - self.search_fontsize * .5, 0)
+	self.searchshield:SetPosition(self.sidebar_width + 5, self.owner.shieldsize_y * .5 - self.search_fontsize * .5, 0)
 
 	self.searchbarbutton = self.searchshield:AddChild(TextButton())
 	self.searchbarbutton:SetFont(NEWFONT)
@@ -419,7 +420,7 @@ function TMI_Menubar:InitSearchScreen()
 		fontsize = self.search_fontsize,
 		size = {self.searchtext_limitwidth, self.search_fontsize},
 		isediting = true,
-		pos = Vector3(self.owner.shieldpos_x - self.owner.shieldsize_x * .5 + self.searchtext_limitwidth * .5 + self.sidebar_width * 3 -17, self.owner.shieldsize_y * .5 - self.search_fontsize * .5, 0),
+		pos = Vector3(self.owner.shieldpos_x - self.owner.shieldsize_x * .5 + self.searchtext_limitwidth * .5 + self.sidebar_width * 3 -17, self.owner.shieldsize_y * .5 + 15, 0),
 		acceptfn = SearchScreenAccept,
 		closefn = SearchScreenClose,
 		activefn = SearchScreenActive,

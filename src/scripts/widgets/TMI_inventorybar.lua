@@ -4,7 +4,7 @@ local TMI_InvSlot = require "widgets/TMI_Invslot"
 local TMI_ItemTile = require "widgets/TMI_Itemtile"
 
 local HUD_ATLAS = "images/hud.xml"
-local NUM_COLUMS = 6
+local NUM_COLUMS = 7
 local MAX_ROWS = 8
 local MAXSLOTS = NUM_COLUMS * MAX_ROWS
 
@@ -15,8 +15,8 @@ local TMI_Inventory = Class(Widget, function(self, fn)
 		self.buildfn = fn
 		self.size = 76
 		self:SetScale(self.base_scale)
-		self:SetPosition(-85, 185, 0)
-
+		--默认-85, 185, 0 self:SetPosition(-85, 185, 0)
+		self:SetPosition(-105, 185, 0)
 		self.listcontrol = ItemListControl()
 		self.slots = self:AddChild(Widget("SLOTS"))
 	end)
@@ -55,10 +55,8 @@ function TMI_Inventory:Build()
 		local slot = TMI_InvSlot(self, HUD_ATLAS, "inv_slot.tex", list[k])
 		self.inv[k] = self.slots:AddChild(slot)
 		slot:SetTile(TMI_ItemTile(list[k]))
-
 		local remainder = positions % NUM_COLUMS
 		local row = math.floor(positions / NUM_COLUMS) * self.size
-
 		local x = self.size * remainder
 		slot:SetPosition(x,-row,0)
 		positions = positions + 1

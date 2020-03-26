@@ -24,6 +24,13 @@ return {
 	"halloweenpotion_embers",
 	"halloweenpotion_sparks",
 	"halloweenpotion_moon",
+--黑暗炼金药剂
+	"ghostlyelixir_attack",
+	"ghostlyelixir_speed",
+	"ghostlyelixir_slowregen",
+	"ghostlyelixir_fastregen",
+	"ghostlyelixir_shield",
+	"ghostlyelixir_retaliation",
 --温泉道具
 	"bathbomb",
 --驱赶野兽道具

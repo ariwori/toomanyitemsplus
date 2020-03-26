@@ -13,7 +13,9 @@ return {
 	"foliage",
 	"succulent_picked",
 	"lightbulb",
+--虚空材料
 	"nightmarefuel",
+	"ghostflower",
 --精炼植物材料
 	"rope",
 	"boards",
