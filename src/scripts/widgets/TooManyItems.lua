@@ -124,97 +124,57 @@ local function GetCharacter()
   return "UserToPlayer('" .. TOOMANYITEMS.CHARACTER_USERID .. "')"
 end
 local function AbigailI()
-  SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(1) end', GetCharacter()))
+  SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(1) end', GetCharacter()))
   OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV1)
 end
 local function AbigailII()
-  SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(2) end', GetCharacter()))
+  SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(2) end', GetCharacter()))
   OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV2)
 end
 local function AbigailIII()
-  SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(3) end', GetCharacter()))
+  SendCommand(string.format('local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(3) end', GetCharacter()))
   OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ABIGAIL_LV3)
 end
+
 local function BeavernessSet()
-  if TheInput:IsKeyDown(KEY_CTRL) then
     SendCommand(
       string.format(
         'local player = %s if player == nil then UserToPlayer("' ..
           _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
             '").components.talker:Say("' ..
               STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(0) end',
-        GetCharacter()
-      )
-    )
-    OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
-  else
-    SendCommand(
-      string.format(
-        'local player = %s if player == nil then UserToPlayer("' ..
-          _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-            '").components.talker:Say("' ..
-              STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("beaver") v:SetPercent(1) end',
+                '") end local p = player.components.wereness local ctrlks = TheInput:IsKeyDown(KEY_CTRL) local wv = 1 if player and not player:HasTag("playerghost") and p then if ctrlks then wv = 0 end p:SetWereMode("beaver") p:SetPercent(wv) end',
         GetCharacter()
       )
     )
     OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_BEAVER_WEREMETER)
-  end
 end
 local function GoosenessSet()
-  if TheInput:IsKeyDown(KEY_CTRL) then
     SendCommand(
       string.format(
         'local player = %s if player == nil then UserToPlayer("' ..
           _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
             '").components.talker:Say("' ..
               STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(0) end',
-        GetCharacter()
-      )
-    )
-    OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
-  else
-    SendCommand(
-      string.format(
-        'local player = %s if player == nil then UserToPlayer("' ..
-          _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-            '").components.talker:Say("' ..
-              STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("goose") v:SetPercent(1) end',
+                '") end local p = player.components.wereness local ctrlks = TheInput:IsKeyDown(KEY_CTRL) local wv = 1 if player and not player:HasTag("playerghost") and p then if ctrlks then wv = 0 end p:SetWereMode("goose") p:SetPercent(wv) end',
         GetCharacter()
       )
     )
     OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GOOSE_WEREMETER)
-  end
 end
+
 local function MoosenessSet()
-  if TheInput:IsKeyDown(KEY_CTRL) then
     SendCommand(
       string.format(
         'local player = %s if player == nil then UserToPlayer("' ..
           _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
             '").components.talker:Say("' ..
               STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(0) end',
-        GetCharacter()
-      )
-    )
-    OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WOODIE_WEREMETER_1)
-  else
-    SendCommand(
-      string.format(
-        'local player = %s if player == nil then UserToPlayer("' ..
-          _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-            '").components.talker:Say("' ..
-              STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-                '") end  local v = player.components.wereness if player and not player:HasTag("playerghost") and v then v:SetWereMode("moose") v:SetPercent(1) end',
+                '") end local p = player.components.wereness local ctrlks = TheInput:IsKeyDown(KEY_CTRL) local wv = 1 if player and not player:HasTag("playerghost") and p then if ctrlks then wv = 0 end p:SetWereMode("moose") p:SetPercent(wv) end',
         GetCharacter()
       )
     )
     OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_MOOSE_WEREMETER)
-  end
 end
 
 local function AbigailI()
@@ -224,7 +184,7 @@ local function AbigailI()
         _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
           '").components.talker:Say("' ..
             STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-              '") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(1) end',
+              '") end local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(1) end',
       GetCharacter()
     )
   )
@@ -237,7 +197,7 @@ local function AbigailII()
         _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
           '").components.talker:Say("' ..
             STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-              '") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(2) end',
+              '") end local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(2) end',
       GetCharacter()
     )
   )
@@ -250,7 +210,7 @@ local function AbigailIII()
         _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
           '").components.talker:Say("' ..
             STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-              '") end  local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(3) end',
+              '") end local v = player.components.ghostlybond if player and not player:HasTag("playerghost") and v then v:SetBondLevel(3) end',
       GetCharacter()
     )
   )
