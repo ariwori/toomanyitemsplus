@@ -23,6 +23,7 @@ function ergodic(){
 }
 
 rm -rf dist/*
+mkdir -pv dist/src
 cp LICENSE dist/
 ergodic $srcpath
 mv -v dist/$srcpath/* dist/
