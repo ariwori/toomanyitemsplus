@@ -304,7 +304,7 @@ function InvSlot:Click(stack_mod)
 			end
 			local last_skin = Profile:GetLastUsedSkinForItem(skinname)
 			if last_skin ~= nil and string.find(self.item, "critter_") and skinname ~= last_skin then
-				arr = split(last_skin, "_")
+				local arr = split(last_skin, "_")
 				last_skin = arr[1] .. "_" .. arr[2]
 			end
 			last_skin = last_skin ~= nil and last_skin or self.item
