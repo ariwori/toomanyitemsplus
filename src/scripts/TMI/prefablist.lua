@@ -4,8 +4,8 @@ return {
 --发条雕像
 	["sculpture_bishopbody"] = "sculpture_bishopbody_full",
 	["sculpture_knightbody"] = "sculpture_knightbody_full",
-  ["sculpture_rookbody"] = "sculpture_rookbody_full",
-  --发条雕像
+	["sculpture_rookbody"] = "sculpture_rookbody_full",
+--发条雕像
 	["sculpture_bishop"] = "sculpture_bishopbody_full",
 	["sculpture_knight"] = "sculpture_knightbody_full",
 	["sculpture_rook"] = "sculpture_rookbody_full",

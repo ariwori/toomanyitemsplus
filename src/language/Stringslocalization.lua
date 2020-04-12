@@ -2,9 +2,9 @@ STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER_TIP = "Swicth to next player!"
 STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER = "Swicth"
 
 STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPINVENTORYTIP =
-  "Are you sure empty the player's inventory? This operation is irreversible."
+  "Are you sure empty the player's inventory? This operation is irreversible.\nEmpty inventory and backpack by hold Ctrl Key and clik:"..STRINGS.UI.TRADESCREEN.ACCEPT
 STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACKTIP =
-  "Are you sure empty the player's backpack? This operation is irreversible."
+  "Are you sure empty the player's backpack? This operation is irreversible.\nEmpty inventory and backpack by hold Ctrl Key and clik:"..STRINGS.UI.TRADESCREEN.ACCEPT
   
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_STOPVOTE = "Stop vote"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_STOPVOTETIP = "Stop vote"

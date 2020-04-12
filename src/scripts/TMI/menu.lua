@@ -1,3 +1,6 @@
+--功能字符串，如果被操作者不存在，或者和操作者不在同一个世界，则由操作者调用Say语句
+IsPlayerExist = 'local player = %s if player == nil then UserToPlayer("' .._G.TOOMANYITEMS.DATA.ThePlayerUserId ..'").components.talker:Say("' ..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..'") end '
+
 local ImageButton = require "widgets/imagebutton"
 local PopupDialogScreen = require "screens/redux/popupdialog"
 
@@ -33,135 +36,91 @@ local function OperateAnnnounce(message)
 end
 
 local function HungerSet()
-		SendCommand(
-			string.format(
-				'local player = %s if player == nil then UserToPlayer("' ..
-					_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-						'").components.talker:Say("' ..
-							STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-								'") end local h = player.components.hunger local hv = 1 local ctrlks = TheInput:IsKeyDown(KEY_CTRL) if player and not player:HasTag("playerghost") and h then if ctrlks then hv = 0 end h:SetPercent(hv) end',
-				GetCharacter()
-			)
-		)
-		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HUNGER)
+	local hv = 1
+	local ctrlks = TheInput:IsKeyDown(KEY_CTRL)
+	if ctrlks then
+		hv = 0
+	end
+	local fnstr = 'local h = player.components.hunger if player and not player:HasTag("playerghost") and h then h:SetPercent('..hv..') end'
+	SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
+	OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HUNGER)
 end
 
 local function SanitySet()
-		SendCommand(
-			string.format(
-				'local player = %s if player == nil then UserToPlayer("' ..
-					_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-						'").components.talker:Say("' ..
-							STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-								'") end local h = player.components.sanity local hv = 1 local ctrlks = TheInput:IsKeyDown(KEY_CTRL) if player and not player:HasTag("playerghost") and h then if ctrlks then hv = 0 end h:SetPercent(hv) end',
-				GetCharacter()
-			)
-		)
-		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SANITY)
+	local hv = 1
+	local ctrlks = TheInput:IsKeyDown(KEY_CTRL)
+	if ctrlks then
+		hv = 0
+	end
+	local fnstr = 'local h = player.components.sanity if player and not player:HasTag("playerghost") and h then h:SetPercent('..hv..') end'
+	SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
+	OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SANITY)
 end
 
 local function HealthSet()
-		SendCommand(
-			string.format(
-				'local player = %s if player == nil then UserToPlayer("' ..
-					_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-						'").components.talker:Say("' ..
-							STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-								'") end local h = player.components.health local hv = 1 local ctrlks = TheInput:IsKeyDown(KEY_CTRL) if player and not player:HasTag("playerghost") and h then if ctrlks then hv = 0.05 end h:SetPercent(hv) end',
-				GetCharacter()
-			)
-		)
-		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH)
+	local hv = 1
+	local ctrlks = TheInput:IsKeyDown(KEY_CTRL)
+	if ctrlks then
+		hv = 0.05
+	end
+	local fnstr = 'local h = player.components.health if player and not player:HasTag("playerghost") and h then h:SetPercent('..hv..') end'
+	SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
+	OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH)
 end
 
 local function HealthLock()
-		SendCommand(
-			string.format(
-				'local player = %s if player == nil then UserToPlayer("' ..
-					_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-						'").components.talker:Say("' ..
-							STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-								'") end local h = player.components.health local t = player.components.talker local hpgp = h:GetPercent() local hv local hlt = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTHLOCK..":" local hlton = STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY local hltoff = STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL if player and not player:HasTag("playerghost") and h then if h.minhealth == 0 then hv = 1 t:Say(hlt..hlton) elseif h.minhealth == 1 then hv = 0 t:Say(hlt..hltoff) else hv = 0 t:Say(hlt..hltoff) end end SuUsed("c_minhealth", true) h:SetMinHealth(hv) h:SetPercent(hpgp)',
-				GetCharacter(),
-				ThePlayer.userid,
-				STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH_LOCK
-			)
-		)
+	local hlt = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTHLOCK..":"
+	local hlton = hlt..STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY
+	local hltoff = hlt..STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL
+	local fnstr = 'local h = player.components.health local t = player.components.talker local hpper = h:GetPercent() local minhp = h.minhealth local hv if player and not player:HasTag("playerghost") and h then if minhp == 0 then hv = 1 t:Say("'..hlton..'") elseif minhp == 1 then hv = 0 t:Say("'..hltoff..'") else hv = 0 t:Say("'..hltoff..'") end h:SetMinHealth(hv) h:SetPercent(hpper) end'
+	SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
 end
 
 local function MoistureSet()
-		SendCommand(
-			string.format(
-				'local player = %s if player == nil then UserToPlayer("' ..
-					_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-						'").components.talker:Say("' ..
-							STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-								'") end local h = player.components.moisture local hv = 0 local ctrlks = TheInput:IsKeyDown(KEY_CTRL) if player and not player:HasTag("playerghost") and h then if ctrlks then hv = 1 end h:SetPercent(hv) end',
-				GetCharacter()
-			)
-		)
-		OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WET)
+	local hv = 0
+	local ctrlks = TheInput:IsKeyDown(KEY_CTRL)
+	if ctrlks then
+		hv = 1
+	end
+	local fnstr = 'local h = player.components.moisture if player and not player:HasTag("playerghost") and h then h:SetPercent('..hv..') end'
+	SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
+	OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WET)
 end
 
 local function TemperatureSet()
-		SendCommand(
-			string.format(
-				'local player = %s if player == nil then UserToPlayer("' ..
-					_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-						'").components.talker:Say("' ..
-							STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-								'") end local h = player.components.temperature local hv = 25 local ctrlks = TheInput:IsKeyDown(KEY_CTRL) if player and not player:HasTag("playerghost") and h then if ctrlks and TheWorld and TheWorld.state.temperature then hv = TheWorld.state.temperature end h:SetTemperature(hv) end',
-				GetCharacter()
-			)
-		)
-		OperateAnnnounce(		STRINGS.TOO_MANY_ITEMS_UI.BUTTON_TEMPERATURE)
+	local hv = 25
+	local ctrlks = TheInput:IsKeyDown(KEY_CTRL)
+	if ctrlks and TheWorld and TheWorld.state.temperature then 
+		hv = TheWorld.state.temperature
+	end
+	local fnstr = 'local h = player.components.temperature if player and not player:HasTag("playerghost") and h then h:SetTemperature('..hv..') end'
+	SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
+	OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_TEMPERATURE)
 end
 
 local function GodMode()
-	SendCommand(
-		string.format(
-			'local p = %s if p == nil then UserToPlayer("' ..
-				_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-					'").components.talker:Say("' ..
-						STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-							'") end local me = UserToPlayer("%s") if p and me then local function SetGodeMode() if p.components.health and me.components.talker then local mode = p.components.health.invincible me.components.talker:Say("%s: "..(mode and STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL or STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY)) p.components.health:SetInvincible(not mode) end end if p:HasTag("playerghost") then p:PushEvent("respawnfromghost") p.rezsource = "' ..
-								STRINGS.TOO_MANY_ITEMS_UI.TMIP_CONSOLE .. '" p:DoTaskInTime(1, SetGodeMode) else SetGodeMode() end end',
-			GetCharacter(),
-			ThePlayer.userid,
-			STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GODMODE
-		)
-	)
+	local refrom = STRINGS.TOO_MANY_ITEMS_UI.TMIP_CONSOLE
+	local gmt = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GODMODE..":"
+	local gmtoff = gmt..STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL
+	local gmton = gmt..STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY
+	local fnstr = 'local p = player local h = p.components.health local t = p.components.talker if p ~= nil then if p:HasTag("playerghost") then p:PushEvent("respawnfromghost") p.rezsource = "'..refrom..'" else if h ~= nil then local godmode = h.invincible t:Say(godmode and "'..gmtoff..'" or "'..gmton..'") h:SetInvincible(not godmode) end end end'
+	SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
 end
 
 local function CreativeMode()
-	SendCommand(
-		string.format(
-			'local p = %s if p == nil then UserToPlayer("' ..
-				_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-					'").components.talker:Say("' ..
-						STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-							'") end local me = UserToPlayer("%s") local builder = p.components.builder if builder and me and me.components.talker then me.components.talker:Say("%s: "..(builder.freebuildmode and STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL or STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY)) builder:GiveAllRecipes() end',
-			GetCharacter(),
-			ThePlayer.userid,
-			STRINGS.TOO_MANY_ITEMS_UI.BUTTON_CREATIVEMODE
-		)
-	)
+	local cmt = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_CREATIVEMODE..":"
+	local cmtoff = cmt..STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL
+	local cmton = cmt..STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY
+	local fnstr = 'local p = player local b = p.components.builder local t = p.components.talker if p and b and t then t:Say(b.freebuildmode and "'..cmtoff..'" or "'..cmton..'") b:GiveAllRecipes() end'
+	SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
 end
 
 local function OneHitKillMode()
-	SendCommand(
-		string.format(
-			'local p = %s if p == nil then UserToPlayer("' ..
-				_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-					'").components.talker:Say("' ..
-						STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-							'") end local combat_ = p.components.combat or nil local me = UserToPlayer("%s") if me and me.components.talker and combat_ and combat_.CalcDamage then if combat_.OldCalcDamage then me.components.talker:Say("%s: "..STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL) combat_.CalcDamage = combat_.OldCalcDamage combat_.OldCalcDamage = nil else me.components.talker:Say("%s: "..STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY) combat_.OldCalcDamage = combat_.CalcDamage combat_.CalcDamage = function(...) return 9999999999*9 end end end',
-			GetCharacter(),
-			ThePlayer.userid,
-			STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONEHITKILLMODE,
-			STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONEHITKILLMODE
-		)
-	)
+	local okmt = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONEHITKILLMODE..":"
+	local okmtoff = okmt..STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL
+	local okmton = okmt..STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY
+	local fnstr = 'local p = player local c = p.components.combat or nil local t = p.components.talker if p and c and t and c.CalcDamage then if c.OldCalcDamage then p.components.talker:Say("'..okmtoff..'") c.CalcDamage = c.OldCalcDamage c.OldCalcDamage = nil else p.components.talker:Say("'..okmton..'") c.OldCalcDamage = c.CalcDamage c.CalcDamage = function(...) return 9999999999*9 end end end'
+	SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
 end
 
 local function RemoveInventory()
@@ -175,16 +134,15 @@ local function RemoveInventory()
 				{
 					text = STRINGS.UI.TRADESCREEN.ACCEPT,
 					cb = function()
-						SendCommand(
-							string.format(
-								'local player = %s if player == nil then UserToPlayer("' ..
-									_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-										'").components.talker:Say("' ..
-											STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-												'") end local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local inventorySlotCount = inventory and inventory:GetNumSlots() or 0 local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 local ctrlks = TheInput:IsKeyDown(KEY_CTRL) for i = 1, inventorySlotCount do local item = inventory:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end if ctrlks then for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end end',
-								GetCharacter()
-							)
-						)
+
+						local ctrlks = TheInput:IsKeyDown(KEY_CTRL)
+						local ctrlremove = 0
+						if ctrlks then
+							ctrlremove = 1
+						end
+						local fnstr = 'local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local inventorySlotCount = inventory and inventory:GetNumSlots() or 0 local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 local removeallinstr = '..ctrlremove..' for i = 1, inventorySlotCount do local item = inventory:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end if removeallinstr == 1 then for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end end'
+						SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
+
 						TheFrontEnd:PopScreen(confirmscreen)
 					end
 				},
@@ -195,16 +153,15 @@ local function RemoveInventory()
 		)
 		TheFrontEnd:PushScreen(confirmscreen)
 	else
-		SendCommand(
-			string.format(
-				'local player = %s if player == nil then UserToPlayer("' ..
-					_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-						'").components.talker:Say("' ..
-							STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-								'") end local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local inventorySlotCount = inventory and inventory:GetNumSlots() or 0 local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 local ctrlks = TheInput:IsKeyDown(KEY_CTRL) for i = 1, inventorySlotCount do local item = inventory:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end if ctrlks then for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end end',
-				GetCharacter()
-			)
-		)
+
+						local ctrlks = TheInput:IsKeyDown(KEY_CTRL)
+						local ctrlremove = 0
+						if ctrlks then
+							ctrlremove = 1
+						end
+						local fnstr = 'local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local inventorySlotCount = inventory and inventory:GetNumSlots() or 0 local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 local removeallinstr = '..ctrlremove..' for i = 1, inventorySlotCount do local item = inventory:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end if removeallinstr == 1 then for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end end'
+						SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
+
 	end
 end
 local function RemoveBackpack()
@@ -218,16 +175,15 @@ local function RemoveBackpack()
 				{
 					text = STRINGS.UI.TRADESCREEN.ACCEPT,
 					cb = function()
-						SendCommand(
-							string.format(
-								'local player = %s if player == nil then UserToPlayer("' ..
-									_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-										'").components.talker:Say("' ..
-											STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-												'") end local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local inventorySlotCount = inventory and inventory:GetNumSlots() or 0 local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 local ctrlks = TheInput:IsKeyDown(KEY_CTRL) for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end if ctrlks then for i = 1, inventorySlotCount do local item = inventory:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end end',
-								GetCharacter()
-							)
-						)
+
+						local ctrlks = TheInput:IsKeyDown(KEY_CTRL)
+						local ctrlremove = 0
+						if ctrlks then
+							ctrlremove = 1
+						end
+						local fnstr = 'local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local inventorySlotCount = inventory and inventory:GetNumSlots() or 0 local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 local removeallinstr = '..ctrlremove..' for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end if removeallinstr == 1 then for i = 1, inventorySlotCount do local item = inventory:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end end'
+						SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
+
 						TheFrontEnd:PopScreen(confirmscreen)
 					end
 				},
@@ -238,16 +194,15 @@ local function RemoveBackpack()
 		)
 		TheFrontEnd:PushScreen(confirmscreen)
 	else
-		SendCommand(
-			string.format(
-				'local player = %s if player == nil then UserToPlayer("' ..
-					_G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-						'").components.talker:Say("' ..
-							STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-								'") end local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local inventorySlotCount = inventory and inventory:GetNumSlots() or 0 local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 local ctrlks = TheInput:IsKeyDown(KEY_CTRL) for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end if ctrlks then for i = 1, inventorySlotCount do local item = inventory:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end end',
-				GetCharacter()
-			)
-		)
+
+						local ctrlks = TheInput:IsKeyDown(KEY_CTRL)
+						local ctrlremove = 0
+						if ctrlks then
+							ctrlremove = 1
+						end
+						local fnstr = 'local inventory = player and player.components.inventory or nil local backpack = inventory and inventory:GetOverflowContainer() or nil local inventorySlotCount = inventory and inventory:GetNumSlots() or 0 local backpackSlotCount = backpack and backpack:GetNumSlots() or 0 local removeallinstr = '..ctrlremove..' for i = 1, backpackSlotCount do local item = backpack:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end if removeallinstr == 1 then for i = 1, inventorySlotCount do local item = inventory:GetItemInSlot(i) or nil inventory:RemoveItem(item, true) if item ~= nil then item:Remove() end end end'
+						SendCommand(string.format(IsPlayerExist..fnstr, GetCharacter() ) )
+
 	end
 end
 
