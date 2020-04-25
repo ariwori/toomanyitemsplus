@@ -1,5 +1,5 @@
 name = "Too Many Items Plus"
-version = "1.0.8.23"
+version = "1.0.8.3"
 description = name .." 当前版本： "..version..
 [[
 
@@ -41,7 +41,7 @@ configuration_options = {
 	{
 		name = "GOP_TMIP_TOGGLE_KEY",
 		label = "按键",
-		hover = "显示和隐藏 TMI 面板的键位设置.",
+		hover = "显示和隐藏 TMIP 面板的键位设置.",
 		options = keyslist,
 		default = 116, --T
 	},

@@ -9,6 +9,7 @@ return {
 	"malbatross",
 	"beequeen",
 	"klaus",
+	"crabking",
 	"toadstool",
 	"toadstool_dark",
 	"minotaur",

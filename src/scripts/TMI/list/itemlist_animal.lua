@@ -45,11 +45,18 @@ return {
 	"oceanfish_medium_5_inv",
 	"oceanfish_medium_6_inv",
 	"oceanfish_medium_7_inv",
+	"oceanfish_medium_8_inv",
 	"oceanfish_small_1_inv",
 	"oceanfish_small_2_inv",
 	"oceanfish_small_3_inv",
 	"oceanfish_small_4_inv",
 	"oceanfish_small_5_inv",
+	"oceanfish_small_6_inv",
+	"oceanfish_small_7_inv",
+	"oceanfish_small_8_inv",
+--龙虾
+	"wobster_sheller_land",
+	"wobster_moonglass_land",
 --海洋生物
 	"squid",
 	"gnarwail",
@@ -107,6 +114,7 @@ return {
 	"krampus",
 --鬼魂
 	"ghost",
+	"smallghost",
 --海洋生物
 	"trap_starfish",
 --影怪
@@ -122,6 +130,7 @@ return {
 	"stalker_minion1",
 	"stalker_minion2",
 	"birchnutdrake",
+	"crabking_claw",
 --特殊
 	"moonpig",
 	"houndcorpse",
@@ -131,4 +140,7 @@ return {
 	"pigelite2",
 	"pigelite3",
 	"pigelite4",
+	"gingerbreadpig",
+--NPC
+	"hermitcrab",
 }

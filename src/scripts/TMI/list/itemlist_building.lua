@@ -90,6 +90,7 @@ return {
 	"anchor",
 	"mast",
 	"mast_malbatross",
+	"winch",
 --科技
 	"researchlab",
 	"researchlab2",
@@ -104,6 +105,7 @@ return {
 	"ancient_altar_broken",
 	"ancient_altar",
 	"moon_altar",
+	"moon_altar_cosmic",
 	"perdshrine",
 	"wargshrine",
 	"pigshrine",
@@ -129,4 +131,7 @@ return {
 	"ruinsrelic_vase",
 	"ruinsrelic_chair",
 	"ruinsrelic_table",
+--隐士小岛
+	"beebox_hermit",
+	"meatrack_hermit",
 }

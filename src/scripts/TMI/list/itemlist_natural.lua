@@ -32,6 +32,11 @@ return {
 	"driftwood_small1",
 	"driftwood_small2",
 	"driftwood_tall",
+--残骸
+	"oceanfishableflotsam",
+	"boatfragment03",
+	"boatfragment04",
+	"boatfragment05",
 --骨架
 	"dead_sea_bones",
 	"houndbone",
@@ -56,4 +61,6 @@ return {
 	"wormhole_limited_1",
 --裂缝
 	"moon_fissure",
+--堵住的裂隙
+	"moon_fissure_plugged",
 }
