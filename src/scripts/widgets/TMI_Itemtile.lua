@@ -13,15 +13,15 @@ local NAMES_DEFAULTS = {
 }
 
 local adjs = {
-  "short",
-  "med",
-  "tall",
-  "old",
-  "1",
-  "2",
+	"short",
+	"med",
+	"tall",
+	"old",
+	"1",
+	"2",
 	"3",
 	"4",
-  "normal",
+	"normal",
 	"burnt",
 	"full",
 	"low",
@@ -29,12 +29,12 @@ local adjs = {
 }
 
 function tablecontains(table, element)
-  for _, value in pairs(table) do
-    if value == element then
-      return true
-    end
-  end
-  return false
+	for _, value in pairs(table) do
+		if value == element then
+			return true
+		end
+	end
+	return false
 end
 
 local function split(str, reps)
@@ -55,6 +55,7 @@ local function removespice(str)
 	local strarr = split(str, "_")
 	if strarr ~= nil then
 		table.remove(strarr, #strarr)
+
 		table.remove(strarr, #strarr)
 
 		newstr = ""
@@ -159,8 +160,9 @@ function ItemTile:GetAsset(find)
 	local newitem = self.item
 	local itemimage = newitem .. ".tex"
 	local itematlas = custom_atlas
-	--print("[TooManyItems] "..self.item)
+	--print("[TooManyItemsPlus]"..self.item)
 	-- if find then
+	
 	if STRINGS.CHARACTER_NAMES[newitem] then
 		-- print("[TooManyItems] "..self.item.." cc")
 		-- local character_item = "skull_"..newitem
@@ -241,7 +243,7 @@ function ItemTile:GetAsset(find)
 			elseif newitem == "rock_avocado_fruit" then
 				-- 石果
 				itemimage = "rock_avocado_fruit_rockhard.tex"
-				itematlas = base_atlas_1
+				itematlas = base_atlas_2
 			elseif newitem == "gift" then
 				-- 礼物包裹
 				itemimage = "gift_large1.tex"
@@ -323,7 +325,7 @@ function ItemTile:DescriptionInit()
 			end
 		end
 
-    local strarr = self.item and split(self.item, "_") or {}
+		local strarr = self.item and split(self.item, "_") or {}
 		-- 调料食物
 		if string.find(self.item, "_spice_") then
 			-- 挂饰、彩灯
@@ -375,13 +377,15 @@ function ItemTile:DescriptionInit()
 					str = STRINGS.NAMES[string.upper(strarr[3])] .. STRINGS.NAMES[itemtip]
 				end
 			end
-    elseif tablecontains(adjs, strarr[#strarr]) then
-      local itemtip = string.upper(removelast(self.item))
+		elseif tablecontains(adjs, strarr[#strarr]) then
+			local itemtip = string.upper(removelast(self.item))
 			-- print(itemtip)
 			if STRINGS.NAMES[itemtip] ~= nil and STRINGS.NAMES[itemtip] ~= "" then
 				str = STRINGS.NAMES[itemtip]
 			end
-    end
+		elseif string.find(self.item, "_inv") then
+			str = STRINGS.NAMES[string.sub(itemtip,1,#itemtip - 4)]
+		end
 	end
 	if not str then
 		str = "Unknown"

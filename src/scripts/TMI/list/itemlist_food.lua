@@ -28,17 +28,25 @@ return {
 	"oceanfish_medium_5_inv",
 	"oceanfish_medium_6_inv",
 	"oceanfish_medium_7_inv",
+	"oceanfish_medium_8_inv",
 --海鱼 小型
 	"oceanfish_small_1_inv",
 	"oceanfish_small_2_inv",
 	"oceanfish_small_3_inv",
 	"oceanfish_small_4_inv",
 	"oceanfish_small_5_inv",
+	"oceanfish_small_6_inv",
+	"oceanfish_small_7_inv",
+	"oceanfish_small_8_inv",
 --鱼肉
 	"fishmeat",
 	"fishmeat_cooked",
 	"fishmeat_small",
 	"fishmeat_small_cooked",
+--龙虾
+	"wobster_sheller_land",
+	"wobster_sheller_dead",
+	"wobster_sheller_dead_cooked",
 --蛋类
 	"tallbirdegg",
 	"tallbirdegg_cooked",

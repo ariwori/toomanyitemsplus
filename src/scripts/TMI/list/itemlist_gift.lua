@@ -1,4 +1,7 @@
 return {
+--贝壳礼包
+	"hermit_bundle",
+	"hermit_bundle_shells",
 --种子礼包
 	"yotc_seedpacket",
 	"yotc_seedpacket_rare",

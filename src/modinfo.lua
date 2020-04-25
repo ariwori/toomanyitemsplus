@@ -1,5 +1,5 @@
 name = "Too Many Items Plus"
-version = "1.0.8.23"
+version = "1.0.8.3"
 description = name .." Version: "..version..
 [[
 
@@ -74,7 +74,7 @@ configuration_options = {
 	{
 		name = "GOP_TMIP_DATA_SAVE",
 		label = "Save data?",
-		hover = "Do you want to Save TMI's Data?",
+		hover = "Do you want to Save TMIP's Data?",
 		options =
 		{
 			{description = "Yes", data = 1},

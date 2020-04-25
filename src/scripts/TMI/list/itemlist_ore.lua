@@ -53,4 +53,7 @@ return {
 	"stalagmite_tall",
 --蛛网岩
 	"spiderhole_rock",
+--海洋打捞
+	"shell_cluster",
+	"sunkenchest",
 }

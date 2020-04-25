@@ -6,6 +6,7 @@ return {
 	"spear",
 	"spear_wathgrithr",
 	"batbat",
+	"trident",
 	"tentaclespike",
 	"hambat",
 	"ruins_bat",

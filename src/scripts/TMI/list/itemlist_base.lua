@@ -28,6 +28,7 @@ return {
 	"turf_sinkhole",
 	"turf_pebblebeach",
 	"turf_meteor",
+	"turf_shellbeach",
 --人造地皮
 	"turf_road",
 	"turf_woodfloor",

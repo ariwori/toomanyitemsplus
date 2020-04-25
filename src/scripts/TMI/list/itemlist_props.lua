@@ -39,6 +39,17 @@ return {
 	"moonrockidol",
 	"moonrockseed",
 	"multiplayer_portal_moonrock_constr_plans",
+--换皮肤道具
+	"reskin_tool",
+--隐士相关
+	"hermit_pearl",
+	"hermit_cracked_pearl",
+	"messagebottle",
+	"messagebottleempty",
+--贝壳钟
+	"singingshell_octave3",
+	"singingshell_octave4",
+	"singingshell_octave5",
 --随从道具
 	"abigail_flower",
 	"bernie_inactive",
@@ -69,6 +80,8 @@ return {
 	"chesspiece_dragonfly_sketch",
 	"chesspiece_bearger_sketch",
 	"chesspiece_deerclops_sketch",
+	"chesspiece_crabking_sketch",
+	"chesspiece_malbatross_sketch",
 	"chesspiece_knight_sketch",
 	"chesspiece_bishop_sketch",
 	"chesspiece_rook_sketch",
@@ -82,6 +95,10 @@ return {
 	"chesspiece_clayhound_sketch",
 	"chesspiece_carrat_sketch",
 --渔具图纸
+	"oceanfishinglure_hermit_drowsy_tacklesketch",
+	"oceanfishinglure_hermit_heavy_tacklesketch",
+	"oceanfishinglure_hermit_rain_tacklesketch",
+	"oceanfishinglure_hermit_snow_tacklesketch",
 	"oceanfishingbobber_ball_tacklesketch",
 	"oceanfishingbobber_oval_tacklesketch",
 	"oceanfishingbobber_crow_tacklesketch",

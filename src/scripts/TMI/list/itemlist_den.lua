@@ -9,6 +9,10 @@ return {
 	"mermthrone",
 	"mermhouse",
 	"walrus_camp",
+	"hermithouse_construction1",
+	"hermithouse_construction2",
+	"hermithouse_construction3",
+	"hermithouse",
 --蜘蛛巢
 	"spiderden",
 	"spiderden_2",
@@ -35,8 +39,13 @@ return {
 --蜂巢
 	"beehive",
 	"wasphive",
+--龙虾窝
+	"wobster_den",
+	"moonglass_wobster_den",
 --触手洞
 	"tentacle_pillar_hole",
+--姜饼猪物
+	"gingerbreadhouse",
 --BOSS巢穴
 	"mooseegg",
 	"beequeenhive",
