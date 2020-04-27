@@ -651,6 +651,13 @@ return {
 			{
 				beta = false,
 				pos = "forest",
+				name = STRINGS.NAMES.CRABKING,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.CRABKING,
+				fn = gotoswitch({"crabking"}),
+			},
+			{
+				beta = false,
+				pos = "forest",
 				name = STRINGS.NAMES.BEEQUEENHIVE,
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.BEEQUEENHIVE,
 				fn = gotoswitch({"beequeenhive","beequeenhivegrown"}),
@@ -746,7 +753,14 @@ return {
 				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.DEER,
 				fn = gotoswitch({"deer"}),
 			},
-
+			{
+				beta = false,
+				pos = "forest",
+				name = STRINGS.NAMES.HERMITCRAB,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP..STRINGS.NAMES.HERMITCRAB,
+				fn = gotoswitch({"hermitcrab"}),
+			},
+			
 			{
 				beta = false,
 				pos = "cave",

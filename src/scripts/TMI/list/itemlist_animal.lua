@@ -127,6 +127,7 @@ return {
 	"lavae",
 	"mossling",
 	"beeguard",
+	"stalker_minion",
 	"stalker_minion1",
 	"stalker_minion2",
 	"birchnutdrake",
