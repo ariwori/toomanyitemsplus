@@ -168,10 +168,7 @@ local function DataInit()
 	end
 
 	_G.TOOMANYITEMS.LIST = _G.require "TMI/prefablist"
-	for _, v in pairs(_G.TOOMANYITEMS.LIST.prefablist) do
-		_G.TOOMANYITEMS.LIST.showimagelist[v] = true
-	end
-
+	
 	--食物新鲜度
 	if _G.TOOMANYITEMS.DATA.xxd == nil or _G.TOOMANYITEMS.DATA.xxd <= 0 then
 		_G.TOOMANYITEMS.DATA.xxd = 1
