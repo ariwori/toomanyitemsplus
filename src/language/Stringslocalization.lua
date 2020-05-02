@@ -155,10 +155,10 @@ STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP =
   "Are you sure want to change the event?\nThe server will be restart after saving."
 
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TEXT = "Map:"
-STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_SHOW = "Show"
-STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDE = "Hide"
-STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_SHOWTIP = "Show all Map (need some time!)"
-STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDETIP = "Hide all Map"
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_SHOW = "Show full map"
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDE = "Temporarily hide map"
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_SHOWTIP = "Show the complete map(need some time!)"
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDETIP = "Temporarily hide the map (recovers after re-entering the game)"
 
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TEXT = "Teleport:"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP = "Teleport to: "

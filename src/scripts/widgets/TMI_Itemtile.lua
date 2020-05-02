@@ -52,7 +52,7 @@ local function RemoveSuffix(str)
 	local strarr = split(str,"_")
 	local n = GetTableNum(strarr)
 	local newstr = ""
-	for i = 1, n-1, 1 do
+	for i = 1, n-1, 1 do 
 		newstr = newstr..strarr[i].."_"
 	end
 	return string.sub(newstr, 1, string.len(newstr)-1 )
@@ -62,7 +62,7 @@ local function RemovePrefix(str,reps)
 	local strarr = split(str,reps)
 	local n = GetTableNum(strarr)
 	local newstr = ""
-	for i = 2, n, 1 do
+	for i = 2, n, 1 do 
 		newstr = newstr..strarr[i]..reps
 	end
 	return string.sub(newstr, 1, string.len(newstr) - #reps )
@@ -147,6 +147,21 @@ local texname = str..".tex"
 	end
 	return nil
 end
+--检查是否为官方的4种调料词缀
+local function FindDstSpice(spice)
+local dstspice = {"CHILI","GARLIC","SALT","SUGAR"}
+	if spice then
+	spice = string.upper(spice)
+		for v=1,4,1 do
+			if spice == dstspice[v] then
+				--print("检查调料后缀:"..spice)
+				return true
+			end
+		end
+	end
+	return false
+end
+
 
 local ItemTile = Class( Widget,
 	function(self, invitem)
@@ -202,13 +217,18 @@ function ItemTile:GetAsset(find)
 	local spiceimage
 	local prefabsimage
 	local prefabsname = self.itemname
+	local spicearr
 	if TOOMANYITEMS.LIST.prefablist[self.itemname] then
 		prefabsname = TOOMANYITEMS.LIST.prefablist[self.itemname]
 	end
 	--如果是调料食物则取后缀得到调料名，取前缀获得食物原名
 	if string.find(prefabsname,"_spice_") then
-		spiceimage = "spice_"..GetSuffix(prefabsname,true).."_over.tex"
-		prefabsname = GetPrefix(prefabsname,true)
+	--确保是游戏内置的调料词缀而非mod的调料词缀
+		spicearr = split(prefabsname,"_")
+		if FindDstSpice(spicearr[3]) then
+			spiceimage = "spice_"..GetSuffix(prefabsname,true).."_over.tex"
+			prefabsname = GetPrefix(prefabsname,true)
+		end
 	end
 	--如果是大理石雕像则移除大理石的后缀
 	if string.find(prefabsname,"_marble")  then
@@ -228,7 +248,7 @@ function ItemTile:GetAsset(find)
 	else
 		--print(prefabsname.." 暂未匹配到对应的贴图")
 		prefabsimage = nil
-	end
+	end	
 	--print(prefabsatlas, prefabsimage, spiceimage)
 	return prefabsatlas, prefabsimage, spiceimage
 end
@@ -249,7 +269,7 @@ function ItemTile:GetDescriptionString()
 end
 
 function ItemTile:DescriptionInit()
-	--prefabsname:项目代码 比如 meat
+	--prefabsname:项目代码 比如 meat 
 	--strname:文本字符串 比如 STRINGS.NAMES.MEAT
 	local prefabsname = self.itemname
 	local strname
@@ -266,7 +286,7 @@ function ItemTile:DescriptionInit()
 		--当在语言文件中匹配到有效的字符串时则直接使用有效的字符串
 			strname = STRINGS.NAMES[string.upper(prefabsname)]
 			return strname
-			--print("匹配到字符串文本："..strname)
+			--print("匹配到字符串文本："..strname)	
 		elseif string.find(prefabsname,"_") then
 			--无法直接匹配时，尝试搜索带"_"的项目代码，优先处理调料食物和带后缀的植物、矿石、图纸、雕像等
 			prefabsname = string.upper(prefabsname)
@@ -287,7 +307,7 @@ function ItemTile:DescriptionInit()
 					strname = repsarr[1].."_"..repsarr[2].."LIGHT"
 				elseif string.find(repsarr[3],"FESTIVALEVENTS") then
 					strname = tonumber(string.sub(repsarr[3],15,-1)) <= 3 and "FORGE" or "GORGE"
-					strname = repsarr[1].."_"..repsarr[2]..strname
+					strname = repsarr[1].."_"..repsarr[2]..strname	
 				else
 					strname = repsarr[1].."_"..repsarr[2]
 				end
@@ -295,12 +315,18 @@ function ItemTile:DescriptionInit()
 					return STRINGS.NAMES[strname]
 				end
 			end
-			if string.find(prefabsname,"SPICE") then
-				--调料食物需要去除_spice和对应的调料词缀，需要去除2次后缀，因此直接调用GetPrefix取前缀获得食物的原名
-				prefabsname = GetPrefix(prefabsname,true)
-				--将食物名称和调料名称重组为字符串
-				strname = subfmt(STRINGS.NAMES["SPICE_"..repsarr[3].."_FOOD"], {food = STRINGS.NAMES[prefabsname]})
-				return strname
+			if string.find(prefabsname,"_SPICE_") then
+				--检查调料词缀（repsarr[3]）是否为游戏内置的调料后缀，以避免部分含spice词缀的mod物品代码
+				if FindDstSpice(repsarr[3]) then
+				print(prefabsname)
+					--调料食物需要去除_spice和对应的调料词缀，需要去除2次后缀，因此直接调用GetPrefix取前缀获得食物的原名
+					prefabsname = GetPrefix(prefabsname,true)
+					--检查食物原名字符串是否有效，有效则重组为带调料前缀的字符串
+					if CheckStr(prefabsname) then
+						strname = subfmt(STRINGS.NAMES["SPICE_"..repsarr[3].."_FOOD"], {food = STRINGS.NAMES[prefabsname]})
+						return strname
+					end
+				end
 			end
 			strname = ReassSuffix(prefabsname)
 			--调用ReassSuffix查找指定的一些后缀并重组字符串
@@ -313,7 +339,7 @@ function ItemTile:DescriptionInit()
 				return strname
 			end
 		end
-		--经过以上匹配模式之后如果任然找不到有效的文本字符串，则返回小写的项目代码用于显示文本
+		--经过以上匹配模式之后如果任然找不到有效的文本字符串，则返回该项目的原代码用于显示
 		return string.lower(prefabsname)
 	end
 end

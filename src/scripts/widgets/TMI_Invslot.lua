@@ -122,6 +122,17 @@ local function CheckStr(str)
 	end
 end
 
+local function FindDstSpice(spice)
+local dstspice = {"CHILI","GARLIC","SALT","SUGAR"}
+spice = string.upper(spice)
+	for v=1,4,1 do
+		if spice == dstspice[v] then
+			return true
+		end
+	end
+	return false
+end
+
 local function gotoonly(name)
 	name = name or ""
 	return string.format(
@@ -224,10 +235,14 @@ function InvSlot:GetDescription()
 					return STRINGS.NAMES[strname]
 				end
 			end
-			if string.find(prefabsname,"SPICE") then
-				prefabsname = GetPrefix(prefabsname,true)
-				strname = subfmt(STRINGS.NAMES["SPICE_"..repsarr[3].."_FOOD"], {food = STRINGS.NAMES[prefabsname]})
-				return strname
+			if string.find(prefabsname,"_SPICE_") then
+				if FindDstSpice(repsarr[3]) then
+					prefabsname = GetPrefix(prefabsname,true)
+					if CheckStr(STRINGS.NAMES[prefabsname]) then
+						strname = subfmt(STRINGS.NAMES["SPICE_"..repsarr[3].."_FOOD"], {food = STRINGS.NAMES[prefabsname]})
+						return strname
+					end
+				end
 			end
 			strname = ReassSuffix(prefabsname)
 			if strname then
@@ -245,6 +260,9 @@ end
 function InvSlot:Click(stack_mod)
 	if self.item then
 		local itemdescription = self:GetDescription()
+		if not itemdescription then
+			itemdescription = ""
+		end
 		local spawnnum = stack_mod and _G.TOOMANYITEMS.G_TMIP_R_CLICK_NUM or _G.TOOMANYITEMS.G_TMIP_L_CLICK_NUM
 		if TheInput:IsKeyDown(KEY_CTRL) then
 			-- Ctrl+ALT+左键传送，要右键就取消下面一行里的注释
