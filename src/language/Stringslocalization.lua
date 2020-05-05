@@ -5,7 +5,7 @@ STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPINVENTORYTIP =
   "Are you sure empty the player's inventory? This operation is irreversible.\nEmpty inventory and backpack by hold Ctrl Key and clik:"..STRINGS.UI.TRADESCREEN.ACCEPT
 STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACKTIP =
   "Are you sure empty the player's backpack? This operation is irreversible.\nEmpty inventory and backpack by hold Ctrl Key and clik:"..STRINGS.UI.TRADESCREEN.ACCEPT
-  
+
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_STOPVOTE = "Stop vote"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_STOPVOTETIP = "Stop vote"
 
@@ -156,9 +156,9 @@ STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP =
 
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_TEXT = "Map:"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_SHOW = "Show full map"
-STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDE = "Temporarily hide map"
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDE = "Hide map"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_SHOWTIP = "Show the complete map(need some time!)"
-STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDETIP = "Temporarily hide the map (recovers after re-entering the game)"
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDETIP = "Hide the map (Need to reload or rollback your game!)"
 
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TEXT = "Teleport:"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP = "Teleport to: "
@@ -372,3 +372,5 @@ STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP =
 STRINGS.UI.TMIP_TAB_BUTTON_TIP = "Set to TMIP current player"
 
 STRINGS.TOO_MANY_ITEMS_UI.HELP_AND_INSTRUCTIONS = "Instruction/F&Q"
+
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDE_TIPTEXT = "Need to reload the game to clear the displayed map. If it has been saved, \nplease directly rollback your game, otherwise it cannot be cleared!"

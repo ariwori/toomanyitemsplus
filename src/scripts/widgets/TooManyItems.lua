@@ -416,7 +416,7 @@ function TooManyItems:SetDeleteRadiusPointer()
 end
 
 function TooManyItems:FlushConfirmScreen(fn)
-  if _G.TOOMANYITEMS.DATA.SHOW_CONFIRM_SCREEN then
+  if _G.TOOMANYITEMS.DATA.SHOW_CONFIRM_SCREEN or (#fn > 4 and fn[5] == "mustconfirm") then
     local confirmscreen
     confirmscreen =
       PopupDialogScreen(
