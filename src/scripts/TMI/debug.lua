@@ -808,13 +808,9 @@ return {
         pos = "all",
         name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDE,
         tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDETIP,
-        fn = {
-          "confirm",
-          'TheWorld.minimap.MiniMap:ClearRevealedAreas() TheWorld:DoTaskInTime(1, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)',
-          STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDE,
-          STRINGS.TOO_MANY_ITEMS_UI.DEBUG_MAP_HIDE_TIPTEXT,
-          "mustconfirm"
-        }
+        fn = function()
+          ExecuteConsoleCommand("TheWorld.minimap.MiniMap:ClearRevealedAreas()")
+        end
       }
     }
   },

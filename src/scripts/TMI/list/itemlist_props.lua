@@ -82,6 +82,11 @@ return {
 	"chesspiece_deerclops_sketch",
 	"chesspiece_crabking_sketch",
 	"chesspiece_malbatross_sketch",
+	"chesspiece_antlion_sketch",
+	"chesspiece_beequeen_sketch",
+	"chesspiece_klaus_sketch",
+	"chesspiece_stalker_sketch",
+	"chesspiece_toadstool_sketch",	
 	"chesspiece_knight_sketch",
 	"chesspiece_bishop_sketch",
 	"chesspiece_rook_sketch",
@@ -94,6 +99,7 @@ return {
 	"chesspiece_claywarg_sketch",
 	"chesspiece_clayhound_sketch",
 	"chesspiece_carrat_sketch",
+	
 --渔具图纸
 	"oceanfishinglure_hermit_drowsy_tacklesketch",
 	"oceanfishinglure_hermit_heavy_tacklesketch",
