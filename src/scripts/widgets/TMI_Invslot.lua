@@ -62,7 +62,7 @@ local function RemoveSuffix(str)
 	local strarr = split(str,"_")
 	local n = GetTableNum(strarr)
 	local newstr = ""
-	for i = 1, n-1, 1 do 
+	for i = 1, n-1, 1 do
 		newstr = newstr..strarr[i].."_"
 	end
 	return string.sub(newstr, 1, string.len(newstr)-1 )
@@ -227,7 +227,7 @@ function InvSlot:GetDescription()
 					strname = repsarr[1].."_"..repsarr[2].."LIGHT"
 				elseif string.find(repsarr[3],"FESTIVALEVENTS") then
 					strname = tonumber(string.sub(repsarr[3],15,-1)) <= 3 and "FORGE" or "GORGE"
-					strname = repsarr[1].."_"..repsarr[2]..strname	
+					strname = repsarr[1].."_"..repsarr[2]..strname
 				else
 					strname = repsarr[1].."_"..repsarr[2]
 				end
@@ -274,14 +274,14 @@ function InvSlot:Click(stack_mod)
 				else
 					if _G.TOOMANYITEMS.DATA.ADVANCE_DELETE then
 						local fnstr =
-							'local a=%s if a == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end local function b(c)local d=c.components.inventoryitem;return d and d.owner and true or false end;local function e(f)if f and f~=TheWorld and not b(f)and f.Transform then if f:HasTag("player")then if f.userid==nil or f.userid==""then return true end else return true end end;return false end;if a and a.Transform then if a.components.burnable then a.components.burnable:Extinguish(true)end;local g,h,i=a.Transform:GetWorldPosition()local j=TheSim:FindEntities(g,h,i,%s)for k,l in pairs(j)do if e(l)then if l.components then if l.components.burnable then l.components.burnable:Extinguish(true)end;if l.components.firefx then if l.components.firefx.extinguishsoundtest then l.components.firefx.extinguishsoundtest=function()return true end end;l.components.firefx:Extinguish()end end;if not(l.prefab=="minerhatlight"or"lanternlight"or"yellowamuletlight"or"slurperlight"or"redlanternlight"or"lighterfire"or"torchfire"or"torchfire_rag"or"torchfire_spooky"or"torchfire_shadow")or l.entity:GetParent()==nil then if l.prefab=="%s"then l:Remove()end end end end end'
+							'local a=%s if a == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end local function b(c)local d=c.components.inventoryitem;return d and d.owner and true or false end;local function e(f)if f and f~=TheWorld and not b(f)and f.Transform then if f:HasTag("player")then if f.userid==nil or f.userid==""then return true end else return true end end;return false end;if a and a.Transform then if a.components.burnable then a.components.burnable:Extinguish(true)end;local g,h,i=a.Transform:GetWorldPosition()local j=TheSim:FindEntities(g,h,i,%s)for k,l in pairs(j)do if e(l)then if l.components then if l.components.burnable then l.components.burnable:Extinguish(true)end;if l.components.firefx then if l.components.firefx.extinguishsoundtest then l.components.firefx.extinguishsoundtest=function()return true end end;l.components.firefx:Extinguish()end end;if l.prefab=="%s"then l:Remove()end end end end'
 						SendCommand(string.format(fnstr, GetCharacter(), _G.TOOMANYITEMS.DATA.deleteradius, self.item))
 					end
 				end
 			else
 				local customitems = {}
 				if table.contains(_G.TOOMANYITEMS.DATA.customitems, self.item) then
-					print ("[TooManyItemsPlus] Remove Items: "..self.item)
+					print ("[TooManyItemsPlus] Remove custom items: "..self.item)
 					for i = 1, #_G.TOOMANYITEMS.DATA.customitems do
 						if _G.TOOMANYITEMS.DATA.customitems[i] ~= self.item then
 							table.insert(customitems, _G.TOOMANYITEMS.DATA.customitems[i])
@@ -291,7 +291,7 @@ function InvSlot:Click(stack_mod)
 					-- Ctrl按下，调整自定义物品
 					OperateAnnnounce(STRINGS.NAMES.CTRLKEYDOWNTIP .. itemdescription .. STRINGS.NAMES.REMOVEEDITEMSTIP)
 				else
-					print ("[TooManyItemsPlus] Add Items: "..self.item)
+					print ("[TooManyItemsPlus] Add custom items: "..self.item)
 					table.insert(customitems, self.item)
 					for i = 1, #_G.TOOMANYITEMS.DATA.customitems do
 						table.insert(customitems, _G.TOOMANYITEMS.DATA.customitems[i])
