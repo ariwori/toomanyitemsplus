@@ -44,22 +44,22 @@ return {
 	"moonglass_wobster_den",
 --触手洞
 	"tentacle_pillar_hole",
---姜饼猪物
-	"gingerbreadhouse",
 --BOSS巢穴
 	"mooseegg",
 	"beequeenhive",
 	"beequeenhivegrown",
 	"klaus_sack",
 	"toadstool_cap",
+--姜饼猪物
+	"gingerbreadhouse",
 --刷新点（不可见）
-	"slurper_spawner",
-	"worm_spawner",
-	"monkeybarrel_spawner",
-	"bishop_nightmare_spawner",
-	"knight_nightmare_spawner",
-	"rook_nightmare_spawner",
-	"dragonfly_spawner",
-	"antlion_spawner",
-	"minotaur_spawner",
+	--"slurper_spawner",
+	--"worm_spawner",
+	--"monkeybarrel_spawner",
+	--"bishop_nightmare_spawner",
+	--"knight_nightmare_spawner",
+	--"rook_nightmare_spawner",
+	--"dragonfly_spawner",
+	--"antlion_spawner",
+	--"minotaur_spawner",
 }
