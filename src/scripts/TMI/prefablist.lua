@@ -54,7 +54,8 @@ return {
 	["tomato"] = "quagmire_tomato",
 	["tomato_cooked"] = "quagmire_tomato_cooked",
 	["garlic"] = "quagmire_garlic",
-	["garlic_cooked"] = "quagmire_garlic_cooked"
+	["garlic_cooked"] = "quagmire_garlic_cooked",
+	["slingshotammo_marble"] = "slingshotammo_marble_proj"
  	},
 --对部分无规律的项目代码重新赋值，以指向*.po语言文件中合适的文本字符串
 	desclist = {

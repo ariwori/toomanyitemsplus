@@ -5,6 +5,7 @@ return {
 --精神
 	"featherhat",
 	"tophat",
+	"walterhat",
 --风镜
 	"goggleshat",
 	"deserthat",

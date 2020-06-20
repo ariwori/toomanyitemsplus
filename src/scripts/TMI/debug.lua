@@ -920,6 +920,20 @@ return {
       {
         beta = false,
         pos = "forest",
+        name = STRINGS.NAMES.CRABKING,
+        tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.CRABKING,
+        fn = n({"crabking"})
+      },
+      {
+        beta = false,
+        pos = "forest",
+        name = STRINGS.NAMES.HERMITCRAB,
+        tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.HERMITCRAB,
+        fn = n({"hermitcrab"})
+      },
+      {
+        beta = false,
+        pos = "forest",
         name = STRINGS.NAMES.WALRUS_CAMP,
         tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.WALRUS_CAMP,
         fn = n({"walrus_camp"})
@@ -1049,6 +1063,17 @@ return {
         name = STRINGS.NAMES.ROCKY,
         tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.ROCKY,
         fn = n({"rocky"})
+      },
+      {
+        beta = false,
+        pos = "all",
+        name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORT,
+        tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIP,
+        fn = 'local player = %s if player == nil then UserToPlayer("' ..
+          _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
+            '").components.talker:Say("' ..
+              STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
+                '") end local t = player.components.talker if t ~= nil then t:Say(STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIPTEXT) end'
       }
     }
   }

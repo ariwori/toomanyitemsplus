@@ -27,6 +27,7 @@ return {
 --过夜
 	"tent",
 	"siestahut",
+	"portabletent",
 --农场
 	"slow_farmplot",
 	"fast_farmplot",

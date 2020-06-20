@@ -16,4 +16,5 @@ return {
 	"wortox",
 	"wormwood",
 	"wurt",
+	"walter",
 }

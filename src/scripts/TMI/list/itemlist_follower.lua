@@ -7,7 +7,9 @@ return {
 	"critter_dragonling",
 	"critter_glomling",
 	"critter_lunarmothling",
+	"wobysmall",
 --随从
+	"wobybig",
 	"chester",
 	"hutch",
 	"glommer",

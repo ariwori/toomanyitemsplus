@@ -19,6 +19,15 @@ return {
 	"blowdart_sleep",
 	"blowdart_fire",
 	"staff_tornado",
+	"slingshot",
+--弹药
+	"slingshotammo_rock",
+	"slingshotammo_gold",
+	"slingshotammo_marble",
+	"slingshotammo_poop",
+	"slingshotammo_freeze",
+	"slingshotammo_slow",
+	"slingshotammo_thulecite",
 --头盔
 	"cookiecutterhat",
 	"footballhat",

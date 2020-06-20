@@ -67,6 +67,7 @@ return {
 --过夜工具
 "bedroll_straw",
 "bedroll_furry",
+"portabletent_item",
 --保温工具
 "heatrock",
 --狩猎工具
