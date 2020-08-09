@@ -6,7 +6,11 @@
 
 ![展示二](https://raw.githubusercontent.com/ariwori/toomanyitemsplus/master/scrimage/20200326203449_1.jpg)
 
-[简体中文](https://github.com/ariwori/toomanyitemsplus/blob/master/readme_chs.html)
+![展示二](https://raw.githubusercontent.com/ariwori/toomanyitemsplus/master/scrimage/20200326204734_1.jpg)
+
+![展示二](https://raw.githubusercontent.com/ariwori/toomanyitemsplus/master/scrimage/20200326204738_1.jpg)
+
+说明: [简体中文](https://github.com/ariwori/toomanyitemsplus/blob/master/readme_chs.md) | [繁体中文](https://github.com/ariwori/toomanyitemsplus/blob/master/readme_cht.md) | [英文](https://github.com/ariwori/toomanyitemsplus/blob/master/readme.md)
 
 ```Steam BBC
 [h1]You can spawn anything. Support search and server control. Have 7 different tabs to show items. You can do anything now! [/h1]
