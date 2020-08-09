@@ -102,28 +102,32 @@ local support_languages = {
 }
 
 local function LoadTranslation()
-	-- anyway ... load default language.
-	modimport("language/Stringslocalization.lua")
-	local steamlang = _G.TheNet:GetLanguageCode() or nil
-	if steamlang and steam_support_languages[steamlang] then
-		print("[TooManyItemsPlus] Get your language from steam!")
-		modimport("language/Stringslocalization_" .. steam_support_languages[steamlang] .. ".lua")
-		if steamlang == "schinese" or steamlang == "tchinese" then
-			_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
-		end
-	else
-		local lang = _G.LanguageTranslator.defaultlang or nil
-		if lang ~= nil and support_languages[lang] ~= nil then
-			if support_languages[lang] ~= true then
-				lang = support_languages[lang]
-			end
-			print("[TooManyItemsPlus] Get your language from language mod!")
-			modimport("language/Stringslocalization_" .. lang .. ".lua")
-			if lang == "chs" or lang == "cht" then
-				_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
-			end
-		end
-	end
+  -- anyway ... load default language.
+  modimport("language/Stringslocalization.lua")
+  -- WeGame
+  if _G.PLATFORM == "WIN_RAIL" then
+    modimport("language/Stringslocalization_chs.lua")
+  else
+    local steamlang = _G.TheNet:GetLanguageCode() or nil
+    if steamlang and steam_support_languages[steamlang] then
+      print("[TooManyItemsPlus] Get your language from steam!")
+      modimport("language/Stringslocalization_" .. steam_support_languages[steamlang] .. ".lua")
+      if steamlang == "schinese" or steamlang == "tchinese" then
+        _G.TOOMANYITEMS.UI_LANGUAGE = "cn"
+      end
+    else
+      local lang = _G.LanguageTranslator.defaultlang or nil
+      if lang ~= nil and support_languages[lang] ~= nil then
+        if support_languages[lang] ~= true then
+          lang = support_languages[lang]
+        end
+        print("[TooManyItemsPlus] Get your language from language mod!")
+        modimport("language/Stringslocalization_" .. lang .. ".lua")
+        if lang == "chs" or lang == "cht" then
+          _G.TOOMANYITEMS.UI_LANGUAGE = "cn"
+        end
+      end
+    end
 end
 
 local function DataInit()
@@ -168,7 +172,7 @@ local function DataInit()
 	end
 
 	_G.TOOMANYITEMS.LIST = _G.require "TMI/prefablist"
-	
+
 	--食物新鲜度
 	if _G.TOOMANYITEMS.DATA.xxd == nil or _G.TOOMANYITEMS.DATA.xxd <= 0 then
 		_G.TOOMANYITEMS.DATA.xxd = 1

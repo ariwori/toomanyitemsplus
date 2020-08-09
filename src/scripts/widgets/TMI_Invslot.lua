@@ -168,36 +168,6 @@ function InvSlot:OnControl(control, down)
 	end
 end
 
--- function FormatValue(val)
--- if type(val) == "string" then
--- return string.format("%q", val)
--- end
--- return tostring(val)
--- end
-
--- function FormatTable(t, tabcount)
--- tabcount = tabcount or 0
--- if tabcount > 5 then
--- 防止栈溢出
--- return "<table too deep>"..tostring(t)
--- end
--- local str = ""
--- if type(t) == "table" then
--- for k, v in pairs(t) do
--- local tab = string.rep("\t", tabcount)
--- if type(v) == "table" then
--- str = str..tab..string.format("[%s] = {", FormatValue(k))..'\n'
--- str = str..FormatTable(v, tabcount + 1)..tab..'}\n'
--- else
--- str = str..tab..string.format("[%s] = %s", FormatValue(k), FormatValue(v))..',\n'
--- end
--- end
--- else
--- str = str..tostring(t)..'\n'
--- end
--- return str
--- end
-
 function InvSlot:GetDescription()
 	local prefabsname = self.item
 	local strname

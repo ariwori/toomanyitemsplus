@@ -37,7 +37,7 @@ local function n(o)
         _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
           '").components.talker:Say("' ..
             STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-              '") end if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target for k,v in pairs(pbtable) do target = c_findnext(v) if target ~= nil then break end end if target == nil then player.components.talker:Say("No target!") end tmi_goto(target) end'
+              '") end if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target for k,v in pairs(pbtable) do target = c_findnext(v) if target ~= nil then break end end if target == nil then target = c_findnext(pbtable[v+1]) end tmi_goto(target) end'
 end
 local s = TheWorld.meta.session_identifier or "world"
 local t = TOOMANYITEMS.TELEPORT_DATA_FILE .. "toomanyitemsplus_teleport_save_" .. s
