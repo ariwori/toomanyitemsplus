@@ -6,8 +6,9 @@
 
 ![展示二](https://raw.githubusercontent.com/ariwori/toomanyitemsplus/master/scrimage/20200326203449_1.jpg)
 
-[简体中文](https://raw.githubusercontent.com/ariwori/toomanyitemsplus/master/README_CHS.html)
+[简体中文](https://github.com/ariwori/toomanyitemsplus/blob/master/readme_chs.html)
 
+```Steam BBC
 [h1]You can spawn anything. Support search and server control. Have 7 different tabs to show items. You can do anything now! [/h1]
 
 [h1] Usage: [/h1]
@@ -99,3 +100,4 @@
     [*] Items and bug fix by GaRAnTuLA.
     [*] SKULL(Me). UI rewrote, bug fixed, added search function, different items list and other powerful functions.
 [/list]
+```

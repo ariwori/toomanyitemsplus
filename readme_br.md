@@ -1,3 +1,6 @@
+# Too Many Items Plus
+
+```Steam BBC
 [h1]Você pode gerar qualquer coisa. Suporte para procura e controle de servidor. Tem 7 diferentes abas para mostrar itens. Você pode fazer qualquer coisa agora! [/h1]
 
 [h1] Uso: [/h1]
@@ -78,3 +81,4 @@
   [*] Itens e fixação de erros por GaRAnTuLA.
   [*] SKULL(Eu). revisão do UI, fixação de problemas, adicionado a função de procurar, lista de diferentes itens e outras funções poderosas.
 [/list]
+```

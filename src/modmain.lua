@@ -128,6 +128,7 @@ local function LoadTranslation()
         end
       end
     end
+  end
 end
 
 local function DataInit()

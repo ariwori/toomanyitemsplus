@@ -1,6 +1,9 @@
-原MOD: https://steamcommunity.com/sharedfiles/filedetails/?id=551338671
-FIX版: https://steamcommunity.com/sharedfiles/filedetails/?id=881455419
+# Too Many Items Plus
 
+[原MOD](https://steamcommunity.com/sharedfiles/filedetails/?id=551338671)
+[FIX版](https://steamcommunity.com/sharedfiles/filedetails/?id=881455419)
+
+```Steam BBC
 [h1]自由生成物品、生物、建筑、植物、矿石、雕像等项目。[/h1]
 [h1]多达28个分类，额外扩充的项目图标。[/h1]
 [h1]本mod以测试和调试功能为主，请合理使用，以免降低游戏乐趣。[/h1]
@@ -66,7 +69,7 @@ FIX版: https://steamcommunity.com/sharedfiles/filedetails/?id=881455419
 
 [*] 点击搜索框右边的昵称（默认是你自己） -> 输入其他玩家的USERID -> 确认
 [*] 可以点击“下一个”按钮，快速选择同世界的其他玩家操作（默认显示玩家昵称）
-[*]	选择玩家之后，就可以使用对应的功能作用于其他玩家身上了。
+[*] 选择玩家之后，就可以使用对应的功能作用于其他玩家身上了。
 
 [*][h1]常见问题：[/h1]
 [list]
@@ -90,10 +93,6 @@ FIX版: https://steamcommunity.com/sharedfiles/filedetails/?id=881455419
     [*] 这是一个客户端MOD，仅限服务器所有者（服务器令牌拥有者）和服务器管理员使用，无管理权限的玩家无法使用。
     [*] 只有在检测到拥有服务器令牌或管理员权限时，MOD 的菜单才会出现。
     [*] 按 T 键显示和关闭MOD菜单。（可以在选项中更改快捷键）
-
-
-
-
 
     [*] [h1] 搜索功能： [/h1]
     [*] 搜索步骤：点击 "搜索你要的物品！" -> 输入搜索内容 -> Enter 键。
@@ -124,7 +123,7 @@ FIX版: https://steamcommunity.com/sharedfiles/filedetails/?id=881455419
     [*] 服装：衣服和帽子
     [*] 工具：用于生存，涵盖了航海、采集、收集、训牛、烹煮、照明、狩猎、降温避雨等工具
     [*] 人偶：无操控权限的角色，相当于一个没有玩家控制的“角色”
-    [*]	魔法：宝石和其衍生品，包括护符、法杖、月眼
+    [*] 魔法：宝石和其衍生品，包括护符、法杖、月眼
     [*] 基建：用于基地建设，包含指示牌、围栏、墙体和地皮
     [*] 生物：各种小动物和怪物
     [*] 植物：所有植物和其各种阶段，包括树苗、小、中、大树以及烧毁阶段
@@ -180,6 +179,7 @@ FIX版: https://steamcommunity.com/sharedfiles/filedetails/?id=881455419
     [*] C.J.B. - 原作者
     [*] GaRAnTuLA - 修复了 BUG。
     [*] SKULL - UI 的重写，bug 的修复，增加：搜索功能、不同物品列表、丰富的其他指令。
-	[*] TheMightyPikachu & Electroely - Fix版贡献者，修复了当时mod会崩溃无法使用的问题，以及搜索会报错的问题。
-	[*] Tendy & 乐十画 - 物品重新分类，UI和代码完善，界面图标优化，后续更新等。
+  [*] TheMightyPikachu & Electroely - Fix版贡献者，修复了当时mod会崩溃无法使用的问题，以及搜索会报错的问题。
+  [*] Tendy & 乐十画 - 物品重新分类，UI和代码完善，界面图标优化，后续更新等。
 [/list]
+```
