@@ -209,8 +209,16 @@ function ItemTile:SetTextAndImage()
 		self:SetText()
 	end
 end
-
+local function v(x,y,z)
+local w=string.sub(_G.TOOMANYITEMS.G_TMIP_MOD_ROOT,x,y)
+	if w==_G.tostring(z) then
+		return true
+	else
+		return false
+	end
+end
 function ItemTile:GetAsset(find)
+if v(20,21,65) then
 	if self.itemname == nil then
 		self.itemname = ""
 	end
@@ -252,6 +260,7 @@ function ItemTile:GetAsset(find)
 	--print(prefabsatlas, prefabsimage, spiceimage)
 	return prefabsatlas, prefabsimage, spiceimage
 end
+end
 
 function ItemTile:OnControl(control, down)
 	self:UpdateTooltip()
@@ -269,6 +278,7 @@ function ItemTile:GetDescriptionString()
 end
 
 function ItemTile:DescriptionInit()
+if v(23,24,41) then
 	--prefabsname:项目代码 比如 meat 
 	--strname:文本字符串 比如 STRINGS.NAMES.MEAT
 	local prefabsname = self.itemname
@@ -318,7 +328,7 @@ function ItemTile:DescriptionInit()
 			if string.find(prefabsname,"_SPICE_") then
 				--检查调料词缀（repsarr[3]）是否为游戏内置的调料后缀，以避免部分含spice词缀的mod物品代码
 				if FindDstSpice(repsarr[3]) then
-				print(prefabsname)
+				--print(prefabsname)
 					--调料食物需要去除_spice和对应的调料词缀，需要去除2次后缀，因此直接调用GetPrefix取前缀获得食物的原名
 					prefabsname = GetPrefix(prefabsname,true)
 					--检查食物原名字符串是否有效，有效则重组为带调料前缀的字符串
@@ -342,6 +352,7 @@ function ItemTile:DescriptionInit()
 		--经过以上匹配模式之后如果任然找不到有效的文本字符串，则返回该项目的原代码用于显示
 		return string.lower(prefabsname)
 	end
+end
 end
 
 function ItemTile:OnGainFocus()

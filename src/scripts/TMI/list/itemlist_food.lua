@@ -38,11 +38,15 @@ return {
 	"oceanfish_small_6_inv",
 	"oceanfish_small_7_inv",
 	"oceanfish_small_8_inv",
+	"oceanfish_small_9_inv",
 --鱼肉
 	"fishmeat",
 	"fishmeat_cooked",
 	"fishmeat_small",
 	"fishmeat_small_cooked",
+--藤壶
+	"barnacle",
+	"barnacle_cooked",
 --龙虾
 	"wobster_sheller_land",
 	"wobster_sheller_dead",

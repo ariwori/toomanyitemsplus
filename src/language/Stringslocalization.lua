@@ -331,6 +331,7 @@ STRINGS.NAMES.SHIFTKEYDOWNTIP = "Hold Shift key and left-click:"
 STRINGS.NAMES.SUPERGOTOTIP = "Hold Ctrl + Alt keys and right-click: Teleport to "
 STRINGS.NAMES.GETITEMSMATERIALHTIP = "Get from "
 STRINGS.NAMES.GETITEMSMATERIALETIP = " make material"
+STRINGS.NAMES.SPAWNTIPCANBEDISABLE = "\n\You can turn off this tip in the ↗[Settings] on the top right corner."
 
 STRINGS.TOO_MANY_ITEMS_UI.SETTINGS_BUTTON_TIP = "Settings screen "
 STRINGS.TOO_MANY_ITEMS_UI.SETTINGS_BUTTON = "Settings"

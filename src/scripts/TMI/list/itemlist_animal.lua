@@ -54,11 +54,13 @@ return {
 	"oceanfish_small_6_inv",
 	"oceanfish_small_7_inv",
 	"oceanfish_small_8_inv",
+	"oceanfish_small_9_inv",
 --龙虾
 	"wobster_sheller_land",
 	"wobster_moonglass_land",
 --海洋生物
 	"squid",
+	"shark",
 	"gnarwail",
 --鸟类
 	"robin",
@@ -117,6 +119,7 @@ return {
 	"smallghost",
 --海洋生物
 	"trap_starfish",
+	"waterplant",
 --影怪
 	"crawlingnightmare",
 	"nightmarebeak",

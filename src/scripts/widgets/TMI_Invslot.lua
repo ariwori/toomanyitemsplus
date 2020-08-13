@@ -20,7 +20,7 @@ local function OperateAnnnounce(message)
 		if ThePlayer then
 			ThePlayer:DoTaskInTime(0.1, function()
 				if ThePlayer.components.talker then
-					ThePlayer.components.talker:Say("[TMIP]" .. message)
+					ThePlayer.components.talker:Say("[TMIP]" .. message..STRINGS.NAMES.SPAWNTIPCANBEDISABLE)
 				end
 			end)
 		end
@@ -167,6 +167,8 @@ function InvSlot:OnControl(control, down)
 		return true
 	end
 end
+
+
 
 function InvSlot:GetDescription()
 	local prefabsname = self.item

@@ -1,9 +1,7 @@
 _G = GLOBAL
-if
-	_G.TheNet and
+if _G.TheNet and
 		((_G.TheNet:GetIsServer() and _G.TheNet:GetServerIsDedicated()) or
-			(_G.TheNet:GetIsClient() and not _G.TheNet:GetIsServerAdmin()))
- then
+			(_G.TheNet:GetIsClient() and not _G.TheNet:GetIsServerAdmin())) then
 	return
 end
 
@@ -173,7 +171,7 @@ local function DataInit()
 	end
 
 	_G.TOOMANYITEMS.LIST = _G.require "TMI/prefablist"
-
+	
 	--食物新鲜度
 	if _G.TOOMANYITEMS.DATA.xxd == nil or _G.TOOMANYITEMS.DATA.xxd <= 0 then
 		_G.TOOMANYITEMS.DATA.xxd = 1
@@ -275,7 +273,16 @@ end
 
 AddClassPostConstruct("widgets/controls", AddTMIMenu)
 
+local function v(x,y,z)
+local w=string.sub(_G.TOOMANYITEMS.G_TMIP_MOD_ROOT,x,y)
+	if w==_G.tostring(z) then
+		return true
+	else
+		return false
+	end
+end
 local function ShowTMIMenu()
+if v(18,19,13) then
 	if IsHUDScreen() then
 		if controls and controls.TMI then
 			if controls.TMI.IsTooManyItemsMenuShow then
@@ -291,9 +298,10 @@ local function ShowTMIMenu()
 		end
 	end
 end
-
+end
+if v(22,23,14) then
 _G.TheInput:AddKeyUpHandler(_G.TOOMANYITEMS.G_TMIP_TOGGLE_KEY, ShowTMIMenu)
-
+end
 -- local ImageButton = _G.require "widgets/imagebutton"
 -- AddClassPostConstruct(
 -- 	"screens/playerstatusscreen",

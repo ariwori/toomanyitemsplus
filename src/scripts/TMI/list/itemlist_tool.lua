@@ -5,6 +5,8 @@ return {
 "malbatross_beak",
 "mast_item",
 "mast_malbatross_item",
+"mastupgrade_lamp_item",
+"mastupgrade_lightningrod_item",
 "anchor_item",
 "steeringwheel_item",
 "boatpatch",

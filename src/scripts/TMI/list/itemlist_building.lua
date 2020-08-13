@@ -92,6 +92,7 @@ return {
 	"mast",
 	"mast_malbatross",
 	"winch",
+	"waterpump",
 --科技
 	"researchlab",
 	"researchlab2",

@@ -19,6 +19,9 @@ return {
 	"blowdart_sleep",
 	"blowdart_fire",
 	"staff_tornado",
+--投掷武器
+	"waterplant_bomb",
+--弹弓	
 	"slingshot",
 --弹药
 	"slingshotammo_rock",

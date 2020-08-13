@@ -44,4 +44,6 @@ return {
 	"dug_rock_avocado_bush",
 	"rock_avocado_fruit_sprout",
 	"bullkelp_root",
+--藤壶
+	"waterplant_planter",
 }
