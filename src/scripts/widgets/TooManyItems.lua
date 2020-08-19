@@ -18,7 +18,6 @@ local function OperateAnnnounce(message)
         0.1,
         function()
           if ThePlayer.components.talker then
-            --ThePlayer.components.talker:Say("[TMIP]("..UserToName(TOOMANYITEMS.CHARACTER_USERID)..") " .. message)
             ThePlayer.components.talker:Say("[TMIP]" .. message..STRINGS.NAMES.SPAWNTIPCANBEDISABLE)
           end
         end

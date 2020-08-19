@@ -1,44 +1,36 @@
-local function a(b)
-  local c, d, e = TheSim:ProjectScreenPos(TheSim:GetPosition())
-  local f = TheNet:GetIsClient() and TheNet:GetIsServerAdmin()
-  if f then
-    TheNet:SendRemoteExecute(b, c, e)
+local function SendCommand(fnstr)
+  local x, _, z = TheSim:ProjectScreenPos(TheSim:GetPosition())
+  local is_valid_time_to_use_remote = TheNet:GetIsClient() and TheNet:GetIsServerAdmin()
+  if is_valid_time_to_use_remote then
+    TheNet:SendRemoteExecute(fnstr, x, z)
   else
-    ExecuteConsoleCommand(b)
+    ExecuteConsoleCommand(fnstr)
   end
 end
-local function g()
+
+local function GetCharacter()
   return "UserToPlayer('" .. TOOMANYITEMS.CHARACTER_USERID .. "')"
 end
-local function h(i, j)
-  local k =
-    'local player = %s if player == nil then UserToPlayer("' ..
-    _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-      '").components.talker:Say("' ..
-        STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-          '") end local x,y,z = player.Transform:GetWorldPosition() local beef = c_spawn("beefalo") beef.components.domesticatable:DeltaDomestication(1) beef.components.domesticatable:DeltaObedience(1) beef.components.domesticatable:DeltaTendency('
-  local l =
-    ", 1) beef:SetTendency() beef.components.domesticatable:BecomeDomesticated() beef.components.hunger:SetPercent(0.5) beef.components.rideable:SetSaddle(nil, SpawnPrefab('"
-  local m = "')) beef.Transform:SetPosition(x,y,z)"
-  return k .. i .. l .. j .. m
+
+local function GetDomesticateStr(tendencytype, saddle)
+	local str1 = 'local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end local x,y,z = player.Transform:GetWorldPosition() local beef = c_spawn("beefalo") beef.components.domesticatable:DeltaDomestication(1) beef.components.domesticatable:DeltaObedience(1) beef.components.domesticatable:DeltaTendency('
+	local str2 = ", 1) beef:SetTendency() beef.components.domesticatable:BecomeDomesticated() beef.components.hunger:SetPercent(0.5) beef.components.rideable:SetSaddle(nil, SpawnPrefab('"
+	local str3 = "')) beef.Transform:SetPosition(x,y,z)"
+	return str1..tendencytype..str2..saddle..str3
 end
-local function n(o)
-  local p = "{"
-  for q, r in pairs(o) do
-    if q ~= #o then
-      p = p .. '"' .. r .. '",'
-    else
-      p = p .. '"' .. r .. '"}'
-    end
-  end
-  return "local pbtable = " ..
-    p ..
-      ' local player = %s if player == nil then UserToPlayer("' ..
-        _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-          '").components.talker:Say("' ..
-            STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-              '") end if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target for k,v in pairs(pbtable) do target = c_findnext(v) if target ~= nil then break end end if target == nil then target = c_findnext(pbtable[v+1]) end tmi_goto(target) end'
+
+local function gotoswitch(prefabtable)
+	local tablestr = "{"
+	for k,v in pairs(prefabtable) do
+	if k ~= #prefabtable then
+		tablestr = tablestr..'"'..v..'",'
+	else
+		tablestr = tablestr..'"'..v..'"}'
+	end
 end
+	return 'local pbtable = '..tablestr..' local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target for k,v in pairs(pbtable) do target = c_findnext(v) if target ~= nil then break end end if target == nil then player.components.talker:Say("No target!") end tmi_goto(target) end'
+end
+
 local s = TheWorld.meta.session_identifier or "world"
 local t = TOOMANYITEMS.TELEPORT_DATA_FILE .. "toomanyitemsplus_teleport_save_" .. s
 local function u(v)
@@ -46,7 +38,7 @@ local function u(v)
     local c = TOOMANYITEMS.TELEPORT_DATA[v] and TOOMANYITEMS.TELEPORT_DATA[v]["x"]
     local e = TOOMANYITEMS.TELEPORT_DATA[v] and TOOMANYITEMS.TELEPORT_DATA[v]["z"]
     if c and e and type(c) == "number" and type(e) == "number" then
-      a(
+      SendCommand(
         string.format(
           'local player = %s if player == nil then UserToPlayer("' ..
             _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
@@ -56,7 +48,7 @@ local function u(v)
                     c ..
                       ", " ..
                         "0, " .. e .. ") else player.Transform:SetPosition(" .. c .. ", " .. "0, " .. e .. ") end end",
-          g()
+          GetCharacter()
         )
       )
     end
