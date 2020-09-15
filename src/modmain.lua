@@ -22,8 +22,8 @@ _G.TOOMANYITEMS = {
   DATA_FILE = "mod_config_data/toomanyitemsplus_data_save",
   TELEPORT_DATA_FILE = "mod_config_data/",
   CHARACTER_USERID = "",
-  CHARACTER_PREFAB = "",
-  TELEPORT_TEMP_NAME = "",
+  TELEPORT_TEMP_TABLE = {},
+  TELEPORT_TEMP_INDEX = 1,
   DATA = {},
   TELEPORT_DATA = {},
   LIST = {},
@@ -60,10 +60,10 @@ elseif _G.TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
           if success and string.len(str) > 0 then
             data = savedata
           else
-            print("[TooManyItems] Could not load " .. filepath)
+            print("[TooManyItemsPlus] Could not load " .. filepath)
           end
         else
-          print("[TooManyItems] Can not find " .. filepath)
+          print("[TooManyItemsPlus] Can not find " .. filepath)
         end
       end
     )
@@ -231,7 +231,7 @@ end
 local function AddTMIMenu(self)
   controls = self
   DataInit()
-  LoadTranslation()
+--   LoadTranslation()
   local TMI = _G.require "widgets/TooManyItems"
   if controls and controls.containerroot then
     controls.TMI = controls.containerroot:AddChild(TMI())
@@ -243,6 +243,8 @@ local function AddTMIMenu(self)
   controls.TMI:Hide()
 end
 
+-- Fix a compatible problem with the mod https://steamcommunity.com/sharedfiles/filedetails/?id=2215099600
+LoadTranslation()
 AddClassPostConstruct("widgets/controls", AddTMIMenu)
 
 local function v(x, y, z)

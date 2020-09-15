@@ -1,16 +1,4 @@
-local function SendCommand(fnstr)
-    local x, _, z = TheSim:ProjectScreenPos(TheSim:GetPosition())
-    local is_valid_time_to_use_remote = TheNet:GetIsClient() and TheNet:GetIsServerAdmin()
-    if is_valid_time_to_use_remote then
-        TheNet:SendRemoteExecute(fnstr, x, z)
-    else
-        ExecuteConsoleCommand(fnstr)
-    end
-end
-
-local function GetCharacter()
-    return "UserToPlayer('" .. TOOMANYITEMS.CHARACTER_USERID .. "')"
-end
+require "../utils"
 
 local function GetDomesticateStr(tendencytype, saddle)
     local str1 =
@@ -25,22 +13,10 @@ local function GetDomesticateStr(tendencytype, saddle)
     return str1 .. tendencytype .. str2 .. saddle .. str3
 end
 
-local function gotoswitch(prefabtable)
-    local tablestr = '{'
-    for k, v in pairs(prefabtable) do
-        if k ~= #prefabtable then
-            tablestr = tablestr .. '"' .. v .. '",'
-        else
-            tablestr = tablestr .. '"' .. v .. '"}'
-        end
-    end
-    return 'local pbtable = ' ..
-        tablestr ..
-        ' local player = %s if player == nil then UserToPlayer("' ..
-        _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-        '").components.talker:Say("' ..
-        STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-        '") end if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target for k,v in pairs(pbtable) do target = c_findnext(v) if target ~= nil then break end end if target == nil then player.components.talker:Say("No target!") end tmi_goto(target) end'
+function gotoswitch(point1, point2)
+	point1 = point1 or ""
+	point2 = point2 or ""
+	return 'local player = %s if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target = c_findnext("'..point1..'") if target == nil then target = c_findnext("'..point2..'") end tmi_goto(target) end'
 end
 
 local world_id = TheWorld.meta.session_identifier or 'world'
@@ -847,7 +823,7 @@ return {
                 name = STRINGS.NAMES.MULTIPLAYER_PORTAL .. '/' .. STRINGS.NAMES.MULTIPLAYER_PORTAL_MOONROCK,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP ..
                 STRINGS.NAMES.MULTIPLAYER_PORTAL .. '/' .. STRINGS.NAMES.MULTIPLAYER_PORTAL_MOONROCK,
-                fn = gotoswitch({'multiplayer_portal', 'multiplayer_portal_moonrock'})
+                fn = gotoswitch('multiplayer_portal', 'multiplayer_portal_moonrock')
             },
             {
                 beta = false,
@@ -855,238 +831,238 @@ return {
                 name = STRINGS.NAMES.CAVE_ENTRANCE_OPEN,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP ..
                 STRINGS.NAMES.CAVE_ENTRANCE_OPEN .. '/' .. STRINGS.NAMES.CAVE_ENTRANCE,
-                fn = gotoswitch({'cave_entrance_open', 'cave_entrance'})
+                fn = gotoswitch('cave_entrance_open', 'cave_entrance')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.PIGKING,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.PIGKING,
-                fn = gotoswitch({'pigking'})
+                fn = gotoswitch('pigking')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.MOONBASE,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.MOONBASE,
-                fn = gotoswitch({'moonbase'})
+                fn = gotoswitch('moonbase')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.OASISLAKE,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.OASISLAKE,
-                fn = gotoswitch({'oasislake'})
+                fn = gotoswitch('oasislake')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.CRITTERLAB,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.CRITTERLAB,
-                fn = gotoswitch({'critterlab'})
+                fn = gotoswitch('critterlab')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.CHESTER_EYEBONE,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.CHESTER_EYEBONE,
-                fn = gotoswitch({'chester_eyebone'})
+                fn = gotoswitch('chester_eyebone')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.STAGEHAND,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.STAGEHAND,
-                fn = gotoswitch({'stagehand'})
+                fn = gotoswitch('stagehand')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.MOON_FISSURE,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.MOON_FISSURE,
-                fn = gotoswitch({'moon_fissure'})
+                fn = gotoswitch('moon_fissure')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.BEEQUEENHIVE,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.BEEQUEENHIVE,
-                fn = gotoswitch({'beequeenhive', 'beequeenhivegrown'})
+                fn = gotoswitch('beequeenhive', 'beequeenhivegrown')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.KLAUS_SACK,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.KLAUS_SACK,
-                fn = gotoswitch({'klaus_sack'})
+                fn = gotoswitch('klaus_sack')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.MOOSENEST1,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.MOOSENEST1,
-                fn = gotoswitch({'mooseegg', 'moose_nesting_ground'})
+                fn = gotoswitch('mooseegg', 'moose_nesting_ground')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.DRAGONFLY,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.DRAGONFLY,
-                fn = gotoswitch({'dragonfly', 'dragonfly_spawner'})
+                fn = gotoswitch('dragonfly', 'dragonfly_spawner')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.ANTLION,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.ANTLION,
-                fn = gotoswitch({'antlion', 'antlion_spawner'})
+                fn = gotoswitch('antlion', 'antlion_spawner')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.CRABKING,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.CRABKING,
-                fn = gotoswitch({'crabking'})
+                fn = gotoswitch('crabking')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.HERMITCRAB,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.HERMITCRAB,
-                fn = gotoswitch({'hermitcrab'})
+                fn = gotoswitch('hermitcrab')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.WALRUS_CAMP,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.WALRUS_CAMP,
-                fn = gotoswitch({'walrus_camp'})
+                fn = gotoswitch('walrus_camp')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.STATUEGLOMMER,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.STATUEGLOMMER,
-                fn = gotoswitch({'statueglommer'})
+                fn = gotoswitch('statueglommer')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.STATUEMAXWELL,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.STATUEMAXWELL,
-                fn = gotoswitch({'statuemaxwell'})
+                fn = gotoswitch('statuemaxwell')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.SCULPTURE_ROOKNOSE,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.SCULPTURE_ROOKNOSE,
-                fn = gotoswitch({'sculpture_rookhead', 'sculpture_knighthead', 'sculpture_bishophead'})
+                fn = gotoswitch('sculpture_rookhead', 'sculpture_knighthead', 'sculpture_bishophead')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.SCULPTURE_ROOKBODY,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.SCULPTURE_ROOKBODY,
-                fn = gotoswitch({'sculpture_rookbody', 'sculpture_knightbody', 'sculpture_bishopbody'})
+                fn = gotoswitch('sculpture_rookbody', 'sculpture_knightbody', 'sculpture_bishopbody')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.MOON_ALTAR_ROCK_GLASS,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.MOON_ALTAR_ROCK_GLASS,
-                fn = gotoswitch({'moon_altar_rock_glass', 'moon_altar_rock_idol', 'moon_altar_rock_seed'})
+                fn = gotoswitch('moon_altar_rock_glass', 'moon_altar_rock_idol', 'moon_altar_rock_seed')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.LIGHTNINGGOAT,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.LIGHTNINGGOAT,
-                fn = gotoswitch({'lightninggoat'})
+                fn = gotoswitch('lightninggoat')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.BEEFALO,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.BEEFALO,
-                fn = gotoswitch({'beefalo'})
+                fn = gotoswitch('beefalo')
             },
             {
                 beta = false,
                 pos = 'forest',
                 name = STRINGS.NAMES.DEER,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.DEER,
-                fn = gotoswitch({'deer'})
+                fn = gotoswitch('deer')
             },
             {
                 beta = false,
                 pos = 'cave',
                 name = STRINGS.NAMES.CAVE_EXIT,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.CAVE_EXIT,
-                fn = gotoswitch({'cave_exit'})
+                fn = gotoswitch('cave_exit')
             },
             {
                 beta = false,
                 pos = 'cave',
                 name = STRINGS.NAMES.TENTACLE_PILLAR,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.TENTACLE_PILLAR,
-                fn = gotoswitch({'tentacle_pillar', 'tentacle_pillar_hole'})
+                fn = gotoswitch('tentacle_pillar', 'tentacle_pillar_hole')
             },
             {
                 beta = false,
                 pos = 'cave',
                 name = STRINGS.NAMES.ATRIUM_GATE,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.ATRIUM_GATE,
-                fn = gotoswitch({'atrium_gate'})
+                fn = gotoswitch('atrium_gate')
             },
             {
                 beta = false,
                 pos = 'cave',
                 name = STRINGS.NAMES.ANCIENT_ALTAR,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.ANCIENT_ALTAR,
-                fn = gotoswitch({'ancient_altar', 'ancient_altar_broken'})
+                fn = gotoswitch('ancient_altar', 'ancient_altar_broken')
             },
             {
                 beta = false,
                 pos = 'cave',
                 name = STRINGS.NAMES.HUTCH_FISHBOWL,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.HUTCH_FISHBOWL,
-                fn = gotoswitch({'hutch_fishbowl'})
+                fn = gotoswitch('hutch_fishbowl')
             },
             {
                 beta = false,
                 pos = 'cave',
                 name = STRINGS.NAMES.MINOTAUR,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.MINOTAUR,
-                fn = gotoswitch({'minotaur', 'minotaurchest'})
+                fn = gotoswitch('minotaur', 'minotaurchest')
             },
             {
                 beta = false,
                 pos = 'cave',
                 name = STRINGS.NAMES.TOADSTOOL,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.TOADSTOOL,
-                fn = gotoswitch({'toadstool_cap'})
+                fn = gotoswitch('toadstool_cap')
             },
             {
                 beta = false,
                 pos = 'cave',
                 name = STRINGS.NAMES.RABBITHOUSE,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.RABBITHOUSE,
-                fn = gotoswitch({'rabbithouse'})
+                fn = gotoswitch('rabbithouse')
             },
             {
                 beta = false,
                 pos = 'cave',
                 name = STRINGS.NAMES.MONKEYBARREL,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.MONKEYBARREL,
-                fn = gotoswitch({'monkeybarrel'})
+                fn = gotoswitch('monkeybarrel')
             },
             {
                 beta = false,
                 pos = 'cave',
                 name = STRINGS.NAMES.ROCKY,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP .. STRINGS.NAMES.ROCKY,
-                fn = gotoswitch({'rocky'})
+                fn = gotoswitch('rocky')
             },
             {
                 beta = false,
@@ -1097,7 +1073,7 @@ return {
                 _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
                 '").components.talker:Say("' ..
                 STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-                '") end local t = player.components.talker if t ~= nil then t:Say(STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIPTEXT) end'
+                '") end local t = player.components.talker if t ~= nil then t:Say("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIPTEXT..'") end'
             }
         }
     }
