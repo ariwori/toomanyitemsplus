@@ -7,9 +7,7 @@ local TMI_menubar = require "widgets/TMI_menubar"
 local PopupDialogScreen = require "screens/redux/popupdialog"
 local WriteableWidget = require "screens/TMI_writeablewidget"
 
-require "../utils"
---功能字符串，如果被操作者不存在，或者和操作者不在同一个世界，则由操作者调用Say语句
-IsPlayerExist = 'local player = %s if player == nil then UserToPlayer("' .. _G.TOOMANYITEMS.DATA.ThePlayerUserId .. '").components.talker:Say("' .. STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP .. '") end '
+require "utils"
 
 local function MakeMainButton(parent, buttons, name, tip, fn, atlas, image, pos)
     buttons[name] = parent:AddChild(ImageButton(atlas, image, image, image))
@@ -672,6 +670,7 @@ function TooManyItems:DebugMenu()
     )
     self:SetPointer()
     -- 当前起作用的玩家信息
+
     self.settingbutton = self.debugshield:AddChild(TextButton())
     self.settingbutton:SetFont(self.font)
     self.settingbutton:SetTextSize(self.fontsize)

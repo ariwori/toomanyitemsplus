@@ -1,5 +1,3 @@
-require "../utils"
-
 local function GetDomesticateStr(tendencytype, saddle)
     local str1 =
         'local player = %s if player == nil then UserToPlayer("' ..
@@ -14,9 +12,9 @@ local function GetDomesticateStr(tendencytype, saddle)
 end
 
 function gotoswitch(point1, point2)
-	point1 = point1 or ""
-	point2 = point2 or ""
-	return 'local player = %s if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target = c_findnext("'..point1..'") if target == nil then target = c_findnext("'..point2..'") end tmi_goto(target) end'
+    point1 = point1 or ""
+    point2 = point2 or ""
+    return 'local player = %s if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target = c_findnext("' .. point1 .. '") if target == nil then target = c_findnext("' .. point2 .. '") end tmi_goto(target) end'
 end
 
 local world_id = TheWorld.meta.session_identifier or 'world'
@@ -1069,11 +1067,7 @@ return {
                 pos = 'all',
                 name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORT,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIP,
-                fn = 'local player = %s if player == nil then UserToPlayer("' ..
-                _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-                '").components.talker:Say("' ..
-                STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-                '") end local t = player.components.talker if t ~= nil then t:Say("'..STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIPTEXT..'") end'
+                fn = IsPlayerExist .. 'ThePlayer.components.talker:Say("' .. STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIPTEXT .. '")'
             }
         }
     }

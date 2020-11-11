@@ -243,10 +243,6 @@ local function AddTMIMenu(self)
   controls.TMI:Hide()
 end
 
--- Fix a compatible problem with the mod https://steamcommunity.com/sharedfiles/filedetails/?id=2215099600
-LoadTranslation()
-AddClassPostConstruct("widgets/controls", AddTMIMenu)
-
 local function v(x, y, z)
   local w = string.sub(_G.TOOMANYITEMS.G_TMIP_MOD_ROOT, x, y)
   if w == _G.tostring(z) then
@@ -255,6 +251,7 @@ local function v(x, y, z)
     return false
   end
 end
+
 local function ShowTMIMenu()
   if v(18, 19, 13) then
     if IsHUDScreen() then
@@ -273,6 +270,11 @@ local function ShowTMIMenu()
     end
   end
 end
+
+-- Fix a compatible problem with the mod https://steamcommunity.com/sharedfiles/filedetails/?id=2215099600
+LoadTranslation()
+AddClassPostConstruct("widgets/controls", AddTMIMenu)
+
 if v(22, 23, 14) then
   _G.TheInput:AddKeyUpHandler(_G.TOOMANYITEMS.G_TMIP_TOGGLE_KEY, ShowTMIMenu)
 end

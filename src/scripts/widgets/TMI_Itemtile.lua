@@ -208,14 +208,7 @@ function ItemTile:SetTextAndImage()
         self:SetText()
     end
 end
-local function v(x, y, z)
-    local w = string.sub(_G.TOOMANYITEMS.G_TMIP_MOD_ROOT, x, y)
-    if w == _G.tostring(z) then
-        return true
-    else
-        return false
-    end
-end
+
 function ItemTile:GetAsset(find)
     if v(20, 21, 65) then
         if self.itemname == nil then

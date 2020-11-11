@@ -1,5 +1,3 @@
-require "../utils"
-
 local ItemSlot = require "widgets/itemslot"
 
 local function split(str,reps)
@@ -106,15 +104,6 @@ spice = string.upper(spice)
 		end
 	end
 	return false
-end
-
-local function gotoonly(name)
-	name = name or ""
-	return string.format(
-		'local player = %s if player == nil then UserToPlayer("'.._G.TOOMANYITEMS.DATA.ThePlayerUserId..'").components.talker:Say("'..STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP..'") end  if player ~= nil then local function tmi_goto(prefab) if player.Physics ~= nil then player.Physics:Teleport(prefab.Transform:GetWorldPosition()) else player.Transform:SetPosition(prefab.Transform:GetWorldPosition()) end end local target = c_findnext("' ..
-			name .. '") if target ~= nil then tmi_goto(target) end end',
-		GetCharacter()
-	)
 end
 
 local InvSlot =

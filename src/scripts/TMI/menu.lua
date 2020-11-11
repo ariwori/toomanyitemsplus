@@ -1,22 +1,5 @@
---功能字符串，如果被操作者不存在，或者和操作者不在同一个世界，则由操作者调用Say语句
-IsPlayerExist =
-  'local player = %s if player == nil then UserToPlayer("' ..
-  _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-    '").components.talker:Say("' .. STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP .. '") end '
-
 local ImageButton = require "widgets/imagebutton"
 local PopupDialogScreen = require "screens/redux/popupdialog"
-
-require "../utils"
-
-local function v(x, y, z)
-  local w = string.sub(_G.TOOMANYITEMS.G_TMIP_MOD_ROOT, x, y)
-  if w == _G.tostring(z) then
-    return true
-  else
-    return false
-  end
-end
 
 local function HungerSet()
   local hv = 1
