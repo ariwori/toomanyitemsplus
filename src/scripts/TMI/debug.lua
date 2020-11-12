@@ -1067,7 +1067,7 @@ return {
                 pos = 'all',
                 name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORT,
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIP,
-                fn = IsPlayerExist .. 'ThePlayer.components.talker:Say("' .. STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIPTEXT .. '")'
+                fn = 'ThePlayer.components.talker:Say("' .. STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIPTEXT .. '")'
             }
         }
     }

@@ -1,6 +1,8 @@
 local ImageButton = require "widgets/imagebutton"
 local PopupDialogScreen = require "screens/redux/popupdialog"
 
+local IsPlayerExist = 'local player = %s if player == nil then ThePlayer.components.talker:Say("' .. STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP .. '") return end '
+
 local function HungerSet()
   local hv = 1
   local ctrlks = TheInput:IsKeyDown(KEY_CTRL)
