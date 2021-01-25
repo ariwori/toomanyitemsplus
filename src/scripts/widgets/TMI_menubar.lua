@@ -136,9 +136,9 @@ function TMI_Menubar:InitSidebar()
 			fn = self:GetSideButtonFn("ruins"),
 		},
 		{
-			show = STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_YULIUA,
-			tip = STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPYULIUA,
-			fn = self:GetSideButtonFn("rot"),
+			show = STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_FARMING,
+			tip = STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPFARMING,
+			fn = self:GetSideButtonFn("farming"),
 		},
 		{
 			show = STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_EVENT,

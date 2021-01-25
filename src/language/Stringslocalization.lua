@@ -5,7 +5,7 @@ STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPINVENTORYTIP =
   "Are you sure empty the player's inventory? This operation is irreversible.\nEmpty inventory and backpack by hold Ctrl Key and clik:"..STRINGS.UI.TRADESCREEN.ACCEPT
 STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACKTIP =
   "Are you sure empty the player's backpack? This operation is irreversible.\nEmpty inventory and backpack by hold Ctrl Key and clik:"..STRINGS.UI.TRADESCREEN.ACCEPT
-  
+
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_STOPVOTE = "Stop vote"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_STOPVOTETIP = "Stop vote"
 
@@ -244,8 +244,8 @@ STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPGIFT = "Gifts, trinkets, candy, snacks and 
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_RUINS = "[Ru]"
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPRUINS = "Ancient ruins"
 
-STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_YULIUA = "[Yu]"
-STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPYULIUA = "reserved"
+STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_FARMING = "[FA]"
+STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPFARMING = "Farming: farmland crops, utensils, etc."
 
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_EVENT = "[Ev]"
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPEVENT = "Event related, classified only, used with caution."

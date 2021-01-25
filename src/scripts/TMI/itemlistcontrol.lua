@@ -11,6 +11,7 @@ local Listload = {
 	["cooking"] = true,
 	["props"] = true,
 	["clothes"] = true,
+	["farming"] = true,
 --以下分类为不可放入物品栏和背包的项目，默认false，为便于“全部”分类中搜索和使用，故改成true
 	["puppet"] = true,
 	["plant"] = true,
@@ -25,7 +26,6 @@ local Listload = {
 	["ruins"] = true,
 --事件相关项目无法刷出来或者可能导致崩溃
 	["event"] = false,
-	["rot"] = false
 }
 
 local deleteprefabs = {
@@ -109,7 +109,7 @@ function ItemListControl:Init()
 	for _, v in pairs(Prefabs) do
 		if v.assets and self:CanAddOthers(v.name) then
 			table.insert(self.list["others"], v.name)
-			--print(v.name)	
+			--print(v.name)
 		end
 	end
 
