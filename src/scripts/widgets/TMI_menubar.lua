@@ -420,7 +420,7 @@ function TMI_Menubar:InitSearchScreen()
 		fontsize = self.search_fontsize,
 		size = {self.searchtext_limitwidth, self.search_fontsize},
 		isediting = true,
-		pos = Vector3(self.owner.shieldpos_x - self.owner.shieldsize_x * .5 + self.searchtext_limitwidth * .5 + self.sidebar_width * 3 -17, self.owner.shieldsize_y * .5 + 15, 0),
+		pos = Vector3(self.owner.shieldpos_x - self.owner.shieldsize_x * .5 + self.searchtext_limitwidth * .5 + self.sidebar_width * 3 + 4, self.owner.shieldsize_y * .5 + 17, 0),
 		acceptfn = SearchScreenAccept,
 		closefn = SearchScreenClose,
 		activefn = SearchScreenActive,

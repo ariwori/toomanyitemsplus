@@ -68,6 +68,7 @@ configuration_options = {
 			{description = "20", data = 20},
 			{description = "25", data = 25},
 			{description = "30", data = 30},
+			{description = "99", data = 99},
 		},
 		default = 10,
 	},

@@ -347,20 +347,49 @@ return {
             }
         }
     },
+	{
+		tittle = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_DELETE_TEXT,
+		list = {
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_DELETE_SINGLE,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_DELETE_SINGLETIP,
+				fn = 'local player = %s local function InInv(b) local inv = b.components.inventoryitem return inv and inv.owner and true or false end local function CanDelete(inst) if inst and inst ~= TheWorld and not InInv(inst) and inst.Transform then if inst:HasTag("player") then if inst.userid == nil or inst.userid == "" then return true end else return true end end return false end if player and player.Transform then if player.components.burnable then player.components.burnable:Extinguish(true) end local x,y,z = player.Transform:GetWorldPosition() local ents = TheSim:FindEntities(x,y,z, 1) for _, obj in pairs(ents) do if CanDelete(obj) then if obj.components then if obj.components.burnable then obj.components.burnable:Extinguish(true) end if obj.components.firefx then if obj.components.firefx.extinguishsoundtest then obj.components.firefx.extinguishsoundtest = function() return true end end obj.components.firefx:Extinguish() end end if (not (obj.prefab == "minerhatlight" or "lanternlight" or "yellowamuletlight" or "slurperlight" or "redlanternlight" or "lighterfire" or "torchfire" or "torchfire_rag" or "torchfire_spooky" or "torchfire_shadow")) or (obj.entity:GetParent() == nil) then obj:Remove() end end end end',
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_DELETE_SUPER_SMALL,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_DELETE_SUPERSMALLTIP,
+				fn = 'local player = %s local function InInv(b) local inv = b.components.inventoryitem return inv and inv.owner and true or false end local function CanDelete(inst) if inst and inst ~= TheWorld and not InInv(inst) and inst.Transform then if inst:HasTag("player") then if inst.userid == nil or inst.userid == "" then return true end else return true end end return false end if player and player.Transform then if player.components.burnable then player.components.burnable:Extinguish(true) end local x,y,z = player.Transform:GetWorldPosition() local ents = TheSim:FindEntities(x,y,z, 2) for _, obj in pairs(ents) do if CanDelete(obj) then if obj.components then if obj.components.burnable then obj.components.burnable:Extinguish(true) end if obj.components.firefx then if obj.components.firefx.extinguishsoundtest then obj.components.firefx.extinguishsoundtest = function() return true end end obj.components.firefx:Extinguish() end end if (not (obj.prefab == "minerhatlight" or "lanternlight" or "yellowamuletlight" or "slurperlight" or "redlanternlight" or "lighterfire" or "torchfire" or "torchfire_rag" or "torchfire_spooky" or "torchfire_shadow")) or (obj.entity:GetParent() == nil) then obj:Remove() end end end end',
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_DELETE_SMALL,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_DELETE_SMALLTIP,
+				fn = 'local player = %s local function InInv(b) local inv = b.components.inventoryitem return inv and inv.owner and true or false end local function CanDelete(inst) if inst and inst ~= TheWorld and not InInv(inst) and inst.Transform then if inst:HasTag("player") then if inst.userid == nil or inst.userid == "" then return true end else return true end end return false end if player and player.Transform then if player.components.burnable then player.components.burnable:Extinguish(true) end local x,y,z = player.Transform:GetWorldPosition() local ents = TheSim:FindEntities(x,y,z, 5) for _, obj in pairs(ents) do if CanDelete(obj) then if obj.components then if obj.components.burnable then obj.components.burnable:Extinguish(true) end if obj.components.firefx then if obj.components.firefx.extinguishsoundtest then obj.components.firefx.extinguishsoundtest = function() return true end end obj.components.firefx:Extinguish() end end if (not (obj.prefab == "minerhatlight" or "lanternlight" or "yellowamuletlight" or "slurperlight" or "redlanternlight" or "lighterfire" or "torchfire" or "torchfire_rag" or "torchfire_spooky" or "torchfire_shadow")) or (obj.entity:GetParent() == nil) then obj:Remove() end end end end',
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_DELETE_BIG,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_DELETE_BIGTIP,
+				fn = 'local player = %s local function InInv(b) local inv = b.components.inventoryitem return inv and inv.owner and true or false end local function CanDelete(inst) if inst and inst ~= TheWorld and not InInv(inst) and inst.Transform then if inst:HasTag("player") then if inst.userid == nil or inst.userid == "" then return true end else return true end end return false end if player and player.Transform then if player.components.burnable then player.components.burnable:Extinguish(true) end local x,y,z = player.Transform:GetWorldPosition() local ents = TheSim:FindEntities(x,y,z, 30) for _, obj in pairs(ents) do if CanDelete(obj) then if obj.components then if obj.components.burnable then obj.components.burnable:Extinguish(true) end if obj.components.firefx then if obj.components.firefx.extinguishsoundtest then obj.components.firefx.extinguishsoundtest = function() return true end end obj.components.firefx:Extinguish() end end if (not (obj.prefab == "minerhatlight" or "lanternlight" or "yellowamuletlight" or "slurperlight" or "redlanternlight" or "lighterfire" or "torchfire" or "torchfire_rag" or "torchfire_spooky" or "torchfire_shadow")) or (obj.entity:GetParent() == nil) then obj:Remove() end end end end',
+			},
+			{
+				beta = false,
+				pos = "all",
+				name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_DELETE_SUPERBIG,
+				tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_DELETE_SUPERBIGTIP,
+				fn = 'local player = %s local function InInv(b) local inv = b.components.inventoryitem return inv and inv.owner and true or false end local function CanDelete(inst) if inst and inst ~= TheWorld and not InInv(inst) and inst.Transform then if inst:HasTag("player") then if inst.userid == nil or inst.userid == "" then return true end else return true end end return false end if player and player.Transform then if player.components.burnable then player.components.burnable:Extinguish(true) end local x,y,z = player.Transform:GetWorldPosition() local ents = TheSim:FindEntities(x,y,z, 100) for _, obj in pairs(ents) do if CanDelete(obj) then if obj.components then if obj.components.burnable then obj.components.burnable:Extinguish(true) end if obj.components.firefx then if obj.components.firefx.extinguishsoundtest then obj.components.firefx.extinguishsoundtest = function() return true end end obj.components.firefx:Extinguish() end end if (not (obj.prefab == "minerhatlight" or "lanternlight" or "yellowamuletlight" or "slurperlight" or "redlanternlight" or "lighterfire" or "torchfire" or "torchfire_rag" or "torchfire_spooky" or "torchfire_shadow")) or (obj.entity:GetParent() == nil) then obj:Remove() end end end end',
+			}
+		}
+	},
     {
         tittle = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_ENTITY_TEXT,
         list = {
-            {
-                beta = false,
-                pos = 'all',
-                name = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_ENTITY_DELETE,
-                tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_ENTITY_DELETETIP,
-                fn = 'local player = %s if player == nil then UserToPlayer("' ..
-                _G.TOOMANYITEMS.DATA.ThePlayerUserId ..
-                '").components.talker:Say("' ..
-                STRINGS.TOO_MANY_ITEMS_UI.PLAYER_NOT_ON_SLAVE_TIP ..
-                '") end local function InInv(b) local inv = b.components.inventoryitem return inv and inv.owner and true or false end local function CanDelete(inst) if inst and inst ~= TheWorld and not InInv(inst) and inst.Transform then if inst:HasTag("player") then if inst.userid == nil or inst.userid == "" then return true end else return true end end return false end if player and player.Transform then if player.components.burnable then player.components.burnable:Extinguish(true) end local x,y,z = player.Transform:GetWorldPosition() local ents = TheSim:FindEntities(x,y,z, 3) for _, obj in pairs(ents) do if CanDelete(obj) then if obj.components then if obj.components.burnable then obj.components.burnable:Extinguish(true) end if obj.components.firefx then if obj.components.firefx.extinguishsoundtest then obj.components.firefx.extinguishsoundtest = function() return true end end obj.components.firefx:Extinguish() end end if (not (obj.prefab == "minerhatlight" or "lanternlight" or "yellowamuletlight" or "slurperlight" or "redlanternlight" or "lighterfire" or "torchfire" or "torchfire_rag" or "torchfire_spooky" or "torchfire_shadow")) or (obj.entity:GetParent() == nil) then obj:Remove() print(obj.prefab) end end end end'
-            },
             {
                 beta = false,
                 pos = 'all',
