@@ -15,6 +15,8 @@ return {
 	"knight_nightmare",
 	"bishop_nightmare",
 	"rook_nightmare",
+--远古生物
+	"archive_centipede",
 --蜘蛛
 	"spider",
 	"spider_warrior",
@@ -92,7 +94,10 @@ return {
 	"moonbutterfly",
 	"mosquito",
 	"fireflies",
+	"dustmoth",
+	"lightflier",
 --异化生物
+	"mushgnome",
 	"grassgekko",
 	"carrat_planted",
 	"carrat",
@@ -130,6 +135,7 @@ return {
 	"lavae",
 	"mossling",
 	"beeguard",
+	"fruitfly",
 	"stalker_minion",
 	"stalker_minion1",
 	"stalker_minion2",

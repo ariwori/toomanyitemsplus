@@ -1,3 +1,7 @@
+--如果您擅长将简体中文翻译为其他语言，请使用此模板进行翻译。
+--本语言文件将随版本更新而做出改动，请保持您所翻译后的语言及时跟进。
+--简体中文版本：20210212
+
 STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER_TIP = "选择下一个玩家!"
 STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER = "切换玩家"
 

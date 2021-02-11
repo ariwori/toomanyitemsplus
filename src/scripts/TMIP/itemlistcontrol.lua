@@ -11,6 +11,7 @@ local Listload = {
 	["cooking"] = true,
 	["props"] = true,
 	["clothes"] = true,
+	["farming"] = true,
 --以下分类为不可放入物品栏和背包的项目，默认false，为便于“全部”分类中搜索和使用，故改成true
 	["puppet"] = true,
 	["plant"] = true,
@@ -25,7 +26,6 @@ local Listload = {
 	["ruins"] = true,
 --事件相关项目无法刷出来或者可能导致崩溃
 	["event"] = false,
-	["rot"] = false
 }
 
 local deleteprefabs = {
@@ -72,13 +72,13 @@ local ItemListControl = Class(function(self)
 
 function ItemListControl:Init()
 	if self.beta then
-		self.betalistpatch = require "TMI/list/itemlist_beta"
+		self.betalistpatch = require "TMIP/list/itemlist_beta"
 	end
 
 	local n = 1
 	self.list["all"] = {}
 	for k,v in pairs(Listload) do
-		local path = "TMI/list/itemlist_"..k
+		local path = "TMIP/list/itemlist_"..k
 		self.list[k] = require(path)
 		if self.betalistpatch and self.betalistpatch[k] and #self.betalistpatch[k] > 0 then
 			self.list[k] = MergeItemList(self.list[k], self.betalistpatch[k])

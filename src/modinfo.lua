@@ -1,5 +1,5 @@
 name = "Too Many Items Plus"
-version = "1.0.8.7"
+version = "1.0.9.0"
 description = name .." Version: "..version..
 [[
 
@@ -116,6 +116,21 @@ configuration_options = {
 			{description = "30", data = 30},
 		},
 		default = 24,
+	},
+	{
+		name = "GOP_TMIP_LANGUAGE",
+		label = "Select language for TMIP",
+		hover = "If you select 'Auto', it will follow your platform language, otherwise please select manually.",
+		options =
+		{
+			{description = "Auto", data = 0},
+			{description = "English", data = 1},
+			{description = "sChinese", data = 2},
+			{description = "tChinese X", data = 3},
+			{description = "русский X", data = 4},
+			{description = "português-Brasil X", data = 5},
+		},
+		default = 0,
 	},
 	{
 		name = "GOP_TMIP_DEBUG_FONT_SIZE",

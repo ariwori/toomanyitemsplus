@@ -26,6 +26,7 @@ return {
 	"leif_sparse",
 	"deciduoustree",
 --怪物首领
+	"lordfruitfly",
 	"spiderqueen",
 	"warg",
 	"claywarg",

@@ -32,6 +32,10 @@ return {
 	"mermhat",
 	"bushhat",
 	"spiderhat",
+--特殊
+	"batnosehat",
+	"plantregistryhat",
+	"nutrientsgoggleshat",
 --避雨保暖
 	"trunkvest_summer",
 	"raincoat",

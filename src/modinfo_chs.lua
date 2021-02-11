@@ -1,5 +1,5 @@
 name = "Too Many Items Plus"
-version = "1.0.8.7"
+version = "1.0.9.0"
 description = name .." 当前版本： "..version..
 [[
 
@@ -99,6 +99,21 @@ configuration_options = {
 			{description = "50", data = 50},
 		},
 		default = 10,
+	},
+	{
+		name = "GOP_TMIP_LANGUAGE",
+		label = "选择TMIP的语言",
+		hover = "如果您选择'自动'，它将跟随您的平台语言，否则请手动选择。",
+		options =
+		{
+			{description = "Auto(自动)", data = 0},
+			{description = "English(英语)", data = 1},
+			{description = "sChinese(简体中文)", data = 2},
+			{description = "tChinese(繁体中文 暂无翻译)", data = 3},
+			{description = "русский(俄语 暂不可用)", data = 4},
+			{description = "português-Brasil(葡萄牙语-巴西 暂不可用)", data = 5},
+		},
+		default = 0,
 	},
 	{
 		name = "GOP_TMIP_CATEGORY_FONT_SIZE",

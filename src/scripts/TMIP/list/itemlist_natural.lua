@@ -63,4 +63,10 @@ return {
 	"moon_fissure",
 --堵住的裂隙
 	"moon_fissure_plugged",
+--月玻璃
+"grotto_pool_small",
+"grotto_pool_big",
+"grotto_moonglass_1",
+"grotto_moonglass_3",
+"grotto_moonglass_4",
 }

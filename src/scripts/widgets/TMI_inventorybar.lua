@@ -1,22 +1,22 @@
 local Widget = require "widgets/widget"
-local ItemListControl = require "TMI/itemlistcontrol"
+local ItemListControl = require "TMIP/itemlistcontrol"
 local TMI_InvSlot = require "widgets/TMI_Invslot"
 local TMI_ItemTile = require "widgets/TMI_Itemtile"
 
-local HUD_ATLAS = "images/hud.xml"
-local NUM_COLUMS = 7
-local MAX_ROWS = 8
+local HUD_ATLAS = "images/hud.xml" --贴图资源
+local NUM_COLUMS = 8 --横向格子数量
+local MAX_ROWS = 8 --纵向格子数量
 local MAXSLOTS = NUM_COLUMS * MAX_ROWS
 
 local TMI_Inventory = Class(Widget, function(self, fn)
 		Widget._ctor(self, "TMI_Inventory")
-		self.base_scale = .6
-		self.selected_scale = .8
+		self.base_scale = .6 --格子缩放比例
+		self.selected_scale = .8 --选中格子的缩放比例？暂时无用
 		self.buildfn = fn
 		self.size = 76
 		self:SetScale(self.base_scale)
 		--默认-85, 185, 0 self:SetPosition(-85, 185, 0)
-		self:SetPosition(-105, 185, 0)
+		self:SetPosition(-130, 190, 0) --横向位置和纵向位置
 		self.listcontrol = ItemListControl()
 		self.slots = self:AddChild(Widget("SLOTS"))
 	end)
@@ -52,14 +52,20 @@ function TMI_Inventory:Build()
 	if limit > num_slots then limit = num_slots end
 	local positions = 0
 	for k = 1 + (self.currentpage - 1) * MAXSLOTS, limit do
+
+	if list[k] == "\121\115\104" then
+		--print("留空占位，便于分类")
+	else
 		local slot = TMI_InvSlot(self, HUD_ATLAS, "inv_slot.tex", list[k])
-		self.inv[k] = self.slots:AddChild(slot)
-		slot:SetTile(TMI_ItemTile(list[k]))
 		local remainder = positions % NUM_COLUMS
 		local row = math.floor(positions / NUM_COLUMS) * self.size
 		local x = self.size * remainder
+		self.inv[k] = self.slots:AddChild(slot)
+		slot:SetTile(TMI_ItemTile(list[k]))
 		slot:SetPosition(x,-row,0)
-		positions = positions + 1
+	end
+	positions = positions + 1
+		
 	end
 
 	if self.buildfn ~= nil then

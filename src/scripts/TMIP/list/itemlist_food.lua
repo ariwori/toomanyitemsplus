@@ -84,6 +84,8 @@ return {
 	"green_cap_cooked",
 	"blue_cap",
 	"blue_cap_cooked",
+	"moon_cap",
+	"moon_cap_cooked",
 	"cactus_meat",
 	"cactus_meat_cooked",
 	"cactus_flower",
@@ -91,6 +93,10 @@ return {
 	"rock_avocado_fruit_ripe",
 	"rock_avocado_fruit_ripe_cooked",
 	"mandrake",
+--农作物杂草
+	"tillweed",
+	"forgetmelots",
+	"firenettles",
 --水果农作物
 	"dragonfruit",
 	"dragonfruit_cooked",
@@ -136,6 +142,8 @@ return {
 	"plantmeat_cooked",
 	"batwing",
 	"batwing_cooked",
+	"batnose",
+	"batnose_cooked",
 	"humanmeat",
 	"humanmeat_cooked",
 	"humanmeat_dried",

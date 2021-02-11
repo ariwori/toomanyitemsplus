@@ -80,6 +80,20 @@ local function TemperatureSet()
   OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_TEMPERATURE)
 end
 
+local function InspirationSet()
+  local hv = 1
+  local ctrlks = TheInput:IsKeyDown(KEY_CTRL)
+  if ctrlks then
+    hv = 0
+  end
+  local fnstr =
+    'local i = player.components.singinginspiration if player and not player:HasTag("playerghost") and i then i:SetPercent(' ..
+    hv .. ") end"
+  SendCommand(string.format(IsPlayerExist .. fnstr, GetCharacter()))
+  OperateAnnnounce(STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH)
+end
+
+
 local function GodMode()
   local refrom = STRINGS.TOO_MANY_ITEMS_UI.TMIP_CONSOLE
   local gmt = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GODMODE .. ":"
@@ -112,6 +126,14 @@ local function OneHitKillMode()
     okmtoff ..
       '") c.CalcDamage = c.OldCalcDamage c.OldCalcDamage = nil else p.components.talker:Say("' ..
         okmton .. '") c.OldCalcDamage = c.CalcDamage c.CalcDamage = function(...) return 9999999999*9 end end end'
+  SendCommand(string.format(IsPlayerExist .. fnstr, GetCharacter()))
+end
+
+local function InvisibleMode()
+  local imt = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_INVISIBLEMODE .. ":"
+  local imtoff = imt .. STRINGS.UI.MODSSCREEN.STATUS.DISABLED_MANUAL
+  local imton = imt .. STRINGS.UI.MODSSCREEN.STATUS.WORKING_NORMALLY
+  local fnstr ='local p = player local t = p.components.talker if p and t and p:HasTag("debugnoattack") then p:RemoveTag("debugnoattack") t:Say("'..imtoff..'") else p:AddTag("debugnoattack") t:Say("'..imton..'") end'
   SendCommand(string.format(IsPlayerExist .. fnstr, GetCharacter()))
 end
 
@@ -231,56 +253,67 @@ local Menu =
     local function ShowAbigailMenu()
       self.owner.owner:ShowAbigailMenu()
     end
+	
+    local function ShowWormwoodMenu()
+      self.owner.owner:ShowWormwoodMenu()
+    end
 
     self.menu = {
       --第一行
+      ["inspirationmenu"] = {
+        tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SUBMENU_INSPIRATION,
+        fn = InspirationSet,
+        atlas = "images/customicobyysh.xml",
+        image = "tmipbutton_inspiration.tex",
+        pos = {pos[1], pos_y1}
+      },
       ["hunger"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HUNGER,
         fn = HungerSet,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_hunger.tex",
-        pos = {pos[1], pos_y1}
+        pos = {pos[2], pos_y1}
       },
       ["sanity"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SANITY,
         fn = SanitySet,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_sanity.tex",
-        pos = {pos[2], pos_y1}
+        pos = {pos[3], pos_y1}
       },
       ["health"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTH,
         fn = HealthSet,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_health.tex",
-        pos = {pos[3], pos_y1}
+        pos = {pos[4], pos_y1}
       },
       ["lockhealth"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_HEALTHLOCK .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
         fn = HealthLock,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_health_lock.tex",
-        pos = {pos[4], pos_y1}
+        pos = {pos[5], pos_y1}
       },
       ["moisture"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_WET,
         fn = MoistureSet,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_wet.tex",
-        pos = {pos[5], pos_y1}
+        pos = {pos[6], pos_y1}
       },
       ["temperature"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_TEMPERATURE,
         fn = TemperatureSet,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_temperature.tex",
-        pos = {pos[6], pos_y1}
+        pos = {pos[7], pos_y1}
       },
-      ["cancel"] = {
-        tip = STRINGS.UI.OPTIONS.CLOSE,
-        fn = Close,
+      ["removebackpack"] = {
+        tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACK,
+        fn = RemoveBackpack,
         atlas = "images/customicobyysh.xml",
-        image = "tmipbutton_close.tex",
+        image = "tmipbutton_empbackpack.tex",
         pos = {pos[8], pos_y1}
       },
       ["prevbutton"] = {
@@ -292,7 +325,7 @@ local Menu =
         image = "tmipbutton_left.tex",
         pos = {pos[9], pos_y1}
       },
-      ["nextbutton"] = {
+	["nextbutton"] = {
         tip = STRINGS.UI.HELP.NEXTPAGE,
         fn = function()
           self.owner.inventory:Scroll(1)
@@ -301,62 +334,76 @@ local Menu =
         image = "tmipbutton_right.tex",
         pos = {pos[10], pos_y1}
       },
+	["cancel"] = {
+        tip = STRINGS.UI.OPTIONS.CLOSE,
+        fn = Close,
+        atlas = "images/customicobyysh.xml",
+        image = "tmipbutton_close.tex",
+        pos = {pos[11], pos_y1}
+      },
       --第二行
+      ["wormwoodmenu"] = {
+        tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SUBMENU_WORMWOOD,
+        fn = ShowWormwoodMenu,
+        atlas = "images/customicobyysh.xml",
+        image = "tmipbutton_wormwood.tex",
+        pos = {pos[1], pos_y2}
+      },
       ["woodiemenu"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SUBMENU_WOODIEMENU,
         fn = ShowWoodieMenu,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_woodie.tex",
-        pos = {pos[1], pos_y2}
+        pos = {pos[2], pos_y2}
       },
       ["abigailmenu"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_SUBMENU_ABIGAIL,
         fn = ShowAbigailMenu,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_abigail.tex",
-        pos = {pos[2], pos_y2}
+        pos = {pos[3], pos_y2}
       },
       ["creativemode"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_CREATIVEMODE .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
         fn = CreativeMode,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_creativemode.tex",
-        pos = {pos[3], pos_y2}
+        pos = {pos[4], pos_y2}
       },
       ["godmode"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_GODMODE .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
         fn = GodMode,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_godmode.tex",
-        pos = {pos[4], pos_y2}
+        pos = {pos[5], pos_y2}
       },
       ["onehitkillmode"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONEHITKILLMODE .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
         fn = OneHitKillMode,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_onehitkillmode.tex",
-        pos = {pos[5], pos_y2}
+        pos = {pos[6], pos_y2}
+      },
+      ["nohatemode"] = {
+        tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_INVISIBLEMODE .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
+        fn = InvisibleMode,
+        atlas = "images/customicobyysh.xml",
+        image = "tmipbutton_invisiblemode.tex",
+        pos = {pos[7], pos_y2}
       },
       ["removeinventory"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPINVENTORY,
         fn = RemoveInventory,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_empinventory.tex",
-        pos = {pos[6], pos_y2}
-      },
-      ["removebackpack"] = {
-        tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACK,
-        fn = RemoveBackpack,
-        atlas = "images/customicobyysh.xml",
-        image = "tmipbutton_empbackpack.tex",
-        pos = {pos[7], pos_y2}
+        pos = {pos[8], pos_y2}
       },
       ["debug"] = {
         tip = STRINGS.TOO_MANY_ITEMS_UI.BUTTON_DEBUGMENU .. STRINGS.TOO_MANY_ITEMS_UI.BUTTON_ONOROFF,
         fn = ShowDebugMenu,
         atlas = "images/customicobyysh.xml",
         image = "tmipbutton_debugmod.tex",
-        pos = {pos[8], pos_y2}
+        pos = {pos[9], pos_y2}
       }
     }
 

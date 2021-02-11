@@ -38,6 +38,8 @@ return {
 	"cutstone",
 	"marblebean",
 	"thulecite",
+	"dustmeringue",
+	"refined_dust",
 --生物材料 羽毛
 	"feather_robin_winter",
 	"feather_robin",
