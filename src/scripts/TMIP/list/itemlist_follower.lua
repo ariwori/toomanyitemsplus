@@ -14,6 +14,7 @@ return {
 	"hutch",
 	"glommer",
 	"lavae_pet",
+	"friendlyfruitfly",
 --召唤物
 	"abigail",
 	"shadowduelist",

@@ -4,6 +4,11 @@ return {
 	"atrium_light_back",
 	"insanityrock",
 --建筑
+	"archive_security_desk",
+	"archive_orchestrina_main",
+	"archive_portal",
+	"archive_cookpot",
+	"archive_lockbox_dispencer",
 	"atrium_gate",
 	"atrium_idol",
 	"atrium_overgrowth",
@@ -12,6 +17,7 @@ return {
 	"atrium_statue",
 	"atrium_statue_facing",
 	"nightmarelight",
+	"nightmaregrowth",
 	"minotaurchest",
 	"pandoraschest",
 	"sacred_chest",
@@ -36,4 +42,7 @@ return {
 	"chessjunk3",
 --生成点
 	"chessjunk_spawner",
+--雕像
+	"archive_moon_statue",
+	"archive_rune_statue",
 }

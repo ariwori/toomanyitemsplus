@@ -710,6 +710,22 @@ return {
                     STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT .. STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTC,
                     STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP
                 }
+            },
+            {
+                beta = false,
+                pos = 'all',
+                name = _G.TOOMANYITEMS.UI_LANGUAGE == 'cn' and STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTB or 'YOTB',
+                tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT .. STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTB,
+                fn = {
+                    'confirm',
+                    'ApplySpecialEvent("year_of_the_carrat") TheWorld.topology.overrides.specialevent = "year_of_the_carrat" c_save() c_announce("' ..
+                    STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP ..
+                    STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT ..
+                    STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTB ..
+                    '") TheWorld:DoTaskInTime(5, function() if TheWorld ~= nil and TheWorld.ismastersim then TheNet:SendWorldRollbackRequestToServer(0) end end)',
+                    STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT .. STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTB,
+                    STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TEXTCHANGESTIP
+                }
             }
         }
     },

@@ -72,13 +72,13 @@ local ItemListControl = Class(function(self)
 
 function ItemListControl:Init()
 	if self.beta then
-		self.betalistpatch = require "TMI/list/itemlist_beta"
+		self.betalistpatch = require "TMIP/list/itemlist_beta"
 	end
 
 	local n = 1
 	self.list["all"] = {}
 	for k,v in pairs(Listload) do
-		local path = "TMI/list/itemlist_"..k
+		local path = "TMIP/list/itemlist_"..k
 		self.list[k] = require(path)
 		if self.betalistpatch and self.betalistpatch[k] and #self.betalistpatch[k] > 0 then
 			self.list[k] = MergeItemList(self.list[k], self.betalistpatch[k])

@@ -13,6 +13,9 @@ return {
 	"nightsword",
 	"glasscutter",
 	"nightstick",
+	"ysh",
+	"ysh",
+	"ysh",
 	"boomerang",
 	"blowdart_pipe",
 	"blowdart_yellow",
@@ -21,6 +24,7 @@ return {
 	"staff_tornado",
 --投掷武器
 	"waterplant_bomb",
+	"ysh",
 --弹弓	
 	"slingshot",
 --弹药
@@ -50,6 +54,13 @@ return {
 	"armorsnurtleshell",
 	"armordragonfly",
 	"armorskeleton",
+	"ysh",
+	"ysh",
+	"ysh",
+	"ysh",
+	"ysh",
+	"ysh",
+	"ysh",
 --背包
 	"backpack",
 	"piggyback",
@@ -57,4 +68,5 @@ return {
 	"spicepack",
 	"icepack",
 	"candybag",
+	"seedpouch",
 }

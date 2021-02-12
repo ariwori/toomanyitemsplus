@@ -34,6 +34,10 @@ return {
 	"slurtlehole",
 --蝙蝠洞
 	"batcave",
+--尘蛾洞
+	"dustmothden",
+--猪鼻蝙蝠窝
+	"molebathill",
 --高鸟巢
 	"tallbirdnest",
 --蜂巢
