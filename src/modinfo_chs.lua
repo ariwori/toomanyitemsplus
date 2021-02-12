@@ -46,6 +46,21 @@ configuration_options = {
 		default = 116, --T
 	},
 	{
+		name = "GOP_TMIP_LANGUAGE",
+		label = "Select language for TMIP",
+		hover = "If you select 'Auto', it will follow your platform language, otherwise please select manually.",
+		options =
+		{
+			{description = "Auto", data = ""},
+			{description = "English", data = "en"},
+			{description = "简体中文", data = "chs"},
+			{description = "繁體中文", data = "cht"},
+			{description = "русский X", data = "ru"},
+			{description = "português-Brasil X", data = "bu"},
+		},
+		default = "",
+	},
+	{
 		name = "GOP_TMIP_L_CLICK_NUM",
 		label = "左击",
 		hover = "鼠标左键获得的物品数量.",

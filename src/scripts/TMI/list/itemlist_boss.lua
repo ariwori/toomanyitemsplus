@@ -1,0 +1,1 @@
+return{"moose","antlion","bearger","deerclops","dragonfly","malbatross","beequeen","klaus","crabking","toadstool","toadstool_dark","minotaur","stalker","stalker_forest","stalker_atrium","shadow_knight","shadow_rook","shadow_bishop","leif","leif_sparse","deciduoustree","spiderqueen","warg","claywarg","gingerbreadwarg","spat"}

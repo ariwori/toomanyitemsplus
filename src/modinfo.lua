@@ -123,14 +123,14 @@ configuration_options = {
 		hover = "If you select 'Auto', it will follow your platform language, otherwise please select manually.",
 		options =
 		{
-			{description = "Auto", data = 0},
-			{description = "English", data = 1},
-			{description = "sChinese", data = 2},
-			{description = "tChinese X", data = 3},
-			{description = "русский X", data = 4},
-			{description = "português-Brasil X", data = 5},
+			{description = "Auto", data = ""},
+			{description = "English", data = "en"},
+			{description = "简体中文", data = "chs"},
+			{description = "繁體中文", data = "cht"},
+			{description = "русский X", data = "ru"},
+			{description = "português-Brasil X", data = "bu"},
 		},
-		default = 0,
+		default = "",
 	},
 	{
 		name = "GOP_TMIP_DEBUG_FONT_SIZE",
