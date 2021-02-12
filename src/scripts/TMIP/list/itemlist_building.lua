@@ -32,6 +32,10 @@ return {
 	"slow_farmplot",
 	"fast_farmplot",
 	"mushroom_farm",
+--农具
+	"farm_plow",
+	"trophyscale_oversizedveggies",
+	"compostingbin",
 --蜂箱
 	"beebox",
 --晒肉
@@ -106,12 +110,18 @@ return {
 --祭坛
 	"ancient_altar_broken",
 	"ancient_altar",
+	"turfcraftingstation",
 	"moon_altar",
 	"moon_altar_cosmic",
+	"moon_altar_astral",
+	"moon_altar_icon",
+	"moon_altar_ward",
+	"archive_resonator",
 	"perdshrine",
 	"wargshrine",
 	"pigshrine",
 	"yotc_carratshrine",
+	"yotb_beefaloshrine",
 --萝卜鼠
 	"yotc_carrat_scale",
 	"yotc_carrat_gym_speed",
@@ -121,6 +131,11 @@ return {
 	"yotc_carrat_race_start",
 	"yotc_carrat_race_checkpoint",
 	"yotc_carrat_race_finish",
+--皮弗娄牛
+	"yotb_post",
+	"yotb_sewingmachine",
+	"yotb_stage",
+	"beefalo_groomer",
 --装饰
 	"endtable",
 	"succulent_potted",

@@ -14,6 +14,7 @@ return {
 	"lifeinjector",
 	"reviver",
 	"compostwrap",
+	"tillweedsalve",
 --药水
 	"halloweenpotion_bravery_small",
 	"halloweenpotion_bravery_large",
@@ -46,6 +47,9 @@ return {
 	"hermit_cracked_pearl",
 	"messagebottle",
 	"messagebottleempty",
+--远古用品
+	"archive_lockbox",
+	"archive_resonator_item",
 --贝壳钟
 	"singingshell_octave3",
 	"singingshell_octave4",
@@ -54,6 +58,7 @@ return {
 	"abigail_flower",
 	"bernie_inactive",
 	"lavae_tooth",
+	"fruitflyfruit",
 	"chester_eyebone",
 	"hutch_fishbowl",
 	"glommerflower",
@@ -61,6 +66,7 @@ return {
 	"houndwhistle",
 	"onemanband",
 	"pig_coin",
+	"beef_bell",
 --暴动检测
 	"nightmare_timepiece",
 	"atrium_key",
@@ -68,13 +74,23 @@ return {
 --人物专属
 	"balloons_empty",
 	"wortox_soul",
+	"battlesong_durability",
+	"battlesong_healthgain",
+	"battlesong_sanitygain",
+	"battlesong_sanityaura",
+	"battlesong_fireresistance",
+	"battlesong_instant_taunt",
+	"battlesong_instant_panic",
 --书
 	"book_birds",
 	"book_brimstone",
 	"book_gardening",
+	"book_horticulture",
+	"book_silviculture",
 	"book_sleep",
 	"book_tentacles",
 	"waxwelljournal",
+	"cookbook",
 --雕像草图
 	"chesspiece_moosegoose_sketch",
 	"chesspiece_dragonfly_sketch",
@@ -85,6 +101,7 @@ return {
 	"chesspiece_antlion_sketch",
 	"chesspiece_beequeen_sketch",
 	"chesspiece_klaus_sketch",
+	"chesspiece_minotaur_sketch",
 	"chesspiece_stalker_sketch",
 	"chesspiece_toadstool_sketch",	
 	"chesspiece_knight_sketch",
@@ -99,6 +116,7 @@ return {
 	"chesspiece_claywarg_sketch",
 	"chesspiece_clayhound_sketch",
 	"chesspiece_carrat_sketch",
+	"chesspiece_beefalo_sketch",
 	
 --渔具图纸
 	"oceanfishinglure_hermit_drowsy_tacklesketch",
@@ -113,4 +131,22 @@ return {
 	"oceanfishingbobber_canary_tacklesketch",
 	"oceanfishingbobber_goose_tacklesketch",
 	"oceanfishingbobber_malbatross_tacklesketch",
+--萝卜鼠
+"yotc_carrat_scale_item",
+"yotc_carrat_gym_speed_item",
+"yotc_carrat_gym_reaction_item",
+"yotc_carrat_gym_stamina_item",
+"yotc_carrat_gym_direction_item",
+"yotc_carrat_race_start_item",
+"yotc_carrat_race_checkpoint_item",
+"yotc_carrat_race_finish_item",
+--皮弗娄牛
+"yotb_pattern_fragment_1",
+"yotb_pattern_fragment_2",
+"yotb_pattern_fragment_3",
+"yotb_post_item",
+"yotb_sewingmachine_item",
+"yotb_stage_item",
+"beefalo_groomer_item",
+
 }

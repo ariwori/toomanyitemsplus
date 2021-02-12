@@ -5,7 +5,7 @@ local Widget = require "widgets/widget"
 
 local SearchScreen = require "screens/TMI_searchscreen"
 local TMI_inventorybar = require "widgets/TMI_inventorybar"
-local TMI_Menu = require "TMI/menu"
+local TMI_Menu = require "TMIP/menu"
 
 local function GetPrettyStr(str)
 	return string.lower(TrimString(str))
@@ -60,6 +60,7 @@ function TMI_Menubar:InitMenu()
 		left + spacing * 7,
 		left + spacing * 8,
 		left + spacing * 9,
+		left + spacing * 10,
 	}
 
 	self.TMI_Menu = TMI_Menu(self, pos)
@@ -68,7 +69,7 @@ function TMI_Menubar:InitMenu()
 	self.pagetext:SetString("1 / 2")
 	-- self.pagetext:SetTooltip("Current Page/Max Pages")
 	self.pagetext:SetColour(1,1,1,0.6)
-	self.pagetext:SetPosition(mid + 135, -220, 0)
+	self.pagetext:SetPosition(mid + 155, -220, 0)
 end
 
 function TMI_Menubar:InitSidebar()

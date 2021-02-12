@@ -29,6 +29,8 @@ return {
 	"turf_pebblebeach",
 	"turf_meteor",
 	"turf_shellbeach",
+	"turf_fungus_moon",
+	"turf_archive",
 --人造地皮
 	"turf_road",
 	"turf_woodfloor",
