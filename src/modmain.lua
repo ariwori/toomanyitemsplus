@@ -25,7 +25,7 @@ _G.TOOMANYITEMS = {
     TELEPORT_DATA = {},
     LIST = {},
     UI_LANGUAGE = "en",
-    G_TMIP_LANG = GetModConfigData("GOP_TMIP_LANGUAGE"),
+    G_TMIP_LANGUAGE = GetModConfigData("GOP_TMIP_LANGUAGE"),
     G_TMIP_TOGGLE_KEY = GetModConfigData("GOP_TMIP_TOGGLE_KEY"),
     G_TMIP_L_CLICK_NUM = GetModConfigData("GOP_TMIP_L_CLICK_NUM"),
     G_TMIP_R_CLICK_NUM = GetModConfigData("GOP_TMIP_R_CLICK_NUM"),
@@ -138,18 +138,18 @@ local support_languages = {
 }
 --加载字符串文件
 local function LoadTranslation()
-    local uselang = _G.TOOMANYITEMS.G_TMIP_LANG
+    local uselang = _G.TOOMANYITEMS.G_TMIP_LANGUAGE
     -- print('平台' .. _G.PLATFORM .. "  " .. uselang)
     -- print("语言" .. _G.TheNet:GetLanguageCode())
     --默认载入一次英文，避免译文缺失报错
     modimport("language/Stringslocalization_en.lua")
     --WeGame载入简体中文
-    local lang_str = ""
+    local lang_str = "en"
     if _G.PLATFORM == "WIN32_RAIL" then
         lang_str = "chs"
         _G.TOOMANYITEMS.UI_LANGUAGE = "cn"
     else
-        if uselang == "" then
+        if uselang == nil or uselang == "auto" or uselang == "" then
             local steamlang = _G.TheNet:GetLanguageCode() or nil
             if steamlang and steam_support_languages[steamlang] then
                 print("[TooManyItemsPlus] Get your language from steam!")

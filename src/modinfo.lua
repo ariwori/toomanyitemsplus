@@ -1,5 +1,5 @@
 name = "Too Many Items Plus"
-version = "1.0.9.0"
+version = "1.0.9.1"
 description = name .." Version: "..version..
 [[
 
@@ -123,14 +123,14 @@ configuration_options = {
 		hover = "If you select 'Auto', it will follow your platform language, otherwise please select manually.",
 		options =
 		{
-			{description = "Auto", data = ""},
+			{description = "Auto", data = "auto"},
 			{description = "English", data = "en"},
 			{description = "简体中文", data = "chs"},
 			{description = "繁體中文", data = "cht"},
 			{description = "русский X", data = "ru"},
 			{description = "português-Brasil X", data = "bu"},
 		},
-		default = "",
+		default = "auto",
 	},
 	{
 		name = "GOP_TMIP_DEBUG_FONT_SIZE",
