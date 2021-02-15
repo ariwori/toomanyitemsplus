@@ -1,5 +1,5 @@
 name = "Too Many Items Plus"
-version = "1.0.8.9"
+version = "1.0.9.2"
 description = name .." 当前版本： "..version..
 [[
 
@@ -56,7 +56,7 @@ configuration_options = {
 			{description = "简体中文", data = "chs"},
 			{description = "繁體中文", data = "cht"},
 			{description = "русский X", data = "ru"},
-			{description = "português-Brasil X", data = "bu"},
+			{description = "português-Brasil X", data = "br"},
 		},
 		default = "auto",
 	},
