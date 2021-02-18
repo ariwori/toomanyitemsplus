@@ -1,6 +1,5 @@
---If you are good at translating English into other languages, use this template to translate.
---This language file will be changed as the version is updated, please keep your translated language timely follow up.
---English version: 20210212
+--英语 版本：20210218
+--English Version: 20210218
 
 STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER_TIP = "Swicth to next player!"
 STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER = "Swicth"
@@ -9,7 +8,7 @@ STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPINVENTORYTIP =
   "Are you sure empty the player's inventory? This operation is irreversible.\nEmpty inventory and backpack by hold Ctrl Key and clik:"..STRINGS.UI.TRADESCREEN.ACCEPT
 STRINGS.TOO_MANY_ITEMS_UI.BUTTON_EMPTYBACKPACKTIP =
   "Are you sure empty the player's backpack? This operation is irreversible.\nEmpty inventory and backpack by hold Ctrl Key and clik:"..STRINGS.UI.TRADESCREEN.ACCEPT
-  
+
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_STOPVOTE = "Stop vote"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_STOPVOTETIP = "Stop vote"
 
@@ -174,7 +173,7 @@ STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TEXT = "Teleport:"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_GOTO_TELEPORTTIP = "Teleport to: "
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORT = "..Teleport to other items"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIP = "Click to view"
-STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIPTEXT = "← Use Ctrl+Alt+Right-click in the items menu can teleport item you want\nIf the item is on the map"
+STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SUPERGOTO_TELEPORTTIPTEXT = "← Use Ctrl+Alt+Right-click in the items menu can teleport item you want If the item is on the map"
 
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TELEPORT_LOAD_TEXT = "Teleport Load/Save:"
 STRINGS.TOO_MANY_ITEMS_UI.DEBUG_TELEPORT_SAVE_TEXT = "Teleport Load/Save:"
@@ -254,8 +253,8 @@ STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPGIFT = "Gifts, trinkets, candy, snacks and 
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_RUINS = "[Ru]"
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPRUINS = "Ancient ruins"
 
-STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_FARMING = "[FA]"
-STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPFARMING = "Farming: farmland crops, utensils, etc."
+STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_FARMING = "[Yu]"
+STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPFARMING = "Yu"
 
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_EVENT = "[Ev]"
 STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPEVENT = "Event related, classified only, used with caution."

@@ -16,25 +16,25 @@ Assets = {
 }
 --初始化选项设置
 _G.TOOMANYITEMS = {
-  DATA_FILE = "mod_config_data/toomanyitemsplus_data_save",
-  TELEPORT_DATA_FILE = "mod_config_data/",
-  CHARACTER_USERID = "",
-  TELEPORT_TEMP_TABLE = {},
-  TELEPORT_TEMP_INDEX = 1,
-  DATA = {},
-  TELEPORT_DATA = {},
-  LIST = {},
-  UI_LANGUAGE = "en",
-  G_TMIP_LANG = GetModConfigData("GOP_TMIP_LANGUAGE"),
-  G_TMIP_TOGGLE_KEY = GetModConfigData("GOP_TMIP_TOGGLE_KEY"),
-  G_TMIP_L_CLICK_NUM = GetModConfigData("GOP_TMIP_L_CLICK_NUM"),
-  G_TMIP_R_CLICK_NUM = GetModConfigData("GOP_TMIP_R_CLICK_NUM"),
-  G_TMIP_DATA_SAVE = GetModConfigData("GOP_TMIP_DATA_SAVE"),
-  G_TMIP_SEARCH_HISTORY_NUM = GetModConfigData("GOP_TMIP_SEARCH_HISTORY_NUM"),
-  G_TMIP_CATEGORY_FONT_SIZE = GetModConfigData("GOP_TMIP_CATEGORY_FONT_SIZE"),
-  G_TMIP_DEBUG_FONT_SIZE = GetModConfigData("GOP_TMIP_DEBUG_FONT_SIZE"),
-  G_TMIP_DEBUG_MENU_SIZE = GetModConfigData("GOP_TMIP_DEBUG_MENU_SIZE"),
-  G_TMIP_MOD_ROOT = MODROOT
+    DATA_FILE = "mod_config_data/toomanyitemsplus_data_save",
+    TELEPORT_DATA_FILE = "mod_config_data/",
+    CHARACTER_USERID = "",
+    TELEPORT_TEMP_TABLE = {},
+    TELEPORT_TEMP_INDEX = 1,
+    DATA = {},
+    TELEPORT_DATA = {},
+    LIST = {},
+    UI_LANGUAGE = "en",
+    G_TMIP_LANGUAGE = GetModConfigData("GOP_TMIP_LANGUAGE"),
+    G_TMIP_TOGGLE_KEY = GetModConfigData("GOP_TMIP_TOGGLE_KEY"),
+    G_TMIP_L_CLICK_NUM = GetModConfigData("GOP_TMIP_L_CLICK_NUM"),
+    G_TMIP_R_CLICK_NUM = GetModConfigData("GOP_TMIP_R_CLICK_NUM"),
+    G_TMIP_DATA_SAVE = GetModConfigData("GOP_TMIP_DATA_SAVE"),
+    G_TMIP_SEARCH_HISTORY_NUM = GetModConfigData("GOP_TMIP_SEARCH_HISTORY_NUM"),
+    G_TMIP_CATEGORY_FONT_SIZE = GetModConfigData("GOP_TMIP_CATEGORY_FONT_SIZE"),
+    G_TMIP_DEBUG_FONT_SIZE = GetModConfigData("GOP_TMIP_DEBUG_FONT_SIZE"),
+    G_TMIP_DEBUG_MENU_SIZE = GetModConfigData("GOP_TMIP_DEBUG_MENU_SIZE"),
+    G_TMIP_MOD_ROOT = MODROOT
 }
 --读取数据文件
 if _G.TOOMANYITEMS.G_TMIP_DATA_SAVE == -1 then
@@ -81,42 +81,42 @@ end
 STRINGS = _G.STRINGS
 STRINGS.TOO_MANY_ITEMS_UI = {}
 
---语言部分重写，目前语种不多，暂时就这样写了。
+local steam_support_languages = {
+	english = "en",
+	schinese = "chs",
+	tchinese = "cht",
+	russian = "ru",
+	brazilian = "br",
+	portuguese = "br",
+}
+	
 local function LoadTranslation()
-	local uselang = _G.TOOMANYITEMS.G_TMIP_LANG
-	if uselang == 0 then
-		local dstplatform = _G.PLATFORM
-		local steamlang = _G.TheNet:GetLanguageCode()
+	local tmiplang = _G.TOOMANYITEMS.G_TMIP_LANGUAGE
+	local steamlang = _G.TheNet:GetLanguageCode()
+	local dstplatform = _G.PLATFORM
+	local uselang = "en"
+	print("The Language of TMIP:"..tmiplang)
+	modimport("language/Stringslocalization_en.lua")
+	if tmiplang == "auto" then
 		if dstplatform == "WIN32_RAIL" then
-			_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
-			modimport("language/Stringslocalization_chs.lua")
+			uselang = "chs"
 		else
-			if steamlang == "schinese" or steamlang == "tchinese" then
-				_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
-				modimport("language/Stringslocalization_chs.lua")
-			elseif steamlang == "russian" then
-				modimport("language/Stringslocalization_ru.lua")
-			elseif steamlang == "brazilian" or steamlang == "portuguese"  then
-				modimport("language/Stringslocalization_br.lua")
+			if steamlang and steam_support_languages[steamlang] then
+				uselang = steam_support_languages[steamlang]
 			else
-				modimport("language/Stringslocalization.lua")
+				uselang = "en"
 			end
 		end
-	elseif uselang == 1 then
-		modimport("language/Stringslocalization.lua")
-	elseif uselang == 2 then
-		_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
-		modimport("language/Stringslocalization_chs.lua")
-	elseif uselang == 3 then
-		_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
-		modimport("language/Stringslocalization_chs.lua")
-	elseif uselang == 4 then
-		modimport("language/Stringslocalization.lua")
-	elseif uselang == 5 then
-		modimport("language/Stringslocalization.lua")
+	elseif tmiplang then
+		uselang = tmiplang
 	else
-		modimport("language/Stringslocalization.lua")
+		uselang = "en"
 	end
+	if uselang == "chs" or uselang == "cht" then
+		_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
+	end
+	print("LoadData Language for TMIP:"..uselang)
+	modimport("language/Stringslocalization_"..uselang..".lua")
 end
 
 

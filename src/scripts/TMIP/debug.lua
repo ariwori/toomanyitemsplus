@@ -10,7 +10,6 @@ local function GetDomesticateStr(tendencytype, saddle)
     local str3 = "')) beef.Transform:SetPosition(x,y,z)"
     return str1 .. tendencytype .. str2 .. saddle .. str3
 end
-
 function gotoswitch(point1, point2)
     point1 = point1 or ""
     point2 = point2 or ""
@@ -718,7 +717,7 @@ return {
                 tip = STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT .. STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTB,
                 fn = {
                     'confirm',
-                    'ApplySpecialEvent("year_of_the_carrat") TheWorld.topology.overrides.specialevent = "year_of_the_carrat" c_save() c_announce("' ..
+                    'ApplySpecialEvent("year_of_the_beefalo") TheWorld.topology.overrides.specialevent = "year_of_the_beefalo" c_save() c_announce("' ..
                     STRINGS.TOO_MANY_ITEMS_UI.DEBUG_SERVER_RESETTIP ..
                     STRINGS.TOO_MANY_ITEMS_UI.DEBUG_EVENT_TIPTEXT ..
                     STRINGS.UI.SANDBOXMENU.SPECIAL_EVENTS.YOTB ..

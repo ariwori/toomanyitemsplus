@@ -1,5 +1,5 @@
 name = "Too Many Items Plus"
-version = "1.0.9.0"
+version = "1.0.9.3"
 description = name .." 当前版本： "..version..
 [[
 
@@ -106,14 +106,14 @@ configuration_options = {
 		hover = "如果您选择'自动'，它将跟随您的平台语言，否则请手动选择。",
 		options =
 		{
-			{description = "Auto(自动)", data = 0},
-			{description = "English(英语)", data = 1},
-			{description = "sChinese(简体中文)", data = 2},
-			{description = "tChinese(繁体中文 暂无翻译)", data = 3},
-			{description = "русский(俄语 暂不可用)", data = 4},
-			{description = "português-Brasil(葡萄牙语-巴西 暂不可用)", data = 5},
+			{description = "自动", data = "auto"},
+			{description = "英语", data = "en"},
+			{description = "简体中文", data = "chs"},
+			{description = "繁体中文", data = "cht"},
+			{description = "俄语", data = "ru"},
+			{description = "葡萄牙语-巴西", data = "br",
 		},
-		default = 0,
+		default = "auto",
 	},
 	{
 		name = "GOP_TMIP_CATEGORY_FONT_SIZE",
