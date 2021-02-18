@@ -174,6 +174,9 @@ local function LoadTranslation()
             lang_str = uselang
         end
     end
+    if type(tonumber(lang_str)) == "number" then
+        lang_str = "en"
+    end
     modimport("language/Stringslocalization_" .. lang_str .. ".lua")
 end
 
