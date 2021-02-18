@@ -1,6 +1,7 @@
 return {
 --对部分无规律的项目代码重新赋值命名，以匹配官方现有的贴图
 	prefablist = {
+	["fruitfly"] = "friendlyfruitfly",
 	["shadowdigger"] = "shadowdigger_builder",
 	["shadowduelist"] = "shadowduelist_builder",
 	["shadowlumber"] = "shadowlumber_builder",

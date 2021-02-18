@@ -1,6 +1,6 @@
 --If you are good at translating English into other languages, use this template to translate.
 --This language file will be changed as the version is updated, please keep your translated language timely follow up.
---English version: 20210212
+--English version: 20210218
 
 STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER_TIP = "Swicth to next player!"
 STRINGS.TOO_MANY_ITEMS_UI.NEXT_PLAYER = "Swicth"

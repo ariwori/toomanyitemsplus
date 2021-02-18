@@ -81,49 +81,50 @@ end
 STRINGS = _G.STRINGS
 STRINGS.TOO_MANY_ITEMS_UI = {}
 
---语言部分重写，目前语种不多，暂时就这样写了。
--- local function LoadTranslation()
--- 	local uselang = _G.TOOMANYITEMS.G_TMIP_LANG
--- 	if uselang == 0 then
--- 		local dstplatform = _G.PLATFORM
--- 		local steamlang = _G.TheNet:GetLanguageCode()
--- 		if dstplatform == "WIN32_RAIL" then
--- 			_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
--- 			modimport("language/Stringslocalization_chs.lua")
--- 		else
--- 			if steamlang == "schinese" or steamlang == "tchinese" then
--- 				_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
--- 				modimport("language/Stringslocalization_chs.lua")
--- 			elseif steamlang == "russian" then
--- 				modimport("language/Stringslocalization_ru.lua")
--- 			elseif steamlang == "brazilian" or steamlang == "portuguese"  then
--- 				modimport("language/Stringslocalization_br.lua")
--- 			else
--- 				modimport("language/Stringslocalization.lua")
--- 			end
--- 		end
--- 	elseif uselang == 1 then
--- 		modimport("language/Stringslocalization.lua")
--- 	elseif uselang == 2 then
--- 		_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
--- 		modimport("language/Stringslocalization_chs.lua")
--- 	elseif uselang == 3 then
--- 		_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
--- 		modimport("language/Stringslocalization_chs.lua")
--- 	elseif uselang == 4 then
--- 		modimport("language/Stringslocalization.lua")
--- 	elseif uselang == 5 then
--- 		modimport("language/Stringslocalization.lua")
--- 	else
--- 		modimport("language/Stringslocalization.lua")
--- 	end
--- end
 local steam_support_languages = {
-    schinese = "chs",
-    tchinese = "cht",
-    russian = "ru",
-    brazilian = "br",
-    english = "en"
+	english = "en",
+	schinese = "chs",
+	tchinese = "cht",
+	russian = "ru",
+	brazilian = "br",
+	portuguese = "br",
+}
+
+local function LoadTranslation()
+	local tmiplang = _G.TOOMANYITEMS.G_TMIP_LANGUAGE
+	local steamlang = _G.TheNet:GetLanguageCode()
+	local dstplatform = _G.PLATFORM
+	local uselang = "en"
+	print("The Language of TMIP:"..tmiplang)
+	modimport("language/Stringslocalization_en.lua")
+	if tmiplang == "auto" then
+		if dstplatform == "WIN32_RAIL" then
+			uselang = "chs"
+		else
+			if steamlang and steam_support_languages[steamlang] then
+				uselang = steam_support_languages[steamlang]
+			else
+				uselang = "en"
+			end
+		end
+	elseif tmiplang then
+		uselang = tmiplang
+	else
+		uselang = "en"
+	end
+	if uselang == "chs" or uselang == "cht" then
+		_G.TOOMANYITEMS.UI_LANGUAGE = "cn"
+	end
+	print("LoadData Language for TMIP:"..uselang)
+	modimport("language/Stringslocalization_"..uselang..".lua")
+end
+
+
+--[[local steam_support_languages = {
+	schinese = "chs",
+	tchinese = "cht",
+	russian = "ru",
+	brazilian = "br"
 }
 
 local support_languages = {
@@ -178,7 +179,7 @@ local function LoadTranslation()
         lang_str = "en"
     end
     modimport("language/Stringslocalization_" .. lang_str .. ".lua")
-end
+end]]
 
 local function DataInit()
     if _G.TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
