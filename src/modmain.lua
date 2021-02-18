@@ -282,7 +282,7 @@ local function AddTMIMenu(self)
     controls = self
     DataInit()
     --   LoadTranslation()
-    local TMI = _G.require "widgets/TooManyItems"
+    local TMI = _G.require "widgets/TooManyItemsPlus"
     if controls and controls.containerroot then
         controls.TMI = controls.containerroot:AddChild(TMI())
     else

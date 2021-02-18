@@ -1,15 +1,15 @@
 local Widget = require "widgets/widget"
 local ItemListControl = require "TMIP/itemlistcontrol"
-local TMI_InvSlot = require "widgets/TMI_Invslot"
-local TMI_ItemTile = require "widgets/TMI_Itemtile"
+local TMIP_InvSlot = require "widgets/TMIP_Invslot"
+local TMIP_ItemTile = require "widgets/TMIP_Itemtile"
 
 local HUD_ATLAS = "images/hud.xml" --贴图资源
 local NUM_COLUMS = 8 --横向格子数量
 local MAX_ROWS = 8 --纵向格子数量
 local MAXSLOTS = NUM_COLUMS * MAX_ROWS
 
-local TMI_Inventory = Class(Widget, function(self, fn)
-		Widget._ctor(self, "TMI_Inventory")
+local TMIP_Inventory = Class(Widget, function(self, fn)
+		Widget._ctor(self, "TMIP_Inventory")
 		self.base_scale = .6 --格子缩放比例
 		self.selected_scale = .8 --选中格子的缩放比例？暂时无用
 		self.buildfn = fn
@@ -21,7 +21,7 @@ local TMI_Inventory = Class(Widget, function(self, fn)
 		self.slots = self:AddChild(Widget("SLOTS"))
 	end)
 
-function TMI_Inventory:Build()
+function TMIP_Inventory:Build()
 	self.build_pending = true
 
 	self.slots:KillAllChildren()
@@ -56,16 +56,16 @@ function TMI_Inventory:Build()
 	if list[k] == "\121\115\104" then
 		--print("留空占位，便于分类")
 	else
-		local slot = TMI_InvSlot(self, HUD_ATLAS, "inv_slot.tex", list[k])
+		local slot = TMIP_InvSlot(self, HUD_ATLAS, "inv_slot.tex", list[k])
 		local remainder = positions % NUM_COLUMS
 		local row = math.floor(positions / NUM_COLUMS) * self.size
 		local x = self.size * remainder
 		self.inv[k] = self.slots:AddChild(slot)
-		slot:SetTile(TMI_ItemTile(list[k]))
+		slot:SetTile(TMIP_ItemTile(list[k]))
 		slot:SetPosition(x,-row,0)
 	end
 	positions = positions + 1
-		
+
 	end
 
 	if self.buildfn ~= nil then
@@ -75,13 +75,13 @@ function TMI_Inventory:Build()
 	self.build_pending = false
 end
 
-function TMI_Inventory:TryBuild()
+function TMIP_Inventory:TryBuild()
 	if not self.build_pending then
 		self:Build()
 	end
 end
 
-function TMI_Inventory:Scroll(dir)
+function TMIP_Inventory:Scroll(dir)
 
 	local tempcurrentpage = self.currentpage
 
@@ -98,4 +98,4 @@ function TMI_Inventory:Scroll(dir)
 	end
 end
 
-return TMI_Inventory
+return TMIP_Inventory

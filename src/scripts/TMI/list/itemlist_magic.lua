@@ -1,1 +1,0 @@
-return{"redgem","orangegem","yellowgem","greengem","bluegem","purplegem","opalpreciousgem","firestaff","orangestaff","yellowstaff","greenstaff","icestaff","telestaff","opalstaff","redmooneye","orangemooneye","yellowmooneye","greenmooneye","bluemooneye","purplemooneye","moonrockcrater","amulet","orangeamulet","yellowamulet","greenamulet","blueamulet","purpleamulet"}

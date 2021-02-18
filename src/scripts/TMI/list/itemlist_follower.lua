@@ -1,1 +1,0 @@
-return{"critter_kitten","critter_puppy","critter_lamb","critter_perdling","critter_dragonling","critter_glomling","critter_lunarmothling","wobysmall","wobybig","chester","hutch","glommer","lavae_pet","abigail","shadowduelist","shadowminer","shadowlumber","shadowdigger"}

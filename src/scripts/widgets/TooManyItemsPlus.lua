@@ -3,9 +3,9 @@ local Text = require "widgets/text"
 local TextButton = require "widgets/textbutton"
 local Widget = require "widgets/widget"
 local ImageButton = _G.require "widgets/imagebutton"
-local TMI_menubar = require "widgets/TMI_menubar"
+local TMIP_menubar = require "widgets/TMIP_menubar"
 local PopupDialogScreen = require "screens/redux/popupdialog"
-local WriteableWidget = require "screens/TMI_writeablewidget"
+local WriteableWidget = require "screens/TMIP_writeablewidget"
 
 require "utils"
 
@@ -252,7 +252,7 @@ local TooManyItems =
                 self.settingshield:Hide()
             end
 
-            self.menu = self.shield:AddChild(TMI_menubar(self))
+            self.menu = self.shield:AddChild(TMIP_menubar(self))
         end
 )
 function TooManyItems:Close()

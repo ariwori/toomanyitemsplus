@@ -3,44 +3,44 @@ local Text = require "widgets/text"
 local TextButton = require "widgets/textbutton"
 local Widget = require "widgets/widget"
 
-local SearchScreen = require "screens/TMI_searchscreen"
-local TMI_inventorybar = require "widgets/TMI_inventorybar"
-local TMI_Menu = require "TMIP/menu"
+local SearchScreen = require "screens/TMIP_searchscreen"
+local TMIP_inventorybar = require "widgets/TMIP_inventorybar"
+local TMIP_Menu = require "TMIP/menu"
 
 local function GetPrettyStr(str)
 	return string.lower(TrimString(str))
 end
 
-local TMI_Menubar = Class(Widget, function(self, owner)
-		Widget._ctor(self, "TMI_Menubar")
+local TMIP_Menubar = Class(Widget, function(self, owner)
+		Widget._ctor(self, "TMIP_Menubar")
 		self.owner = owner
 		self:Init()
 	end)
 
-function TMI_Menubar:Init()
+function TMIP_Menubar:Init()
 	self:InitSidebar()
 	self:InitSearch()
 	self:InitMenu()
 	local function SetPage(currentpage, maxpages)
 		self.pagetext:SetString(currentpage.." / "..maxpages)
 		if currentpage <= 1 then
-			self.TMI_Menu.mainbuttons["prevbutton"]:Hide()
+			self.TMIP_Menu.mainbuttons["prevbutton"]:Hide()
 		else
-			self.TMI_Menu.mainbuttons["prevbutton"]:Show()
+			self.TMIP_Menu.mainbuttons["prevbutton"]:Show()
 		end
 
 		if currentpage >= maxpages then
-			self.TMI_Menu.mainbuttons["nextbutton"]:Hide()
+			self.TMIP_Menu.mainbuttons["nextbutton"]:Hide()
 		else
-			self.TMI_Menu.mainbuttons["nextbutton"]:Show()
+			self.TMIP_Menu.mainbuttons["nextbutton"]:Show()
 		end
 	end
 
-	self.inventory = self:AddChild(TMI_inventorybar(SetPage))
+	self.inventory = self:AddChild(TMIP_inventorybar(SetPage))
 	self:LoadSearchData()
 end
 
-function TMI_Menubar:InitMenu()
+function TMIP_Menubar:InitMenu()
 	local fontsize = 36
 	if _G.TOOMANYITEMS.UI_LANGUAGE == "en" then
 		fontsize = fontsize * 0.85
@@ -63,7 +63,7 @@ function TMI_Menubar:InitMenu()
 		left + spacing * 10,
 	}
 
-	self.TMI_Menu = TMI_Menu(self, pos)
+	self.TMIP_Menu = TMIP_Menu(self, pos)
 
 	self.pagetext = self:AddChild(Text(NEWFONT_OUTLINE, fontsize))
 	self.pagetext:SetString("1 / 2")
@@ -72,7 +72,7 @@ function TMI_Menubar:InitMenu()
 	self.pagetext:SetPosition(mid + 155, -220, 0)
 end
 
-function TMI_Menubar:InitSidebar()
+function TMIP_Menubar:InitSidebar()
 	self.sidebar_width = 0
 	self.sidebarlists = {
 --第一列
@@ -264,7 +264,7 @@ function TMI_Menubar:InitSidebar()
 	MakeSidebar(self.sidebarlists)
 end
 
-function TMI_Menubar:GetSideButtonFn(name)
+function TMIP_Menubar:GetSideButtonFn(name)
 	return function()
 		TOOMANYITEMS.DATA.listinuse = name
 		TOOMANYITEMS.DATA.issearch = false
@@ -273,17 +273,17 @@ function TMI_Menubar:GetSideButtonFn(name)
 	end
 end
 
-function TMI_Menubar:ShowNormal()
+function TMIP_Menubar:ShowNormal()
 	self.inventory:TryBuild()
 end
 
-function TMI_Menubar:ShowSearch()
+function TMIP_Menubar:ShowSearch()
 	TOOMANYITEMS.DATA.issearch = true
 	self.inventory.currentpage = 1
 	self.inventory:TryBuild()
 end
 
-function TMI_Menubar:InitSearch()
+function TMIP_Menubar:InitSearch()
 	self.searchbar_width = self.owner.shieldsize_x - 75
 	self.search_fontsize = 26
 
@@ -324,7 +324,7 @@ function TMI_Menubar:InitSearch()
 	self:SearchTipSet()
 end
 
-function TMI_Menubar:SearchTipSet()
+function TMIP_Menubar:SearchTipSet()
 	if TOOMANYITEMS.DATA.search ~= "" then
 		self.searchtext:SetString(TOOMANYITEMS.DATA.search)
 		self.searchhelptip:SetColour(0.9,0.8,0.6,0)
@@ -345,7 +345,7 @@ function TMI_Menubar:SearchTipSet()
 
 end
 
-function TMI_Menubar:Search(str)
+function TMIP_Menubar:Search(str)
 	if str == TOOMANYITEMS.DATA.search then
 		self:ShowSearch()
 	else
@@ -374,7 +374,7 @@ function TMI_Menubar:Search(str)
 	self:SaveData()
 end
 
-function TMI_Menubar:InitSearchScreen()
+function TMIP_Menubar:InitSearchScreen()
 	local function SearchScreenActive()
 		self.searchhelptip:Hide()
 		self.searchtext:Hide()
@@ -429,7 +429,7 @@ function TMI_Menubar:InitSearchScreen()
 	}
 end
 
-function TMI_Menubar:SearchKeyWords()
+function TMIP_Menubar:SearchKeyWords()
 	if self.searchbar then
 		self.searchbar:KillAllChildren()
 		self.searchbar:Kill()
@@ -452,7 +452,7 @@ function TMI_Menubar:SearchKeyWords()
 	end
 end
 
-function TMI_Menubar:LoadSearchData()
+function TMIP_Menubar:LoadSearchData()
 	if TOOMANYITEMS.DATA.issearch then
 		self:Search(TOOMANYITEMS.DATA.search)
 	else
@@ -460,22 +460,22 @@ function TMI_Menubar:LoadSearchData()
 	end
 end
 
-function TMI_Menubar:SaveData()
+function TMIP_Menubar:SaveData()
 	if TOOMANYITEMS.G_TMIP_DATA_SAVE == 1 then
 		TOOMANYITEMS.SaveNormalData()
 	end
 end
 
-function TMI_Menubar:OnControl(control, down)
-	if TMI_Menubar._base.OnControl(self,control, down) then
+function TMIP_Menubar:OnControl(control, down)
+	if TMIP_Menubar._base.OnControl(self,control, down) then
 		return true
 	end
 
 	return true
 end
 
-function TMI_Menubar:OnRawKey(key, down)
-	if TMI_Menubar._base.OnRawKey(self, key, down) then return true end
+function TMIP_Menubar:OnRawKey(key, down)
+	if TMIP_Menubar._base.OnRawKey(self, key, down) then return true end
 end
 
-return TMI_Menubar
+return TMIP_Menubar
