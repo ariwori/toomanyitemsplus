@@ -210,7 +210,7 @@ function TMIP_Menubar:InitSidebar()
 		{
 			show = STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_YULIUB,
 			tip = STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_TIPYULIUB,
-			fn = self:GetSideButtonFn("custom"),
+			fn = self:GetSideButtonFn("mods"),
 		},
 		{
 			show = STRINGS.TOO_MANY_ITEMS_UI.SIDEBAR_OTHER,

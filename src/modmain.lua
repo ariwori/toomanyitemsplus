@@ -215,6 +215,7 @@ local function DataInit()
             _G.TOOMANYITEMS.DATA.searchhistory = history
         end
     end
+    _G.TOOMANYITEMS.DATA.moditems = {}
     if _G.TOOMANYITEMS.DATA.customitems == nil then
         _G.TOOMANYITEMS.DATA.customitems = {}
     end
