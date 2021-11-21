@@ -3,7 +3,7 @@ return {
         "minimap/minimap_data.xml",
         "images/inventoryimages1.xml",
         "images/inventoryimages2.xml",
-        "../mods/workshop-1365141672/images/customicobyysh.xml"
+        "images/customicobyysh.xml"
     },
     ["workshop-1095971442"] = {},
     ["workshop-1120124958"] = {},
@@ -27,12 +27,6 @@ return {
     ["workshop-1210706609"] = {},
     ["workshop-1353335438"] = {},
     ["workshop-1365139216"] = {},
-    ["workshop-1365141672"] = {
-        "../mods/workshop-1365141672/images/customicobyysh.xml",
-        "../mods/workshop-1365141672/images/helpcnbyysh.xml",
-        "../mods/workshop-1365141672/images/helpenbyysh.xml",
-        "../mods/workshop-1365141672/TooManyItemsPlus.xml"
-    },
     ["workshop-1366402374"] = {},
     ["workshop-1392778117"] = {
         "../mods/workshop-1392778117/images/cookbookimages/dish_bananamousse.xml",

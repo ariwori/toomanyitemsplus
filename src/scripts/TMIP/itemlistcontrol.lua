@@ -25,7 +25,7 @@ local Listload = {
     ["follower"] = true,
     ["ruins"] = true,
     --事件相关项目无法刷出来或者可能导致崩溃
-    ["event"] = false,
+    ["event"] = false
 }
 
 local deleteprefabs = {
@@ -47,7 +47,6 @@ local deleteprefabs = {
 }
 
 local modsitems = {}
-
 
 local NAMES_DEFAULTS = {
     MOON_ALTAR = "MOON_ALTAR"
@@ -78,32 +77,35 @@ function split(str, split_char)
         table.insert(sub_str_tab, sub_str)
         str = string.sub(str, pos + 1, string.len(str))
     end
-
     return sub_str_tab
 end
 
 local enabledmods = ModManager:GetEnabledModNames()
 for i, v in ipairs(enabledmods) do
     local mod = ModManager:GetMod(v)
-
-    for m, n in pairs(mod.Prefabs) do
-        local item = n.name
-        if not string.find(item, "_fx") and not string.find(item, "_placer") and not string.find(item, "_builder") and not string.find(item, "buff") then
-            -- modsitems = MergeItemList(modsitems, split(n, ' ')[1])
-            table.insert(modsitems, item)
-            _G.TOOMANYITEMS.MODSATLAS[item] = mod.modname
+    if mod.Prefabs then
+        for m, n in pairs(mod.Prefabs) do
+            local item = n.name
+            if
+                not string.find(item, "_fx") and not string.find(item, "_placer") and not string.find(item, "_builder") and
+                    not string.find(item, "buff")
+             then
+                -- modsitems = MergeItemList(modsitems, split(n, ' ')[1])
+                table.insert(modsitems, item)
+                _G.TOOMANYITEMS.MODSATLAS[item] = mod.modname
+            end
         end
     end
-
 end
 
-
-local ItemListControl = Class(function(self)
-    self.beta = BRANCH ~= "release" and true or false
-    self.list = {}
-    self:Init()
-
-end)
+local ItemListControl =
+    Class(
+    function(self)
+        self.beta = BRANCH ~= "release" and true or false
+        self.list = {}
+        self:Init()
+    end
+)
 
 function ItemListControl:Init()
     if self.beta then
@@ -195,7 +197,10 @@ function ItemListControl:Search()
                 v = v2
             end
         end
-        if table.contains(list, prefab) and string.find(string.lower(v), item) and not table.contains(searchlist, prefab) then
+        if
+            table.contains(list, prefab) and string.find(string.lower(v), item) and
+                not table.contains(searchlist, prefab)
+         then
             table.insert(searchlist, prefab)
         end
     end
@@ -209,31 +214,31 @@ function ItemListControl:SortList(list)
 end
 
 function ItemListControl:CanAddMod(item)
-    local can_add = not table.contains(self.list["others"], item)
-        and not table.contains(self.list["all"], item)
-        and not table.contains(self.list["animal"], item)
-        and not table.contains(self.list["boss"], item)
-        and not table.contains(self.list["follower"], item)
-        and not table.contains(self.list["ruins"], item)
-        and not table.contains(self.list["event"], item)
-        and not table.contains(self.list["puppet"], item)
-        and not table.contains(self.list["plant"], item)
-        and not table.contains(self.list["ore"], item)
-        and not table.contains(self.list["den"], item)
-        and not table.contains(self.list["building"], item)
-        and not table.contains(self.list["sculpture"], item)
-        and not table.contains(self.list["natural"], item)
-        and not string.find(item, "MOD_")
-        and not string.find(item, "_placer")
-        and not string.find(item, "_builder")
-        and not string.find(item, "_classified")
-        and not string.find(item, "_network")
-        and not string.find(item, "_lvl")
-        and not string.find(item, "_fx")
-        and not string.find(item, "blueprint")
-        and not string.find(item, "buff")
-        and not string.find(item, "map")
-        and not string.find(item, "workshop")
+    local can_add =
+        not table.contains(self.list["others"], item) and not table.contains(self.list["all"], item) and
+        not table.contains(self.list["animal"], item) and
+        not table.contains(self.list["boss"], item) and
+        not table.contains(self.list["follower"], item) and
+        not table.contains(self.list["ruins"], item) and
+        not table.contains(self.list["event"], item) and
+        not table.contains(self.list["puppet"], item) and
+        not table.contains(self.list["plant"], item) and
+        not table.contains(self.list["ore"], item) and
+        not table.contains(self.list["den"], item) and
+        not table.contains(self.list["building"], item) and
+        not table.contains(self.list["sculpture"], item) and
+        not table.contains(self.list["natural"], item) and
+        not string.find(item, "MOD_") and
+        not string.find(item, "_placer") and
+        not string.find(item, "_builder") and
+        not string.find(item, "_classified") and
+        not string.find(item, "_network") and
+        not string.find(item, "_lvl") and
+        not string.find(item, "_fx") and
+        not string.find(item, "blueprint") and
+        not string.find(item, "buff") and
+        not string.find(item, "map") and
+        not string.find(item, "workshop")
     if not deleteprefabs[item] and can_add then
         return true
     end
@@ -241,32 +246,32 @@ function ItemListControl:CanAddMod(item)
 end
 
 function ItemListControl:CanAddOthers(item)
-    local can_add = not table.contains(self.list["others"], item)
-        and not table.contains(self.list["all"], item)
-        and not table.contains(self.list["animal"], item)
-        and not table.contains(self.list["boss"], item)
-        and not table.contains(self.list["follower"], item)
-        and not table.contains(self.list["ruins"], item)
-        and not table.contains(self.list["event"], item)
-        and not table.contains(self.list["puppet"], item)
-        and not table.contains(self.list["plant"], item)
-        and not table.contains(self.list["ore"], item)
-        and not table.contains(self.list["den"], item)
-        and not table.contains(self.list["building"], item)
-        and not table.contains(self.list["sculpture"], item)
-        and not table.contains(self.list["natural"], item)
-        and not table.contains(modsitems, item)
-        and not string.find(item, "MOD_")
-        and not string.find(item, "_placer")
-        and not string.find(item, "_builder")
-        and not string.find(item, "_classified")
-        and not string.find(item, "_network")
-        and not string.find(item, "_lvl")
-        and not string.find(item, "_fx")
-        and not string.find(item, "blueprint")
-        and not string.find(item, "buff")
-        and not string.find(item, "map")
-        and not string.find(item, "workshop")
+    local can_add =
+        not table.contains(self.list["others"], item) and not table.contains(self.list["all"], item) and
+        not table.contains(self.list["animal"], item) and
+        not table.contains(self.list["boss"], item) and
+        not table.contains(self.list["follower"], item) and
+        not table.contains(self.list["ruins"], item) and
+        not table.contains(self.list["event"], item) and
+        not table.contains(self.list["puppet"], item) and
+        not table.contains(self.list["plant"], item) and
+        not table.contains(self.list["ore"], item) and
+        not table.contains(self.list["den"], item) and
+        not table.contains(self.list["building"], item) and
+        not table.contains(self.list["sculpture"], item) and
+        not table.contains(self.list["natural"], item) and
+        not table.contains(modsitems, item) and
+        not string.find(item, "MOD_") and
+        not string.find(item, "_placer") and
+        not string.find(item, "_builder") and
+        not string.find(item, "_classified") and
+        not string.find(item, "_network") and
+        not string.find(item, "_lvl") and
+        not string.find(item, "_fx") and
+        not string.find(item, "blueprint") and
+        not string.find(item, "buff") and
+        not string.find(item, "map") and
+        not string.find(item, "workshop")
     if not deleteprefabs[item] and can_add then
         return true
     end

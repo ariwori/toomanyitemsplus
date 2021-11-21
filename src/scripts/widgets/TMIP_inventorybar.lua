@@ -49,6 +49,9 @@ function TMIP_Inventory:Build()
 
     local maxtemp = math.ceil(num_slots / MAXSLOTS)
 	local maxpages = maxtemp == 0 and 1 or maxtemp
+    if self.currentpage and self.currentpage > maxpages then
+        self.currentpage = 1
+    end
 	local limit = MAXSLOTS * self.currentpage
 	if limit > num_slots then limit = num_slots end
 	local positions = 0
