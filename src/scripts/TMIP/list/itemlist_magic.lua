@@ -6,7 +6,7 @@ return {
 	"bluegem",
 	"purplegem",
 	"opalpreciousgem",
-	"ysh",
+
 	"firestaff",
 	"orangestaff",
 	"yellowstaff",
@@ -14,7 +14,7 @@ return {
 	"icestaff",
 	"telestaff",
 	"opalstaff",
-	"ysh",
+
 	"redmooneye",
 	"orangemooneye",
 	"yellowmooneye",
@@ -22,7 +22,7 @@ return {
 	"bluemooneye",
 	"purplemooneye",
 	"moonrockcrater",
-	"ysh",
+
 	"amulet",
 	"orangeamulet",
 	"yellowamulet",

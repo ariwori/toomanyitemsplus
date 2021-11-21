@@ -1,7 +1,7 @@
 #/bin/bash
 
 srcpath="src"
-despath="/Volumes/Mac/SteamLibrary/steamapps/common/Don't Starve Together/dontstarve_steam.app/Contents/mods/workshop-1365141672"
+despath="F:\Steam\steamapps\workshop\content\322330\1365141672"
 
 function ergodic(){
   for file in ` ls $1 `

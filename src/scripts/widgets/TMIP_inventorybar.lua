@@ -46,24 +46,22 @@ function TMIP_Inventory:Build()
 	end
 	local num_slots = 0
 	if list then num_slots = #list end
-	local maxtemp = math.ceil(num_slots / MAXSLOTS)
+
+    local maxtemp = math.ceil(num_slots / MAXSLOTS)
 	local maxpages = maxtemp == 0 and 1 or maxtemp
 	local limit = MAXSLOTS * self.currentpage
 	if limit > num_slots then limit = num_slots end
 	local positions = 0
 	for k = 1 + (self.currentpage - 1) * MAXSLOTS, limit do
 
-	if list[k] == "\121\115\104" then
-		--print("留空占位，便于分类")
-	else
-		local slot = TMIP_InvSlot(self, HUD_ATLAS, "inv_slot.tex", list[k])
-		local remainder = positions % NUM_COLUMS
-		local row = math.floor(positions / NUM_COLUMS) * self.size
-		local x = self.size * remainder
-		self.inv[k] = self.slots:AddChild(slot)
-		slot:SetTile(TMIP_ItemTile(list[k]))
-		slot:SetPosition(x,-row,0)
-	end
+	local slot = TMIP_InvSlot(self, HUD_ATLAS, "inv_slot.tex", list[k])
+	local remainder = positions % NUM_COLUMS
+	local row = math.floor(positions / NUM_COLUMS) * self.size
+	local x = self.size * remainder
+	self.inv[k] = self.slots:AddChild(slot)
+	slot:SetTile(TMIP_ItemTile(list[k]))
+	slot:SetPosition(x,-row,0)
+
 	positions = positions + 1
 
 	end

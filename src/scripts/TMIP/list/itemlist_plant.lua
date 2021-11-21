@@ -14,8 +14,8 @@ return {
     "pumpkin_oversized",
     "tomato_oversized",
     "watermelon_oversized",
-	"ysh",
-	"ysh",
+
+
 --打蜡的巨型作物
     "asparagus_oversized_waxed",
     "carrot_oversized_waxed",
@@ -31,8 +31,8 @@ return {
     "pumpkin_oversized_waxed",
     "tomato_oversized_waxed",
     "watermelon_oversized_waxed",
-	"ysh",
-	"ysh",
+
+
 --巨型农作物
 	"asparagus_oversized_rotten",
 	"carrot_oversized_rotten",
@@ -48,8 +48,8 @@ return {
 	"tomato_oversized_rotten",
 	"watermelon_oversized_rotten",
 	"potato_oversized_rotten",
-	"ysh",
-	"ysh",
+
+
 --作物植株
     "farm_plant_asparagus",
     "farm_plant_carrot",
@@ -65,16 +65,16 @@ return {
     "farm_plant_pumpkin",
     "farm_plant_tomato",
     "farm_plant_watermelon",
-	"ysh",
-	"ysh",
+
+
 	"farm_soil_debris",
 	"weed_firenettle",
 	"weed_tillweed",
 	"weed_ivy",
 	"weed_forgetmelots",
-	"ysh",
-	"ysh",
-	"ysh",
+
+
+
 --草
 	"depleted_grass",
 	"grass",
@@ -143,7 +143,7 @@ return {
 --骨架生成植物
 	"stalker_berry",
 	"stalker_bulb",
-	"stalker_bulb_double",	
+	"stalker_bulb_double",
 	"stalker_fern",
 --蘑菇树
 	"blue_mushroom",

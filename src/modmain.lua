@@ -24,6 +24,7 @@ _G.TOOMANYITEMS = {
     DATA = {},
     TELEPORT_DATA = {},
     LIST = {},
+    MODSATLAS = {},
     UI_LANGUAGE = "en",
     G_TMIP_LANGUAGE = GetModConfigData("GOP_TMIP_LANGUAGE"),
     G_TMIP_TOGGLE_KEY = GetModConfigData("GOP_TMIP_TOGGLE_KEY"),
@@ -215,7 +216,6 @@ local function DataInit()
             _G.TOOMANYITEMS.DATA.searchhistory = history
         end
     end
-    _G.TOOMANYITEMS.DATA.moditems = {}
     if _G.TOOMANYITEMS.DATA.customitems == nil then
         _G.TOOMANYITEMS.DATA.customitems = {}
     end

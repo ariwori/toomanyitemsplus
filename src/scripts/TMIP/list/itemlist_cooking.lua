@@ -1,7 +1,7 @@
 return {
 --肉类料理
 	"bonestew",
-	"meatballs",	
+	"meatballs",
 	"kabobs",
 	"honeyham",
 	"honeynuggets",
@@ -73,15 +73,15 @@ return {
 	"nightmarepie",
 --失败料理
 	"wetgoop",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
+
+
+
+
+
+
 --辣味料理
 	"bonestew_spice_chili",
-	"meatballs_spice_chili",	
+	"meatballs_spice_chili",
 	"kabobs_spice_chili",
 	"honeyham_spice_chili",
 	"honeynuggets_spice_chili",
@@ -146,15 +146,15 @@ return {
 	"dragonchilisalad_spice_chili",
 	"nightmarepie_spice_chili",
 	"wetgoop_spice_chili",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
+
+
+
+
+
+
 --蒜蓉料理
 	"bonestew_spice_garlic",
-	"meatballs_spice_garlic",	
+	"meatballs_spice_garlic",
 	"kabobs_spice_garlic",
 	"honeyham_spice_garlic",
 	"honeynuggets_spice_garlic",
@@ -219,15 +219,15 @@ return {
 	"dragonchilisalad_spice_garlic",
 	"nightmarepie_spice_garlic",
 	"wetgoop_spice_garlic",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
+
+
+
+
+
+
 --咸味料理
 	"bonestew_spice_salt",
-	"meatballs_spice_salt",	
+	"meatballs_spice_salt",
 	"kabobs_spice_salt",
 	"honeyham_spice_salt",
 	"honeynuggets_spice_salt",
@@ -292,15 +292,15 @@ return {
 	"dragonchilisalad_spice_salt",
 	"nightmarepie_spice_salt",
 	"wetgoop_spice_salt",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
+
+
+
+
+
+
 --甜味料理
 	"bonestew_spice_sugar",
-	"meatballs_spice_sugar",	
+	"meatballs_spice_sugar",
 	"kabobs_spice_sugar",
 	"honeyham_spice_sugar",
 	"honeynuggets_spice_sugar",
@@ -365,12 +365,12 @@ return {
 	"dragonchilisalad_spice_sugar",
 	"nightmarepie_spice_sugar",
 	"wetgoop_spice_sugar",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
-	"ysh",
+
+
+
+
+
+
 	--冬季盛宴大餐
 	"berrysauce",
 	"bibingka",

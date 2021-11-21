@@ -6,167 +6,20 @@ local Widget = require "widgets/widget"
 local base_atlas_1 = "images/inventoryimages1.xml"
 local base_atlas_2 = "images/inventoryimages2.xml"
 local minimap_atlas = "minimap/minimap_data.xml"
-local atlasarr = {base_atlas_1,base_atlas_2,
-"../mods/workshop-1991746508/images/inventoryimages/alchmy_fur_copper.xml",
-"../mods/workshop-1991746508/images/inventoryimages/alchmy_fur_ruins.xml",
-"../mods/workshop-1991746508/images/inventoryimages/armor_pill.xml",
-"../mods/workshop-1991746508/images/inventoryimages/armorsiving.xml",
-"../mods/workshop-1991746508/images/inventoryimages/bananafan.xml",
-"../mods/workshop-1991746508/images/inventoryimages/bananafan_big.xml",
-"../mods/workshop-1991746508/images/inventoryimages/bloodthirsty_pill.xml",
-"../mods/workshop-1991746508/images/inventoryimages/book_myth.xml",
-"../mods/workshop-1991746508/images/inventoryimages/cold_resistant_pill.xml",
-"../mods/workshop-1991746508/images/inventoryimages/condensed_pill.xml",
-"../mods/workshop-1991746508/images/inventoryimages/dust_resistant_pill.xml",
-"../mods/workshop-1991746508/images/inventoryimages/fly_pill.xml",
-"../mods/workshop-1991746508/images/inventoryimages/golden_armor_mk.xml",
-"../mods/workshop-1991746508/images/inventoryimages/golden_hat_mk.xml",
-"../mods/workshop-1991746508/images/inventoryimages/gourd.xml",
-"../mods/workshop-1991746508/images/inventoryimages/gourd_cooked.xml",
-"../mods/workshop-1991746508/images/inventoryimages/gourd_omelet.xml",
-"../mods/workshop-1991746508/images/inventoryimages/gourd_oversized.xml",
-"../mods/workshop-1991746508/images/inventoryimages/gourd_seeds.xml",
-"../mods/workshop-1991746508/images/inventoryimages/gourd_soup.xml",
-"../mods/workshop-1991746508/images/inventoryimages/heat_resistant_pill.xml",
-"../mods/workshop-1991746508/images/inventoryimages/honey_pie.xml",
-"../mods/workshop-1991746508/images/inventoryimages/krampussack_sealed.xml",
-"../mods/workshop-1991746508/images/inventoryimages/laozi_bell.xml",
-"../mods/workshop-1991746508/images/inventoryimages/laozi_bell_broken.xml",
-"../mods/workshop-1991746508/images/inventoryimages/laozi_sp.xml",
-"../mods/workshop-1991746508/images/inventoryimages/lotus_leaves.xml",
-"../mods/workshop-1991746508/images/inventoryimages/lotus_root.xml",
-"../mods/workshop-1991746508/images/inventoryimages/lotus_root_cooked.xml",
-"../mods/workshop-1991746508/images/inventoryimages/lotus_seeds.xml",
-"../mods/workshop-1991746508/images/inventoryimages/lotus_seeds_cooked.xml",
-"../mods/workshop-1991746508/images/inventoryimages/mk_hualing.xml",
-"../mods/workshop-1991746508/images/inventoryimages/mk_huoyuan.xml",
-"../mods/workshop-1991746508/images/inventoryimages/mk_longpi.xml",
-"../mods/workshop-1991746508/images/inventoryimages/movemountain_pill.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_bamboo.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_bamboo_shoots.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_bamboo_shoots_cooked.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_banana_leaf.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_banana_tree.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_bbn.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_bbn_full.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_bbnbutton.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_bundle.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_bundle_large.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_bundle_medium.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_bundle_small.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_bundlewrap.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_cash_tree.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_cash_tree_ground.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_coin.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_coin_box.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_fence_item.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_flyskill.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_flyskill_mk.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_flyskill_nz.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_flyskill_pg.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_flyskill_wb.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_flyskill_ya.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_flyskill_yj.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_flyskill_yt.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_bbf.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_bz.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_cj.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_fhy.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_hbj.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_hlbz.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_hsy.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_hymz.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_lwhz.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_lxq.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_lzg.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_nx.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_pgt.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_sj.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_tr.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_tsj.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_xjdmg.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_zpd.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_zscr.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_ztf.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_food_zyoh.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_fuchen.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_goldnugget.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_greenbamboo.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_huanhundan.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_flower.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_groundlight.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_groundlight_bgz.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_groundlight_blz.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_groundlight_gxy.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_groundlight_llt.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_groundlight_qzh.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_groundlight_ryx.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_groundlight_std.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_groundlight_yhy.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_he_left.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_he_right.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_interiors_ghg_lu.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_lotus_flower.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_lotusleaf.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_lotusleaf_hat.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_mooncake_box.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_mooncake_ice.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_mooncake_lotus.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_mooncake_nuts.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_passcard_jie.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_qxj.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_redlantern_ground.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_redlantern_ground_right.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_rhino_blueheart.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_rhino_redheart.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_rhino_yellowheart.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_ruyi.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_toy_chineseknot.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_toy_featherbundle.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_toy_tigerdoll.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_toy_tumbler.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_toy_twirldrum.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_weapon_gtt.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_weapon_syd.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_weapon_syf.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_yjp.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_yylp.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_zongzi1.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_zongzi2.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_zongzi_item1.xml",
-"../mods/workshop-1991746508/images/inventoryimages/myth_zongzi_item2.xml",
-"../mods/workshop-1991746508/images/inventoryimages/peach_banquet.xml",
-"../mods/workshop-1991746508/images/inventoryimages/peach_wine.xml",
-"../mods/workshop-1991746508/images/inventoryimages/pill_bottle_gourd.xml",
-"../mods/workshop-1991746508/images/inventoryimages/purple_gourd.xml",
-"../mods/workshop-1991746508/images/inventoryimages/redlantern_myth_a.xml",
-"../mods/workshop-1991746508/images/inventoryimages/redlantern_myth_b.xml",
-"../mods/workshop-1991746508/images/inventoryimages/redlantern_myth_c.xml",
-"../mods/workshop-1991746508/images/inventoryimages/redlantern_myth_d.xml",
-"../mods/workshop-1991746508/images/inventoryimages/redlantern_myth_e.xml",
-"../mods/workshop-1991746508/images/inventoryimages/saddle_qingniu.xml",
-"../mods/workshop-1991746508/images/inventoryimages/siving_hat.xml",
-"../mods/workshop-1991746508/images/inventoryimages/siving_rocks.xml",
-"../mods/workshop-1991746508/images/inventoryimages/siving_stone.xml",
-"../mods/workshop-1991746508/images/inventoryimages/thorns_pill.xml",
-"../mods/workshop-1991746508/images/inventoryimages/turf_myth_zhu.xml",
-"../mods/workshop-1991746508/images/inventoryimages/turf_quagmire_parkfield.xml",
-"../mods/workshop-1991746508/images/inventoryimages/vegetarian_food.xml",
-"../mods/workshop-1991746508/images/inventoryimages/yangjian_armor.xml",
-"../mods/workshop-1991746508/images/inventoryimages/yangjian_hair.xml"
-}
+local atlasarr =  require "mods_atlas"
+
+local modsatlas = {}
 
 -- 获取启用的MOD中加载的物品栏贴图
 local enabledmods = ModManager:GetEnabledModNames()
+local registermods = atlasarr["register"]
 for i,v in ipairs(enabledmods) do
     local mod = ModManager:GetMod(v)
-    for k,v in pairs(mod) do
-        if k == 'Assets' then
-            for m,n in pairs(v) do
-                for j,k in pairs(n) do
-                    if string.find(k, '.xml') then
-                        table.insert(atlasarr, k)
-                    end
+    if not table.contains(registermods, mod.modname) then
+        for m,n in pairs(mod.Assets) do
+            for j,k in pairs(n) do
+                if string.find(k, '.xml') then
+                    table.insert(atlasarr, k)
                 end
             end
         end
@@ -181,6 +34,37 @@ local function split(str,reps)
     end)
     return ResultstrList
 end
+
+local function getSubStr(t, strstart, strend)
+    local s = ''
+    for i=strstart,strend,1 do
+        local endstr = '_'
+        if i == strend then
+            endstr = ''
+        end
+        s = s..t[i]..endstr
+    end
+    return s
+end
+
+
+--字符串重组
+local function getStr(pstr, strstart, strend, size)
+    local t = split(pstr, '_')
+    if strstart and strend then
+        if strend < 0 then
+            strend = #t + strend
+        end
+        return getSubStr(t, strstart, strend)
+    elseif strstart and size and not strend then
+        return getSubStr(t, strstart, strstart + size)
+    elseif strend and not strstart and not size then
+        return getSubStr(t, #t+strend, #t)
+    else
+        return pstr
+    end
+end
+
 --得到表或者数组的元素数量
 local function GetTableNum(Table)
   -- local count = 0
@@ -295,14 +179,31 @@ local function CheckStr(str)
 		return false
 	end
 end
+
+local function MergeItemList(...)
+	local ret = {}
+	for _, map in ipairs({...}) do
+		for i = 1, #map do
+			table.insert(ret, map[i])
+		end
+	end
+	return ret
+end
+
 --根据代码查找其贴图所归属的xml文件
 local function FindAtlas(str)
-    local x = GetTableNum(atlasarr)
+    local modid = modsatlas[str]
+    local p = {}
+    if modid then
+        p = atlasarr[modid]
+    end
+    local atlas = MergeItemList(p, atlasarr["all"])
+    local x = GetTableNum(atlas)
     local texname = str..".tex"
 	for i=1,x,1 do
-		if TheSim:AtlasContains(atlasarr[i], texname) then
+		if TheSim:AtlasContains(atlas[i], texname) then
 			-- print(texname.."在"..atlasarr[i])
-			return atlasarr[i]
+			return atlas[i]
 		end
 	end
 	texname = str..".png"
@@ -312,6 +213,7 @@ local function FindAtlas(str)
 	end
 	return nil
 end
+
 --检查是否为官方的4种调料词缀
 local function FindDstSpice(spice)
     local dstspice = {"CHILI","GARLIC","SALT","SUGAR"}
@@ -327,6 +229,65 @@ local function FindDstSpice(spice)
 	return false
 end
 
+local function tableContains(t, v)
+    for _, m in pairs(t) do
+        if m == v then
+            return true
+        end
+    end
+    return false
+end
+
+local function tableFind(t, v)
+    for k, m in pairs(t) do
+        if m == v then
+            return k
+        end
+    end
+    return -1
+end
+
+-- 获取调料食物名称和调料
+local function getSpiceFood(spicefood)
+    -- 官方调料, 部分MOD兼容, 贴图格式 spice_XXX_over.tex
+    local dstspice = {"chili","garlic","salt","sugar"}
+	local food = nil
+    local spice = nil
+    local arr = split(spicefood, '_')
+    local spiceindex = tableFind(arr, 'spice')
+    spice = arr[#arr]
+    local sp = ''
+    food = ''
+    if spicefood then
+        for i=1,spiceindex-1,1 do
+            if i < spiceindex-1 then
+                food = food .. arr[i] .. '_'
+            else
+                food = food .. arr[i]
+            end
+        end
+		if tableContains(dstspice, spice) and spiceindex == #arr -1 then
+            sp = 'spice_' .. spice
+            spice = 'spice_' .. spice .. '_over'
+        else
+            sp = 'spice_' .. spice
+            spice = 'spice_' .. spice .. '_over'
+            if not FindAtlas(spice) then
+                spice = 'spice_'
+                for i=spiceindex+1,#arr,1 do
+                    if i < #arr-1 then
+                        spice = spice .. arr[i] .. '_'
+                    else
+                        spice = spice .. arr[i]
+                    end
+                end
+                sp = spice
+            end
+        end
+	end
+    return food, spice, sp
+end
+
 
 local ItemTile = Class( Widget,
 	function(self, invitem)
@@ -336,6 +297,7 @@ local ItemTile = Class( Widget,
 		self.itemname = invitem
 		self.desc = self:DescriptionInit()
 		self:SetTextAndImage()
+        modsatlas = TOOMANYITEMS.MODSATLAS
 	end
 )
 
@@ -393,16 +355,20 @@ if v(20,21,65) then
 	--如果是调料食物则取后缀得到调料名，取前缀获得食物原名
 	if string.find(prefabsname,"_spice_") then
 	--确保是游戏内置的调料词缀而非mod的调料词缀
-		spicearr = split(prefabsname,"_")
-		if FindDstSpice(spicearr[3]) then
-			spiceimage = "spice_"..GetSuffix(prefabsname,true).."_over.tex"
-			prefabsname = GetPrefix(prefabsname,true)
-		else
-            local endc = string.find(prefabsname, '_spice_') -1
-            prefabsname = string.sub(prefabsname,0,endc)
-            spiceimage = "spice_"..spicearr[#spicearr].."_over.tex"
-
-        end
+        local food, spice, sp= getSpiceFood(prefabsname)
+        prefabsname = food
+        spiceimage = spice..".tex"
+		-- spicearr = split(prefabsname,"_")
+		-- if FindDstSpice(spicearr[3]) then
+		-- 	spiceimage = "spice_"..GetSuffix(prefabsname,true).."_over.tex"
+		-- 	prefabsname = GetPrefix(prefabsname,true)
+		-- else
+        --     if FindDstSpice(spicearr[#spicearr]) then
+        --         local endc = string.find(prefabsname, '_spice_') -1
+        --         prefabsname = string.sub(prefabsname,0,endc)
+        --         spiceimage = "spice_"..spicearr[#spicearr].."_over.tex"
+        --     end
+        -- end
 	end
 	--如果是大理石雕像则移除大理石的后缀
 	if string.find(prefabsname,"_marble")  then
@@ -413,7 +379,6 @@ if v(20,21,65) then
 		prefabsname = GetSuffix(prefabsname,true)
 	end
 	prefabsatlas = FindAtlas(prefabsname)
-
     if prefabsatlas and prefabsatlas == minimap_atlas then
     --如果搜索到有效的Atlas且返回的Atlas是minimap则使用png后缀
         prefabsimage = prefabsname..".png"
@@ -427,6 +392,7 @@ if v(20,21,65) then
         --print(prefabsname.." 暂未匹配到对应的贴图")
         prefabsimage = nil
     end
+
     --print(prefabsatlas, prefabsimage, spiceimage)
 	return prefabsatlas, prefabsimage, spiceimage
 end
@@ -495,26 +461,48 @@ if v(23,24,41) then
 					return STRINGS.NAMES[strname]
 				end
 			end
+            if repsarr[#repsarr] == "LEGION" then
+                local strname = getStr(prefabsname, 1, -1, nil)
+                if CheckStr(strname) then
+					return STRINGS.NAMES[strname]
+				end
+			end
 			if string.find(prefabsname,"_SPICE_") then
 				--检查调料词缀（repsarr[3]）是否为游戏内置的调料后缀，以避免部分含spice词缀的mod物品代码
-				if FindDstSpice(repsarr[3]) then
-				--print(prefabsname)
-					--调料食物需要去除_spice和对应的调料词缀，需要去除2次后缀，因此直接调用GetPrefix取前缀获得食物的原名
-					prefabsname = GetPrefix(prefabsname,true)
-					--检查食物原名字符串是否有效，有效则重组为带调料前缀的字符串
-					if CheckStr(prefabsname) then
-						strname = subfmt(STRINGS.NAMES["SPICE_"..repsarr[3].."_FOOD"], {food = STRINGS.NAMES[prefabsname]})
-						return strname
-					end
-                else
-                    print(prefabsname)
-                    local endc = string.find(prefabsname, '_SPICE_') -1
-                    prefabsname = string.sub(prefabsname,0,endc)
-                    if CheckStr(prefabsname) then
-						strname = subfmt(STRINGS.NAMES["SPICE_"..repsarr[#repsarr].."_FOOD"], {food = STRINGS.NAMES[prefabsname]})
-						return strname
-					end
-				end
+				local food, spice, sp = getSpiceFood(string.lower(prefabsname))
+                prefabsname = string.upper(food)
+                if CheckStr(prefabsname) then
+                    if CheckStr(sp..'_food') then
+                        return subfmt(STRINGS.NAMES[string.upper(sp..'_food')], {food = STRINGS.NAMES[prefabsname]})
+                    elseif CheckStr(sp) then
+                        return subfmt(STRINGS.NAMES[string.upper(sp)], {food = STRINGS.NAMES[prefabsname]})
+                    end
+                    return STRINGS.NAMES[prefabsname]
+                end
+                -- if FindDstSpice(repsarr[3]) then
+				-- --print(prefabsname)
+				-- 	--调料食物需要去除_spice和对应的调料词缀，需要去除2次后缀，因此直接调用GetPrefix取前缀获得食物的原名
+				-- 	prefabsname = GetPrefix(prefabsname,true)
+				-- 	--检查食物原名字符串是否有效，有效则重组为带调料前缀的字符串
+				-- 	if CheckStr(prefabsname) then
+				-- 		strname = subfmt(STRINGS.NAMES["SPICE_"..repsarr[3].."_FOOD"], {food = STRINGS.NAMES[prefabsname]})
+				-- 		return strname
+				-- 	end
+                -- else
+                --     print(repsarr[#repsarr])
+                --     if FindDstSpice(repsarr[#repsarr]) then
+                --         local endc = string.find(prefabsname, '_SPICE_') -1
+                --         prefabsname = string.sub(prefabsname,0,endc)
+                --         if CheckStr(prefabsname) then
+                --             if CheckStr(STRINGS.NAMES["SPICE_"..repsarr[#repsarr].."_FOOD"]) then
+                --                 strname = subfmt(STRINGS.NAMES["SPICE_"..repsarr[#repsarr].."_FOOD"], {food = STRINGS.NAMES[prefabsname]})
+                --                 return strname
+                --             else
+                --                 return STRINGS.NAMES[prefabsname]
+                --             end
+                --         end
+                --     end
+				-- end
 			end
 			strname = ReassSuffix(prefabsname)
 			--调用ReassSuffix查找指定的一些后缀并重组字符串
