@@ -92,9 +92,6 @@ for i, v in ipairs(enabledmods) do
             -- modsitems = MergeItemList(modsitems, split(n, ' ')[1])
             table.insert(modsitems, item)
             _G.TOOMANYITEMS.MODSATLAS[item] = mod.modname
-            print(item)
-            print("mods")
-            print(_G.TOOMANYITEMS.MODSATLAS[item])
         end
     end
 

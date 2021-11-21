@@ -318,8 +318,7 @@ end
 
 function ItemTile:SetTextAndImage()
 	local atlas, image, spiceimage = self:GetAsset(true)
-	--print(atlas, image, spiceimage)
-	if atlas and image then
+	if atlas and image  then
 		self.image = self:AddChild(Image(atlas, image))
 		-- 调料都在base_atlas_1,官方又把调料移到了2，搞屁啊
 		-- print(spiceimage)
