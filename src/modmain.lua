@@ -189,6 +189,9 @@ local function DataInit()
     if _G.TOOMANYITEMS.DATA == nil then
         _G.TOOMANYITEMS.DATA = {}
     end
+    if _G.TOOMANYITEMS.MODSATLAS == nil then
+        _G.TOOMANYITEMS.MODSATLAS = {}
+    end
     _G.TOOMANYITEMS.DATA.IsSettingMenuShow = false
     _G.TOOMANYITEMS.DATA.IsTipsMenuShow = false
     if _G.TOOMANYITEMS.DATA.IsDebugMenuShow == nil then
