@@ -3,7 +3,7 @@ return {
         "minimap/minimap_data.xml",
         "images/inventoryimages1.xml",
         "images/inventoryimages2.xml",
-        "images/customicobyysh.xml"
+        "../mods/workshop-1365141672/images/customicobyysh.xml"
     },
     ["workshop-1095971442"] = {},
     ["workshop-1120124958"] = {},
